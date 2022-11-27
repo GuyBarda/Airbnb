@@ -56,22 +56,20 @@ function _createHouses() {
     var houses = utilService.loadFromStorage(KEY);
     if (!houses || !houses.length) {
         houses = [
-            _createHouse('Learn Vuex', 2),
-            _createHouse('Master CSS', 1),
-            _createHouse('Go out', 1),
-            _createHouse('Build a new library', 1),
+            _createHouse('bed for 3', 200),
+            _createHouse('Nice house', 11),
+            _createHouse('Very good home', 1321),
         ];
         utilService.saveToStorage(KEY, houses);
     }
     return houses;
 }
 
-function _createHouse(txt, importance) {
+function _createHouse(title, price) {
     return {
         _id: utilService.makeId(),
-        txt,
-        isDone: false,
+        title,
         createdAt: Date.now(),
-        importance,
+        price,
     };
 }
