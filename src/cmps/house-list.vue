@@ -1,9 +1,9 @@
 <template>
-    <div class="">
-        <ul class="">
-            <li v-for="toy in toys">
-                <router-link :to="'/toy/' + toy._id" class="details">
-                    <toy-preview :toy="toy"></toy-preview>
+    <div class="house-list">
+        <ul class="clean-list">
+            <li v-for="house in houses">
+                <router-link :to="'/house/' + house._id" class="details">
+                    <house-preview :house="house"></house-preview>
                 </router-link>
             </li>
         </ul>
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import toyPreview from './toy-preview.vue';
+import housePreview from './house-preview.vue';
 
 export default {
-    props: ['toys'],
+    props: ['houses'],
     components: {
-        toyPreview,
+        housePreview,
     },
 };
 </script>
