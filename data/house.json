@@ -9,7 +9,7 @@
                 "lng": 31
             }
         },
-        "assets": [],
+        "assets": ["https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-5.jpg"],
         "reviews": [
             {
                 "userId": "12314",
@@ -55,7 +55,7 @@
                 "lng": 31
             }
         },
-        "assets": [],
+        "assets": ["https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-5.jpg"],
         "reviews": [
             {
                 "userId": "12314",
@@ -101,7 +101,7 @@
                 "lng": 31
             }
         },
-        "assets": [],
+        "assets": ["https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-5.jpg"],
         "reviews": [
             {
                 "userId": "12314",

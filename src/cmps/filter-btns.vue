@@ -11,15 +11,9 @@
         <button>Amazing</button>
         <button>Castles</button>
         <button>Cabins</button>
-        <button class="btn-filters">Filters</button>
     </div>
 </template>
 
 <script>
 
-export default {
-
-}
-
 </script>
-
