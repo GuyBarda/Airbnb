@@ -1,8 +1,13 @@
 <template>
     <header class="main-header">
-        <div class="logo"></div>
+        <div class="logo">
+            <!-- <img src="../assets/svg/logo.svg" alt=""> -->
+        </div>
         <app-search></app-search>
-        <button class="user">Login</button>
+        <button class="user">
+            ---
+            <img src="../assets/svg/user.svg" alt="">
+        </button>
     </header>
 </template>
 

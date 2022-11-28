@@ -1,0 +1,140 @@
+[
+    {
+        "_id": 1235,
+        "title": "andras",
+        "location": {
+            "name": "baab",
+            "latlng": {
+                "lat": 31,
+                "lng": 31
+            }
+        },
+        "assets": [],
+        "reviews": [
+            {
+                "userId": "12314",
+                "date": "10/2/1",
+                "txt": "jhdtgash",
+                "rate": {
+                    "Cleanliness": 2,
+                    "Accuracy": 2,
+                    "Communication": 2,
+                    "Location": 2,
+                    "Check-in": 2,
+                    "Value": 2
+                }
+            }
+        ],
+        "owner": {
+            "_id": 123,
+            "name": "puki"
+        },
+        "price": 124,
+        "labels": ["wifi", "Free"],
+        "info": {
+            "guests": 5,
+            "bedrooms": 2,
+            "beds": 2,
+            "baths": 2
+        },
+        "desc": "baksad",
+        "type": "sasdasdw",
+        "things-to-know": {
+            "rules": ["hawd", "ayw"],
+            "safety": ["ashw", "asuw"],
+            "policy": ["sajw", "wjda"]
+        }
+    },
+    {
+        "_id": 1234,
+        "title": "andras",
+        "location": {
+            "name": "baab",
+            "latlng": {
+                "lat": 31,
+                "lng": 31
+            }
+        },
+        "assets": [],
+        "reviews": [
+            {
+                "userId": "12314",
+                "date": "10/2/1",
+                "txt": "jhdtgash",
+                "rate": {
+                    "Cleanliness": 2,
+                    "Accuracy": 2,
+                    "Communication": 2,
+                    "Location": 2,
+                    "Check-in": 2,
+                    "Value": 2
+                }
+            }
+        ],
+        "owner": {
+            "_id": 123,
+            "name": "puki"
+        },
+        "price": 124,
+        "labels": ["wifi", "Free"],
+        "info": {
+            "guests": 5,
+            "bedrooms": 2,
+            "beds": 2,
+            "baths": 2
+        },
+        "desc": "baksad",
+        "type": "sasdasdw",
+        "things-to-know": {
+            "rules": ["hawd", "ayw"],
+            "safety": ["ashw", "asuw"],
+            "policy": ["sajw", "wjda"]
+        }
+    },
+    {
+        "_id": 1236,
+        "title": "andras",
+        "location": {
+            "name": "baab",
+            "latlng": {
+                "lat": 31,
+                "lng": 31
+            }
+        },
+        "assets": [],
+        "reviews": [
+            {
+                "userId": "12314",
+                "date": "10/2/1",
+                "txt": "jhdtgash",
+                "rate": {
+                    "Cleanliness": 2,
+                    "Accuracy": 2,
+                    "Communication": 2,
+                    "Location": 2,
+                    "Check-in": 2,
+                    "Value": 2
+                }
+            }
+        ],
+        "owner": {
+            "_id": 123,
+            "name": "puki"
+        },
+        "price": 124,
+        "labels": ["wifi", "Free"],
+        "info": {
+            "guests": 5,
+            "bedrooms": 2,
+            "beds": 2,
+            "baths": 2
+        },
+        "desc": "baksad",
+        "type": "sasdasdw",
+        "things-to-know": {
+            "rules": ["hawd", "ayw"],
+            "safety": ["ashw", "asuw"],
+            "policy": ["sajw", "wjda"]
+        }
+    }
+]
