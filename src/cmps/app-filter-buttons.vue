@@ -5,11 +5,11 @@
 
 <script>
 import filterBtns from './filter-btns.vue'
+
 export default {
     components: {
         filterBtns
     }
 }
-
 </script>
 
