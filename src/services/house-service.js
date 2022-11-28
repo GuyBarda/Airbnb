@@ -1,5 +1,7 @@
 import { utilService } from './util.service.js';
 import { storageService } from './async-storage-service.js';
+import gHouses from '../../data/house.json' assert {type: 'json'}
+
 
 const KEY = 'housesDB';
 
@@ -11,7 +13,7 @@ export const houseService = {
     getEmptyhouse,
 };
 
-var gHouses = _createHouses();
+console.log(gHouses);
 
 function query() {
     return storageService.query(KEY);
