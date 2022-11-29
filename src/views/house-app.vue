@@ -29,9 +29,6 @@ export default {
         }
     },
     computed: {
-        houses(){
-            return this.$store.getters.houses
-        }
     },
 }
 </script>

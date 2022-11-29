@@ -1,6 +1,6 @@
 <template>
     <router-link :to="'house/'+house._id">
-    <section class="house-preview">
+    <article class="house-preview">
         <!-- <div class="carousel"> -->
             <!-- <button class="arrow-btn arrow-left"><arrow-left /></button> -->
             <!-- <img-carousel/> -->
@@ -8,16 +8,20 @@
             <!-- <img :src="house.assets[0]" alt="house"> -->
             <!-- <button class="arrow-btn arrow-right"><arrow-right /></button> -->
         <!-- </div> -->
+        <section>
         <p class="location">{{ location }}</p>
         <p>{{ house.name }}</p>
         <p>{{ house.price }}</p>
-    </section>
+        <p class="rate"><star-icon />&nbsp;{{rate}}</p>
+        </section>
+    </article>
     </router-link>
 </template>
 
 <script>
 import arrowLeft from '../assets/svg/arrow-left.vue'
 import arrowRight from '../assets/svg/arrow-right.vue'
+import starIcon from '../assets/svg/star.vue'
 import imgCarousel from '../cmps/img-carousel.vue'
 
 export default {
@@ -25,6 +29,10 @@ export default {
         house: Object
     },
     computed: {
+        rate(){
+            let sum = this.house.reviews.reduce((acc,{rate}) => acc+= rate,0)
+            return sum / this.house.reviews.length
+        },
         location(){
             return `${this.house.loc.country},${this.house.loc.city}`
         },
@@ -42,6 +50,7 @@ export default {
     components:{
         arrowLeft,
         arrowRight,
+        starIcon,
         imgCarousel
     }
 };
