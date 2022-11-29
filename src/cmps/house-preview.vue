@@ -47,7 +47,7 @@ export default {
             return formatter.format(this.house.price)
         }
     },
-    components:{
+    components: {
         arrowLeft,
         arrowRight,
         starIcon,

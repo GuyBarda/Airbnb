@@ -19,8 +19,8 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 export default {
   name: 'App',
   props: {
-    houseImg:{
-        type: String,
+    houseImg: {
+      type: String,
     }
   },
   components: {
@@ -33,9 +33,9 @@ export default {
 </script>
 
 <style>
-.aaa{
-    background-color: green;
-    width: 200px;
-    height: 200px;
+.aaa {
+  background-color: green;
+  width: 200px;
+  height: 200px;
 }
 </style>
