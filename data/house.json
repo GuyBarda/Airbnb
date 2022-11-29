@@ -1,140 +1,198 @@
 [
     {
-        "_id": 1235,
-        "title": "andras",
-        "location": {
-            "name": "baab",
-            "latlng": {
-                "lat": 31,
-                "lng": 31
-            }
-        },
-        "assets": ["https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-5.jpg"],
-        "reviews": [
-            {
-                "userId": "12314",
-                "date": "10/2/1",
-                "txt": "jhdtgash",
-                "rate": {
-                    "Cleanliness": 2,
-                    "Accuracy": 2,
-                    "Communication": 2,
-                    "Location": 2,
-                    "Check-in": 2,
-                    "Value": 2
-                }
-            }
-        ],
-        "owner": {
-            "_id": 123,
-            "name": "puki"
-        },
-        "price": 124,
-        "labels": ["wifi", "Free"],
-        "info": {
-            "guests": 5,
-            "bedrooms": 2,
-            "beds": 2,
-            "baths": 2
-        },
-        "desc": "baksad",
-        "type": "sasdasdw",
-        "things-to-know": {
-            "rules": ["hawd", "ayw"],
-            "safety": ["ashw", "asuw"],
-            "policy": ["sajw", "wjda"]
+      "_id": "10006546",
+      "name": "Ribeira Charming Duplex",
+      "type": "House",
+      "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+      "price": 80.00,
+      "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+      "capacity": 8,
+      "amenities": [
+        "TV",
+        "Wifi",
+        "Kitchen",
+        "Smoking allowed",
+        "Pets allowed",
+        "Cooking basics"
+      ],
+      "labels": [
+        "Top of the world",
+        "Trending",
+        "Play",
+        "Tropical"
+      ],
+      "host": {
+        "_id": "u101",
+        "fullname": "Davit Pok",
+        "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+      },
+      "loc": {
+        "country": "Portugal",
+        "countryCode": "PT",
+        "city": "Porto",
+        "address": "17 Kombo st",
+        "lat": -8.61308,
+        "lng": 41.1413
+      },
+      "reviews": [
+        {
+          "id": "madeId",
+          "txt": "Very helpful hosts. Cooked traditional...",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullname": "user2",
+            "imgUrl": "/img/img2.jpg"
+          }
         }
+      ],
+      "likedByUsers" : ["mini-user"]
     },
     {
-        "_id": 1234,
-        "title": "andras",
-        "location": {
-            "name": "baab",
-            "latlng": {
-                "lat": 31,
-                "lng": 31
-            }
-        },
-        "assets": ["https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-5.jpg"],
-        "reviews": [
-            {
-                "userId": "12314",
-                "date": "10/2/1",
-                "txt": "jhdtgash",
-                "rate": {
-                    "Cleanliness": 2,
-                    "Accuracy": 2,
-                    "Communication": 2,
-                    "Location": 2,
-                    "Check-in": 2,
-                    "Value": 2
-                }
-            }
+        "_id": "10006546",
+        "name": "Ribeira Charming Duplex",
+        "type": "House",
+        "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+        "price": 80.00,
+        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+        "capacity": 8,
+        "amenities": [
+          "TV",
+          "Wifi",
+          "Kitchen",
+          "Smoking allowed",
+          "Pets allowed",
+          "Cooking basics"
         ],
-        "owner": {
-            "_id": 123,
-            "name": "puki"
-        },
-        "price": 124,
-        "labels": ["wifi", "Free"],
-        "info": {
-            "guests": 5,
-            "bedrooms": 2,
-            "beds": 2,
-            "baths": 2
-        },
-        "desc": "baksad",
-        "type": "sasdasdw",
-        "things-to-know": {
-            "rules": ["hawd", "ayw"],
-            "safety": ["ashw", "asuw"],
-            "policy": ["sajw", "wjda"]
-        }
-    },
-    {
-        "_id": 1236,
-        "title": "andras",
-        "location": {
-            "name": "baab",
-            "latlng": {
-                "lat": 31,
-                "lng": 31
-            }
-        },
-        "assets": ["https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-5.jpg"],
-        "reviews": [
-            {
-                "userId": "12314",
-                "date": "10/2/1",
-                "txt": "jhdtgash",
-                "rate": {
-                    "Cleanliness": 2,
-                    "Accuracy": 2,
-                    "Communication": 2,
-                    "Location": 2,
-                    "Check-in": 2,
-                    "Value": 2
-                }
-            }
+        "labels": [
+          "Top of the world",
+          "Trending",
+          "Play",
+          "Tropical"
         ],
-        "owner": {
-            "_id": 123,
-            "name": "puki"
+        "host": {
+          "_id": "u101",
+          "fullname": "Davit Pok",
+          "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
         },
-        "price": 124,
-        "labels": ["wifi", "Free"],
-        "info": {
-            "guests": 5,
-            "bedrooms": 2,
-            "beds": 2,
-            "baths": 2
+        "loc": {
+          "country": "Portugal",
+          "countryCode": "PT",
+          "city": "Porto",
+          "address": "17 Kombo st",
+          "lat": -8.61308,
+          "lng": 41.1413
         },
-        "desc": "baksad",
-        "type": "sasdasdw",
-        "things-to-know": {
-            "rules": ["hawd", "ayw"],
-            "safety": ["ashw", "asuw"],
-            "policy": ["sajw", "wjda"]
-        }
-    }
-]
+        "reviews": [
+          {
+            "id": "madeId",
+            "txt": "Very helpful hosts. Cooked traditional...",
+            "rate": 4,
+            "by": {
+              "_id": "u102",
+              "fullname": "user2",
+              "imgUrl": "/img/img2.jpg"
+            }
+          }
+        ],
+        "likedByUsers" : ["mini-user"]
+      },
+      {
+        "_id": "10006546",
+        "name": "Ribeira Charming Duplex",
+        "type": "House",
+        "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+        "price": 80.00,
+        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+        "capacity": 8,
+        "amenities": [
+          "TV",
+          "Wifi",
+          "Kitchen",
+          "Smoking allowed",
+          "Pets allowed",
+          "Cooking basics"
+        ],
+        "labels": [
+          "Top of the world",
+          "Trending",
+          "Play",
+          "Tropical"
+        ],
+        "host": {
+          "_id": "u101",
+          "fullname": "Davit Pok",
+          "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+        },
+        "loc": {
+          "country": "Portugal",
+          "countryCode": "PT",
+          "city": "Porto",
+          "address": "17 Kombo st",
+          "lat": -8.61308,
+          "lng": 41.1413
+        },
+        "reviews": [
+          {
+            "id": "madeId",
+            "txt": "Very helpful hosts. Cooked traditional...",
+            "rate": 4,
+            "by": {
+              "_id": "u102",
+              "fullname": "user2",
+              "imgUrl": "/img/img2.jpg"
+            }
+          }
+        ],
+        "likedByUsers" : ["mini-user"]
+      },
+      {
+        "_id": "10006546",
+        "name": "Ribeira Charming Duplex",
+        "type": "House",
+        "imgUrls": ["https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large", "otherImg.jpg"],
+        "price": 80.00,
+        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+        "capacity": 8,
+        "amenities": [
+          "TV",
+          "Wifi",
+          "Kitchen",
+          "Smoking allowed",
+          "Pets allowed",
+          "Cooking basics"
+        ],
+        "labels": [
+          "Top of the world",
+          "Trending",
+          "Play",
+          "Tropical"
+        ],
+        "host": {
+          "_id": "u101",
+          "fullname": "Davit Pok",
+          "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+        },
+        "loc": {
+          "country": "Portugal",
+          "countryCode": "PT",
+          "city": "Porto",
+          "address": "17 Kombo st",
+          "lat": -8.61308,
+          "lng": 41.1413
+        },
+        "reviews": [
+          {
+            "id": "madeId",
+            "txt": "Very helpful hosts. Cooked traditional...",
+            "rate": 4,
+            "by": {
+              "_id": "u102",
+              "fullname": "user2",
+              "imgUrl": "/img/img2.jpg"
+            }
+          }
+        ],
+        "likedByUsers" : ["mini-user"]
+      }
+  ]

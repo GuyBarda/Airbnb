@@ -1,5 +1,7 @@
-import { houseService } from "../services/house-service.js";
 import Vuex from "vuex";
+import {houseStore } from './house-store.js'
+import {reviewStore } from './review-store.js'
+import {userStore } from './user-store.js'
 
 const { createStore } = Vuex;
 
@@ -7,21 +9,22 @@ const storeOptions = {
   strict: true,
   state() {
     return {
-        houses: houseService.query(),
     }
   },
   mutations: {
 
   },
   getters: {
-    houses(state){
-        return state.houses
-    }
+
   },
   actions: {
 
   },
-  modules: {},
+  modules: {
+    houseStore,
+    reviewStore,
+    userStore
+  },
 };
 
 export const store = createStore(storeOptions);

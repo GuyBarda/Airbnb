@@ -1,77 +1,75 @@
-import { utilService } from './utils-service.js';
-import { storageService } from './async-storage-service.js';
-import gHouses from '../../data/house.json' assert {type: 'json'}
+
+// import { storageService } from './async-storage.service.js'
+import { httpService } from './http-service.js'
+import { utilService } from './util.service.js'
+import { userService } from './user-service.js'
 
 
-const KEY = 'housesDB';
+const STORAGE_KEY = 'car'
 
-export const houseService = {
+export const carService = {
     query,
     getById,
-    remove,
     save,
-    getEmptyhouse,
-};
+    remove,
+    getEmptyCar,
+    addCarMsg
+}
+window.cs = carService
 
 
-function query() {
-    return gHouses
-    // return storageService.query(KEY);
+async function query(filterBy = { txt: '', price: 0 }) {
+    return httpService.get(STORAGE_KEY, filterBy)
+
+    // var cars = await storageService.query(STORAGE_KEY)
+    // if (filterBy.txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i')
+    //     cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
+    // }
+    // if (filterBy.price) {
+    //     cars = cars.filter(car => car.price <= filterBy.price)
+    // }
+    // return cars
+
+}
+function getById(carId) {
+    // return storageService.get(STORAGE_KEY, carId)
+    return httpService.get(`car/${carId}`)
 }
 
-function getById(id) {
-    return storageService.get(KEY, id);
+async function remove(carId) {
+    // await storageService.remove(STORAGE_KEY, carId)
+    return httpService.delete(`car/${carId}`)
 }
+async function save(car) {
+    var savedCar
+    if (car._id) {
+        // savedCar = await storageService.put(STORAGE_KEY, car)
+        savedCar = await httpService.put(`car/${car._id}`, car)
 
-function getEmptyhouse() {
-    return {
-        title: '',
-        price: '',
-        reviews: [],
-    };
-}
-
-function remove(id) {
-    return storageService.remove(KEY, id);
-}
-
-function save(house) {
-    return house._id
-        ? storageService.put(KEY, house)
-        : storageService.post(KEY, house);
-}
-
-function _add(house) {
-    house._id = utilService.makeId();
-    house.createdAt = Date.now();
-    gHouses.push(house);
-    return house;
-}
-
-function _update(house) {
-    const idx = gHouses.findIndex((currhouse) => currhouse._id === house._id);
-    gHouses.splice(idx, 1, house);
-    return house;
-}
-
-function _createHouses() {
-    var houses = utilService.loadFromStorage(KEY);
-    if (!houses || !houses.length) {
-        houses = [
-            _createHouse('bed for 3', 200),
-            _createHouse('Nice house', 11),
-            _createHouse('Very good home', 1321),
-        ];
-        utilService.saveToStorage(KEY, houses);
+    } else {
+        // Later, owner is set by the backend
+        car.owner = userService.getLoggedinUser()
+        // savedCar = await storageService.post(STORAGE_KEY, car)
+        savedCar = await httpService.post('car', car)
     }
-    return houses;
+    return savedCar
 }
 
-function _createHouse(title, price) {
-    return {
-        _id: utilService.makeId(),
-        title,
-        createdAt: Date.now(),
-        price,
-    };
+async function addCarMsg(carId, txt) {
+    const savedMsg = await httpService.post(`car/${carId}/msg`, {txt})
+    return savedMsg
 }
+
+
+function getEmptyCar() {
+    return {
+        vendor: 'Susita-' + (Date.now() % 1000),
+        price: utilService.getRandomIntInclusive(1000, 9000),
+    }
+}
+
+
+
+
+
