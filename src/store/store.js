@@ -9,13 +9,18 @@ const storeOptions = {
   strict: true,
   state() {
     return {
+      isOpen: false
     }
   },
   mutations: {
-
+    toggleSearch(state){
+        state.isOpen= !state.isOpen
+    },
   },
   getters: {
-
+    open({isOpen}){
+      return isOpen
+    }
   },
   actions: {
 
