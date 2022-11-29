@@ -1,47 +1,61 @@
 .house-filter {
-    $clr-secondary: #b0b0b0;
+  display: flex;
+  align-items: center;
+  height: 78px;
+  $clr-secondary: #b0b0b0;
+  width: 100%;
+  overflow: hidden;
 
-    .secondary {
-        color: $clr-secondary
+  .secondary {
+    color: $clr-secondary;
+  }
+  .filter-buttons {
+    display: flex;
+    width: 90%;
+    overflow: hidden;
+
+    .fil-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
-    .filter-modal {
-
-        form > * {
-            padding-inline: 15px;
-        }
-
-        color: #222222;
-        border: 1px solid #222222;
-        border-radius: 10px;
-
-        .form-header{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border-bottom: 1px solid rgb(235, 235, 235);
-
-            button {
-                position: absolute;
-                left: 0;
-                margin-inline-start: 10px;
-                margin-block-start: 10px;
-            }
-        }
-
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgb(235, 235, 235);
-            padding: 0;
-            padding: 16px 24px;
-        }
-        // position: absolute;
-        // width: 70%;
-        // height: 90%;
-        // background-color: #fff;
-        // transform: translate(70%, 90%);
-        // background-color: blue;
+    div{
+        margin-top: 8px;
     }
+    button {
+      height: 78px;
+      margin-right: 19px;
+      margin-right: 19px;
+      background-color: #ffffff00;
+      border: 1px solid transparent;
+    }
+  }
+
+  .filter-modal {
+    form > * {
+      padding-inline: 15px;
+    }
+
+    color: #222222;
+    border: 1px solid #222222;
+    border-radius: 10px;
+
+    .form-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid rgb(235, 235, 235);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgb(235, 235, 235);
+      padding: 0;
+      padding: 16px 24px;
+    }
+  }
 }

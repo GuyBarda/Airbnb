@@ -1,9 +1,13 @@
 @font-face {
     font-family: ManRope;
-    src: url(../fonts/Manrope-SemiBold.ttf);
+    src: '../fonts/Manrope-SemiBold.ttf'
 }
 
-// @font-family {
-//     font-family:Cereal;
-//     src: url(/assets/Airbnb_Cereal-Book.b11f0110.woff2)
-// }
+@font-face {
+    font-family: CerealBd;
+    src: url(../fonts/AirbnbCereal_W_XBd.otf);
+}
+@font-face {
+    font-family: CerealMd;
+    src: url('../fonts/AirbnbCereal_W_Md.otf') format('opentype')
+}

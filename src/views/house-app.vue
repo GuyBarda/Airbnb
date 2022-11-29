@@ -1,5 +1,5 @@
 <template>
-<section class="house-app">
+<section class="house-app main-container">
     <house-filter />
     <house-list v-if="houses" :houses="houses" />
 </section>
@@ -29,9 +29,6 @@ export default {
         }
     },
     computed: {
-        houses(){
-            return this.$store.getters.houses
-        }
     },
 }
 </script>
