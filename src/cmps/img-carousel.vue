@@ -1,7 +1,7 @@
 <template>
-  <carousel :items-to-show="1.5">
-    <slide v-for="slide in 10" :key="slide">
-      <div class="aaaa">1</div>
+  <carousel :items-to-show="1">
+    <slide v-for="slide in imgs" :key="slide">
+      <img :src="slide">
     </slide>
 
     <template #addons>
@@ -19,8 +19,8 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 export default {
   name: 'App',
   props: {
-    houseImg: {
-      type: String,
+    imgs: {
+      type: Array,
     }
   },
   components: {
@@ -33,9 +33,20 @@ export default {
 </script>
 
 <style>
-.aaa {
-  background-color: green;
-  width: 200px;
-  height: 200px;
+.carousel__slide {
+  width:100% !important;
+}
+.carousel__pagination-button::after{
+  padding: 2px;
+  width: 0;
+  height: 0;
+  border-radius: 10em;
+}
+.carousel__pagination {
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

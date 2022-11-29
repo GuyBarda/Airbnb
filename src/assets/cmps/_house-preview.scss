@@ -1,5 +1,7 @@
-.house-preview{
 
+
+.house-preview{
+    position: relative;
 
         img{
             width:100%;
@@ -16,7 +18,8 @@
 
             p{
                 margin: 0;
-                padding: 5px;
+                padding-block-start: 5px;
+                padding-block-end: 5px;
             }
         
             .rate{
@@ -26,6 +29,23 @@
                 display: flex;
                 align-items: center;
             }
+
+            .price {
+                font-family: CerealMd;
+                // font-weight: bold;
+                background-color: transparent;
+            }
+
         }
 
+        .heart-btn{
+            position: absolute;
+            top:10px;
+            right:10px;
+            z-index: 1;
+
+            &.mark{
+                fill: red !important;
+            }
+        }
 }

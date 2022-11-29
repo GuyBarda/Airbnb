@@ -1,10 +1,26 @@
 .main-header {
-  display: flex;
-  flex-direction: row;
+  // display: flex;
+  // flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  height: 64px;
+  // justify-content: space-between;
+  // height: 64px;
+
+  border-bottom: 1px solid black;
+
   button {
     border: 0;
+  }
+
+  .logo{
+    justify-self: start;
+  }
+  .user{
+    justify-self: end;
+  }
+  .main-search-container{
+    justify-self: center;
+  }
+  >*{
+    grid-row: 1;
   }
 }

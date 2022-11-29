@@ -1,5 +1,5 @@
 <template>
-<section class="house-app main-layout">
+<section class="house-app main-container">
     <house-filter />
     <house-list v-if="houses" :houses="houses" />
 </section>

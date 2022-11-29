@@ -3,12 +3,16 @@
   align-items: center;
   height: 78px;
   $clr-secondary: #b0b0b0;
+  width: 100%;
+  overflow: hidden;
 
   .secondary {
     color: $clr-secondary;
   }
   .filter-buttons {
     display: flex;
+    width: 90%;
+    overflow: hidden;
 
     .fil-btn {
       display: flex;
