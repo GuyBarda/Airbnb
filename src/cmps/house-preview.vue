@@ -11,8 +11,9 @@
         <!-- </div> -->
         <section>
         <p class="location">{{ location }}</p>
-        <p>{{ house.name }}</p>
-        <p><span class="price">{{ formattedPrice }}</span> night</p>
+        <p class="createdAt">{{createdAt}}</p>
+        <p class="date">{{date}}</p>
+        <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
         <p class="rate"><star-icon />&nbsp;{{rate}}</p>
         </section>
     </article>
@@ -26,6 +27,9 @@ import starIcon from '../assets/svg/star.vue'
 import heartIcon from '../assets/svg/heart.vue'
 import imgCarousel from '../cmps/img-carousel.vue'
 
+//temporary
+import {utilService} from '../services/utils-service.js'
+
 export default {
     props: {
         house: Object
@@ -36,7 +40,14 @@ export default {
         }
     },
     computed: {
+        createdAt(){
+            return utilService.time_ago(new Date(this.house.createdAt))
+        },
+        date(){
+            return utilService.getDates()
+        },
         rate(){
+            if(this.house.reviews.length === 0) return 'New'
             let sum = this.house.reviews.reduce((acc,{rate}) => acc+= rate,0)
             sum /=this.house.reviews.length
             return `${sum} (${this.house.reviews.length})`
