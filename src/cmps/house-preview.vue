@@ -1,17 +1,22 @@
 <template>
-    <div class="house-preview">
-        <div class="carousel">
-            <button>←</button>
-            <img src="" alt="house">
-            <button>→</button>
-        </div>
-        <p>{{ house.locationName }}</p>
-        <p>{{ distanceFromMe }}</p>
-        <p>{{ formattedPrice }}</p>
-    </div>
+    <section class="house-preview">
+        <!-- <div class="carousel"> -->
+            <!-- <button class="arrow-btn arrow-left"><arrow-left /></button> -->
+            <img-carousel/>
+            <!-- <img :src="house.assets[0]" alt="house"> -->
+            <!-- <button class="arrow-btn arrow-right"><arrow-right /></button> -->
+        <!-- </div> -->
+        <p>{{ house.title }}</p>
+        <p>{{ house.price }}</p>
+        <p>{{ house.location }}</p>
+    </section>
 </template>
 
 <script>
+import arrowLeft from '../assets/svg/arrow-left.vue'
+import arrowRight from '../assets/svg/arrow-right.vue'
+import imgCarousel from '../cmps/img-carousel.vue'
+
 export default {
     props: {
         house: Object
@@ -28,5 +33,10 @@ export default {
             return formatter.format(this.house.price)
         }
     },
+    components:{
+        arrowLeft,
+        arrowRight,
+        imgCarousel
+    }
 };
 </script>

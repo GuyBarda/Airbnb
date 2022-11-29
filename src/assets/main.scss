@@ -1,21 +1,9 @@
+@import "./base/base.scss";
 
+// VIEWS
+@import './views/house-app';
+
+// CMPS
 @import "./app-header.scss";
-
-.main-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    button {
-        border: 0;
-    }
-}
-
-.filter-buttons {
-    display: flex;
-
-    .btn-filters {
-        border: 2px solid rgb(42, 41, 41);
-    }
-}
+@import "./cmps/house-list";
+@import "./cmps/house-preview";

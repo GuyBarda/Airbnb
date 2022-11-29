@@ -1,3 +1,10 @@
-.main-header{
-    height: 80px;
+.main-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+        border: 0;
+    }
 }

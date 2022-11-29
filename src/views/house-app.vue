@@ -1,6 +1,8 @@
 <template>
+<section class="house-app">
     <house-filter />
     <house-list v-if="houses" :houses="houses" />
+</section>
 </template>
 
 <script>

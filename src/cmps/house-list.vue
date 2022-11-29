@@ -1,6 +1,6 @@
 <template>
   <div class="house-list">
-    <pre>{{houses}}</pre>
+    <house-preview v-for="house in houses" :house="house" />
   </div>
 </template>
 
