@@ -2,3 +2,12 @@
     font-family: ManRope;
     src: '../fonts/Manrope-SemiBold.ttf'
 }
+
+@font-face {
+    font-family: CerealBd;
+    src: url(../fonts/AirbnbCereal_W_XBd.otf);
+}
+@font-face {
+    font-family: CerealMd;
+    src: url('../fonts/AirbnbCereal_W_Md.otf') format('opentype')
+}
