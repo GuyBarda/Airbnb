@@ -5,7 +5,7 @@
     </div>
     <app-search></app-search>
     <button class="user">
-      ---
+      
       <img src="../assets/svg/user.svg" alt="" />
     </button>
   </header>
