@@ -14,6 +14,20 @@ export default {
         houseFilter,
         houseList
     },
+    data(){
+        return{
+            houses: null
+        }
+    },
+    async created() {
+        try{
+            await this.$store.dispatch('loadHouses')
+            this.houses = this.$store.getters.houses
+        }
+        catch{
+            console.log('cant load houses')
+        }
+    },
     computed: {
         houses(){
             return this.$store.getters.houses

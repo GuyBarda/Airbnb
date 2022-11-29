@@ -6,8 +6,15 @@ body{
     box-sizing: border-box;
 }
 
-//MAIN LAYOUT
+body{
+    margin: 0;
+    padding: 0;
+}
 
-// .main-layout{
-//     padding: 0px 80px;
-// }
+//MAIN LAYOUT
+#app{
+    width: 90vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+}

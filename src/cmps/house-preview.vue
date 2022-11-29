@@ -2,13 +2,14 @@
     <section class="house-preview">
         <!-- <div class="carousel"> -->
             <!-- <button class="arrow-btn arrow-left"><arrow-left /></button> -->
-            <img-carousel/>
+            <!-- <img-carousel/> -->
+            <img :src="house.imgUrls[0]" style="width:100%;aspect-ratio:1/1;">
             <!-- <img :src="house.assets[0]" alt="house"> -->
             <!-- <button class="arrow-btn arrow-right"><arrow-right /></button> -->
         <!-- </div> -->
-        <p>{{ house.title }}</p>
+        <p>{{ house.name }}</p>
         <p>{{ house.price }}</p>
-        <p>{{ house.location }}</p>
+        <p>{{ location }}</p>
     </section>
 </template>
 
@@ -22,6 +23,9 @@ export default {
         house: Object
     },
     computed: {
+        location(){
+            return `${this.house.loc.country},${this.house.loc.city}`
+        },
         distanceFromMe() {
             return this.house.position;
         },
