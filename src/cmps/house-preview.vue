@@ -1,16 +1,18 @@
 <template>
-    <section class="house-preview">
-        <!-- <div class="carousel"> -->
-        <!-- <button class="arrow-btn arrow-left"><arrow-left /></button> -->
-        <!-- <img-carousel/> -->
-        <img :src="house.imgUrls[0]" style="width:100%;aspect-ratio:1/1;">
-        <!-- <img :src="house.assets[0]" alt="house"> -->
-        <!-- <button class="arrow-btn arrow-right"><arrow-right /></button> -->
-        <!-- </div> -->
-        <p>{{ house.name }}</p>
-        <p>{{ house.price }}</p>
-        <p>{{ location }}</p>
-    </section>
+    <router-link :to="'house/' + house._id">
+        <section class="house-preview">
+            <!-- <div class="carousel"> -->
+            <!-- <button class="arrow-btn arrow-left"><arrow-left /></button> -->
+            <!-- <img-carousel/> -->
+            <img :src="house.imgUrls[0]">
+            <!-- <img :src="house.assets[0]" alt="house"> -->
+            <!-- <button class="arrow-btn arrow-right"><arrow-right /></button> -->
+            <!-- </div> -->
+            <p class="location">{{ location }}</p>
+            <p>{{ house.name }}</p>
+            <p>{{ house.price }}</p>
+        </section>
+    </router-link>
 </template>
 
 <script>
