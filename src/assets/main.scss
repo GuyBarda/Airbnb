@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "./base/base.scss";
 
 // VIEWS
@@ -7,3 +8,27 @@
 @import "./app-header.scss";
 @import "./cmps/house-list";
 @import "./cmps/house-preview";
+=======
+@import "./house-filter.scss";
+@import "./app-header.scss";
+@import "./app-search.scss";
+
+.main-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+        border: 0;
+    }
+}
+
+.filter-buttons {
+    display: flex;
+
+    .btn-filters {
+        border: 2px solid rgb(42, 41, 41);
+    }
+}
+>>>>>>> 1a5c84abc399b3e138c0a78b4b242d76fe8c8748
