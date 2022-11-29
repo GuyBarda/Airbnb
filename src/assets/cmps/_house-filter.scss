@@ -27,31 +27,24 @@
       border: 1px solid transparent;
     }
   }
-
-  .filter-modal {
-    form > * {
-      padding-inline: 15px;
+  .btn-filters {
+    background-color: #00000000;
+    cursor: pointer;
+    border: 1px solid rgba(121, 120, 120, 0.753);
+    height: 48px;
+    width: 90px;
+    padding: 13px;
+    border-radius: 14px;
+    img{
+      height: 12px;
+      width: 12px;
     }
-
-    color: #222222;
-    border: 1px solid #222222;
-    border-radius: 10px;
-
-    .form-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border-bottom: 1px solid rgb(235, 235, 235);
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgb(235, 235, 235);
-      padding: 0;
-      padding: 16px 24px;
-    }
+  }
+  .carousel{
+    flex-grow: 1;
+  }
+  .carousel__slide{
+    width: -84px;
+    width: unset !important;
   }
 }

@@ -9,6 +9,12 @@
   width: 355px;
   box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
   transition: box-shadow 0.2s ease;
+  span {
+    flex: 0 0 1px;
+    height: 24px;
+    width: 1px;
+    background-color: #dddddd;
+  }
 }
 
 .main-search {
@@ -38,6 +44,8 @@
   border-radius: 50%;
   height: 32px;
   width: 32px;
+  margin-right: -15px;
+  margin-left: 21px;
   img {
     fill: none;
     height: 12px;
@@ -48,12 +56,7 @@
   }
 }
 
-span {
-  flex: 0 0 1px;
-  height: 24px;
-  width: 1px;
-  background-color: #dddddd;
-}
+
 
 button {
   div {

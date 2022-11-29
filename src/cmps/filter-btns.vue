@@ -66,11 +66,11 @@
             <img src="https://a0.muscache.com/pictures/50861fca-582c-4bcc-89d3-857fb7ca6528.jpg" alt="" width="24" height="24">
             <div>Design</div>
         </button>
-        <button @click="setSort('Treehouses')">
+        <!-- <button @click="setSort('Treehouses')">
             <img src="https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg" alt="" width="24" height="24">
             <div>Treehouses</div>
-        </button>
-        <button @click="setSort('Tropical')">
+        </button> -->
+        <!-- <button @click="setSort('Tropical')">
             <img src="https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg" alt="" width="24" height="24">
             <div>Tropical</div>
         </button>
@@ -85,7 +85,7 @@
         <button @click="setSort('Creative spaces')">
             <img src="https://a0.muscache.com/pictures/8a43b8c6-7eb4-421c-b3a9-1bd9fcb26622.jpg" alt="" width="24" height="24">
             <div>Creative spaces</div>
-        </button>
+        </button> -->
     </div>
 </template>
 

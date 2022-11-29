@@ -1,0 +1,36 @@
+.filter-modal-container {
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+}
+
+
+.filter-modal {
+   
+      padding-inline: 15px;
+    
+
+    color: #222222;
+    border: 1px solid #222222;
+    border-radius: 10px;
+    width: 680px;
+    .form-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid rgb(235, 235, 235);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgb(235, 235, 235);
+      padding: 0;
+      padding: 16px 24px;
+    }
+}
