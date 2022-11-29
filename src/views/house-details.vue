@@ -1,15 +1,20 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <pre>{{ house }}</pre>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+<script>
+import { houseService } from '../services/house-service-local'
+
+export default {
+  data() {
+    return {
+      house: null
+    }
+  },
+  async created() {
+    const { id } = this.$route.params
+    this.house = await houseService.getById(id)
   }
 }
-</style>
+</script>
+
