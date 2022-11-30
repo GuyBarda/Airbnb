@@ -2,7 +2,8 @@
     <div class="review-totals">
         <star></star>
         <span>{{ averageReviews }}</span> ·
-        <p>{{ totalReviews }}</p>
+        <!-- <p>{{ totalReviews }}</p> -->
+        <a href="#reviews">{{ totalReviews }}</a>
     </div>
 </template>
 

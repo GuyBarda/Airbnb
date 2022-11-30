@@ -60,7 +60,7 @@
             <setion class="reserve-modal">
                 <form @submit.prevent="addOrder">
                     <header>
-                        <h3>{{ formattedPerNightPrice }} per night</h3>
+                        <h3><span>{{ formattedPerNightPrice }}</span> per night</h3>
                         <review-average :reviews="house.reviews" />
                     </header>
                     <div class="date-picker">
@@ -86,7 +86,7 @@
             </setion>
         </div>
 
-        <section class="reviews">
+        <section id="reviews">
             <header>
                 <review-average :reviews="house.reviews" />
             </header>
@@ -151,7 +151,11 @@ export default {
             if (!reviews.length) return `No reviews yet...`
         },
         formattedPerNightPrice() {
-            return this.house.price
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            return formatter.format(this.house.price)
         },
         isOrderComplete() {
             return this.$store.state.isOrderComplete
