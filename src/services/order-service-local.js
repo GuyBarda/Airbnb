@@ -1,15 +1,16 @@
 import { utilService } from './utils-service.js';
 import { storageService } from './async-storage-service.js';
-import gOrders from '../../data/order.json' assert { type: 'json' };
+// import gOrders from '../../data/order.json' assert { type: 'json' };
 
 const KEY = 'ordersDB';
 // _createOrders()
+
 export const orderService = {
     query,
     getById,
     remove,
     save,
-    getEmptyorder,
+    getEmptyOrder,
 };
 
 function query() {
@@ -20,11 +21,27 @@ function getById(id) {
     return storageService.get(KEY, id);
 }
 
-function getEmptyorder() {
+function getEmptyOrder() {
     return {
-        title: '',
-        price: '',
-        reviews: [],
+        hostId: '',
+        buyer: {
+            _id: '',
+            fullname: '',
+        },
+        totalPrice: 0,
+        startDate: '',
+        endDate: '',
+        guests: {
+            adults: 2,
+            kids: 1,
+        },
+        stay: {
+            _id: '',
+            name: '',
+            price: 0,
+        },
+        msgs: [],
+        status: 'pending', // pending, approved
     };
 }
 

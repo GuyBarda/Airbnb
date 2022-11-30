@@ -3,9 +3,7 @@
         <div class="subtitle">
             <h2>{{ house.name }}</h2>
             <div class="">
-                <star></star>
-                <span>{{ averageReviews }}</span> ·
-                <p>{{ totalReviews }}</p>·
+                <review-average :reviews="house.reviews" />·
                 <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
             </div>
         </div>
@@ -63,13 +61,13 @@
                 <form @submit.prevent="addOrder">
                     <header>
                         <h3>{{ formattedPerNightPrice }} per night</h3>
-                        <div>
-                            <star></star>
-                            <span>{{ averageReviews }}</span> ·
-                            <p>{{ totalReviews }}</p>
-                        </div>
+                        <review-average :reviews="house.reviews" />
                     </header>
-                    <div class="date-picker"></div>
+                    <div class="date-picker">
+                        <input type="date" v-model="order.startDate">
+                        <input type="date" v-model="order.endDate">
+                        <input type="number" v-model="order.guests.adults">
+                    </div>
                     <button class="btn-reserve">Reserve</button>
                     <p>You won't be charged yet</p>
                     <div class="prices">
@@ -90,8 +88,7 @@
 
         <section class="reviews">
             <header>
-                <p>{{ averageReviews }}</p>
-                <p>{{ totalReviews }}</p>
+                <review-average :reviews="house.reviews" />
             </header>
             <div class="rating">
                 <p>cleanliness</p>
@@ -112,36 +109,37 @@
             </main>
         </section>
 
+        <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :house="house" />
 
         <pre>{{ house }}</pre>
     </div>
-
 </template>
   
 <script>
-import { houseService } from '../services/house-service-local'
+import { houseService } from '../services/house-service-local.js'
+import { orderService } from '../services/order-service-local.js'
 import star from '../assets/svg/star.vue'
 import reviewPreview from '../cmps/review-preview.vue'
+import reservationSuccess from '../cmps/reservation-success.vue'
+import reviewAverage from '../cmps/review-average.vue'
 
 export default {
     data() {
         return {
             house: null,
-            order: {
-                checkIn: Date.now(),
-                checkOut: Date.now() + (1000 * 60 * 60 * 24 * 5),
-                guests: 0
-            }
+            order: null,
+            isOrderComplete: false
         }
     },
     async created() {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
+        this.order = orderService.getEmptyOrder()
     },
     methods: {
-        addOrder(ev) {
-            console.log(ev)
-
+        addOrder() {
+            this.isOrderComplete = true
+            this.$store.dispatch({ type: 'addOrder', order: this.order })
         }
     },
     computed: {
@@ -157,7 +155,9 @@ export default {
     },
     components: {
         star,
-        reviewPreview
+        reviewPreview,
+        reservationSuccess,
+        reviewAverage
     }
 }
 </script>

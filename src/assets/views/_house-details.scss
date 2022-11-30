@@ -1,7 +1,9 @@
 .house-details {
-
+    font-family: 'CerealMd';
+    
     h2 {
         margin: 0;
+        // font-family: inherit;
     }
 
     .subtitle {
@@ -51,7 +53,7 @@
             box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
             position: sticky;
             top: 20px;
-            // height: 200px;
+            height: 500px;
 
             header {
                 grid-row: 1;
