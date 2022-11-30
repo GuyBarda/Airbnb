@@ -3,7 +3,7 @@
     <div class="logo">
       <img src="../assets/svg/logo.svg" alt="" />
     </div>
-    <app-search :class="{close: isOpen}" @click="toggleSearch()" />
+    <app-search :class="{ close: isOpen }" @click="toggleSearch()" />
     <button class="user">
       <img src="../assets/svg/user.svg" alt="" />
     </button>
@@ -30,11 +30,12 @@ export default {
   },
   methods: {
     toggleSearch() {
-      this.$store.commit({type: 'toggleSearch'})
+      this.$store.commit({ type: 'toggleSearch', bool: true })
+      console.log(this.isOpen)
     },
   },
-  computed:{
-    isOpen(){
+  computed: {
+    isOpen() {
       return this.$store.getters.open
     }
   }

@@ -1,15 +1,16 @@
+//SETUP
+@import './setup/variables';
+@import './setup/mixins';
+@import './setup/typography';
 
 // BASE
 @import "./base/base";
-
-//SETUP
-@import'./setup/variables';
-@import './setup/mixins';
 @import './base/layout';
-@import './setup/typography';
+
 
 // VIEWS
 @import './views/house-app';
+@import "./views/house-details";
 
 // CMPS
 @import "./cmps/app-header";
@@ -18,9 +19,11 @@
 @import "./cmps/house-filter";
 @import "./cmps/house-filter-modal";
 @import "./cmps/house-search";
-@import "./cmps/house-details";
 @import "./cmps/review-preview";
 @import './cmps/img-carousel.scss';
+@import "./cmps/review-totals";
+@import "./cmps/_reservation-success";
+
 
 //MODALS
 @import './cmps/search-modal';
