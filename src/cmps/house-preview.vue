@@ -2,13 +2,7 @@
     <router-link :to="'house/'+house._id">
     <article class="house-preview">
         <heart-icon @click.prevent="isMark = !isMark" :class="{mark: isMark}" class="heart-btn"/>
-        <!-- <div class="carousel"> -->
-            <!-- <button class="arrow-btn arrow-left"><arrow-left /></button> -->
             <img-carousel @click.prevent :imgs="house.imgUrls"/>
-            <!-- <img :src="house.imgUrls[0]"> -->
-            <!-- <img :src="house.assets[0]" alt="house"> -->
-            <!-- <button class="arrow-btn arrow-right"><arrow-right /></button> -->
-        <!-- </div> -->
         <section>
         <p class="location">{{ location }}</p>
         <p class="createdAt">{{createdAt}}</p>
