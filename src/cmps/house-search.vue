@@ -2,11 +2,11 @@
   <section class="main-search-container">
     <div class="main-search">
 
-      <button class="search-btn">Anywhere</button>
+      <button @click="openZone('Where')" class="search-btn">Anywhere</button>
       <span></span>
-      <button class="search-btn">Any week</button>
+      <button @click="openZone('In')" class="search-btn">Any week</button>
       <span></span>
-      <button class="search-btn">Add guests</button>
+      <button @click="openZone('Who')" class="search-btn">Add guests</button>
 
     </div>
     <div class="little-search-icon">
@@ -15,4 +15,12 @@
   </section>
 </template>
 
-<script></script>
+<script>
+export default {
+  methods:{
+    openZone(key){
+      this.$emit('toggleSearch', key)
+    }
+  }
+}
+</script>

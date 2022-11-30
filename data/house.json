@@ -10,7 +10,7 @@
             "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652872/samples/landscapes/nature-mountains.jpg"
         ],
-        "price": 80.0,
+        "price": 80,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "capacity": 8,
         "createdAt": 1665869599000,
@@ -71,7 +71,7 @@
             "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652872/samples/landscapes/nature-mountains.jpg"
         ],
-        "price": 80.0,
+        "price": 80,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "capacity": 8,
         "createdAt": 1655328799000,
@@ -142,7 +142,7 @@
             "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652872/samples/landscapes/nature-mountains.jpg"
         ],
-        "price": 80.0,
+        "price": 80,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "capacity": 8,
         "createdAt": 1668547999000,
@@ -213,7 +213,7 @@
             "https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652872/samples/landscapes/nature-mountains.jpg"
         ],
-        "price": 80.0,
+        "price": 80,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "capacity": 8,
         "createdAt": 1641072799000,

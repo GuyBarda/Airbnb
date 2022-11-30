@@ -25,11 +25,10 @@
         />
       </div>
                           <el-date-picker
-        v-model="value"
+        v-model="dates"
         type="daterange"
         start-placeholder="Start date"
         end-placeholder="End date"
-        :default-time="defaultTime"
       />
       <div
         @click.prevent="openZone('Out')"
@@ -60,7 +59,7 @@
         <button class="sub-search">
           <img src="../assets/svg/search.svg" alt="" />Search
         </button>
-        <guests-modal />
+        <guests-modal :class="{ open: isSelect === 'Who' }" />
       </div>
     </section>
   </section>
@@ -73,16 +72,22 @@ import datePicker from "./date-picker.vue";
 import guestsModal from "./guests-modal.vue";
 
 export default {
+  props:{
+    zone: {
+      type: String
+    }
+  },
   data() {
     return {
-      isSelect: " ",
+      isSelect: "",
+      dates: [],
     };
+  },
+  updated() {
+    this.isSelect = this.zone
   },
   methods: {
     openZone(val) {
-      // const element = document.getElementById("myList");
-      document.body.lastElementChild.style.display = "block";
-
       this.isSelect = val;
     },
   },
