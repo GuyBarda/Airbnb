@@ -11,11 +11,15 @@ const storeOptions = {
     state() {
         return {
             isOpen: false,
+            isOrderComplete: false,
         };
     },
     mutations: {
-        toggleSearch(state) {
-            state.isOpen = !state.isOpen;
+        toggleSearch(state, { bool }) {
+            state.isOpen = bool;
+        },
+        toggleSuccessModal(state, { bool }) {
+            state.isOrderComplete = bool;
         },
     },
     getters: {

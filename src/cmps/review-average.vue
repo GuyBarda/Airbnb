@@ -13,9 +13,6 @@ export default {
     props: {
         reviews: Array
     },
-    created() {
-        console.log(this.reviews)
-    },
     computed: {
         totalReviews() {
             if (this.reviews.length === 1) return '1 review'
@@ -23,6 +20,7 @@ export default {
             if (!this.reviews.length) return `No reviews yet...`
         },
         averageReviews() {
+            // return this.reviews.reduce((r, acc) => r)
             return 4.5
         }
     },

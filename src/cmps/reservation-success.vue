@@ -2,7 +2,7 @@
     <div class="reservation-success">
         <header>
             <h2>Reservation success</h2>
-            <button @click="$emit('close')">
+            <button @click="closeSuccessModal">
                 <img src="../assets/svg/close.svg" alt="">
             </button>
         </header>
@@ -51,6 +51,11 @@ export default {
     },
     created() {
         console.log(this.order)
+    },
+    methods: {
+        closeSuccessModal() {
+            this.$store.commit({ type: "toggleSuccessModal", bool: false });
+        }
     },
     components: {
         reviewAverage,

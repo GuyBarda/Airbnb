@@ -128,7 +128,7 @@ export default {
         return {
             house: null,
             order: null,
-            isOrderComplete: false
+            // isOrderComplete: false,
         }
     },
     async created() {
@@ -138,7 +138,8 @@ export default {
     },
     methods: {
         addOrder() {
-            this.isOrderComplete = true
+            // this.isOrderComplete = true
+            this.$store.commit({ type: "toggleSuccessModal", bool: true });
             this.$store.dispatch({ type: 'addOrder', order: this.order })
         }
     },
@@ -151,6 +152,9 @@ export default {
         },
         formattedPerNightPrice() {
             return this.house.price
+        },
+        isOrderComplete() {
+            return this.$store.state.isOrderComplete
         }
     },
     components: {
