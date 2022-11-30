@@ -47,7 +47,7 @@ export default {
             return `${sum} (${this.house.reviews.length})`
         },
         location() {
-            return `${this.house.loc.country},${this.house.loc.city}`
+            return `${this.house.loc.city},${this.house.loc.country}`
         },
         distanceFromMe() {
             return this.house.position;
@@ -56,7 +56,11 @@ export default {
             const formatter = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
+                maximumFractionDigits: 0,
             });
+            console.log(typeof formatter.format(this.house.price));
+            let num = Number(formatter.format(this.house.price))
+            console.log('num',num)
             return formatter.format(this.house.price)
         }
     },

@@ -1,5 +1,5 @@
 <template>
-  <app-header :close="isOpen" @open-search="setDark" />
+  <app-header :close="isOpen" />
   <RouterView />
   <!-- <section
     @click="toggleSearch"

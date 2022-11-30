@@ -3,11 +3,11 @@
     <div class="logo">
       <img src="../assets/svg/logo.svg" alt="" />
     </div>
-    <app-search :class="{ close: isOpen }" @click="toggleSearch()" />
+    <app-search @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch()" />
     <button class="user">
       <img src="../assets/svg/user.svg" alt="" />
     </button>
-    <search-modal :class="{ open: isOpen }" />
+    <search-modal :zone="zone" :class="{ open: isOpen }" />
   </header>
 </template>
 
@@ -26,15 +26,25 @@ export default {
   },
   data() {
     return {
+      currZone: ''
     };
   },
   methods: {
+    openZone(key){
+      console.log(key);
+      this.currZone = key
+      console.log(this.currZone);
+    },
     toggleSearch() {
       this.$store.commit({ type: 'toggleSearch', bool: true })
       console.log(this.isOpen)
     },
   },
   computed: {
+    zone(){
+      console.log(this.currZone);
+      return this.currZone
+    },
     isOpen() {
       return this.$store.getters.open
     }
