@@ -4,8 +4,10 @@
   align-items: center;
   // justify-content: space-between;
   // height: 64px;
+  position: relative;
+  z-index: 12;
 
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #a9a6a65c;
 
   button {
     border: 0;

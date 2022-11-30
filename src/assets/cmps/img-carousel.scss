@@ -1,0 +1,25 @@
+.house-preview{
+
+    
+    .carousel__slide {
+    width: 100% !important;
+}
+.carousel__pagination-button::after {
+    padding: 2px;
+    width: 0;
+    height: 0;
+    border-radius: 10em;
+    background-color: lightgray;
+}
+.carousel__pagination-button--active::after {
+    background-color: #fff;
+}
+.carousel__pagination {
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+}
