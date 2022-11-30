@@ -1,12 +1,13 @@
 <template>
   <app-header :close="isOpen" />
   <RouterView />
-  <section
+  <!-- <section
     @click="toggleSearch"
     class="dark-site"
     :class="{ open: isOpen}"
-  ></section>
+  ></section> -->
   <section @click="toggleSearch" class="dark-site" :class="{ open: isOpen || isOrderComplete }"></section>
+
 </template>
 
 <script>

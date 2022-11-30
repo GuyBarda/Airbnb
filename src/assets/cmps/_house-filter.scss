@@ -38,6 +38,7 @@
     padding: 13px;
     margin-right: 10px;
     border-radius: 14px;
+    z-index: 1;
     img {
       height: 12px;
       width: 12px;
@@ -69,7 +70,8 @@
     background-color: #ffffff;
     border: 1px solid gray;
     // border-radius: 65%;
-    box-shadow: -12px 1px 5px 20px #fffefe;
+    // box-shadow: -12px 1px 5px 20px #fffefe;
+    box-shadow: 1px 1px 14px 25px #ffffff;
   }
   
 }

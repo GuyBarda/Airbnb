@@ -5,15 +5,20 @@
 body{
     margin: 0;
     padding: 0;
+    // scroll-behavior: smooth;
+
 }
 
 button {
     cursor: pointer;
 }
 
+a{
+    color: inherit;
+}
+
 //MAIN LAYOUT
 #app{
-    font-family: CerealBd;
     // width: 100vw;
     height: 100vh;
     height: 100vh;
