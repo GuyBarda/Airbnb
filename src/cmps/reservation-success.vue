@@ -21,9 +21,12 @@
             <div class="your-stay-details-container">
                 <h3>Stay details</h3>
                 <div class="stay-details-info-container">
-                    <!-- <img :src="house.imgUrls[0]" alt=""> -->
+                    <img :src="house.imgUrls[0]" alt="">
                     <p>{{ house.name }}</p>
-                    <review-average :reviews="house.reviews" />
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <review-average :reviews="house.reviews" />
+                        <p>{{ formattedPerNightPrice }}</p>
+                    </div>
                 </div>
             </div>
             <div class="price-details-container">
@@ -32,9 +35,9 @@
                     <p>Adults</p>
                     <p>{{ order.guests.adults }}</p>
                     <p>Total price</p>
-                    <p>{{ order.totalPrice }}</p>
+                    <p>{{ formattedTotalPrice }}</p>
                     <p>Total nights</p>
-                    <!-- <p>{{ order.totalNights }}</p> -->
+                    <p>{{ getTotalDays }}</p>
                 </div>
             </div>
         </div>
@@ -52,11 +55,40 @@ export default {
     },
     created() {
         console.log(this.order)
+        this.order.startDate = '2022-12-16';
+        this.order.endDate = '2022-12-18';
     },
     methods: {
         closeSuccessModal() {
             this.$store.commit({ type: "toggleSuccessModal", bool: false });
+        },
+        totalDays() {
+            const date1 = new Date(this.order.startDate);
+            const date2 = new Date(this.order.endDate);
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays
+        },
+        format(num) {
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            return formatter.format(num)
         }
+    },
+    computed: {
+        formattedPerNightPrice() {
+            return this.format(this.house.price)
+        },
+        formattedTotalPrice() {
+            let diffDays = this.totalDays()
+            return this.format(diffDays * this.house.price)
+        },
+        getTotalDays() {
+            return this.totalDays()
+        }
+
     },
     components: {
         reviewAverage,

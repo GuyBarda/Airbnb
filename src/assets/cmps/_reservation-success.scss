@@ -2,13 +2,13 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 40%;
     height: max-content;
     border-radius: 5px;
     border: 1px solid grey;
     padding: 30px;
     background-color: #fff;
-    transform: translate(50%, 30%);
+    transform: translate(70%, 30%);
     z-index: 20;
 
     p {
@@ -35,9 +35,34 @@
             // }
         }
     }
+    .content {
+        .your-stay-details-container {
+            .stay-details-info-container {
+                height: 100px;
+                display: grid;
+                grid-template-columns: 150px 2fr;
+                grid-template-rows: 1fr 1fr;
+                gap: 10px;
+
+                img {
+                    width: 100%;
+                    grid-row: 1/-1;
+                }
+
+                p{
+                    margin: 0;
+                    // text-align: center;
+                }
+
+            }
+        }
+    }
+
     .content > * {
         padding: 10px;
     }
+
+
     
     
     .content > *:not(:last-child) {
