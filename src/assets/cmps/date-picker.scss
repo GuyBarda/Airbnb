@@ -1,0 +1,16 @@
+.el-popper-container{
+    &.open {
+        .el-popper.is-pure.is-light.el-picker__popper {
+            // display: block;
+        }
+    }
+}
+
+.date-picker{
+// background-color: red;
+display: block !important;
+}
+
+.close-date{
+    display: none !important;
+}

@@ -1,7 +1,15 @@
 <template>
   <app-header :close="isOpen" @open-search="setDark" />
   <RouterView />
+<<<<<<< HEAD
+  <section
+    @click="toggleSearch"
+    class="dark-site"
+    :class="{ open: isOpen}"
+  ></section>
+=======
   <section @click="toggleSearch" class="dark-site" :class="{ open: isOpen || isOrderComplete }"></section>
+>>>>>>> e369b8b7b97fffb49f567f131753abacafca077e
 </template>
 
 <script>

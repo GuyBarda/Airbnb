@@ -20,9 +20,13 @@
 @import "./cmps/house-filter-modal";
 @import "./cmps/house-search";
 @import "./cmps/review-preview";
+@import './cmps/img-carousel.scss';
 @import "./cmps/review-totals";
 @import "./cmps/_reservation-success";
 
 
 //MODALS
-@import './cmps/search-modal'
+@import './cmps/search-modal';
+@import './cmps/destination-modal';
+@import './cmps/guests-modal.scss';
+@import './cmps/date-picker.scss';
