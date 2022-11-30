@@ -18,6 +18,7 @@
   &.close {
     transform: scaleX(1.56) translateY(80px);
     opacity: 0;
+    z-index: 10;
   }
 
   > * {

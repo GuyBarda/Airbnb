@@ -1,21 +1,12 @@
 @font-face {
-    font-family: ManRope;
-    src: '../fonts/Manrope-SemiBold.ttf'
+    font-family: CerealMd;
+    src: url(../fonts/Airbnb_Cereal-Medium.ttf);
 }
-
+@font-face {
+    font-family: CerealReg;
+    src: url(../fonts/Airbnb_Cereal-Book.ttf);
+}
 @font-face {
     font-family: CerealBd;
-    src: url(../fonts/AirbnbCereal_W_XBd.otf);
-}
-@font-face {
-    font-family: CerealMd;
-    src: url('../fonts/AirbnbCereal_W_Md.otf') format('opentype')
-}
-@font-face {
-    font-family: avenir;
-    src: url(../fonts/AvenirLTStd-Medium.otf)
-}
-@font-face {
-    font-family: Gilroy;
-    src: url(../fonts/Gilroy-Bold.ttf)
+    src: url(../fonts/Airbnb_Cereal-Bold.ttf);
 }
