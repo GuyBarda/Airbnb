@@ -1,18 +1,21 @@
 <template>
-    <div v-if="house" class="house-details">
-        <h2>{{ house.name }}</h2>
+    <div v-if="house" class="house-details main-container">
         <div class="subtitle">
-            <span>{{ totalReviews }}</span>
-            <span>{{ house.loc.city }}, {{ house.loc.country }}</span>
+            <h2>{{ house.name }}</h2>
+            <div class="">
+                <star></star>
+                <span>{{ averageReviews }}</span> ·
+                <p>{{ totalReviews }}</p>·
+                <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
+            </div>
         </div>
         <div class="imgs-container">
             <img v-for="img in house.imgUrls" :src="img" alt="">
         </div>
-
-        <div style="display: flex;">
+        <div class="house-info">
             <setion class="content">
-                <h3>Entire home hosted by {{ house.host.fullname }}</h3>
                 <div class="subtitle">
+                    <h3>Entire home hosted by {{ house.host.fullname }}</h3>
                     <span>{{ house.capacity }} guests</span>
                     <span></span>
                 </div>
@@ -25,7 +28,7 @@
                 <div class="summary">
                     {{ house.summary }}
                 </div>
-                <div class="choose-beds">
+                <!-- <div class="choose-beds">
                     <h3>Where you'll sleep</h3>
                     <div class="beds-btns">
                         <button>
@@ -49,19 +52,25 @@
                             <span>1 single bed</span>
                         </button>
                     </div>
-                    <div class="house-amenities">
-                        <div v-for="a in house.amenities">
-                            <p>{{ a }}</p>
-                        </div>
+                </div> -->
+                <div class="house-amenities">
+                    <div v-for="a in house.amenities">
+                        <p>{{ a }}</p>
                     </div>
                 </div>
             </setion>
             <setion class="reserve-modal">
-                <div class="header">
-                    <h3>{{ formattedPerNightPrice }} per night</h3>
-                    <span>{{ totalReviews }}</span>
+                <form @submit.prevent="addOrder">
+                    <header>
+                        <h3>{{ formattedPerNightPrice }} per night</h3>
+                        <div>
+                            <star></star>
+                            <span>{{ averageReviews }}</span> ·
+                            <p>{{ totalReviews }}</p>
+                        </div>
+                    </header>
                     <div class="date-picker"></div>
-                    <button class="reserve">Reserve</button>
+                    <button class="btn-reserve">Reserve</button>
                     <p>You won't be charged yet</p>
                     <div class="prices">
                         <p>{{ formattedPerNightPrice }} x {{ totalNights }} nights</p>
@@ -75,7 +84,7 @@
                         <p>Total</p>
                         <p>{{ formattedTotalPrice }}</p>
                     </div>
-                </div>
+                </form>
             </setion>
         </div>
 
@@ -84,6 +93,23 @@
                 <p>{{ averageReviews }}</p>
                 <p>{{ totalReviews }}</p>
             </header>
+            <div class="rating">
+                <p>cleanliness</p>
+                <div><span>-</span></div>
+                <p>Communication</p>
+                <div><span>-</span></div>
+                <p>Check-in</p>
+                <div><span>-</span></div>
+                <p>Accuracy</p>
+                <div><span>-</span></div>
+                <p>Location</p>
+                <div><span>-</span></div>
+                <p>Value</p>
+                <div><span>-</span></div>
+            </div>
+            <main class="review-container">
+                <review-preview v-for="review in house.reviews" :review="review" />
+            </main>
         </section>
 
 
@@ -93,18 +119,30 @@
 </template>
   
 <script>
-import { computed } from '@vue/reactivity'
 import { houseService } from '../services/house-service-local'
+import star from '../assets/svg/star.vue'
+import reviewPreview from '../cmps/review-preview.vue'
 
 export default {
     data() {
         return {
-            house: null
+            house: null,
+            order: {
+                checkIn: Date.now(),
+                checkOut: Date.now() + (1000 * 60 * 60 * 24 * 5),
+                guests: 0
+            }
         }
     },
     async created() {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
+    },
+    methods: {
+        addOrder(ev) {
+            console.log(ev)
+
+        }
     },
     computed: {
         totalReviews() {
@@ -112,7 +150,14 @@ export default {
             if (reviews.length === 1) return '1 review'
             if (reviews.length > 1) return `${reviews.length} reviews`
             if (!reviews.length) return `No reviews yet...`
+        },
+        formattedPerNightPrice() {
+            return this.house.price
         }
+    },
+    components: {
+        star,
+        reviewPreview
     }
 }
 </script>

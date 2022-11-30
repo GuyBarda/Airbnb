@@ -3,7 +3,7 @@
     <div class="logo">
       <img src="../assets/svg/logo.svg" alt="" />
     </div>
-    <app-search @click="toggleSearch()" />
+    <app-search :class="{close: isOpen}" @click="toggleSearch()" />
     <button class="user">
       <img src="../assets/svg/user.svg" alt="" />
     </button>
