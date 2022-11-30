@@ -8,8 +8,10 @@
     </slide>
 
     <template #addons>
-      <navigation />
-      <pagination />
+        <div class="filter-navigation">
+            <navigation />
+            <pagination />
+        </div>
     </template>
   </carousel>
 </template>
@@ -35,14 +37,17 @@
     },
     data() {
         return {
-           
+          labels: '',
         }
     },
     created() {
     },
   computed: {},
   methods: {
-    
+    setSort(labels) {
+      this.labels = {labels}
+      this.$emit("filtered", this.labels);
+    },
   },
 
 }
