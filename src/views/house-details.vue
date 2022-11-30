@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="imgs-container">
-            <img v-for="img in house.imgUrls" :src="img" alt="">
+            <img v-for="img in house.imgUrls" :src="img" :style="setBorderRadius">
         </div>
 
         <div class="house-info">
@@ -62,7 +62,9 @@
                     </div>
                 </div> -->
                 <div class="house-amenities">
-                    <div v-for="a in house.amenities">
+                    <div v-for="a in house.amenities" style="display: flex; gap: 13px;">
+                        <img :src="`/src/assets/svg/amenities/${a.toLowerCase()}.svg`" alt="np" style="width: 1.2em;">
+                        <!-- <img src="../assets/svg/amenities/tv.svg" alt=""> -->
                         <p>{{ a }}</p>
                     </div>
                 </div>
@@ -80,18 +82,18 @@
                         <input type="number" v-model="order.guests.adults">
                     </div>
                     <button class="btn-reserve">Reserve</button>
-                    <p>You won't be charged yet</p>
+                    <p style="text-align: center;">You won't be charged yet</p>
                     <div class="prices">
-                        <p>{{ formattedPerNightPrice }} x {{ totalNights }} nights</p>
-                        <p>{{ formattedTotalsNightsPrice }}</p>
+                        <p>{{ formattedPerNightPrice }} x {{ getTotalDays }} nights</p>
+                        <p>{{ formattedTotalNightsPrice }}</p>
                         <p>cleaning fee</p>
-                        <p>{{ formattedFeePrice }}</p>
+                        <p>{{ formattedCleaningFee }}</p>
                         <p>service fee</p>
-                        <p>{{ formattedFeePrice }}</p>
+                        <p>{{ formattedServiceFee }}</p>
                     </div>
                     <div class="total">
                         <p>Total</p>
-                        <p>{{ formattedTotalPrice }}</p>
+                        <p>{{ formattedTotal }}</p>
                     </div>
                 </form>
             </setion>
@@ -125,7 +127,7 @@
         <pre>{{ house }}</pre>
     </div>
 </template>
-  
+
 <script>
 import { houseService } from '../services/house-service-local.js'
 import { orderService } from '../services/order-service-local.js'
@@ -139,7 +141,9 @@ export default {
         return {
             house: null,
             order: null,
-            // isOrderComplete: false,
+            cleaningFee: 0,
+            serviceFee: 0,
+            amenitiesSrc: []
         }
     },
     async created() {
@@ -149,9 +153,25 @@ export default {
     },
     methods: {
         addOrder() {
-            // this.isOrderComplete = true
             this.$store.commit({ type: "toggleSuccessModal", bool: true });
             this.$store.dispatch({ type: 'addOrder', order: this.order })
+        },
+        totalDays() {
+            const date1 = new Date(this.order.startDate);
+            const date2 = new Date(this.order.endDate);
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays
+        },
+        format(num) {
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            return formatter.format(num)
+        },
+        srcSvg() {
+            // return `../assets/svg/amenities/${a}.svg`
         }
     },
     computed: {
@@ -162,14 +182,30 @@ export default {
             if (!reviews.length) return `No reviews yet...`
         },
         formattedPerNightPrice() {
-            const formatter = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
-            return formatter.format(this.house.price)
+            return this.format(this.house.price)
+        },
+        formattedTotalNightsPrice() {
+            return this.format(this.totalDays() * this.house.price)
         },
         isOrderComplete() {
             return this.$store.state.isOrderComplete
+        },
+        getTotalDays() {
+            return this.totalDays()
+        },
+        formattedCleaningFee() {
+            return this.format(this.cleaningFee)
+        },
+        formattedServiceFee() {
+            return this.format(this.serviceFee)
+        },
+        formattedTotal() {
+            return this.format(this.serviceFee + this.cleaningFee + (this.totalDays() * this.house.price))
+        },
+        getSrcSvg() {
+            return
+        },
+        setBorderRadius() {
         }
     },
     components: {

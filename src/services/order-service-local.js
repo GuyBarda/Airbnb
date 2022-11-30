@@ -29,8 +29,8 @@ function getEmptyOrder() {
             fullname: '',
         },
         totalPrice: 0,
-        startDate: '',
-        endDate: '',
+        startDate: Date.now() + 1000 * 60 * 60 * 24,
+        endDate: Date.now() + 1000 * 60 * 60 * 24 * 5,
         guests: {
             adults: 2,
             kids: 1,

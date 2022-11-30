@@ -83,6 +83,7 @@ export default {
         },
         formattedTotalPrice() {
             let diffDays = this.totalDays()
+
             return this.format(diffDays * this.house.price)
         },
         getTotalDays() {
