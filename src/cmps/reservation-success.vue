@@ -38,6 +38,7 @@
                 </div>
             </div>
         </div>
+        <button>Look for more places to stay</button>
     </div>
 </template>
 

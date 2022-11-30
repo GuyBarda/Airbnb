@@ -11,6 +11,12 @@
     transform: translate(50%, 30%);
     z-index: 20;
 
+    p {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+
     header {
         display: flex;
         justify-content: space-between;
@@ -29,18 +35,27 @@
             // }
         }
     }
-
     .content > * {
         padding: 10px;
-        border-bottom: 1px solid grey;
-
-        .your-trip-container {
+    }
     
+    
+    .content > *:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    
+    .info-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        > *:nth-child(even) {
+            justify-self: end;
         }
     }
-
     h3 {
         color: $clr1;
         margin-top: 0;
     }
+
+    
 }
