@@ -74,9 +74,9 @@
                         <p>{{ formattedPerNightPrice }} x {{ totalNights }} nights</p>
                         <p>{{ formattedTotalsNightsPrice }}</p>
                         <p>cleaning fee</p>
-                        <p>{{ formattedFeePrice }}</p>
+                        <p>{{ this.cleaningFee }}</p>
                         <p>service fee</p>
-                        <p>{{ formattedFeePrice }}</p>
+                        <p>{{ this.serviceFee }}</p>
                     </div>
                     <div class="total">
                         <p>Total</p>
@@ -129,6 +129,8 @@ export default {
             house: null,
             order: null,
             // isOrderComplete: false,
+            cleaningFee: 0,
+            serviceFee: 0
         }
     },
     async created() {
@@ -141,7 +143,14 @@ export default {
             // this.isOrderComplete = true
             this.$store.commit({ type: "toggleSuccessModal", bool: true });
             this.$store.dispatch({ type: 'addOrder', order: this.order })
-        }
+        },
+        totalDays() {
+            const date1 = new Date(this.order.startDate);
+            const date2 = new Date(this.order.endDate);
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays
+        },
     },
     computed: {
         totalReviews() {
@@ -159,6 +168,9 @@ export default {
         },
         isOrderComplete() {
             return this.$store.state.isOrderComplete
+        },
+        getTotalDays() {
+            return this.totalDays()
         }
     },
     components: {
