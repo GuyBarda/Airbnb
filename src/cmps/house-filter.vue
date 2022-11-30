@@ -1,7 +1,7 @@
 <template>
     <section class="house-filter">
         <!-- <filterBtns /> -->
-        <test :btns="btnsAryy()" />
+        <filter-btns :btns="btnsAryy()" />
         <button @click="isShown = true" class="btn-filters">
             <div>
                 <img src="../assets/svg/filter-btn.svg" alt="" />
@@ -15,13 +15,11 @@
 <script>
 import filterBtns from "./filter-btns.vue";
 import filterModal from "./filter-modal.vue";
-import test from "./test.vue";
 
 export default {
     components: {
     filterBtns,
     filterModal,
-    test,
   },
   data() {
     return {

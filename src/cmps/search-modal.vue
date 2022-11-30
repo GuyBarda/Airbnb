@@ -11,38 +11,39 @@
         <destination-modal :class="{ open: isSelect === 'Where' }" />
       </div>
       <section class="date">
-      <div
-        @click.prevent="openZone('In')"
-        :class="{ selected: isSelect === 'In' }"
-        class="search-zone"
-      >
-        <label>Check in</label>
-        <input
-          class="date-input"
-          type="text"
-          placeholder="Add dates"
-          disabled
+        <div
+          @click.prevent="openZone('In')"
+          :class="{ selected: isSelect === 'In' }"
+          class="search-zone"
+        >
+          <label>Check in</label>
+          <input
+            class="date-input"
+            type="text"
+            placeholder="Add dates"
+            disabled
+          />
+        </div>
+        <el-date-picker
+          ref="datePicker"
+          v-model="dates"
+          type="daterange"
+          start-placeholder="Start date"
+          end-placeholder="End date"
         />
-      </div>
-                          <el-date-picker
-        v-model="dates"
-        type="daterange"
-        start-placeholder="Start date"
-        end-placeholder="End date"
-      />
-      <div
-        @click.prevent="openZone('Out')"
-        :class="{ selected: isSelect === 'Out' }"
-        class="search-zone"
-      >
-        <label>Check out</label>
-        <input
-          class="date-input"
-          type="text"
-          placeholder="Add dates"
-          disabled
-        />
-      </div>
+        <div
+          @click.prevent="openZone('Out')"
+          :class="{ selected: isSelect === 'Out' }"
+          class="search-zone"
+        >
+          <label>Check out</label>
+          <input
+            class="date-input"
+            type="text"
+            placeholder="Add dates"
+            disabled
+          />
+        </div>
       </section>
       <div
         @click.prevent="openZone('Who')"
@@ -72,10 +73,10 @@ import datePicker from "./date-picker.vue";
 import guestsModal from "./guests-modal.vue";
 
 export default {
-  props:{
+  props: {
     zone: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
@@ -84,12 +85,21 @@ export default {
     };
   },
   updated() {
-    this.isSelect = this.zone
+    this.isSelect = this.zone;
+    if(this.zone === 'In'){
+      setTimeout(() => {
+          this.$refs.datePicker.focus()
+      }, 300);
+    }
   },
   methods: {
     openZone(val) {
       this.isSelect = val;
+      this.$emit('updateZone',val)
     },
+  },
+  computed:{
+
   },
   components: {
     reactiveBtn,

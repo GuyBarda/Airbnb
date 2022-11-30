@@ -3,11 +3,11 @@
     <div class="logo">
       <img src="../assets/svg/logo.svg" alt="" />
     </div>
-    <app-search @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch()" />
-    <button class="user">
+    <app-search @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch($event)" />
+    <button ref="user" class="user">
       <img src="../assets/svg/user.svg" alt="" />
     </button>
-    <search-modal :zone="zone" :class="{ open: isOpen }" />
+    <search-modal @updateZone="openZone" :zone="zone" :class="{ open: isOpen }" />
   </header>
 </template>
 
@@ -31,18 +31,17 @@ export default {
   },
   methods: {
     openZone(key){
-      console.log(key);
       this.currZone = key
-      console.log(this.currZone);
     },
-    toggleSearch() {
+    toggleSearch(event) {
+      if(event.target.innerText === 'Any week') {
+          this.$emit('clickDate')
+      }
       this.$store.commit({ type: 'toggleSearch', bool: true })
-      console.log(this.isOpen)
     },
   },
   computed: {
     zone(){
-      console.log(this.currZone);
       return this.currZone
     },
     isOpen() {
