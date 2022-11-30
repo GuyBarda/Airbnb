@@ -7,8 +7,15 @@
         class="search-zone destination"
       >
         <label>Where</label>
-        <input type="text" placeholder="Search destinations" />
-        <destination-modal :class="{ open: isSelect === 'Where' }" />
+        <input
+          type="text"
+          v-model="filterBy.destination"
+          placeholder="Search destinations"
+        />
+        <destination-modal
+          @setDestination="setDestination"
+          :class="{ open: isSelect === 'Where' }"
+        />
       </div>
       <section class="date">
         <div
@@ -30,6 +37,7 @@
           type="daterange"
           start-placeholder="Start date"
           end-placeholder="End date"
+          value-format="x"
         />
         <div
           @click.prevent="openZone('Out')"
@@ -52,6 +60,7 @@
       >
         <label>Who</label>
         <input
+          :value="guestsCount"
           class="guest-input"
           type="text"
           placeholder="Add guests"
@@ -60,7 +69,10 @@
         <button class="sub-search">
           <img src="../assets/svg/search.svg" alt="" />Search
         </button>
-        <guests-modal :class="{ open: isSelect === 'Who' }" />
+        <guests-modal
+          @setGuests="setGuests"
+          :class="{ open: isSelect === 'Who' }"
+        />
       </div>
     </section>
   </section>
@@ -71,6 +83,8 @@ import reactiveBtn from "./reactive-btn.vue";
 import destinationModal from "./destination-modal.vue";
 import datePicker from "./date-picker.vue";
 import guestsModal from "./guests-modal.vue";
+import { ref } from 'vue'
+
 
 export default {
   props: {
@@ -81,25 +95,56 @@ export default {
   data() {
     return {
       isSelect: "",
-      dates: [],
+      dates: ref(''),
+      filterBy: {
+        destination: "",
+        dates: {
+          start: "",
+          end: "",
+        },
+        guests: {
+          adults: 0,
+          children: 0,
+          infants: 0,
+          pets: 0,
+        },
+      },
     };
   },
   updated() {
     this.isSelect = this.zone;
-    if(this.zone === 'In'){
+    if (this.zone === "In") {
       setTimeout(() => {
-          this.$refs.datePicker.focus()
+        this.$refs.datePicker.focus();
       }, 300);
     }
+    console.log('this.dates',this.dates)
   },
   methods: {
     openZone(val) {
       this.isSelect = val;
-      this.$emit('updateZone',val)
+      this.$emit("updateZone", val);
     },
+    setDestination(dest) {
+      this.filterBy.destination = dest;
+    },
+    setGuests(guests) {
+      this.filterBy.guests = { ...guests };
+      console.log(guests);
+    },
+    setDates(dates){
+      this.filterBy.dates.start = dates["0"]
+      this.filterBy.dates.start = dates["1"]
+    }
   },
-  computed:{
-
+  computed: {
+    guestsCount() {
+      const {adults,children,infants,pets} = this.filterBy.guests
+      let str = adults || children ? `${adults + children} ${adults + children !== 1 ? 'guests' : 'guest'},` : ''
+      str += infants ? ` ${infants} ${infants !== 1 ? 'infants': 'infant'},` : ''
+      str += pets ? ` ${pets} ${pets !== 1 ? 'pets' : 'pet'}` : ''
+      return str
+    },
   },
   components: {
     reactiveBtn,
