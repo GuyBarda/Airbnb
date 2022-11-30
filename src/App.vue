@@ -4,7 +4,7 @@
   <section
     @click="toggleSearch"
     class="dark-site"
-    :class="{ open: isOpen }"
+    :class="{ open: isOpen}"
   ></section>
 </template>
 

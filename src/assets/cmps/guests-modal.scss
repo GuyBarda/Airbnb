@@ -1,0 +1,40 @@
+.guests-modal {
+    background-color: white;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 110%;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            p {
+                margin: 0;
+            }
+
+            .guest-adjust {
+                display: flex;
+                align-items: center;
+                button{
+                    border-radius: 5em;
+
+                }
+
+                .guest-value {
+                    padding: 10px;
+                }
+
+                &li:not(:last-child){
+                    box-shadow: 0 0 0;
+                }
+            }
+
+        }
+    }
+}
