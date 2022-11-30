@@ -2,7 +2,7 @@
     <div v-if="house" class="house-details main-container">
         <div class="subtitle">
             <h2>{{ house.name }}</h2>
-            <div class="">
+            <div style="display: flex; align-items: center; gap: 4px;">
                 <review-average :reviews="house.reviews" />·
                 <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
             </div>
@@ -13,17 +13,17 @@
 
         <div class="house-info">
             <setion class="content">
-                
+
                 <div class="subtitle">
                     <h2>Entire home hosted by {{ house.host.fullname }}</h2>
                     <div>
                         <span>{{ house.capacity }} guests </span>
                         <span class="gray"> • </span>
-                        <span>{{  house.roomsAndBeds.Bathrooms }} Bathrooms </span>
+                        <span>{{ house.roomsAndBeds.Bathrooms }} Bathrooms </span>
                         <span class="gray"> • </span>
-                        <span>{{  house.roomsAndBeds.bedrooms }} bedrooms </span>
+                        <span>{{ house.roomsAndBeds.bedrooms }} bedrooms </span>
                     </div>
-                   <img class="host-image" :src="`${house.host.imgUrl}`" alt="">
+                    <img class="host-image" :src="`${house.host.imgUrl}`" alt="">
                 </div>
 
                 <div class="air-cover">
