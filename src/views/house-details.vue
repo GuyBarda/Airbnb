@@ -13,7 +13,6 @@
 
         <div class="house-info">
             <setion class="content">
-
                 <div class="subtitle">
                     <h2>Entire home hosted by {{ house.host.fullname }}</h2>
                     <div>
@@ -73,7 +72,7 @@
             <setion class="reserve-modal">
                 <form @submit.prevent="addOrder">
                     <header>
-                        <h3><span>{{ formattedPerNightPrice }}</span> per night</h3>
+                        <h4><span>{{ formattedPerNightPrice }}</span> per night</h4>
                         <review-average :reviews="house.reviews" />
                     </header>
                     <div class="date-picker">
@@ -123,8 +122,6 @@
         </section>
 
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :house="house" />
-
-        <pre>{{ house }}</pre>
     </div>
 </template>
 
