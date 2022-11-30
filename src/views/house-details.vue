@@ -10,19 +10,29 @@
         <div class="imgs-container">
             <img v-for="img in house.imgUrls" :src="img" alt="">
         </div>
+
         <div class="house-info">
             <setion class="content">
+                
                 <div class="subtitle">
-                    <h3>Entire home hosted by {{ house.host.fullname }}</h3>
-                    <span>{{ house.capacity }} guests</span>
-                    <span></span>
+                    <h2>Entire home hosted by {{ house.host.fullname }}</h2>
+                    <div>
+                        <span>{{ house.capacity }} guests </span>
+                        <span class="gray"> • </span>
+                        <span>{{  house.roomsAndBeds.Bathrooms }} Bathrooms </span>
+                        <span class="gray"> • </span>
+                        <span>{{  house.roomsAndBeds.bedrooms }} bedrooms </span>
+                    </div>
+                   <img class="host-image" :src="`${house.host.imgUrl}`" alt="">
                 </div>
+
                 <div class="air-cover">
                     <h3><span style="color: #fe385c;">air</span>cover</h3>
                     <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other
                         issues like trouble checking in.</p>
                     <a href="#">Learn more</a>
                 </div>
+
                 <div class="summary">
                     {{ house.summary }}
                 </div>
@@ -57,6 +67,7 @@
                     </div>
                 </div>
             </setion>
+
             <setion class="reserve-modal">
                 <form @submit.prevent="addOrder">
                     <header>
