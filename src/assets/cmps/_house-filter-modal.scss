@@ -17,6 +17,8 @@
     border: 1px solid #222222;
     border-radius: 10px;
     width: 680px;
+    height: 60vh;
+    overflow: auto;
     .form-header {
       display: flex;
       align-items: center;

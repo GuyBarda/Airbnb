@@ -3,6 +3,7 @@
   align-items: center;
   height: 78px;
   $clr-secondary: #b0b0b0;
+  // width: 100%;
 
   .secondary {
     color: $clr-secondary;
@@ -35,16 +36,15 @@
     width: 90px;
     padding: 13px;
     border-radius: 14px;
-    img{
+    img {
       height: 12px;
       width: 12px;
     }
   }
-  .carousel{
+  .carousel {
     flex-grow: 1;
   }
-  .carousel__slide{
-    width: -84px;
-    width: unset !important;
+  .carousel__slide {
+    width: max-content !important;
   }
 }
