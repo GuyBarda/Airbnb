@@ -1,4 +1,7 @@
-.carousel__slide {
+.house-preview{
+
+    
+    .carousel__slide {
     width: 100% !important;
 }
 .carousel__pagination-button::after {
@@ -17,4 +20,6 @@
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+}
+
 }

@@ -33,32 +33,24 @@ export default {
 </script>
 
 <style>
-.carousel__slide {
-  width: 100% !important;
+    .carousel__slide {
+    width: 100% !important;
 }
 .carousel__pagination-button::after {
-  padding: 2px;
-  width: 0;
-  height: 0;
-  border-radius: 10em;
-  background-color: lightgray;
+    padding: 2px;
+    width: 0;
+    height: 0;
+    border-radius: 10em;
+    background-color: lightgray;
 }
 .carousel__pagination-button--active::after {
-  background-color: #fff;
+    background-color: #fff;
 }
 .carousel__pagination {
-  padding: 0;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.carousel__prev,
-.carousel__next {
-  opacity: 0;
-  background: #FFF;
-  border-radius: 10em;
-  transition: .4s
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

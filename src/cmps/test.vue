@@ -5,7 +5,6 @@
                 <img :src="slide.url" alt="" width="24" height="24">
                 <div>{{slide.key}}</div>
             </div>
-        
     </slide>
 
     <template #addons>
