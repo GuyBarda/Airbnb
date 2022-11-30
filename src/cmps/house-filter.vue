@@ -19,20 +19,24 @@ import test from "./test.vue";
 
 export default {
     components: {
-        filterBtns,
-        filterModal,
-        test,
+    filterBtns,
+    filterModal,
+    test,
+  },
+  data() {
+    return {
+      isShown: false,
+    };
+  },
+  
+  created() {},
+  computed: {},
+  methods: {
+    setFilterBy(filterBy) {
+      console.log('filterBy',filterBy )
+      this.$store.dispatch({ type: "setFilter", filterBy });
     },
-    data() {
-        return {
-            isShown: false,
-        };
-    },
-
-    created() { },
-    computed: {},
-    methods: {
-        btnsAryy() {
+     btnsAryy() {
             return [
                 {
                     key: 'new',

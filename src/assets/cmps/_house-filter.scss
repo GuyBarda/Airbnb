@@ -43,8 +43,31 @@
   }
   .carousel {
     flex-grow: 1;
+    width: 90%;
   }
   .carousel__slide {
     width: max-content !important;
   }
+  
+  
+  .carousel__next {
+    height: 28px;
+    width: 28px;
+    /* border: 1px solid; */
+    border: 1px solid black;
+    border-radius: 22px;
+    background-color: white;
+  }
+
+  .carousel__icon{
+    height: 28px;
+    width: 28px;
+    border-radius: 22px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    // border-radius: 65%;
+    box-shadow: -12px 1px 5px 20px #fffefe;
+  }
+  
 }

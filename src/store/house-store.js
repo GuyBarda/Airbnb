@@ -46,7 +46,9 @@ export const houseStore = {
             state.filterBy = {...search,...state.filterBy}
         },
         setFilter(state,{filterBy}){
+            console.log('filterBy', filterBy)
             state.filterBy = {...filterBy,...state.filterBy}
+            console.log('state.filterBy', state.filterBy)
         },
         updateHouse(state, { house }) {
             const idx = state.houses.findIndex(c => c.id === house._id)
@@ -62,6 +64,11 @@ export const houseStore = {
         },
     },
     actions: {
+        setFilter({ commit, dispatch }, { filterBy }){
+            console.log('filterBy', filterBy)
+            commit({ type: 'setFilter', filterBy })
+            // state.filterBy = {...filterBy,...state.filterBy}
+        },
         async addHouse(context, { house }) {
             try {
                 house = await houseService.save(house)

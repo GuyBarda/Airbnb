@@ -1,10 +1,12 @@
 <template>
   <div class="filter-modal-container">
+
     <div class="filter-modal">
-      <header class="form-header">
+
+      <div class="form-header">
         <button @click="$emit('close')">X</button>
         <p>Filters</p>
-      </header>
+      </div>
 
       <section>
         <h2>Price range</h2>
@@ -119,10 +121,10 @@
         <input type="checkbox" />
       </label>
 
-      <footer>
-        <button>Clear all</button>
-        <button @click="filterHouses">Show {{ totalHouses }} homes</button>
-      </footer>
+        <footer>
+          <button>Clear all</button>
+          <button @click="filterHouses">Show {{ totalHouses }} homes</button>
+        </footer>
     </div>
   </div>
 </template>
