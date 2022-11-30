@@ -22,31 +22,31 @@ import heartIcon from '../assets/svg/heart.vue'
 import imgCarousel from '../cmps/img-carousel.vue'
 
 //temporary
-import {utilService} from '../services/utils-service.js'
+import { utilService } from '../services/utils-service.js'
 
 export default {
     props: {
         house: Object
     },
-    data(){
-        return{
+    data() {
+        return {
             isMark: false,
         }
     },
     computed: {
-        createdAt(){
+        createdAt() {
             return utilService.time_ago(new Date(this.house.createdAt))
         },
-        date(){
+        date() {
             return utilService.getDates()
         },
-        rate(){
-            if(this.house.reviews.length === 0) return 'New'
-            let sum = this.house.reviews.reduce((acc,{rate}) => acc+= rate,0)
-            sum /=this.house.reviews.length
+        rate() {
+            if (this.house.reviews.length === 0) return 'New'
+            let sum = this.house.reviews.reduce((acc, { rate }) => acc += rate, 0)
+            sum /= this.house.reviews.length
             return `${sum} (${this.house.reviews.length})`
         },
-        location(){
+        location() {
             return `${this.house.loc.country},${this.house.loc.city}`
         },
         distanceFromMe() {
