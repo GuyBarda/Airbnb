@@ -150,17 +150,17 @@
             </header>
             <div class="rating">
                 <p>cleanliness</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="4" max="5"></progress></span>
                 <p>Communication</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="3" max="5"></progress></span>
                 <p>Check-in</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="4.5" max="5"></progress></span>
                 <p>Accuracy</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="3.8" max="5"></progress></span>
                 <p>Location</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="3.9" max="5"></progress></span>
                 <p>Value</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="4.2" max="5"></progress></span>
             </div>
             <main class="review-container">
                 <review-preview v-for="review in house.reviews" :review="review" />
