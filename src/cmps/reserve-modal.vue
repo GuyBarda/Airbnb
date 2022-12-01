@@ -22,14 +22,16 @@
                 </div>
                 <div class="guests">
                     <label for="guests">GUESTS</label>
-                    <p>{{ order.guests.adults }}</p>
+                    <p>{{ order.guests.adults }} guest</p>
                     <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
                     </button>
                 </div>
             </div>
-            <button class="btn-reserve">Reserve</button>
-            <div v-if="(order.startDate && order.endDate)">
+            <button @mousemove="hoverEffect" class="btn-reserve">Reserve</button>
+            <!-- <reactive-btn :text="'Reserve'" /> -->
+
+            <div style="display: flex; gap: 25px; flex-direction: column;" v-if="(order.startDate && order.endDate)">
                 <p style="text-align: center;">You won't be charged yet</p>
                 <div class="prices">
                     <p>{{ formattedPerNightPrice }} x {{ getTotalDays }} nights</p>
@@ -52,6 +54,7 @@
 import { orderService } from '../services/order-service-local.js'
 
 import reviewAverage from '../cmps/review-average.vue'
+import reactiveBtn from './reactive-btn.vue'
 
 
 export default {
@@ -89,9 +92,13 @@ export default {
             });
             return formatter.format(num)
         },
-        srcSvg() {
-            // return `../assets/svg/amenities/${a}.svg`
+        hoverEffect(ev) {
+            const button = ev.target
+            const { x, y } = button.getBoundingClientRect();
+            button.style.setProperty("--x", ev.clientX - x);
+            button.style.setProperty("--y", ev.clientY - y);
         }
+
     },
     computed: {
         totalReviews() {
@@ -128,7 +135,8 @@ export default {
         // }
     },
     components: {
-        reviewAverage
+        reviewAverage,
+        reactiveBtn
     }
 }
 </script>
