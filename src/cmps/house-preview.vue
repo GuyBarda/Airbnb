@@ -5,8 +5,10 @@
             <img-carousel @click.prevent :imgs="house.imgUrls"/>
         <section>
         <p class="location">{{ location }}</p>
-        <p class="createdAt">{{createdAt}}</p>
+        <div>
+        <p class="createdAt">{{house.name}}</p>
         <p class="date">{{date}}</p>
+        </div>
         <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
         <p class="rate"><star-icon />&nbsp;{{rate}}</p>
         </section>
@@ -44,10 +46,10 @@ export default {
             if (this.house.reviews.length === 0) return 'New'
             let sum = this.house.reviews.reduce((acc, { rate }) => acc += rate, 0)
             sum /= this.house.reviews.length
-            return `${sum} (${this.house.reviews.length})`
+            return `${sum}(${this.house.reviews.length})`
         },
         location() {
-            return `${this.house.loc.city},${this.house.loc.country}`
+            return `${this.house.loc.city}, ${this.house.loc.country}`
         },
         distanceFromMe() {
             return this.house.position;

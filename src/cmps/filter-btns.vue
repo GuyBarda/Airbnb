@@ -1,7 +1,7 @@
 <template>
-  <carousel class="carousel" :items-to-show="7">
+  <carousel class="carousel" :items-to-show="13">
     <slide v-for="slide in btns" :key="slide">
-            <div style="width:100px" @click="setSort(slide.key)">
+            <div @click="setSort(slide.key)">
                 <img class="img-btn" :src="slide.url" alt="" width="24" height="24">
                 <div class="imgKey"><span>{{slide.key}}</span></div>
             </div>
