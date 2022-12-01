@@ -20,7 +20,7 @@
             <label for="min">min price</label>
             <div class="flex form-input">
               <span>$</span>
-              <input name="min" type="text" v-model.number="filterBy.maxPrice" min="25$" />
+              <input name="min" type="text" v-model.number="filterBy.minPrice" min="25$" />
             </div>
          </div>
 
@@ -30,7 +30,7 @@
             <label for="max"> max price</label>
             <div class="flex form-input">
               <span>$</span>
-              <input type="text" v-model.number="filterBy.minPrice" max="$800" />
+              <input type="text" v-model.number="filterBy.maxPrice" max="$800" />
             </div>
          </div>
       </div>
@@ -76,18 +76,18 @@
     <div class="form-rooms-and-beds">
         <h2>Rooms and beds</h2>
         <h3>BedRooms</h3>
-        <div>
+        <div id="row1">
           <button class="btn-btn">Any</button>
           <button class="btn-btn" @click="setRoomsBeds('bedrooms', num)" v-for="num in 8" :key="num" > {{ num }}</button>
        </div>
         
-        <div>
+        <div id="row2">
           <h3>beds</h3>
           <button class="btn-btn">Any</button>
-          <button class="btn-btn" @click="setRoomsBeds('beds', num ,$event)" v-for="num in 8" :key="num" >{{ num }}</button>
+          <button class="btn-btn" @click="setRoomsBeds('beds', num ,$event, 'row2')" v-for="num in 8" :key="num" >{{ num }}</button>
       </div>
       
-      <div>
+      <div id="row3">
         <h3>Bathrooms</h3>
         <button class="btn-btn">Any</button>
         <button class="btn-btn" @click="setRoomsBeds('bedrooms', num)" v-for="num in 8" :key="num" >
@@ -195,8 +195,8 @@ export default {
   data() {
     return {
       filterBy: {
-        maxPrice: 25,
-        minPrice: 800,
+        minPrice: 25,
+        maxPrice: 800,
         type: [],
         roomsBeds: {
           bedrooms: 0,
@@ -213,19 +213,19 @@ export default {
   computed: {},
   methods: {
     filterHouses() {
-      console.log("this.filterBy", this.filterBy);
       this.$store.commit({type: 'setFilter', filterBy: {...this.filterBy}})
-      //   this.$emit("filtered", this.filterBy);
+      this.$store.dispatch({ type: 'loadHouses' })
     },
-    setRoomsBeds(key, num ,ev) {
-      ev.target.classList.toggle('selected')
+    setRoomsBeds(key, num ,ev,id) {
+    // let val = document.getElementById(id).children
+    ev.target.classList.toggle('selected')
+
+      this.filterBy.roomsBeds[key] = num;
       
-      // this.filterBy.roomsBeds[key] = val;
-      // console.log("this.filterBy", this.filterBy);
     },
     setPropertyType(key) {
       this.filterBy.PropertyType.push(key) 
-      console.log("this.filterBy", this.filterBy);
+      
     },
   },
 };

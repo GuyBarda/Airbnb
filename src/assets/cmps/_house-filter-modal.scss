@@ -17,6 +17,11 @@
   border-radius: 12px;
   overflow: hidden;
 
+  .selected{
+    color: white;
+    background-color: rgb(0, 0, 0);
+  }
+  
   .close-filter {
     flex: 0.8;
     padding: 0 24px;
@@ -283,10 +288,7 @@ el-checkbox__inner {
   color: #fff;
   font-size: 1em;
 }
-.selected{
-  color: white;
-  background-color: rgb(0, 0, 0);
-}
+
 
 .Type-of-place {
   .first-tow {

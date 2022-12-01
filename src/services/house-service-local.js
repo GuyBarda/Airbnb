@@ -17,8 +17,7 @@ export const houseService = {
 
 async function query(filterBy) {
     console.log('filterBy', filterBy)
-    let gHouses = await storageService.query(KEY);
-    console.log('house', gHouses)
+     gHouses = await storageService.query(KEY);
     let house = _filter(filterBy)
     console.log('house', house)
     return house
@@ -80,9 +79,9 @@ function _createHouse(title, price) {
 }
 
 function _filter(filterBy) {
-    const { name, labels } = filterBy
+    const { name, labels, Amenities, PropertyType, maxPrice, minPrice } = filterBy
 
-    
+    console.log('filterBy',filterBy )
 
     const regex = new RegExp(name, 'i')
     let filteredHouses = gHouses.filter((house) => {
@@ -95,7 +94,23 @@ function _filter(filterBy) {
             return labels.some((l) => house.labels.includes(l))
         })
     }
+    
+    if (Amenities && Amenities.length) {
+        filteredHouses = filteredHouses.filter((house) => {
+            return labels.some((l) => house.labels.includes(l))
+        })
+    }
 
+
+    const searchMin = (minPrice) ? minPrice : 0
+    filteredHouses = filteredHouses.filter(house => {
+      return house.price > searchMin
+    })
+  
+    const searchMax = (maxPrice) ? maxPrice : Infinity
+    filteredHouses = filteredHouses.filter(house => {
+      return house.price < searchMax
+    })
 
     console.log('filteredHouses', filteredHouses)
     return filteredHouses
