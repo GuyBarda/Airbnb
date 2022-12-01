@@ -82,7 +82,7 @@
                         </button>
                     </div>
                 </div> -->
-                <div>
+                <div class="amenities-container">
                     <h2>What this place offers</h2>
                     <div class="house-amenities">
                         <div v-for="a in house.amenities" style="display: flex; gap: 13px;">
