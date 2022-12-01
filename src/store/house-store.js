@@ -44,7 +44,7 @@ export const houseStore = {
         },
         setFilter(state,{filterBy}){
             console.log('filterBy', filterBy)
-            state.filterBy = {...JSON.parse(JSON.stringify(filterBy)),...state.filterBy}
+            state.filterBy = {...JSON.parse(JSON.stringify(filterBy))}
             console.log('state.filterBy', state.filterBy)
         },
         updateHouse(state, { house }) {
@@ -62,7 +62,6 @@ export const houseStore = {
     },
     actions: {
         setFilter({ commit, dispatch }, { filterBy }){
-            console.log('filterBy', filterBy)
             commit({ type: 'setFilter', filterBy })
             dispatch({ type: 'loadHouses' })
             // state.filterBy = {...filterBy,...state.filterBy}
