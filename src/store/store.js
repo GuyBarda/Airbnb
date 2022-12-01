@@ -12,9 +12,13 @@ const storeOptions = {
         return {
             isOpen: false,
             isOrderComplete: false,
+            isFilterOpen: false
         };
     },
     mutations: {
+        toggleFilterModal(state,{bool}){
+            state.isFilterOpen = bool
+        },
         toggleSearch(state, { bool }) {
             state.isOpen = bool;
         },
@@ -23,6 +27,9 @@ const storeOptions = {
         },
     },
     getters: {
+        isFilterOpen({isFilterOpen}){
+            return isFilterOpen
+        },
         open({ isOpen }) {
             return isOpen;
         },
