@@ -1,6 +1,5 @@
 .review-totals {
     display: flex;
     align-items: center;
-    // justify-content: center;
-    gap: 3px;
+    gap: em(3px, 16px);
 }

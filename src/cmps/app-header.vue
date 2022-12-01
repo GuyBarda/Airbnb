@@ -30,7 +30,7 @@ export default {
     };
   },
   methods: {
-    openZone(key){
+    openZone(key) {
       console.log(key);
       this.currZone = key
       console.log(this.currZone);
@@ -41,7 +41,7 @@ export default {
     },
   },
   computed: {
-    zone(){
+    zone() {
       console.log(this.currZone);
       return this.currZone
     },
