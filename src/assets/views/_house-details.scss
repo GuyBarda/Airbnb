@@ -1,4 +1,6 @@
 .house-details {
+    
+
     font-family: 'CerealReg' ;
     color: $clr-details-text;
 
@@ -100,22 +102,10 @@
                 position: sticky;
                 top: $m-top-reserve;
                 box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+                max-width: 370px;
 
                 .btn-reserve {
-                    color: white;
-                    position: relative;
-                    border: none;
-                    // padding: 10px 15px;
-                    background-image: radial-gradient(circle at left,#FF385C 0%,#E61E4D 27.5%,#E31C5F 40%,#D70466 57.5%,#BD1E59 75%,#BD1E59 100%);
-                    border-radius: 10px;
-                    font-weight: 600;
-                    // overflow: hidden;
-                    height: 50px;
-
-                    &:hover {
-
-                        background-image: radial-gradient(circle at calc(var(--x) - var(--y)) ,#FF385C 0%,#E61E4D 27.5%,#E31C5F 40%,#D70466 57.5%,#BD1E59 75%,#BD1E59 100%);
-                    }
+                    @include reserve-btn() 
                 }
                   
                 header {
@@ -132,15 +122,15 @@
 
                 .picker-container {
                     display: grid;
-                    grid-template: auto auto / auto auto;
+                    grid-template: 1fr 1fr / 1fr 1fr;
                     cursor: pointer;
                     border: 1px solid rgba(0,0,0,.32);
                     border-radius: 8px;
                     
                     div {
                         padding: 11px 16px;
-                        display: flex;
-                        flex-direction: column;
+                        // display: flex;
+                        // flex-direction: column;
                         position: relative;
                         
                         label {

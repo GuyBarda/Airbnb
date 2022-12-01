@@ -1,10 +1,10 @@
 <template>
-  <header class="main-header main-container full">
+  <header class="main-header main-container full" :class="whichLayout">
     <div class="logo">
       <img src="../assets/svg/logo.svg" alt="" />
     </div>
 
-    <app-search @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch($event,key)" />
+    <app-search @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch($event, key)" />
     <search-modal @updateZone="openZone" :zone="zone" :class="{ open: isOpen }" />
 
     <div class="user">
@@ -17,10 +17,11 @@
       <div class="user-menu-btn" @click="toggleUserMenu()">
         <button>
           <img class="menu-btn" src="	https://air2be.onrender.com/assets/menu.67879f9a.svg">
-          <img class="host-image" src="https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png">
+          <img class="host-image"
+            src="https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png">
         </button>
       </div>
-      <userMenu v-if="isMenu"/>
+      <userMenu v-if="isMenu" />
     </div>
   </header>
 </template>
@@ -71,14 +72,14 @@ export default {
       console.log('hi');
       this.$store.commit({ type: "toggleSearch", bool: true });
     },
-    toggleUserMenu(){
-      if(!this.isMenu){
+    toggleUserMenu() {
+      if (!this.isMenu) {
         this.isMenu = true
-      }else{
+      } else {
         this.isMenu = false
       }
     }
-  
+
   },
   computed: {
     zone() {
@@ -87,6 +88,10 @@ export default {
     isOpen() {
       return this.$store.getters.open;
     },
+    whichLayout() {
+      const layout = this.$route.path.split('/')[1]
+      return layout === 'house' ? 'secondary-container' : 'main-container'
+    }
   },
 }
 

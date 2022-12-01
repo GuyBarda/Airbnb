@@ -1,5 +1,5 @@
 <template>
-    <div v-if="house" class="house-details main-container">
+    <div v-if="house" class="house-details secondary-container">
         <div class="subtitle">
             <h2>{{ house.name }}</h2>
             <div style="display: flex; align-items: center; gap: 4px;">
@@ -12,7 +12,7 @@
         </div>
 
         <div class="house-info">
-            <setion class="content">
+            <section class="content">
                 <div class="subtitle">
                     <h2>Entire home hosted by {{ house.host.fullname }}</h2>
                     <div>
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="air-cover">
-                    <h3><span style="color: #fe385c;">air</span>cover</h3>
+                    <h3 style="font-family: CerealMd;"><span style="color: #fe385c;">air</span>cover</h3>
                     <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other
                         issues like trouble checking in.</p>
                     <a href="#">Learn more</a>
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-            </setion>
+            </section>
             <reserve-modal :house="house" />
 
         </div>
@@ -117,8 +117,10 @@
                 <span class="progress-container"><progress value="4.2" max="5"></progress></span>
             </div>
             <main class="review-container">
-                <review-preview v-for="review in house.reviews" :review="review" />
+                <review-preview v-for="review in !showMore ? house.reviews.slice(0, 2) : house.reviews"
+                    :review="review" />
             </main>
+            <button @click="(showMore = !showMore)">{{ `Show ${!showMore ? 'More' : 'less'}` }}</button>
         </section>
 
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :house="house" />
@@ -141,7 +143,8 @@ export default {
             order: null,
             cleaningFee: 0,
             serviceFee: 0,
-            amenitiesSrc: []
+            amenitiesSrc: [],
+            showMore: false
         }
     },
     async created() {

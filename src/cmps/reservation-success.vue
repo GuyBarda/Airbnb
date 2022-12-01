@@ -1,7 +1,7 @@
 <template>
     <div class="reservation-success">
         <header>
-            <h2>Reservation success</h2>
+            <h2>Reservation success!</h2>
             <button @click="closeSuccessModal">
                 <img src="../assets/svg/close.svg" alt="">
             </button>
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <button>Look for more places to stay</button>
+        <button @mousemove="hoverEffect" class="btn-reserve">Look for more places to stay</button>
     </div>
 </template>
 
@@ -75,6 +75,12 @@ export default {
                 currency: 'USD',
             });
             return formatter.format(num)
+        },
+        hoverEffect(ev) {
+            const button = ev.target
+            const { x, y } = button.getBoundingClientRect();
+            button.style.setProperty("--x", ev.clientX - x + 'px');
+            button.style.setProperty("--y", ev.clientY - y + 'px');
         }
     },
     computed: {

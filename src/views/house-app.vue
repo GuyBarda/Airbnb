@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-    //   houses: null,
+      //   houses: null,
     };
   },
   async created() {
