@@ -4,7 +4,7 @@
       <img src="../assets/svg/logo.svg" alt="" />
     </div>
 
-    <app-search @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch($event)" />
+    <app-search @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch($event,key)" />
     <search-modal @updateZone="openZone" :zone="zone" :class="{ open: isOpen }" />
 
     <div class="user">
@@ -49,15 +49,18 @@ export default {
     openZone(key) {
       this.currZone = key;
     },
-    // toggleSearch(event) {
+    // toggleSearch(event,key) {
     //   if (event.target.innerText === "Any week") {
     //     this.$emit("clickDate");
+    //   }
     //   this.currZone = key
+    //   console.log('hi');
     // },
     toggleSearch(event) {
       if (event.target.innerText === 'Any week') {
         this.$emit('clickDate')
       }
+      console.log('hi');
       this.$store.commit({ type: "toggleSearch", bool: true });
     },
   

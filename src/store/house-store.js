@@ -42,13 +42,9 @@ export const houseStore = {
         addHouse(state, { house }) {
             state.houses.push(house)
         },
-        setSearch(state,{search}){
-            state.filterBy = {...search,...state.filterBy}
-            console.log('state.filterBy', state.filterBy)
-        },
         setFilter(state,{filterBy}){
             console.log('filterBy', filterBy)
-            state.filterBy = {...filterBy}
+            state.filterBy = {...JSON.parse(JSON.stringify(filterBy)),...state.filterBy}
             console.log('state.filterBy', state.filterBy)
         },
         updateHouse(state, { house }) {

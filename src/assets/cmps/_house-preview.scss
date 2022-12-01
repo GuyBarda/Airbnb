@@ -1,6 +1,10 @@
 .house-preview {
     position: relative;
 
+    @media (max-width: 400px){
+        width: 320px;
+    }
+
     img {
         width: 100%;
         aspect-ratio: 1.055081967213115/1;

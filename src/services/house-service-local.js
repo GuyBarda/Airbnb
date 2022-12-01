@@ -90,11 +90,12 @@ function _filter(filterBy) {
     })
     
     
-    if (labels !== 'All' && labels) {
+    if (labels && labels.length) {
         filteredHouses = filteredHouses.filter((house) => {
             return labels.some((l) => house.labels.includes(l))
         })
     }
+
 
     console.log('filteredHouses', filteredHouses)
     return filteredHouses

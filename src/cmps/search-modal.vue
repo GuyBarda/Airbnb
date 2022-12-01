@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     setSearch(){
-      this.$store.commit({type: 'setSearch', search: {...this.filterBy}})
+      this.$store.commit({type: 'setFilter', filterBy: {...this.filterBy}})
     },
     openZone(val) {
       this.isSelect = val;
