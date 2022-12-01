@@ -66,6 +66,7 @@ export default {
   methods: {
     setGuests(key,val){
       this.guests[key] +=val
+      this.$emit('setGuests',this.guests)
     }
   },
   components:{

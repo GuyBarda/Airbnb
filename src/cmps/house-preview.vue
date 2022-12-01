@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'house/'+house._id">
+    <router-link :to="'house/'+house._id" target="_blank">
     <article class="house-preview">
         <heart-icon @click.prevent="isMark = !isMark" :class="{mark: isMark}" class="heart-btn"/>
             <img-carousel @click.prevent :imgs="house.imgUrls"/>
