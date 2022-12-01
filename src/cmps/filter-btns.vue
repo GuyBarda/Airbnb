@@ -3,7 +3,7 @@
     <slide v-for="slide in btns" :key="slide">
             <div style="width:100px" @click="setSort(slide.key)">
                 <img class="img-btn" :src="slide.url" alt="" width="24" height="24">
-                <div class="imgKey">{{slide.key}}</div>
+                <div class="imgKey"><span>{{slide.key}}</span></div>
             </div>
     </slide>
 
