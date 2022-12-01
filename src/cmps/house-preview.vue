@@ -58,9 +58,7 @@ export default {
                 currency: 'USD',
                 maximumFractionDigits: 0,
             });
-            console.log(typeof formatter.format(this.house.price));
             let num = Number(formatter.format(this.house.price))
-            console.log('num',num)
             return formatter.format(this.house.price)
         }
     },

@@ -7,7 +7,8 @@
         class="search-zone destination"
       >
         <label>Where</label>
-        <input
+        <input class="dest-input"
+        :class="{set: filterBy.destination}"
           type="text"
           v-model="filterBy.destination"
           placeholder="Search destinations"
@@ -17,6 +18,7 @@
           :class="{ open: isSelect === 'Where' }"
         />
       </div>
+      <span></span>
       <section class="date">
         <div
           @click.prevent="openZone('In')"
@@ -25,6 +27,8 @@
         >
           <label>Check in</label>
           <input
+          :class="{set: formattedStartDate}"
+          :value="formattedStartDate"
             class="date-input"
             type="text"
             placeholder="Add dates"
@@ -32,7 +36,9 @@
           />
         </div>
         <el-date-picker
+          @change="setDates"
           ref="datePicker"
+          popper-class="datePicker"
           v-model="dates"
           type="daterange"
           start-placeholder="Start date"
@@ -46,6 +52,8 @@
         >
           <label>Check out</label>
           <input
+          :class="{set: formattedEndDate}"
+          :value="formattedEndDate"
             class="date-input"
             type="text"
             placeholder="Add dates"
@@ -53,6 +61,8 @@
           />
         </div>
       </section>
+            <span></span>
+
       <div
         @click.prevent="openZone('Who')"
         :class="{ selected: isSelect === 'Who' }"
@@ -61,12 +71,13 @@
         <label>Who</label>
         <input
           :value="guestsCount"
+          :class="{set: guestsCount}"
           class="guest-input"
           type="text"
           placeholder="Add guests"
           disabled
         />
-        <button class="sub-search">
+        <button @click="setSearch" class="sub-search">
           <img src="../assets/svg/search.svg" alt="" />Search
         </button>
         <guests-modal
@@ -118,9 +129,11 @@ export default {
         this.$refs.datePicker.focus();
       }, 300);
     }
-    console.log('this.dates',this.dates)
   },
   methods: {
+    setSearch(){
+      this.$store.commit({type: 'setSearch', search: {...this.filterBy}})
+    },
     openZone(val) {
       this.isSelect = val;
       this.$emit("updateZone", val);
@@ -130,11 +143,10 @@ export default {
     },
     setGuests(guests) {
       this.filterBy.guests = { ...guests };
-      console.log(guests);
     },
     setDates(dates){
-      this.filterBy.dates.start = dates["0"]
-      this.filterBy.dates.start = dates["1"]
+      this.filterBy.dates.start = this.dates["0"]
+      this.filterBy.dates.end = this.dates["1"]
     }
   },
   computed: {
@@ -145,6 +157,16 @@ export default {
       str += pets ? ` ${pets} ${pets !== 1 ? 'pets' : 'pet'}` : ''
       return str
     },
+    formattedStartDate(){
+        let date = new Date(this.filterBy.dates.start).toLocaleDateString('en-us', { month:"short", day:"numeric"}) 
+        if(date === 'Invalid Date') return ''
+        return date
+    },
+    formattedEndDate(){
+        let date = new Date(this.filterBy.dates.end).toLocaleDateString('en-us', { month:"short", day:"numeric"}) 
+        if(date === 'Invalid Date') return ''
+        return date
+    }
   },
   components: {
     reactiveBtn,

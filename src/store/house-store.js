@@ -44,11 +44,11 @@ export const houseStore = {
         },
         setSearch(state,{search}){
             state.filterBy = {...search,...state.filterBy}
+            console.log('state.filterBy', state.filterBy)
         },
         setFilter(state,{filterBy}){
             console.log('filterBy', filterBy)
             state.filterBy = {...filterBy,...state.filterBy}
-            console.log('state.filterBy', state.filterBy)
         },
         updateHouse(state, { house }) {
             const idx = state.houses.findIndex(c => c.id === house._id)

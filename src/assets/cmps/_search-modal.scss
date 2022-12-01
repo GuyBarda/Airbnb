@@ -21,13 +21,19 @@
         background-color: white;
         border: 1px solid #dddddd;
         display: grid;
-        // display: flex;
-        grid-template-columns: 1fr 0.8fr 0.8fr;
-        // width: max-content;
+        align-items: center;
+        grid-template-columns: 1.4fr 1px 14em 1px 0.9fr;
 
+        span {
+            flex: 0 0 1px;
+            height: 50%;
+            width: 1px;
+            background-color: #dddddd;
+          }
         .destination {
             position: relative;
             flex-grow: 1;
+            height: 100%;
         }
         &.btn-selected {
             background-color: #ebebeb;
@@ -39,11 +45,13 @@
 
         .search-btn {
             display: grid;
-            // grid-template-columns: .6fr 1fr;
+            grid-template-columns: 5em 1fr;
             grid-template-rows: 1fr 1fr;
             position: relative;
 
             .sub-search {
+                position: relative;
+                z-index: 3;
                 grid-row: 1/-1;
                 grid-column: 2;
                 padding-block: 15px;
@@ -71,7 +79,7 @@
         }
         .date {
             display: flex;
-
+            height: 100%;
             .el-date-editor {
                 position: absolute !important;
                 opacity: 0 !important;
@@ -81,12 +89,17 @@
             }
         }
 
+        .search-zone:not(:last-child){
+            box-shadow: 0 0 0;
+        }
         .search-zone {
             align-items: center;
             border-radius: 5em;
             padding: 5px 15px;
             display: grid;
             cursor: grab;
+
+
 
             &:hover {
                 background-color: #dddddd;                
@@ -114,11 +127,22 @@
             input[type="text"] {
                 border: 0;
                 outline: 0;
+
+            }
+            .dest-input{
+
+                &.set{
+                    font-weight: bold;
+                }
             }
 
             .date-input,
             .guest-input {
                 width: 100%;
+
+                &.set{
+                    font-weight: bold;
+                }
             }
         }
     }
