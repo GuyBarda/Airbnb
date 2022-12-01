@@ -3,7 +3,7 @@
 
       <div class="form-header">
         <div class="close-filter">
-          <img @click="$emit('close')" src="../assets/svg/close.svg" alt="">
+          <img @click="$emit('close')" src="../assets/svg/close.svg" alt="" >
         </div>
         <h2>Filters</h2>
       </div>
@@ -36,12 +36,14 @@
       </div>
     </div>
       
-      <section class="Type-of-place">
+  <section class="Type-of-place">
         <h2>Type of place</h2>
         
       <div class="first-tow">
+
         <div class="checkbox">
           <input type="checkbox" name="entire" v-model="filterBy.type" value="Entire place"/>
+
           <div class="label-p">
             <label>Entire place</label>
             <p>A place all to yourself</p>
@@ -50,20 +52,24 @@
         
         <div class="checkbox">
           <input type="checkbox" name="private" v-model="filterBy.type" value="Private room" />
-          <div class="label-p">
-            <label for="entire">Private room</label>
+
+           <div class="label-p">
+            <label>Private room</label>
             <p>Your own room in a home or a hotel, plus some shared common spaces</p>
-          </div>
+           </div>
         </div>
+
       </div>
+
         <div class="checkbox">
           <input type="checkbox" name="shared" v-model="filterBy.type" value="Shared room"/>
+
           <div class="label-p">
-          <label for="shared">Shared room</label>
+          <label>Shared room</label>
           <p>A sleeping space and common areas that may be shared with others</p>
+         </div>
         </div>
-        </div>
-      </section>
+  </section>
 
       <hr />
 
@@ -78,7 +84,7 @@
         <div>
           <h3>beds</h3>
           <button class="btn-btn">Any</button>
-          <button class="btn-btn" @click="setRoomsBeds('beds', num)" v-for="num in 8" :key="num" >{{ num }}</button>
+          <button class="btn-btn" @click="setRoomsBeds('beds', num ,$event)" v-for="num in 8" :key="num" >{{ num }}</button>
       </div>
       
       <div>
@@ -200,6 +206,7 @@ export default {
         PropertyType: [],
         Amenities: [],
       },
+      isSelect: false
     };
   },
   created() {},
@@ -207,11 +214,14 @@ export default {
   methods: {
     filterHouses() {
       console.log("this.filterBy", this.filterBy);
+      this.$store.commit({type: 'setFilter', filterBy: {...this.filterBy}})
       //   this.$emit("filtered", this.filterBy);
     },
-    setRoomsBeds(key, val) {
-      this.filterBy.roomsBeds[key] = val;
-      console.log("this.filterBy", this.filterBy);
+    setRoomsBeds(key, num ,ev) {
+      ev.target.classList.toggle('selected')
+      
+      // this.filterBy.roomsBeds[key] = val;
+      // console.log("this.filterBy", this.filterBy);
     },
     setPropertyType(key) {
       this.filterBy.PropertyType.push(key) 
