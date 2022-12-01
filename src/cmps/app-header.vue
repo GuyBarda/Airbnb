@@ -54,13 +54,18 @@ export default {
     toggleSearch(event) {
       if (event.target.innerText === "Any week") {
         this.$emit("clickDate");
+      this.currZone = key
+    },
+    toggleSearch(event) {
+      if (event.target.innerText === 'Any week') {
+        this.$emit('clickDate')
       }
       this.$store.commit({ type: "toggleSearch", bool: true });
     },
   },
   computed: {
     zone() {
-      return this.currZone;
+      return this.currZone
     },
     isOpen() {
       return this.$store.getters.open;

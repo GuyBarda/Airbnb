@@ -3,7 +3,8 @@
         <div class="mini-user-details">
             <img :src="review.by.imgUrl" alt="">
             <p>{{ review.by.fullname }}</p>
-            <p>{{ review.createdAt }}</p>
+            <!-- <span>{{ review.createdAt }}</span> -->
+            <span>{{ 'sep 2022' }}</span>
         </div>
         <p>{{ review.txt }}</p>
     </div>

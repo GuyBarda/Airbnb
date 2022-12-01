@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="imgs-container">
-            <img v-for="img in house.imgUrls" :src="img" :style="setBorderRadius">
+            <img v-for="img in house.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
         </div>
 
         <div class="house-info">
@@ -23,6 +23,28 @@
                         <span>{{ house.roomsAndBeds.bedrooms }} bedrooms </span>
                     </div>
                     <img class="host-image" :src="`${house.host.imgUrl}`" alt="">
+                </div>
+                <div class="user-house-info">
+                    <img src="../assets/svg/folder1/superhost.svg" alt="">
+                    <div>
+                        <p style="font-weight: bold;">Renata is a Superhost</p>
+                        <p class="subtext">
+                            Superhosts are experienced, highly rated hosts who are committed to providing great stays
+                            for
+                            guests.
+                        </p>
+                    </div>
+                    <img src="../assets/svg/folder1/location.svg" alt="">
+                    <div>
+                        <p style="font-weight: bold;">Great location</p>
+                        <p class="subtext">100% of recent guests gave the location a 5-star rating.</p>
+                    </div>
+                    <img src="../assets/svg/folder1/checkin.svg" alt="">
+                    <div>
+                        <p style="font-weight: bold;">Great check-in experience</p>
+                        <p class="subtext">95% of recent guests gave the check-in process a 5-star rating.</p>
+                    </div>
+
                 </div>
 
                 <div class="air-cover">
@@ -60,11 +82,15 @@
                         </button>
                     </div>
                 </div> -->
-                <div class="house-amenities">
-                    <div v-for="a in house.amenities" style="display: flex; gap: 13px;">
-                        <img :src="`/src/assets/svg/amenities/${a.toLowerCase()}.svg`" alt="np" style="width: 1.2em;">
-                        <!-- <img src="../assets/svg/amenities/tv.svg" alt=""> -->
-                        <p>{{ a }}</p>
+                <div>
+                    <h2>What this place offers</h2>
+                    <div class="house-amenities">
+                        <div v-for="a in house.amenities" style="display: flex; gap: 13px;">
+                            <img :src="`/src/assets/svg/amenities/${a.split(' ')[0].toLowerCase()}.svg`" alt="np"
+                                style="width: 1.2em;">
+                            <!-- <img src="../assets/svg/amenities/tv.svg" alt=""> -->
+                            <p>{{ a }}</p>
+                        </div>
                     </div>
                 </div>
             </setion>
@@ -75,24 +101,44 @@
                         <h4><span>{{ formattedPerNightPrice }}</span> per night</h4>
                         <review-average :reviews="house.reviews" />
                     </header>
-                    <div class="date-picker">
-                        <input type="date" v-model="order.startDate">
-                        <input type="date" v-model="order.endDate">
-                        <input type="number" v-model="order.guests.adults">
+                    <div class="picker-container">
+                        <div class="check-in">
+                            <label for="check-in">CHECK-IN</label>
+                            <input type="text" placeholder="MM/DD/YYYY" v-model="order.startDate">
+                            <button v-if="order.startDate" @click="order.startDate = ''">
+                                <img src="../assets/svg/close.svg" alt="">
+                            </button>
+                        </div>
+                        <div class="check-out">
+                            <label for="check-out">CHECK-OUT</label>
+                            <input type="text" placeholder="MM/DD/YYYY" v-model="order.endDate">
+                            <button v-if="order.endDate" @click="order.endDate = ''">
+                                <img src="../assets/svg/close.svg" alt="">
+                            </button>
+                        </div>
+                        <div class="guests">
+                            <label for="guests">GUESTS</label>
+                            <p>{{ order.guests.adults }}</p>
+                            <button v-if="order.endDate" @click="order.endDate = ''">
+                                <img src="../assets/svg/close.svg" alt="">
+                            </button>
+                        </div>
                     </div>
                     <button class="btn-reserve">Reserve</button>
-                    <p style="text-align: center;">You won't be charged yet</p>
-                    <div class="prices">
-                        <p>{{ formattedPerNightPrice }} x {{ getTotalDays }} nights</p>
-                        <p>{{ formattedTotalNightsPrice }}</p>
-                        <p>cleaning fee</p>
-                        <p>{{ formattedCleaningFee }}</p>
-                        <p>service fee</p>
-                        <p>{{ formattedServiceFee }}</p>
-                    </div>
-                    <div class="total">
-                        <p>Total</p>
-                        <p>{{ formattedTotal }}</p>
+                    <div v-if="(order.startDate && order.endDate)">
+                        <p style="text-align: center;">You won't be charged yet</p>
+                        <div class="prices">
+                            <p>{{ formattedPerNightPrice }} x {{ getTotalDays }} nights</p>
+                            <p>{{ formattedTotalNightsPrice }}</p>
+                            <p>cleaning fee</p>
+                            <p>{{ formattedCleaningFee }}</p>
+                            <p>service fee</p>
+                            <p>{{ formattedServiceFee }}</p>
+                        </div>
+                        <div class="total">
+                            <p>Total</p>
+                            <p>{{ formattedTotal }}</p>
+                        </div>
                     </div>
                 </form>
             </setion>

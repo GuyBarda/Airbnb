@@ -44,6 +44,7 @@ export const houseStore = {
         },
         setSearch(state,{search}){
             state.filterBy = {...search,...state.filterBy}
+            console.log('state.filterBy', state.filterBy)
         },
         setFilter(state,{filterBy}){
             console.log('filterBy', filterBy)
