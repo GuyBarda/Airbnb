@@ -51,17 +51,18 @@ export default {
     openZone(key) {
       this.currZone = key;
     },
-    toggleSearch(event) {
-      if (event.target.innerText === "Any week") {
-        this.$emit("clickDate");
-      this.currZone = key
-    },
+    // toggleSearch(event) {
+    //   if (event.target.innerText === "Any week") {
+    //     this.$emit("clickDate");
+    //   this.currZone = key
+    // },
     toggleSearch(event) {
       if (event.target.innerText === 'Any week') {
         this.$emit('clickDate')
       }
       this.$store.commit({ type: "toggleSearch", bool: true });
     },
+  
   },
   computed: {
     zone() {
@@ -71,5 +72,6 @@ export default {
       return this.$store.getters.open;
     },
   },
-};
+}
+
 </script>
