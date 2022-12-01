@@ -1,7 +1,17 @@
 .house-preview {
     .carousel {
+        
+        @media (max-width: 400px){
+            .carousel__viewport{
+                width: 320px !important;
+            }
+        }
         .carousel__slide {
             width: 100% !important;
+
+            @media (max-width: 400px){
+                max-width: 100% !important;
+            }
         }
         .carousel__pagination-button::after {
             padding: 2px;

@@ -3,12 +3,26 @@
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    grid-template-columns: repeat(4, 23%);
+    grid-template-columns: 1fr;
     width: 100%;
     margin: 0 auto;
+    gap: 20px;
     justify-content: space-between;
 
     a{
         all: unset;
+    }
+
+    @media (min-width: 300px){
+        grid-template-columns: repeat(2,1fr)
+    }
+    @media (min-width: 600px){
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 1000px){
+        grid-template-columns: repeat(4, 23%);
+    }
+    @media (min-width: 1420px){
+        grid-template-columns: repeat(auto-fill, 1fr);
     }
 }

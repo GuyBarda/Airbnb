@@ -94,54 +94,8 @@
                     </div>
                 </div>
             </setion>
+            <reserve-modal :house="house" />
 
-            <setion class="reserve-modal">
-                <form @submit.prevent="addOrder">
-                    <header>
-                        <h4><span>{{ formattedPerNightPrice }}</span> per night</h4>
-                        <review-average :reviews="house.reviews" />
-                    </header>
-                    <div class="picker-container">
-                        <div class="check-in">
-                            <label for="check-in">CHECK-IN</label>
-                            <input type="text" placeholder="MM/DD/YYYY" v-model="order.startDate">
-                            <button v-if="order.startDate" @click="order.startDate = ''">
-                                <img src="../assets/svg/close.svg" alt="">
-                            </button>
-                        </div>
-                        <div class="check-out">
-                            <label for="check-out">CHECK-OUT</label>
-                            <input type="text" placeholder="MM/DD/YYYY" v-model="order.endDate">
-                            <button v-if="order.endDate" @click="order.endDate = ''">
-                                <img src="../assets/svg/close.svg" alt="">
-                            </button>
-                        </div>
-                        <div class="guests">
-                            <label for="guests">GUESTS</label>
-                            <p>{{ order.guests.adults }}</p>
-                            <button v-if="order.endDate" @click="order.endDate = ''">
-                                <img src="../assets/svg/close.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
-                    <button class="btn-reserve">Reserve</button>
-                    <div v-if="(order.startDate && order.endDate)">
-                        <p style="text-align: center;">You won't be charged yet</p>
-                        <div class="prices">
-                            <p>{{ formattedPerNightPrice }} x {{ getTotalDays }} nights</p>
-                            <p>{{ formattedTotalNightsPrice }}</p>
-                            <p>cleaning fee</p>
-                            <p>{{ formattedCleaningFee }}</p>
-                            <p>service fee</p>
-                            <p>{{ formattedServiceFee }}</p>
-                        </div>
-                        <div class="total">
-                            <p>Total</p>
-                            <p>{{ formattedTotal }}</p>
-                        </div>
-                    </div>
-                </form>
-            </setion>
         </div>
 
         <section id="reviews">
@@ -150,17 +104,17 @@
             </header>
             <div class="rating">
                 <p>cleanliness</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="4" max="5"></progress></span>
                 <p>Communication</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="3" max="5"></progress></span>
                 <p>Check-in</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="4.5" max="5"></progress></span>
                 <p>Accuracy</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="3.8" max="5"></progress></span>
                 <p>Location</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="3.9" max="5"></progress></span>
                 <p>Value</p>
-                <div><span>-</span></div>
+                <span class="progress-container"><progress value="4.2" max="5"></progress></span>
             </div>
             <main class="review-container">
                 <review-preview v-for="review in house.reviews" :review="review" />
@@ -178,6 +132,7 @@ import star from '../assets/svg/star.vue'
 import reviewPreview from '../cmps/review-preview.vue'
 import reservationSuccess from '../cmps/reservation-success.vue'
 import reviewAverage from '../cmps/review-average.vue'
+import reserveModal from '../cmps/reserve-modal.vue'
 
 export default {
     data() {
@@ -255,7 +210,8 @@ export default {
         star,
         reviewPreview,
         reservationSuccess,
-        reviewAverage
+        reviewAverage,
+        reserveModal
     }
 }
 </script>

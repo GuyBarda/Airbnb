@@ -215,6 +215,7 @@
             grid-template: repeat(3, 1fr)/ repeat(4, 1fr);
             gap: 4px;
             margin-bottom: 30px;
+            align-items: center;
             p {
                 margin: 0;
             }
@@ -227,6 +228,31 @@
                     background-color: #222222;
                 }
             }
+            .progress-container{
+                border-radius: 30em;
+                height: min-content;
+                width: 90%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+            }
+            progress{
+                -webkit-appearance: none;
+                height: 5px;
+                border-radius: 40px !important;
+
+
+
+                
+            }
+            
+            ::-webkit-progress-bar {
+                background-color: #dddddd;
+            }
+            ::-webkit-progress-value {
+                background-color: #222222;
+            }
+            
         }
         .review-container {
             display: grid;
