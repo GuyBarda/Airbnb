@@ -66,7 +66,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006546",
+        "_id": "10006536",
         "name": "Ribeira Charming Duplex",
         "type": "House",
         "imgUrls": [
@@ -88,11 +88,16 @@
             "Pets allowed",
             "Cooking basics"
         ],
-        "labels": ["Top of the world", "Trending", "Play", "Tropical"],
+        "roomsAndBeds": {
+            "beds": 2,
+            "bedrooms": 4,
+            "Bathrooms": 2
+        },
+        "labels": ["Top of the world", "Trending", "Tropical"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "imgUrl": "https://a0.muscache.com/im/pictures/user/be9a866b-bdb8-44bc-99b6-8d4f1b87edf0.jpg?im_w=240"
         },
         "loc": {
             "country": "Portugal",
@@ -137,7 +142,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006546",
+        "_id": "10006746",
         "name": "Ribeira Charming Duplex",
         "type": "House",
         "imgUrls": [
@@ -159,11 +164,16 @@
             "Pets allowed",
             "Cooking basics"
         ],
-        "labels": ["Top of the world", "Trending", "Play", "Tropical"],
+        "roomsAndBeds": {
+            "beds": 2,
+            "bedrooms": 4,
+            "Bathrooms": 2
+        },
+        "labels": ["Top of the world", "Trending", "Tropical"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "imgUrl": "https://a0.muscache.com/im/pictures/user/cd62972a-95b4-4ed7-9e44-81d9dc6ed4fa.jpg?im_w=240"
         },
         "loc": {
             "country": "Portugal",
@@ -208,7 +218,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006546",
+        "_id": "10006446",
         "name": "Ribeira Charming Duplex",
         "type": "House",
         "imgUrls": [
@@ -230,11 +240,16 @@
             "Pets allowed",
             "Cooking basics"
         ],
+        "roomsAndBeds": {
+            "beds": 2,
+            "bedrooms": 4,
+            "Bathrooms": 2
+        },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
-            "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small"
+            "imgUrl": "https://a0.muscache.com/im/pictures/user/4f4b4e13-edf8-4f8b-950b-c8c72185b458.jpg?im_w=240"
         },
         "loc": {
             "country": "Portugal",

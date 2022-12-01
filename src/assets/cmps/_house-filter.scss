@@ -4,31 +4,13 @@
   // height: 78px;
   $clr-secondary: #b0b0b0;
   // width: 100%;
-  box-shadow: 0px 1px 2px 0px #dddddd;
+  // box-shadow: 0px 1px 2px 0px #dddddd;
 
   .secondary {
     color: $clr-secondary;
   }
-  .filter-buttons {
-    display: flex;
 
-    .fil-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-    .imgKey {
-      margin-top: 8px;
-    }
-    button {
-      height: 78px;
-      margin-right: 19px;
-      margin-right: 19px;
-      background-color: #ffffff00;
-      border: 1px solid transparent;
-    }
-  }
+  //? -----------------------------
   .btn-filters {
     background-color: #00000000;
     cursor: pointer;
@@ -44,6 +26,18 @@
       width: 12px;
     }
   }
+
+  //?--------------------------
+  .imgKey {
+    font-size: 12px;
+    font-family: Cereal-medium, Arial, sans-serif;
+    margin-top: 8px;
+    filter: opacity(0.9);
+    color: #717171;
+  }
+  .img-btn{
+    filter: opacity(0.7);
+  }
   .carousel {
     flex-grow: 1;
     width: 90%;
@@ -51,8 +45,7 @@
   .carousel__slide {
     width: max-content !important;
   }
-  
-  
+
   .carousel__next {
     height: 28px;
     width: 28px;
@@ -62,7 +55,7 @@
     background-color: white;
   }
 
-  .carousel__icon{
+  .carousel__icon {
     height: 28px;
     width: 28px;
     border-radius: 22px;
@@ -73,5 +66,4 @@
     // box-shadow: -12px 1px 5px 20px #fffefe;
     box-shadow: 1px 1px 14px 25px #ffffff;
   }
-  
 }

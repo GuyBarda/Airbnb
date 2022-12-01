@@ -37,7 +37,7 @@ export const houseStore = {
     },
     mutations: {
         setHouses(state, { houses }) {
-            state.houses = houses
+            state.houses = {...houses} 
         },
         addHouse(state, { house }) {
             state.houses.push(house)
@@ -47,7 +47,7 @@ export const houseStore = {
         },
         setFilter(state,{filterBy}){
             console.log('filterBy', filterBy)
-            state.filterBy = {...filterBy,...state.filterBy}
+            state.filterBy = {...filterBy}
             console.log('state.filterBy', state.filterBy)
         },
         updateHouse(state, { house }) {
@@ -67,6 +67,7 @@ export const houseStore = {
         setFilter({ commit, dispatch }, { filterBy }){
             console.log('filterBy', filterBy)
             commit({ type: 'setFilter', filterBy })
+            dispatch({ type: 'loadHouses' })
             // state.filterBy = {...filterBy,...state.filterBy}
         },
         async addHouse(context, { house }) {
@@ -89,10 +90,12 @@ export const houseStore = {
                 throw err
             }
         },
-        async loadHouses(context) {
+        async loadHouses({ commit, state }) {
             try {
-                const houses = await houseService.query()
-                context.commit({ type: 'setHouses', houses })
+                let houses = await houseService.query(state.filterBy)
+                console.log('houses',houses);
+                commit({ type: 'setHouses', houses })
+                return houses
             } catch (err) {
                 console.log('houseStore: Error in loadHouses', err)
                 throw err
@@ -116,6 +119,6 @@ export const houseStore = {
                 throw err
             }
         },
-
+        
     }
 }

@@ -2,7 +2,7 @@
   <carousel class="carousel" :items-to-show="7">
     <slide v-for="slide in btns" :key="slide">
             <div style="width:100px" @click="setSort(slide.key)">
-                <img :src="slide.url" alt="" width="24" height="24">
+                <img class="img-btn" :src="slide.url" alt="" width="24" height="24">
                 <div class="imgKey">{{slide.key}}</div>
             </div>
     </slide>
@@ -34,16 +34,19 @@
     },
     data() {
         return {
-          labels: '',
+          filterBy:{
+            labels: [],
+
+          },
         }
     },
     created() {
     },
   computed: {},
   methods: {
-    setSort(labels) {
-      this.labels = {labels}
-      this.$emit("filtered", this.labels);
+    setSort(label) {
+      this.filterBy.labels.push(label) 
+      this.$emit("filtered", this.filterBy);
     },
   },
 
