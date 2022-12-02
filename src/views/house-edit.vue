@@ -1,5 +1,5 @@
 <template>
-  <section class="main-container-edit">
+  <section class="secondary-container">
     <section class="house-edit">
       <nav>
         <ul>
@@ -20,9 +20,12 @@
             <section class="house-name">
                 <h2>Stay name</h2>
                 <div>
-                <p>Reviews:</p>
+                <p><star-icon style="display: inline;" /> New (0 Reviews)</p>
                 <p>Adress <input type="text"></p>
                 </div>
+            </section>
+            <section class="imgs-container">
+              <upload-img v-for="x in 5" :key="x" :idx="x"/>
             </section>
         </section>
       </section>
@@ -33,11 +36,13 @@
 <script>
 import starIcon from '../assets/svg/star.vue'
 import plusIcon from '../assets/svg/plus.vue'
+import uploadImg from '../cmps/upload-img.vue'
 export default {
 
 components:{
   starIcon,
-  plusIcon
+  plusIcon,
+  uploadImg
 }
 }
 </script>
