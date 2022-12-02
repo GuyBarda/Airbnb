@@ -6,7 +6,7 @@
     class="dark-site"
     :class="{ open: isOpen}"
   ></section> -->
-  <section @click="toggleSearch" class="dark-site" :class="{ open: isOpen || isOrderComplete || isFilterOpen, search: isOpen}"></section>
+  <section @click="toggleSearch" class="dark-site" :class="{ open: isOpen || isOrderComplete || isFilterOpen,search: isOpen}"></section>
 
 </template>
 

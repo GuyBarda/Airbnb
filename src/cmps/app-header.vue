@@ -4,8 +4,8 @@
       <img src="../assets/svg/logo.svg" alt="" />
     </div>
 
-    <app-search @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch($event,key)" />
-    <search-modal @updateZone="openZone" :zone="zone" :class="{ open: isOpen }" />
+    <app-search :date="currDate" :dest="currDest" :filter="filterBy" @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch($event,key)" />
+    <search-modal @setDate="setDate" @setDest="setDest" @updateZone="openZone" :zone="zone" :class="{ open: isOpen }" />
 
     <div class="user">
       <a class="become-host" href="/#/login">Become a host</a>
@@ -47,9 +47,17 @@ export default {
     return {
       isMenu: false,
       currZone: "",
+      currDest: '',
+      currDate: '',
     };
   },
   methods: {
+    setDate(str){
+      this.currDate = str
+    },
+    setDest(val){
+      this.currDest=val
+    },
     openZone(key) {
       this.currZone = key;
     },
@@ -83,6 +91,9 @@ export default {
   
   },
   computed: {
+    getDest(){
+      return this.currDest
+    },
     zone() {
       return this.currZone;
     },

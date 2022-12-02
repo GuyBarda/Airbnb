@@ -34,3 +34,37 @@
             minmax(20px, 1fr);
     }
 }
+
+//LAYOUT FOR HOUSE EDIT PAGE
+
+.main-container-edit {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+
+    > * {
+        grid-column: 2;
+
+        &.full {
+            grid-column: 1 /-1;
+        }
+    }
+
+    @include for-narrow-layout {
+        grid-template-columns: 
+            minmax(20px, 1fr)
+            minmax(auto, $mobile-edit-breakpoint)
+            minmax(20px, 1fr);
+    }
+    @include for-normal-layout {
+        grid-template-columns: 
+            minmax(20px, 1fr)
+            minmax(auto, $narrow-edit-breakpoint)
+            minmax(20px, 1fr);
+    }
+    @include for-wide-layout {
+        grid-template-columns: 
+            minmax(20px, 1fr)
+            minmax(auto, $normal-edit-breakpoint)
+            minmax(20px, 1fr);
+    }
+}

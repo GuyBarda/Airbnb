@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import homeView from '../views/home-view.vue';
+import houseEdit from '../views/house-edit.vue';
 import houseDetails from '../views/house-details.vue';
 import houseApp from '../views/house-app.vue';
 
@@ -15,6 +15,11 @@ const router = createRouter({
             path: '/house/:id',
             name: 'details',
             component: houseDetails,
+        },
+        {
+            path: '/house/edit/:id',
+            name: 'edit',
+            component: houseEdit,
         },
     ],
 });

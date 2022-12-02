@@ -140,6 +140,7 @@ export default {
     },
     setDestination(dest) {
       this.filterBy.destination = dest;
+      this.$emit('setDest',dest)
     },
     setGuests(guests) {
       this.filterBy.guests = { ...guests };
@@ -147,6 +148,9 @@ export default {
     setDates(dates){
       this.filterBy.dates.start = this.dates["0"]
       this.filterBy.dates.end = this.dates["1"]
+      let str = this.formattedStartDate + ' - ' + this.formattedEndDate
+      console.log(str);
+      this.$emit('setDate',str)
     }
   },
   computed: {
