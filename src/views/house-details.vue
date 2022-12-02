@@ -7,9 +7,10 @@
                 <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
             </div>
         </div>
-        <div class="imgs-container">
+        <div class="imgs-container" id="photos">
             <img v-for="img in house.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
         </div>
+        <details-header :house="house" />
 
         <div class="house-info">
             <section class="content">
@@ -82,7 +83,7 @@
                         </button>
                     </div>
                 </div> -->
-                <div class="amenities-container">
+                <div class="amenities-container" id="amenities">
                     <h2>What this place offers</h2>
                     <div class="house-amenities">
                         <div v-for="a in house.amenities" style="display: flex; gap: 13px;">
@@ -130,11 +131,14 @@
 <script>
 import { houseService } from '../services/house-service-local.js'
 import { orderService } from '../services/order-service-local.js'
+
 import star from '../assets/svg/star.vue'
+
 import reviewPreview from '../cmps/review-preview.vue'
 import reservationSuccess from '../cmps/reservation-success.vue'
 import reviewAverage from '../cmps/review-average.vue'
 import reserveModal from '../cmps/reserve-modal.vue'
+import detailsHeader from '../cmps/details-header.vue'
 
 export default {
     data() {
@@ -214,7 +218,8 @@ export default {
         reviewPreview,
         reservationSuccess,
         reviewAverage,
-        reserveModal
+        reserveModal,
+        detailsHeader
     }
 }
 </script>

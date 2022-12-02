@@ -1,0 +1,39 @@
+.details-header {
+    font-family: CerealReg;
+    border-bottom: 1px solid rgba(169, 166, 166, 0.3607843137);
+    // display: none;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+
+    // &:has() {
+    //     opacity: 1;
+    // }
+
+    section {
+        display: flex;
+        justify-content: space-between;
+
+        .details-nav {
+            display: flex;
+            gap: 24px;
+
+            a{ 
+                text-decoration: none;
+                list-style: none;
+                padding: 30px 0;
+                font-weight: bold;
+                // text-align: center;
+                font-size: em(14px, 16px);
+                line-height: 30px;
+                box-shadow: inset 0px -5px 0 0 #22222200;
+                transition: 0.1s ease;
+
+                &:hover {
+                    box-shadow: inset 0px -4px 0 0 #222222;
+                }
+            }
+        }
+    }
+}
