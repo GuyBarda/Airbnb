@@ -40,6 +40,10 @@
 .main-container-edit {
     display: grid;
     grid-template-columns: 20px 1fr 20px;
+}
+.secondary-container {
+    display: grid;
+    grid-template-columns: auto 1120px auto;
 
     > * {
         grid-column: 2;
@@ -68,3 +72,22 @@
             minmax(20px, 1fr);
     }
 }
+    // @include for-narrow-layout {
+    //     grid-template-columns: 
+    //         minmax(20px, 1fr)
+    //         minmax(auto, $mobile-breakpoint)
+    //         minmax(20px, 1fr);
+    // }
+    // @include for-normal-layout {
+    //     grid-template-columns: 
+    //         minmax(20px, 1fr)
+    //         minmax(auto, $narrow-breakpoint)
+    //         minmax(20px, 1fr);
+    // }
+    // @include for-wide-layout {
+    //     grid-template-columns: 
+    //         minmax(20px, 1fr)
+    //         minmax(auto, $normal-breakpoint)
+    //         minmax(20px, 1fr);
+    // }
+

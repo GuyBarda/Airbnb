@@ -1,5 +1,5 @@
 <template>
-    <setion class="reserve-modal">
+    <section class="reserve-modal">
         <form @submit.prevent="addOrder">
             <header>
                 <h4><span>{{ formattedPerNightPrice }}</span> per night</h4>
@@ -9,23 +9,23 @@
                 <div class="check-in">
                     <label for="check-in">CHECK-IN</label>
                     <input type="text" placeholder="MM/DD/YYYY" v-model="order.startDate">
-                    <button v-if="order.startDate" @click="order.startDate = ''">
+                    <!-- <button v-if="order.startDate" @click="order.startDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
-                    </button>
+                    </button> -->
                 </div>
                 <div class="check-out">
                     <label for="check-out">CHECK-OUT</label>
                     <input type="text" placeholder="MM/DD/YYYY" v-model="order.endDate">
-                    <button v-if="order.endDate" @click="order.endDate = ''">
+                    <!-- <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
-                    </button>
+                    </button> -->
                 </div>
                 <div class="guests">
                     <label for="guests">GUESTS</label>
                     <p>{{ order.guests.adults }} guest</p>
-                    <button v-if="order.endDate" @click="order.endDate = ''">
+                    <!-- <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
-                    </button>
+                    </button> -->
                 </div>
             </div>
             <button @mousemove="hoverEffect" class="btn-reserve">Reserve</button>
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </form>
-    </setion>
+    </section>
 </template>
 
 <script>
@@ -95,8 +95,8 @@ export default {
         hoverEffect(ev) {
             const button = ev.target
             const { x, y } = button.getBoundingClientRect();
-            button.style.setProperty("--x", ev.clientX - x);
-            button.style.setProperty("--y", ev.clientY - y);
+            button.style.setProperty("--x", ev.clientX - x + 'px');
+            button.style.setProperty("--y", ev.clientY - y + 'px');
         }
 
     },

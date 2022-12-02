@@ -11,6 +11,10 @@
   background-color: white;
   // margin-top: 80px;
 
+  .carousel__prev {
+    margin: 0;
+  }
+
   .secondary {
     color: $clr-secondary;
   }
@@ -23,7 +27,6 @@
     height: 48px;
     width: 90px;
     padding: 13px;
-    margin-right: 10px;
     border-radius: 14px;
     z-index: 1;
     img {
