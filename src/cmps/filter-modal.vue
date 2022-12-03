@@ -11,8 +11,19 @@
       <div class="form-price">
         <h2>Price range</h2>
         <p>The average nightly price is $206</p>
-
-        <!-- <histogramSlider/> -->
+<section style="background-color: red">
+        <HistogramSlider
+        style="margin: 200px auto"
+    :width="600"
+    :height="300"
+    :bar-height="100"
+    :data="prices"
+    :force-edges="true"
+    :colors="['#4facfe', '#00f2fe']"
+          :min="0"
+      :max="1000"
+/>
+</section>
 
         <div class="form-inputs">
           <div class="price-inner">
@@ -282,11 +293,13 @@
   </div>
 </template>
 <script>
-// import histogramSlider from './histogram-slider.vue'
 
 export default {
+  props:{
+    houses: Array,
+  },
   components: {
-    // histogramSlider
+    
   },
   data() {
     return {
@@ -306,7 +319,13 @@ export default {
     };
   },
   created() {},
-  computed: {},
+  computed: {
+    prices(){
+      const prices = this.houses.map(house=> house.price + '')
+      console.log('prices',prices);
+      return prices
+    }
+  },
   methods: {
     filterHouses() {
       this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });

@@ -32,9 +32,6 @@ export default {
         }
     },
     methods: {
-        setImg(url){
-            this.imgUrls[this.idx] = url
-        },
         handleFile(ev) {
             console.log('ev', ev)
             let file
@@ -46,7 +43,7 @@ export default {
             this.isLoading = true
             this.isDragover = false
             const res = await uploadImg(file)
-            this.setImg(res.url)
+            this.$emit('setImg',{ url: res.url, idx: this.idx})
             this.isLoading = false
             console.log('res:', res)
         },

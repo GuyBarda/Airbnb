@@ -37,7 +37,6 @@ export default {
       this.$store.commit({ type: "toggleSearch", bool: false });
       this.$store.commit({ type: "toggleSuccessModal", bool: false });
       this.$store.commit({ type: "toggleFilterModal", bool: false });
-      this.$store.commit({ type: "toggleMustLogin", bool: false });
     },
   },
   computed: {

@@ -31,6 +31,7 @@
           <section class="imgs-container">
             <upload-img
               v-for="x in 5"
+              @setImg="setImg"
               :img="house.imgUrls[x]"
               :key="x"
               :idx="x"
@@ -177,6 +178,9 @@ export default {
     close() {
       this.user = userService.getLoggedinUser();
       this.$store.commit({ type: "toggleMustLogin", bool: false });
+    },
+    setImg({url,idx}){
+      this.house.imgUrls[idx] = url
     },
     checkAmenities(amenity) {
       if (this.house.amenities.includes(amenity)) {

@@ -34,13 +34,15 @@ export const houseStore = {
     },
     getters: {
         houses({ houses }) {
-            console.log('houses', houses)
-            return houses
+            console.log('houses', Object.values(houses))
+            return Object.values(houses)
         },
     },
     mutations: {
         setHouses(state, { houses }) {
-            state.houses = { ...houses }
+            console.log("A4",houses);
+            state.houses=JSON.parse(JSON.stringify(houses))
+            console.log("A5",state.houses);
         },
         addHouse(state, { house }) {
             state.houses.push(house)
@@ -92,7 +94,7 @@ export const houseStore = {
         async loadHouses({ commit, state }) {
             try {
                 let houses = await houseService.query(state.filterBy)
-                console.log('houses', houses);
+                console.log("A3",houses);
                 commit({ type: 'setHouses', houses })
                 return houses
             } catch (err) {

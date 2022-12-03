@@ -9,7 +9,7 @@
       </div>
     </button>
   </section>
-    <filter-modal @close="toggleFilterModal(false)" v-if="isFilterOpen" />
+    <filter-modal :houses="houses" @close="toggleFilterModal(false)" v-if="isFilterOpen" />
 </template>
 
 <script>
@@ -18,6 +18,9 @@ import filterModal from "./filter-modal.vue";
 import { houseService } from "../services/house-service-local.js";
 
 export default {
+  props:{
+    houses: Array,
+  },
   components: {
     filterBtns,
     filterModal,

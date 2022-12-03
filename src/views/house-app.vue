@@ -1,6 +1,6 @@
 <template>
   <section class="house-app main-container">
-    <house-filter />
+    <house-filter :houses="houses"/>
     <house-list v-if="houses" :houses="houses" />
   </section>
   
