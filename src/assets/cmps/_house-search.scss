@@ -13,8 +13,7 @@
   transition: box-shadow 0.2s ease;
   transition: transform 0.4s ,opacity .3s ease;
   cursor: grab;
-  z-index: 20;
-  // font-family: CerealReg;
+  // z-index: 20;
 
   &.close {
     transform: scaleX(1.56) translateY(80px);

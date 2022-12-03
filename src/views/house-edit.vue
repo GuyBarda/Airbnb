@@ -18,21 +18,21 @@
                 </section>
                 <section class="house-info">
                     <section class="house-name">
-                        <h2><input type="text" placeholder="Stay name"></h2>
+                        <h2><input type="text" v-model="house.name" placeholder="Stay name"></h2>
                         <div>
-                            <p><star-icon style="display: inline;" /> New (0 Reviews)</p>
-                            <p>Adress <input type="text"></p>
+                            <p><star-icon style="display: inline;" />{{rate}}</p>
+                            <p>&#183;Address <input type="text" v-model="house.loc.address"></p>
                         </div>
                     </section>
                     <section class="imgs-container">
-                        <upload-img v-for="x in 5" :key="x" :idx="x" />
+                        <upload-img v-for="x in 5" :img="house.imgUrls[x]" :key="x" :idx="x" />
                     </section>
                     <section class="below-imgs">
                         <div style="display: flex; justify-content: space-between; align-items:center">
                             <label for="capacity">Capacity</label>
-                            <input type="text" name="capacity">
+                            <input type="text" name="capacity" v-model="house.capacity">
                             <label for="stay-type">Stay type:</label>
-                            <select name="stay-type">
+                            <select name="stay-type" :value="house.type">
                                 <option value="entire place">Entire place</option>
                                 <option value="private room">Private room</option>
                                 <option value="shared room">Shared room</option>
@@ -43,11 +43,11 @@
                                 <option value="apartment">Apartment</option>
                                 <!-- <option value="Shared room">Shared room</option> -->
                             </select>
-                            <div>Price: <input style="width:40px" type="text"> /night</div>
+                            <div>Price: <input style="width:40px" type="text" v-model="house.price"> /night</div>
                         </div>
                         <div>
                             <h3>Description</h3>
-                            <textarea></textarea>
+                            <textarea v-model="house.summary"></textarea>
                         </div>
                         <div class="amenities-container">
                             <h3>Amenities</h3>
@@ -57,7 +57,7 @@
                                     <img :src="`/src/assets/svg/amenities/${a.split(' ')[0].toLowerCase()}.svg`"
                                         alt="np" style="width: 1.2em;">
                                     <!-- <img src="../assets/svg/amenities/tv.svg" alt=""> -->
-                                    <label :for="a">{{ a }}</label>
+                                    <label :for="a">{{ a.charAt(0).toUpperCase() + a.slice(1).replaceAll('-',' ') }}</label>
                                 </div>
                             </div>
                         </div>
@@ -81,12 +81,26 @@ export default {
     data() {
         return {
             allAmenities: ['air', 'cooking', 'dedicated', 'free', 'garden', 'kitchen', 'mountain', 'private-hot-tub', 'private-pation', 'smoking', 'tv', 'washer', 'wifi'],
-            house: null,
+            house: {
+                imgUrls: ['','','','',''],
+                loc:{
+                    address: ''
+                }
+            },
         }
     },
     async created() {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
+        console.log('created',typeof this.house.imgUrls);
+    },
+    computed:{
+        rate() {
+            if (this.house.reviews.length === 0) return 'New'
+            let sum = this.house.reviews.reduce((acc, { rate }) => acc += rate, 0)
+            sum /= this.house.reviews.length
+            return `${sum} (${this.house.reviews.length} ${(this.house.reviews.length === 1) ? 'Review' : 'Reviews'})`
+        },
     },
 
     components: {
