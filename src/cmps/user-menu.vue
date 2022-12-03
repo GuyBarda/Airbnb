@@ -2,7 +2,7 @@
   <div class="user-nav" v-if="!isLogin">
     <div class="user-nav-in">
       <a href="#" @click="openLogIn()">Log in</a>
-      <a href="#">Sign up</a>
+      <!-- <a href="#">Sign up</a> -->
       <a href="#/wishList" class="a1">Wish List</a>
       <a href="#/dashboard">Dashboard</a>
       <a>Logout</a>

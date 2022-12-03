@@ -1,10 +1,14 @@
 import { storageService } from './async-storage-service'
+import { utilService } from './utils-service.js';
 // import { httpService } from './http.service'
 import { store } from '../store/store'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket-service'
 import { showSuccessMsg } from './event-bus-service'
+import usersJson from '../../data/users.json' assert {type: 'json'}
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+
+utilService.saveToStorage('user', usersJson);
 
 export const userService = {
     login,
@@ -57,8 +61,9 @@ async function update(user) {
 
 async function login(userCred) {
     console.log('userCred',userCred )
-    
+
     const users = await storageService.query('user')
+    
     const user = users.find(user => user.username === userCred.username)
     // const user = await httpService.post('auth/login', userCred)
     if (user) {
@@ -67,7 +72,7 @@ async function login(userCred) {
     }
 }
 async function signup(userCred) {
-    userCred.score = 10000
+    
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     const user = await storageService.post('user', userCred)
     // const user = await httpService.post('auth/signup', userCred)

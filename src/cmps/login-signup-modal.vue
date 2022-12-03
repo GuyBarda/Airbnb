@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="login" class="login-form" v-if="isLogIn" >
+
     <div class="login-form-body">
       <h1>Welcome to Airbnb</h1>
       <input v-model="cred.username" autocomplete="username" type="text" class="login-input" placeholder="Username"/>
@@ -16,14 +17,9 @@
   <form class="login-form" v-if="!isLogIn">
     <div class="login-form-body">
       <h1>Sign up</h1>
+      <input type="text" class="login-input" name="fullname" placeholder="Full name" />
       <input
-        type="text"
-        class="login-input"
-        name="fullname"
-        placeholder="Full name"
-      />
-      <input
-        autocomplete="password"
+   autocomplete="password"
         name="password"
         class="login-input"
         type="password"
@@ -47,6 +43,7 @@
 
 <script>
 export default {
+  name: 'login-page',
   props: {},
   data() {
     return {
@@ -57,7 +54,9 @@ export default {
         },
     };
   },
-  created() {},
+  created() {
+    
+  },
   methods: {
     openSingUp() {
       if (this.isLogIn) {
@@ -67,11 +66,17 @@ export default {
       }
     },
     async login() {
-      console.log('hey')
-      console.log('this.cred', this.cred)
         await this.$store.dispatch({type: 'login', cred: this.cred});
+        // let user = this.$store.getters.loggedinUser;
+        // console.log('user', user)
         // this.$router.push('/');
       },
+  },
+  computed: {
+    users() {
+      console.log('this.$store.getters.loggedinUser', this.$store.getters.loggedinUser)
+      return this.$store.getters.loggedinUser;
+    },
   },
   components: {},
 };

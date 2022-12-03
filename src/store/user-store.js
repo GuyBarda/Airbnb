@@ -11,18 +11,23 @@ export const userStore = {
         watchedUser: null
     },
     getters: {
-        users({ users }) { return users },
-        loggedinUser({ loggedinUser }) { return loggedinUser },
+        users({ users }) {
+            return users
+        },
+        loggedinUser({ loggedinUser }) {
+            console.log('loggedinUser',loggedinUser)
+            return loggedinUser
+        },
         watchedUser({ watchedUser }) { return watchedUser }
     },
     mutations: {
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
-            state.loggedinUser = (user)? {...user} : null
+            state.loggedinUser = (user) ? { ...user } : null
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user
-        },       
+        },
         setUsers(state, { users }) {
             state.users = users
         },
@@ -36,10 +41,11 @@ export const userStore = {
     actions: {
         async login({ commit }, { cred }) {
             try {
-                console.log('cred',cred )
+                console.log('cred', cred)
                 const user = await userService.login(cred)
-                // commit({ type: 'setLoggedinUser', user })
-                // return user
+                console.log('user', user)
+                commit({ type: 'setLoggedinUser', user })
+                return user
             } catch (err) {
                 console.log('userStore: Error in login', err)
                 throw err
@@ -74,12 +80,12 @@ export const userStore = {
                 console.log('userStore: Error in loadUsers', err)
                 throw err
             }
-        },        
+        },
         async loadAndWatchUser({ commit }, { userId }) {
             try {
                 const user = await userService.getById(userId)
                 commit({ type: 'setWatchedUser', user })
-                
+
             } catch (err) {
                 console.log('userStore: Error in loadAndWatchUser', err)
                 throw err
@@ -114,9 +120,9 @@ export const userStore = {
             }
         },
         // Keep this action for compatability with a common user.service ReactJS/VueJS
-        setWatchedUser({commit}, payload) {
+        setWatchedUser({ commit }, payload) {
             commit(payload)
-        },       
+        },
 
     }
 }

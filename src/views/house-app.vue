@@ -31,7 +31,6 @@ export default {
   },
   computed: {
     houses() {
-      console.log('this.$store.getters.houses',this.$store.getters.houses )
       return this.$store.getters.houses;
     },
   },

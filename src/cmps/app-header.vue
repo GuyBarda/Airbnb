@@ -18,8 +18,9 @@
       <div class="user-menu-btn" @click="toggleUserMenu()">
         <button>
           <img class="menu-btn" src="	https://air2be.onrender.com/assets/menu.67879f9a.svg">
-          <img class="host-image"
-            src="https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png">
+          <img v-if="!user" class="host-image" 
+           src="https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png">
+          <img v-else class="host-image" :src="user.imgUrl">
         </button>
       </div>
 
@@ -47,6 +48,7 @@ export default {
   },
   data() {
     return {
+      logInUser: {},
       isMenu: false,
       currZone: "",
       currDest: '',
@@ -92,10 +94,15 @@ export default {
     },
     goToHome() {
       this.$router.push('/')
-    }
-
+    },
+    
   },
   computed: {
+    user() {
+      console.log('hey',this.$store.getters.loggedinUser)
+        return this.$store.getters.loggedinUser
+      
+    },
     getDest() {
       return this.currDest
     },
@@ -108,7 +115,8 @@ export default {
     whichLayout() {
       const layout = this.$route.path.split('/')[1]
       return layout === 'house' ? 'secondary-container' : 'main-container'
-    }
+    },
+    
   },
 }
 
