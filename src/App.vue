@@ -6,7 +6,8 @@
     class="dark-site"
     :class="{ open: isOpen}"
   ></section> -->
-  <section @click="toggleSearch" class="dark-site" :class="{ open: isOpen || isOrderComplete || isFilterOpen,search: isOpen}"></section>
+  <section @click="toggleSearch" class="dark-site"
+    :class="{ open: isOpen || isOrderComplete || isFilterOpen, search: isOpen }"></section>
 
 </template>
 
@@ -27,11 +28,11 @@ export default {
     toggleSearch() {
       this.$store.commit({ type: "toggleSearch", bool: false });
       this.$store.commit({ type: "toggleSuccessModal", bool: false });
-      this.$store.commit({type: "toggleFilterModal", bool: false})
+      this.$store.commit({ type: "toggleFilterModal", bool: false })
     },
   },
   computed: {
-    isFilterOpen(){
+    isFilterOpen() {
       return this.$store.getters.isFilterOpen
     },
     isOpen() {
