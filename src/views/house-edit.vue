@@ -80,7 +80,7 @@ import {houseService} from '../services/house-service-local.js'
 export default {
     data() {
         return {
-            allAmenities: ['air', 'cooking', 'dedicated', 'free', 'garden', 'kitchen', 'mountain', 'private-hot-tub', 'private-pation', 'smoking', 'tv', 'washer', 'wifi']
+            allAmenities: ['air', 'cooking', 'dedicated', 'free', 'garden', 'kitchen', 'mountain', 'private-hot-tub', 'private-pation', 'smoking', 'tv', 'washer', 'wifi'],
             house: null,
         }
     },
