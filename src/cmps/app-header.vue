@@ -1,10 +1,11 @@
 <template>
-  <header class="main-header main-container full" :class="whichLayout">
-    <div class="logo">
+  <header class="main-header full" :class="whichLayout">
+    <div @click="goToHome" class="logo">
       <img src="../assets/svg/logo.svg" alt="" />
     </div>
 
-    <app-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }" @click="toggleSearch($event,key)" />
+    <app-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"
+      @click="toggleSearch($event, key)" />
     <search-modal @setDate="setDate" @setDest="setDest" @updateZone="openZone" :zone="zone" :class="{ open: isOpen }" />
 
     <div class="user">
@@ -53,11 +54,11 @@ export default {
     };
   },
   methods: {
-    setDate(str){
+    setDate(str) {
       this.currDate = str
     },
-    setDest(val){
-      this.currDest=val
+    setDest(val) {
+      this.currDest = val
     },
     openZone(key) {
       this.currZone = key;
@@ -88,11 +89,14 @@ export default {
       } else {
         this.isMenu = false
       }
+    },
+    goToHome() {
+      this.$router.push('/')
     }
 
   },
   computed: {
-    getDest(){
+    getDest() {
       return this.currDest
     },
     zone() {

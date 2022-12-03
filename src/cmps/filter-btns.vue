@@ -1,5 +1,5 @@
 <template>
-  <carousel class="carousel" :items-to-show="13">
+  <carousel class="carousel" :itemsToScroll="5" :items-to-show="13">
     <slide v-for="slide in btns" :key="slide">
             <div @click="setSort(slide.key)">
                 <img class="img-btn" :src="slide.url" alt="" width="24" height="24">
