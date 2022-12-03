@@ -50,15 +50,19 @@
             gap: 10px;
 
             div{
-                width: 103px;
                 background-color: white;
                 border-radius: 10px;
                 padding: 10px;
                 display: grid;
                 align-items: center;
+                flex-basis: calc(900px/3);
+                
+                &:not(:last-child){
+                    flex: 1;
+                }
 
                 &:last-child{
-                    flex: 1;
+                    flex: 3;
                 }
             }
 
@@ -80,6 +84,7 @@
                     display: flex;
                  }
             }
+
             .imgs-container {
                 display: grid;
                 grid-template: 1fr 1fr / 2fr 1fr 1fr;
