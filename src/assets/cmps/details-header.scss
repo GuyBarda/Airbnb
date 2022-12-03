@@ -1,15 +1,16 @@
 .details-header {
     font-family: CerealReg;
     border-bottom: 1px solid rgba(169, 166, 166, 0.3607843137);
-    // display: none;
-    position: sticky;
-    top: 0;
+    display: none;
     background-color: #fff;
     z-index: 1;
+    transition: all 0.3s;
 
-    // &:has() {
-    //     opacity: 1;
-    // }
+    &.sticky {
+        display: grid;
+        position: fixed;
+        top: 0;
+    }
 
     section {
         display: flex;

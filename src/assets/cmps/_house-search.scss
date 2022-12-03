@@ -5,15 +5,16 @@
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 40px;
-  height: 48px;
-  width: 355px;
-  padding: 5px;
+  // height: 48px;
+  // width: 355px;
+  padding: 5px 15px;
   opacity: 1;
   box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
   transition: box-shadow 0.2s ease;
   transition: transform 0.4s ,opacity .3s ease;
   cursor: grab;
   z-index: 20;
+  // font-family: CerealReg;
 
   &.close {
     transform: scaleX(1.56) translateY(80px);
@@ -23,6 +24,7 @@
 
   > * {
     cursor: grab;
+
   }
 
   .main-search {
@@ -43,10 +45,26 @@
     .search-btn {
       background-color: transparent;
     }
-    button:not(:last-child) {
-      font-weight: bold;
+    button {
+      padding-inline: 16px ;
+      color: #222222;
+      font-size: em(14px, 16px);
+      font-weight: 600;
+      font-family: inherit;
+      
+      &:last-child {
+        color: #717171;
+        font-weight: 400;
+      }
     }
   }
+
+  .start-search {
+    padding-inline: 15px;
+    margin-right: 80px;
+    font-size: em(14px, 16px);
+  }
+
   .little-search-icon {
     display: flex;
     align-items: center;
