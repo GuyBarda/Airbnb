@@ -14,25 +14,15 @@
     </div>
   </form>
 
-  <form class="login-form" v-if="!isLogIn">
+  <form @submit.prevent="signup" class="login-form" v-if="!isLogIn">
     <div class="login-form-body">
       <h1>Sign up</h1>
-      <input type="text" class="login-input" name="fullname" placeholder="Full name" />
-      <input
-   autocomplete="password"
-        name="password"
-        class="login-input"
-        type="password"
-        placeholder="Password"
-      />
-      <input
-        autocomplete="username"
-        type="text"
-        class="login-input"
-        name="username"
-        placeholder="Username"
-      />
-     
+      <input type="text" class="login-input" ref="fullname" v-model="signupCred.fullname" placeholder="Full name" />
+
+      <input autocomplete="username" type="text" v-model="signupCred.username" class="login-input" name="username" placeholder="Username"/>
+
+      <input autocomplete="password" name="password" v-model="signupCred.password" class="login-input" type="password" placeholder="Password" />
+      
       <button class="login-btn" type="submit">Sign up</button>
       <div class="login-actions-btns flex">
         <button type="button" class="actions-btn" @click="openSingUp()" > I already have an account</button>
@@ -52,6 +42,11 @@ export default {
           username: '',
           password: '',
         },
+        signupCred: {
+        fullname: '',
+        username: '',
+        password: '',
+      },
     };
   },
   created() {
@@ -66,11 +61,13 @@ export default {
       }
     },
     async login() {
-        await this.$store.dispatch({type: 'login', cred: this.cred});
-        // let user = this.$store.getters.loggedinUser;
-        // console.log('user', user)
-        // this.$router.push('/');
+      await this.$store.dispatch({type: 'login', cred: this.cred});
+      this.$emit("closeModal");
       },
+    async signup() {
+     await this.$store.dispatch({type: 'signup', cred: this.signupCred});
+     this.$emit("closeModal");
+    },
   },
   computed: {
     users() {

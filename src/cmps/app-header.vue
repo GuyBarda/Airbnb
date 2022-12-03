@@ -101,7 +101,6 @@ export default {
     user() {
       console.log('hey',this.$store.getters.loggedinUser)
         return this.$store.getters.loggedinUser
-      
     },
     getDest() {
       return this.currDest
