@@ -5,7 +5,9 @@
   // justify-content: space-between;
   // height: 64px;
   position: relative;
-  // z-index: 21;
+  // position: fixed;
+  z-index: 21;
+  background-color: #fff;
 
   border-bottom: 1px solid #a9a6a65c;
   font-family: CerealReg;
