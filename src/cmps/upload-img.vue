@@ -1,5 +1,6 @@
 <template>
     <section
+    :style="background"
         class="img-upload"
         :class="{ 'drag-zone': isDragover }"
         @drop.prevent="handleFile"
@@ -7,7 +8,7 @@
         @dragleave="isDragover = false"
     >
         <label v-if="!isLoading" :class="{ drag: isDragover }">
-            <p>Upload Image</p>
+            <p v-if="!this.img">Upload Image</p>
             <input type="file" @change="handleFile" hidden />
         </label>
         <!-- <img v-else src="../assets/loader.gif" alt="" /> -->
@@ -20,6 +21,7 @@ import { uploadImg } from '../services/upload-service.js'
 export default {
     name: 'img-upload',
     props: {
+        img: String,
         idx: Number,
     },
     // components: { uploadIcon },
@@ -53,8 +55,14 @@ export default {
     },
     computed:{
         background(){
-            if(this.imgUrls[this.idx]) return this.imgUrls[this.idx]
-            return 'background-color: lightgray'
+            console.log(this.img);
+            // if(this.img) 
+            return {
+                'background-image': `url(${this.img})`,
+                'background-repeat': 'no-repeat',
+                'background-size': 'cover',
+            }
+            // return 'background-color: lightgray'
         }
     }
 }
