@@ -7,10 +7,11 @@
                 <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
             </div>
         </div>
-        <div class="imgs-container" id="photos">
+        <div ref="imgsContainer" class="imgs-container" id="photos">
             <img v-for="img in house.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
         </div>
-        <details-header :house="house" />
+
+        <details-header :sticky="getSticky" :house="house" />
 
         <div class="house-info">
             <section class="content">
@@ -148,13 +149,23 @@ export default {
             cleaningFee: 0,
             serviceFee: 0,
             amenitiesSrc: [],
-            showMore: false
+            showMore: false,
+            sticky: false
         }
     },
     async created() {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
         this.order = orderService.getEmptyOrder()
+    },
+    mounted() {
+        setTimeout(() => {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => this.sticky = !entry.isIntersecting)
+            })
+            const imgsContainer = this.$refs.imgsContainer;
+            observer.observe(imgsContainer)
+        }, 1000);
     },
     methods: {
         addOrder() {
@@ -207,11 +218,10 @@ export default {
         formattedTotal() {
             return this.format(this.serviceFee + this.cleaningFee + (this.totalDays() * this.house.price))
         },
-        getSrcSvg() {
-            return
-        },
-        setBorderRadius() {
+        getSticky() {
+            return this.sticky
         }
+
     },
     components: {
         star,
