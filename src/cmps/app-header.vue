@@ -55,6 +55,13 @@ export default {
       currDate: '',
     };
   },
+  async created() {
+    try {
+      await this.$store.getters.loggedinUser
+    } catch {
+      console.log("cant load");
+    }
+  },
   methods: {
     setDate(str) {
       this.currDate = str
