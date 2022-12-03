@@ -75,16 +75,16 @@
 import starIcon from '../assets/svg/star.vue'
 import plusIcon from '../assets/svg/plus.vue'
 import uploadImg from '../cmps/upload-img.vue'
-import {houseService} from '../services/house-service-local.js'
+import { houseService } from '../services/house-service-local.js'
 
 export default {
     data() {
         return {
-            allAmenities: ['air', 'cooking', 'dedicated', 'free', 'garden', 'kitchen', 'mountain', 'private-hot-tub', 'private-pation', 'smoking', 'tv', 'washer', 'wifi']
+            allAmenities: ['air', 'cooking', 'dedicated', 'free', 'garden', 'kitchen', 'mountain', 'private-hot-tub', 'private-pation', 'smoking', 'tv', 'washer', 'wifi'],
             house: null,
         }
     },
-    async created(){
+    async created() {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
     },
