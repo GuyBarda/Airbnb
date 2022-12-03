@@ -137,7 +137,7 @@
                     }
                 }
 
-                > * {
+                > *:not(:last-child) {
                     padding-block: 20px;
                     border-bottom: 1px solid rgb(215, 215, 215);
 
@@ -162,6 +162,20 @@
                 }
             }
             
+        }
+        .confirm-area{
+            padding-top: 20px;
+            display: flex;
+            justify-content: end;
+            .confirm-btn{
+                padding: 10px 40px;
+                border-radius: 5px;
+                border: 0;
+                background-color: #ff385c;
+                font-family: CerealMd;
+                letter-spacing: 0.5px;
+                color: white;
+            }
         }
     }
 }

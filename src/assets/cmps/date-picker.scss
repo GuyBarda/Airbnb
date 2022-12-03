@@ -14,6 +14,9 @@
         font-weight: bold;
     }
 
+    .el-date-editor, .el-date-editor.el-input__wrapper{
+        width: 200px !important;
+    }
     .el-date-range-picker__content{
         padding: 0 !important;
     }

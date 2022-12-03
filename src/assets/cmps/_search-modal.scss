@@ -86,6 +86,23 @@
                 cursor: pointer !important;
                 height: 100% !important;
                 border-radius: 5em !important;
+                width: 230px !important;
+                padding: 0 !important;
+                padding-bottom: 10px !important;
+
+                .el-range-input{
+                    width: 50%;
+                    height: 100%;
+                }
+                // .el-range-input:nth-child(4){
+                //     display: none;
+                // }
+                .el-range-separator{
+                    display: none !important;
+                }
+                .el-icon{
+                    display: none;
+                }
             }
         }
 
