@@ -1,6 +1,4 @@
 .house-details {
-    
-
     font-family: 'CerealReg' ;
     color: $clr-details-text;
 
@@ -81,6 +79,19 @@
             height: 100%;
             color: #222222;
             object-fit: cover;
+        }
+
+        &.true {
+            .details-header {
+                position: fixed;
+                opacity: 1;
+            }
+        }
+        &.false {
+            .details-header {
+                position: relative;
+                opacity: 0;
+            }
         }
     }
     .house-info {
