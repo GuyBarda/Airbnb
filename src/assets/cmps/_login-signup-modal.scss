@@ -1,0 +1,70 @@
+.login-form {
+  background-color: #fff;
+  max-width: 401px;
+  height: 38vh;
+  position: fixed;
+  z-index: 1000000000000000000000000000;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, 10%);
+  width: 100%;
+  box-shadow: rgb(0 0 0 / 28%) 0 8px 28px;
+  border-radius: 31px;
+  overflow: hidden;
+  margin-top: 180px;
+
+  .login-form-body {
+    text-align: center;
+    padding-inline: 40px;
+    padding-bottom: 15px;
+    flex-direction: column;
+    display: flex;
+    h1 {
+      padding: 10px;
+      font-size: 1.625em;
+      font-family: Cereal-medium, Helvetica, sans-serif;
+      letter-spacing: 1px;
+    }
+    .login-input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #b6b6b6;
+      border-radius: 13px;
+      margin: 5px 5px 5px 0;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+    .login-input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #b6b6b6;
+      border-radius: 13px;
+      margin: 5px 5px 5px 0;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+    .login-btn {
+      border: none;
+      width: 100%;
+      background-color: #ff385c;
+      padding: 15px;
+      margin: 13px 0;
+      border-radius: 13px;
+      color: #fff;
+      font-weight: 600;
+      font-family: airbnb-regular, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    .login-actions-btns {
+      display: flex;
+      justify-content: center;
+    }
+    .actions-btn {
+      border: none;
+      font-size: 1rem;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+}

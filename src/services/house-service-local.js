@@ -79,7 +79,7 @@ function _createHouse(title, price) {
 }
 
 function _filter(filterBy) {
-    const { name, labels, Amenities, PropertyType, maxPrice, minPrice } = filterBy
+    const { name, labels, Amenities, type, maxPrice, minPrice, destination, guests } = filterBy
 
     console.log('filterBy',filterBy )
 
@@ -97,10 +97,23 @@ function _filter(filterBy) {
     
     if (Amenities && Amenities.length) {
         filteredHouses = filteredHouses.filter((house) => {
-            return labels.some((l) => house.labels.includes(l))
+            return Amenities.some((a) => house.amenities.includes(a))
         })
     }
 
+    if (type && type.length) {
+        filteredHouses = filteredHouses.filter((house) => {
+            return type.some((t) => house.type.includes(t))
+        })
+    }
+
+    if (destination && destination.length) {
+        filteredHouses = filteredHouses.filter((house) => house.loc.country === destination)
+    }
+
+    if (guests) {
+        filteredHouses = filteredHouses.filter((house) => house.capacity >= guests)
+    }
 
     const searchMin = (minPrice) ? minPrice : 0
     filteredHouses = filteredHouses.filter(house => {

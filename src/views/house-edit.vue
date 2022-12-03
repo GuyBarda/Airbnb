@@ -75,7 +75,7 @@
 import starIcon from '../assets/svg/star.vue'
 import plusIcon from '../assets/svg/plus.vue'
 import uploadImg from '../cmps/upload-img.vue'
-import {houseService} from '../services/house-service-local.js'
+import { houseService } from '../services/house-service-local.js'
 
 export default {
     data() {
@@ -84,7 +84,7 @@ export default {
             house: null,
         }
     },
-    async created(){
+    async created() {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
     },

@@ -132,6 +132,15 @@ export default {
   },
   methods: {
     setSearch() {
+<<<<<<< HEAD
+      this.filterBy.guests = Object.values(this.filterBy.guests).reduce(
+        (v, c) => v + c,
+        0
+      );
+      
+      this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
+      this.$store.dispatch({ type: "loadHouses" });
+=======
       this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
       const {adults,children,pets,infants} = this.filterBy.guests
       const sum = adults + children + pets + infants
@@ -143,6 +152,7 @@ export default {
         window.location.pathname +
         queryStringParams;
       window.history.pushState({ path: newUrl }, "", newUrl);
+>>>>>>> 9116c125941e7b4983c5003865e913bd3248ed75
     },
     openZone(val) {
       this.isSelect = val;

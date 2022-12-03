@@ -33,18 +33,21 @@ export const houseStore = {
         filterBy: {}
     },
     getters: {
-        houses({houses}) { return houses },
+        houses({ houses }) {
+            console.log('houses', houses)
+            return houses
+        },
     },
     mutations: {
         setHouses(state, { houses }) {
-            state.houses = {...houses} 
+            state.houses = { ...houses }
         },
         addHouse(state, { house }) {
             state.houses.push(house)
         },
-        setFilter(state,{filterBy}){
+        setFilter(state, { filterBy }) {
             console.log('filterBy', filterBy)
-            state.filterBy = {...JSON.parse(JSON.stringify(filterBy))}
+            state.filterBy = { ...state.filterBy, ...JSON.parse(JSON.stringify(filterBy)) }
             console.log('state.filterBy', state.filterBy)
         },
         updateHouse(state, { house }) {
@@ -54,14 +57,14 @@ export const houseStore = {
         removeHouse(state, { houseId }) {
             state.houses = state.houses.filter(house => house._id !== houseId)
         },
-        addHouseMsg(state, { houseId , msg}) {
+        addHouseMsg(state, { houseId, msg }) {
             const house = state.houses.find(house => house._id === houseId)
             if (!house.msgs) house.msgs = []
             house.msgs.push(msg)
         },
     },
     actions: {
-        setFilter({ commit, dispatch }, { filterBy }){
+        setFilter({ commit, dispatch }, { filterBy }) {
             commit({ type: 'setFilter', filterBy })
             dispatch({ type: 'loadHouses' })
             // state.filterBy = {...filterBy,...state.filterBy}
@@ -89,7 +92,7 @@ export const houseStore = {
         async loadHouses({ commit, state }) {
             try {
                 let houses = await houseService.query(state.filterBy)
-                console.log('houses',houses);
+                console.log('houses', houses);
                 commit({ type: 'setHouses', houses })
                 return houses
             } catch (err) {
@@ -109,12 +112,12 @@ export const houseStore = {
         async addHouseMsg(context, { houseId, txt }) {
             try {
                 const msg = await houseService.addHouseMsg(houseId, txt)
-                context.commit({type: 'addHouseMsg', houseId, msg })
+                context.commit({ type: 'addHouseMsg', houseId, msg })
             } catch (err) {
                 console.log('houseStore: Error in addHouseMsg', err)
                 throw err
             }
         },
-        
+
     }
 }

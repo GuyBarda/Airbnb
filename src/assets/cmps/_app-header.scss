@@ -8,6 +8,7 @@
   z-index: 21;
 
   border-bottom: 1px solid #a9a6a65c;
+  font-family: CerealReg;
 
   button {
     border: 0;
@@ -22,6 +23,7 @@
     justify-self: end;
     justify-content: center;
     align-items: center;
+    font-family: CerealReg, Arial, sans-serif;
     // padding-right: 10px;
     .become-host {
       // font-family: Cereal-medium;
@@ -29,6 +31,7 @@
       cursor: pointer;
       background-color: transparent;
       height: fit-content;
+      font-family: Circular, Arial, sans-serif;
     }
     .explore-btn {
       display: flex;
