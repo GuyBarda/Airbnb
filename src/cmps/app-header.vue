@@ -1,7 +1,8 @@
 <template>
   <header class="main-header full" :class="whichLayout">
+    
     <div @click="goToHome" class="logo">
-      <img src="../assets/svg/logo.svg" alt="" />
+      <img src="../assets/svg/logo.svg" alt="" /> 
     </div>
 
     <app-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"

@@ -6,6 +6,11 @@
                 <review-average :reviews="house.reviews" />·
                 <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
             </div>
+            <div>
+                <span>
+                    
+                </span>
+            </div>
         </div>
         <div ref="imgsContainer" class="imgs-container" id="photos">
             <img v-for="img in house.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
