@@ -1,8 +1,7 @@
 [
     {
         "_id": "10006546",
-        "name": "Ribeira Charming Duplex",
-        "type": "House",
+        "name": "Ribeira Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-4.jpg",
@@ -12,7 +11,7 @@
         ],
         "price": 80,
         "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
-        "capacity": 8,
+        "capacity": 3,
         "createdAt": 1665869599000,
         "amenities": [
             "Garden view",
@@ -32,6 +31,7 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
+        "type": ["place"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -72,7 +72,6 @@
     {
         "_id": "10006536",
         "name": "Ribeira Charming Duplex",
-        "type": "House",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-4.jpg",
@@ -102,6 +101,7 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
+        "type": ["place"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -152,7 +152,6 @@
     {
         "_id": "10006746",
         "name": "Ribeira Charming Duplex",
-        "type": "House",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-4.jpg",
@@ -182,6 +181,7 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
+        "type": ["place"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -232,7 +232,6 @@
     {
         "_id": "10006446",
         "name": "Ribeira Charming Duplex",
-        "type": "House",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-4.jpg",
@@ -262,6 +261,7 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
+        "type": ["Entir"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -292,7 +292,6 @@
     {
         "_id": "10006546",
         "name": "Ribeira Charming Duplex",
-        "type": "House",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-4.jpg",
@@ -322,6 +321,7 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
+        "type": ["Entire place"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -362,7 +362,6 @@
     {
         "_id": "10006536",
         "name": "Ribeira Charming Duplex",
-        "type": "House",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-4.jpg",
@@ -392,6 +391,7 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
+        "type": ["Entire"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -442,7 +442,6 @@
     {
         "_id": "10006746",
         "name": "Ribeira Charming Duplex",
-        "type": "House",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-4.jpg",
@@ -472,13 +471,14 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
+        "type": ["place"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
             "imgUrl": "https://a0.muscache.com/im/pictures/user/cd62972a-95b4-4ed7-9e44-81d9dc6ed4fa.jpg?im_w=240"
         },
         "loc": {
-            "country": "Portugal",
+            "country": "France",
             "countryCode": "PT",
             "city": "Porto",
             "address": "17 Kombo st",
@@ -522,7 +522,6 @@
     {
         "_id": "10006446",
         "name": "Ribeira Charming Duplex",
-        "type": "House",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652885/cld-sample-4.jpg",
@@ -552,6 +551,7 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
+        "type": ["Entire place"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",

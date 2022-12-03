@@ -13,8 +13,9 @@
      <div class="form-price">
        <h2>Price range</h2>
        <p>The average nightly price is $206</p>
-       <!-- <chart></chart> -->
-       
+
+       <!-- <histogramSlider/> -->
+
       <div class="form-inputs">
           <div class="price-inner">
             <label for="min">min price</label>
@@ -76,15 +77,17 @@
     <div class="form-rooms-and-beds">
         <h2>Rooms and beds</h2>
         <h3>BedRooms</h3>
+
         <div id="row1">
           <button class="btn-btn">Any</button>
-          <button class="btn-btn" @click="setRoomsBeds('bedrooms', num)" v-for="num in 8" :key="num" > {{ num }}</button>
+          <button class="btn-btn " @click="setRoomsBeds('bedrooms', num)" v-for="num in 8" :key="num" > {{ num }}</button>
        </div>
         
         <div id="row2">
           <h3>beds</h3>
           <button class="btn-btn">Any</button>
-          <button class="btn-btn" @click="setRoomsBeds('beds', num ,$event, 'row2')" v-for="num in 8" :key="num" >{{ num }}</button>
+        
+       <button class="btn-btn btn-row2" @click="setRoomsBeds('beds', num ,$event, 'row2')" v-for="num in 8" :key="num" >{{ num }} </button> 
       </div>
       
       <div id="row3">
@@ -190,8 +193,12 @@
     
   </template>
 <script>
+// import histogramSlider from './histogram-slider.vue'
+
 export default {
-  components: {},
+  components: {
+    // histogramSlider
+  },
   data() {
     return {
       filterBy: {
@@ -217,10 +224,11 @@ export default {
       this.$store.dispatch({ type: 'loadHouses' })
     },
     setRoomsBeds(key, num ,ev,id) {
-    // let val = document.getElementById(id).children
+    
+    console.log('ev',ev )
     ev.target.classList.toggle('selected')
 
-      this.filterBy.roomsBeds[key] = num;
+    this.filterBy.roomsBeds[key] = num;
       
     },
     setPropertyType(key) {
@@ -231,4 +239,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

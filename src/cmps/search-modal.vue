@@ -7,8 +7,9 @@
         class="search-zone destination"
       >
         <label>Where</label>
-        <input class="dest-input"
-        :class="{set: filterBy.destination}"
+        <input
+          class="dest-input"
+          :class="{ set: filterBy.destination }"
           type="text"
           v-model="filterBy.destination"
           placeholder="Search destinations"
@@ -27,8 +28,8 @@
         >
           <label>Check in</label>
           <input
-          :class="{set: formattedStartDate}"
-          :value="formattedStartDate"
+            :class="{ set: formattedStartDate }"
+            :value="formattedStartDate"
             class="date-input"
             type="text"
             placeholder="Add dates"
@@ -52,8 +53,8 @@
         >
           <label>Check out</label>
           <input
-          :class="{set: formattedEndDate}"
-          :value="formattedEndDate"
+            :class="{ set: formattedEndDate }"
+            :value="formattedEndDate"
             class="date-input"
             type="text"
             placeholder="Add dates"
@@ -61,7 +62,7 @@
           />
         </div>
       </section>
-            <span></span>
+      <span></span>
 
       <div
         @click.prevent="openZone('Who')"
@@ -71,7 +72,7 @@
         <label>Who</label>
         <input
           :value="guestsCount"
-          :class="{set: guestsCount}"
+          :class="{ set: guestsCount }"
           class="guest-input"
           type="text"
           placeholder="Add guests"
@@ -94,8 +95,7 @@ import reactiveBtn from "./reactive-btn.vue";
 import destinationModal from "./destination-modal.vue";
 import datePicker from "./date-picker.vue";
 import guestsModal from "./guests-modal.vue";
-import { ref } from 'vue'
-
+import { ref } from "vue";
 
 export default {
   props: {
@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       isSelect: "",
-      dates: ref(''),
+      dates: ref(""),
       filterBy: {
         destination: "",
         dates: {
@@ -131,8 +131,14 @@ export default {
     }
   },
   methods: {
-    setSearch(){
-      this.$store.commit({type: 'setFilter', filterBy: {...this.filterBy}})
+    setSearch() {
+      this.filterBy.guests = Object.values(this.filterBy.guests).reduce(
+        (v, c) => v + c,
+        0
+      );
+      
+      this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
+      this.$store.dispatch({ type: "loadHouses" });
     },
     openZone(val) {
       this.isSelect = val;
@@ -140,37 +146,50 @@ export default {
     },
     setDestination(dest) {
       this.filterBy.destination = dest;
-      this.$emit('setDest',dest)
+      this.$emit("setDest", dest);
     },
     setGuests(guests) {
       this.filterBy.guests = { ...guests };
     },
-    setDates(dates){
-      this.filterBy.dates.start = this.dates["0"]
-      this.filterBy.dates.end = this.dates["1"]
-      let str = this.formattedStartDate + ' - ' + this.formattedEndDate
+    setDates(dates) {
+      this.filterBy.dates.start = this.dates["0"];
+      this.filterBy.dates.end = this.dates["1"];
+      let str = this.formattedStartDate + " - " + this.formattedEndDate;
       console.log(str);
-      this.$emit('setDate',str)
-    }
+      this.$emit("setDate", str);
+    },
   },
   computed: {
     guestsCount() {
-      const {adults,children,infants,pets} = this.filterBy.guests
-      let str = adults || children ? `${adults + children} ${adults + children !== 1 ? 'guests' : 'guest'},` : ''
-      str += infants ? ` ${infants} ${infants !== 1 ? 'infants': 'infant'},` : ''
-      str += pets ? ` ${pets} ${pets !== 1 ? 'pets' : 'pet'}` : ''
-      return str
+      const { adults, children, infants, pets } = this.filterBy.guests;
+      let str =
+        adults || children
+          ? `${adults + children} ${
+              adults + children !== 1 ? "guests" : "guest"
+            },`
+          : "";
+      str += infants
+        ? ` ${infants} ${infants !== 1 ? "infants" : "infant"},`
+        : "";
+      str += pets ? ` ${pets} ${pets !== 1 ? "pets" : "pet"}` : "";
+      return str;
     },
-    formattedStartDate(){
-        let date = new Date(this.filterBy.dates.start).toLocaleDateString('en-us', { month:"short", day:"numeric"}) 
-        if(date === 'Invalid Date') return ''
-        return date
+    formattedStartDate() {
+      let date = new Date(this.filterBy.dates.start).toLocaleDateString(
+        "en-us",
+        { month: "short", day: "numeric" }
+      );
+      if (date === "Invalid Date") return "";
+      return date;
     },
-    formattedEndDate(){
-        let date = new Date(this.filterBy.dates.end).toLocaleDateString('en-us', { month:"short", day:"numeric"}) 
-        if(date === 'Invalid Date') return ''
-        return date
-    }
+    formattedEndDate() {
+      let date = new Date(this.filterBy.dates.end).toLocaleDateString("en-us", {
+        month: "short",
+        day: "numeric",
+      });
+      if (date === "Invalid Date") return "";
+      return date;
+    },
   },
   components: {
     reactiveBtn,

@@ -3,16 +3,18 @@
     <house-filter />
     <house-list v-if="houses" :houses="houses" />
   </section>
+  
 </template>
 
 <script>
 import houseFilter from "../cmps/house-filter.vue";
-import houseList from "../cmps/house-list.vue";
+import houseList from "../cmps/house-list.vue" ;
 
 export default {
   components: {
     houseFilter,
     houseList,
+    
   },
   data() {
     return {
@@ -29,6 +31,7 @@ export default {
   },
   computed: {
     houses() {
+      console.log('this.$store.getters.houses',this.$store.getters.houses )
       return this.$store.getters.houses;
     },
   },
