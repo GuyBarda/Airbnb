@@ -182,8 +182,12 @@
 
     &.open {
         display: block;
+        &.must{
+            pointer-events: none;
+        }
     }
     &.search{
         top: 80px;
     }
+
 }

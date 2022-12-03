@@ -390,7 +390,7 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["Entire"],
+        "type": ["private room"],
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -538,7 +538,6 @@
             "Wifi",
             "Free parking on premises",
             "TV",
-
             "Cooking basics",
             "Dedicated workspace",
             "Washer",

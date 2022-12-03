@@ -30,9 +30,29 @@ function getById(id) {
 
 function getEmptyhouse() {
     return {
-        title: '',
-        price: '',
-        reviews: [],
+        "name": "",
+        "imgUrls": [],
+        "price": 0,
+        "summary": "",
+        "capacity": 0,
+        "amenities": [],
+        "roomsAndBeds": {
+            "beds": 0,
+            "bedrooms": 0,
+            "Bathrooms": 0
+        },
+        "labels": [],
+        "type": [],
+        "loc": {
+            "country": "",
+            "countryCode": "",
+            "city": "",
+            "address": "",
+            "lat": 0,
+            "lng": 0
+        },
+        "reviews": [],
+        "likedByUsers": []
     };
 }
 

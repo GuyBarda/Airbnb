@@ -7,7 +7,7 @@
     :class="{ open: isOpen}"
   ></section> -->
   <section @click="toggleSearch" class="dark-site"
-    :class="{ open: isOpen || isOrderComplete || isFilterOpen, search: isOpen }"></section>
+    :class="{ open: isOpen || isOrderComplete || isFilterOpen || isMustLogin, search: isOpen , must: isMustLogin}"></section>
 
 </template>
 
@@ -36,10 +36,14 @@ export default {
       console.log(ev)
       this.$store.commit({ type: "toggleSearch", bool: false });
       this.$store.commit({ type: "toggleSuccessModal", bool: false });
-      this.$store.commit({ type: "toggleFilterModal", bool: false })
+      this.$store.commit({ type: "toggleFilterModal", bool: false });
+      this.$store.commit({ type: "toggleMustLogin", bool: false });
     },
   },
   computed: {
+    isMustLogin(){
+      return this.$store.getters.isMustLogin
+    },
     isFilterOpen() {
       return this.$store.getters.isFilterOpen
     },
