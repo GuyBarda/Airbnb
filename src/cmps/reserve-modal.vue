@@ -6,30 +6,31 @@
                 <review-average :reviews="house.reviews" />
             </header>
             <div class="picker-container">
-                <div class="check-in">
+                <div @click="(showDatePicker = true)" class="check-in">
                     <label for="check-in">CHECK-IN</label>
-                    <input type="text" placeholder="MM/DD/YYYY" v-model="order.startDate">
+                    <input type="text" placeholder="MM/DD/YYYY" :value="formatedStartDate">
                     <!-- <button v-if="order.startDate" @click="order.startDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
                     </button> -->
                 </div>
-                <div class="check-out">
+                <div @click="(showDatePicker = true)" class="check-out">
                     <label for="check-out">CHECK-OUT</label>
-                    <input type="text" placeholder="MM/DD/YYYY" v-model="order.endDate">
+                    <input type="text" placeholder="MM/DD/YYYY" :value="formatedEndDate">
                     <!-- <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
                     </button> -->
                 </div>
-                <div class="guests">
+                <div @click="(showGuestPicker = true)" class="guests">
                     <label for="guests">GUESTS</label>
                     <p>{{ order.guests.adults }} guest</p>
                     <!-- <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
                     </button> -->
+                    <!-- <guests-modal v-if="showGuestPicker"></guests-modal> -->
                 </div>
+
             </div>
             <button @mousemove="hoverEffect" class="btn-reserve">Reserve</button>
-            <!-- <reactive-btn :text="'Reserve'" /> -->
 
             <div style="display: flex; gap: 25px; flex-direction: column;" v-if="(order.startDate && order.endDate)">
                 <p style="text-align: center;">You won't be charged yet</p>
@@ -55,6 +56,7 @@ import { orderService } from '../services/order-service-local.js'
 
 import reviewAverage from '../cmps/review-average.vue'
 import reactiveBtn from './reactive-btn.vue'
+import guestsModal from './guests-modal.vue'
 
 
 export default {
@@ -66,12 +68,15 @@ export default {
             order: null,
             cleaningFee: 0,
             serviceFee: 0,
-            amenitiesSrc: []
+            amenitiesSrc: [],
+            showDatePicker: false,
+            showGuestPicker: false
         }
     },
     async created() {
         const { id } = this.$route.params
         this.order = orderService.getEmptyOrder()
+        console.log(this.order)
     },
     methods: {
         addOrder() {
@@ -92,6 +97,11 @@ export default {
             });
             return formatter.format(num)
         },
+        formatDate(date) {
+            const DATE = new Date(date)
+            return `${DATE.getDate()}/${DATE.getMonth() + 1}/${DATE.getFullYear()}`
+            return DATE.getDate()
+        },
         hoverEffect(ev) {
             const button = ev.target
             const { x, y } = button.getBoundingClientRect();
@@ -101,6 +111,12 @@ export default {
 
     },
     computed: {
+        formatedStartDate() {
+            return this.formatDate(this.order.startDate)
+        },
+        formatedEndDate() {
+            return this.formatDate(this.order.endDate)
+        },
         totalReviews() {
             const { reviews } = this.house
             if (reviews.length === 1) return '1 review'
@@ -136,7 +152,8 @@ export default {
     },
     components: {
         reviewAverage,
-        reactiveBtn
+        reactiveBtn,
+        guestsModal
     }
 }
 </script>

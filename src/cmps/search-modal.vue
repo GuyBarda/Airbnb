@@ -1,90 +1,39 @@
 <template>
   <section @click.prevent class="search-modal full">
     <section :class="{ 'btn-selected': isSelect !== ' ' }" class="search-input">
-      <div
-        @click.prevent="openZone('Where')"
-        :class="{ selected: isSelect === 'Where' }"
-        class="search-zone destination"
-      >
+      <div @click.prevent="openZone('Where')" :class="{ selected: isSelect === 'Where' }"
+        class="search-zone destination">
         <label>Where</label>
-        <input
-          class="dest-input"
-          :class="{ set: filterBy.destination }"
-          type="text"
-          v-model="filterBy.destination"
-          placeholder="Search destinations"
-        />
-        <destination-modal
-          @setDestination="setDestination"
-          :class="{ open: isSelect === 'Where' }"
-        />
+        <input class="dest-input" :class="{ set: filterBy.destination }" type="text" v-model="filterBy.destination"
+          placeholder="Search destinations" />
+        <destination-modal @setDestination="setDestination" :class="{ open: isSelect === 'Where' }" />
       </div>
       <span></span>
       <section class="date">
-        <div
-          @click.prevent="openZone('In')"
-          :class="{ selected: isSelect === 'In' }"
-          class="search-zone"
-        >
+        <div @click.prevent="openZone('In')" :class="{ selected: isSelect === 'In' }" class="search-zone">
           <label>Check in</label>
-          <input
-            :class="{ set: formattedStartDate }"
-            :value="formattedStartDate"
-            class="date-input"
-            type="text"
-            placeholder="Add dates"
-            disabled
-          />
+          <input :class="{ set: formattedStartDate }" :value="formattedStartDate" class="date-input" type="text"
+            placeholder="Add dates" disabled />
         </div>
-        <el-date-picker
-          @change="setDates"
-          ref="datePicker"
-          popper-class="datePicker"
-          v-model="dates"
-          type="daterange"
-          start-placeholder="Start date"
-          end-placeholder="End date"
-          value-format="x"
-        />
-        <div
-          @click.prevent="openZone('Out')"
-          :class="{ selected: isSelect === 'Out' }"
-          class="search-zone"
-        >
+        <el-date-picker @change="setDates" ref="datePicker" popper-class="datePicker" v-model="dates" type="daterange"
+          start-placeholder="Start date" end-placeholder="End date" value-format="x" />
+        <div @click.prevent="openZone('Out')" :class="{ selected: isSelect === 'Out' }" class="search-zone">
           <label>Check out</label>
-          <input
-            :class="{ set: formattedEndDate }"
-            :value="formattedEndDate"
-            class="date-input"
-            type="text"
-            placeholder="Add dates"
-            disabled
-          />
+          <input :class="{ set: formattedEndDate }" :value="formattedEndDate" class="date-input" type="text"
+            placeholder="Add dates" disabled />
         </div>
       </section>
       <span></span>
 
-      <div
-        @click.prevent="openZone('Who')"
-        :class="{ selected: isSelect === 'Who' }"
-        class="search-zone search-btn"
-      >
+      <div @click.prevent="openZone('Who')" :class="{ selected: isSelect === 'Who' }" class="search-zone search-btn">
         <label>Who</label>
-        <input
-          :value="guestsCount"
-          :class="{ set: guestsCount }"
-          class="guest-input"
-          type="text"
-          placeholder="Add guests"
-          disabled
-        />
+        <input :value="guestsCount" :class="{ set: guestsCount }" class="guest-input" type="text"
+          placeholder="Add guests" disabled />
         <button @click="setSearch" class="sub-search">
           <img src="../assets/svg/search.svg" alt="" />Search
         </button>
-        <guests-modal
-          @setGuests="setGuests"
-          :class="{ open: isSelect === 'Who' }"
-        />
+        <!-- <button @mousemove="hoverEffect" class="btn-reserve">Reserve</button> -->
+        <guests-modal @setGuests="setGuests" :class="{ open: isSelect === 'Who' }" />
       </div>
     </section>
   </section>
@@ -136,10 +85,10 @@ export default {
         (v, c) => v + c,
         0
       );
-      
+
       this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
       this.$store.dispatch({ type: "loadHouses" });
-      
+
       const queryStringParams = `?dest=${this.filterBy.destination}&guests=${this.filterBy.guests}`;
       const newUrl =
         window.location.protocol +
@@ -173,9 +122,8 @@ export default {
       const { adults, children, infants, pets } = this.filterBy.guests;
       let str =
         adults || children
-          ? `${adults + children} ${
-              adults + children !== 1 ? "guests" : "guest"
-            },`
+          ? `${adults + children} ${adults + children !== 1 ? "guests" : "guest"
+          },`
           : "";
       str += infants
         ? ` ${infants} ${infants !== 1 ? "infants" : "infant"},`

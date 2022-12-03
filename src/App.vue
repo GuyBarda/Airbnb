@@ -23,9 +23,17 @@ export default {
     return {};
   },
   created() {
+    // console.log(document.querySelector('#app'))
+    // document.querySelector('#app').addEventListener('scroll', ev => {
+    //   console.log(ev)
+    // })
+    // document.querySelector('#app').addEventListener('click', ev => {
+    //   console.log(ev)
+    // })
   },
   methods: {
-    toggleSearch() {
+    toggleSearch(ev) {
+      console.log(ev)
       this.$store.commit({ type: "toggleSearch", bool: false });
       this.$store.commit({ type: "toggleSuccessModal", bool: false });
       this.$store.commit({ type: "toggleFilterModal", bool: false })

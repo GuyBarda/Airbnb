@@ -110,7 +110,7 @@
                 flex-direction: column;
                 justify-content: space-between;
                 gap: 25px;
-                margin-top: $m-top-reserve;
+                margin-top: 32px;
                 margin-left: 8.333333333333332%;
                 border: 1px solid rgb(221, 221, 221);
                 border-radius: 12px;
@@ -118,7 +118,7 @@
                 position: sticky;
                 top: $m-top-reserve;
                 box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-                max-width: 370px;
+                max-width: 400px;
 
                 .btn-reserve {
                     @include reserve-btn() 
@@ -180,6 +180,14 @@
                         &:last-child() {
                             grid-column: 1/-1;
                             // grid-row: 2;
+                        }
+                    }
+                    .guest-picker {
+                        position: relative;
+                        
+                        .guests-modal {
+                            position: absolute;
+                            
                         }
                     }
                     

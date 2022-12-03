@@ -72,6 +72,10 @@
                     overflow: visible;
                 }
             }
+            // .btn-reserve {
+            //     @include reserve-btn();
+            //     font-size: em(17px, 16px);
+            // }
 
             input[type="text"] {
                 grid-row: 2;
