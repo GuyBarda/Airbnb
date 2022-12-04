@@ -1,14 +1,13 @@
 .reservation-success {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 40%;
-    height: max-content;
+    top: 50%;
+    left: 50%;
+    font-size: 0.9em;
     border-radius: 10px;
     border: 1px solid grey;
-    padding: 30px;
+    padding: em(30px,16px);
     background-color: #fff;
-    transform: translate(70%, 30%);
+    transform: translate(-50%, -50%);
     z-index: 21;
 
     h2 {
@@ -23,11 +22,11 @@
         margin: 0;
         margin-bottom: 10px;
     }
-
+    
     header {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 25px;
+        margin-bottom: em(3px,16px);
 
         button {
             border: 0;
@@ -49,7 +48,7 @@
                 display: grid;
                 grid-template-columns: 150px 2fr;
                 grid-template-rows: 1fr 1fr;
-                gap: 10px;
+                gap: em(10px,16px) em(30px,16px);
 
                 img {
                     width: 100%;

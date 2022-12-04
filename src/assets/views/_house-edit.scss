@@ -15,6 +15,9 @@
         // content: '\00B7';
         font-size: 24px;
     }
+    label {
+        margin-block: 10px;
+    }
     nav{
         margin-right: 10px;
         ul{
@@ -176,14 +179,10 @@
             padding-top: 20px;
             display: flex;
             justify-content: end;
-            .confirm-btn{
-                padding: 10px 40px;
-                border-radius: 5px;
-                border: 0;
-                background-color: #ff385c;
-                font-family: CerealMd;
-                letter-spacing: 0.5px;
-                color: white;
+            .btn-reserve{
+                @include reserve-btn();
+                width: max-content;
+                padding-inline: 30px;
             }
         }
     }
