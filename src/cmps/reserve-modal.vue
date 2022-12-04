@@ -26,7 +26,7 @@
                     <!-- <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
                     </button> -->
-                    <guests-modal :class="{open:showGuestPicker}"></guests-modal>
+                    <guests-modal :class="{ open: showGuestPicker }"></guests-modal>
                 </div>
 
             </div>
@@ -53,6 +53,7 @@
 
 <script>
 import { orderService } from '../services/order-service-local.js'
+import { utilService } from '../services/utils-service.js'
 
 import reviewAverage from '../cmps/review-average.vue'
 import reactiveBtn from './reactive-btn.vue'
@@ -103,10 +104,7 @@ export default {
             return DATE.getDate()
         },
         hoverEffect(ev) {
-            const button = ev.target
-            const { x, y } = button.getBoundingClientRect();
-            button.style.setProperty("--x", ev.clientX - x + 'px');
-            button.style.setProperty("--y", ev.clientY - y + 'px');
+            utilService.hoverEffect(ev)
         }
 
     },

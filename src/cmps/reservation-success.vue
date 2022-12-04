@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { utilService } from '../services/utils-service.js';
 import reviewAverage from './review-average.vue';
 
 export default {
@@ -77,10 +78,7 @@ export default {
             return formatter.format(num)
         },
         hoverEffect(ev) {
-            const button = ev.target
-            const { x, y } = button.getBoundingClientRect();
-            button.style.setProperty("--x", ev.clientX - x + 'px');
-            button.style.setProperty("--y", ev.clientY - y + 'px');
+            utilService.hoverEffect(ev)
         }
     },
     computed: {
