@@ -108,7 +108,11 @@ export default {
         style: 'currency',
         currency: 'USD',
       });
-      return formatter.format(num);
+      let price = formatter.format(num);
+      let dotIdx = price.indexOf('.')
+      return (price[dotIdx + 1] === '0') ? price.slice(0, dotIdx) : price
+      return price
+      return price.slice(0, dotIdx)
     },
     formatDate(date) {
       const DATE = new Date(date);

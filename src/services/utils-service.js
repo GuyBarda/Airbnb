@@ -8,6 +8,7 @@ export const utilService = {
     time_ago,
     getDates,
     hoverEffect,
+    format,
 };
 
 function makeId(length = 6) {
@@ -184,4 +185,14 @@ function hoverEffect(ev) {
     const { x, y } = button.getBoundingClientRect();
     button.style.setProperty('--x', ev.clientX - x + 'px');
     button.style.setProperty('--y', ev.clientY - y + 'px');
+}
+
+function format(num) {
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+    let price = formatter.format(num);
+    let dotIdx = price.indexOf('.');
+    return price[dotIdx + 1] === '0' ? price.slice(0, dotIdx) : price;
 }
