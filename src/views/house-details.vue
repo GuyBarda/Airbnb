@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-<!-- <shareModal/> -->
+        <!-- <shareModal/> -->
         <div ref="imgsContainer" class="imgs-container" id="photos">
             <img v-for="img in house.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
         </div>
@@ -31,11 +31,11 @@
                     <div>
                         <span>{{ house.capacity }} guests </span>
                         <span class="gray"> • </span>
-                        <span>{{ house.roomsAndBeds.Bathrooms }} Bathrooms </span>
+                        <span>{{ house.bathrooms }} Bathrooms </span>
                         <span class="gray"> • </span>
-                        <span>{{ house.roomsAndBeds.bedrooms }} bedrooms </span>
+                        <span>{{ house.bedrooms }} bedrooms </span>
                     </div>
-                    <img class="host-image" :src="`${house.host.imgUrl}`" alt="">
+                    <img class="host-image" :src="`${house.host.thumbnailUrl}`" alt="">
                 </div>
                 <div class="user-house-info">
                     <img src="../assets/svg/folder1/superhost.svg" alt="">
@@ -169,6 +169,7 @@ export default {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
         this.order = orderService.getEmptyOrder()
+        console.log(this.house)
     },
     mounted() {
         setTimeout(() => {

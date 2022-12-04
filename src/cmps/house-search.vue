@@ -8,11 +8,11 @@
       <span></span>
       <button @click="openZone('Who')" class="search-btn last">Add guests</button>
       <section class="search-in-mobile">
-          <search-icon class="img" />
-          <div>
+        <search-icon class="img" />
+        <div>
           <label>Where to?</label>
           <p>Anywhere &bull; Any week &bull; Add guests</p>
-          </div>
+        </div>
       </section>
     </div>
     <div v-else class="start-search">Start your search</div>
@@ -52,7 +52,7 @@ export default {
       return where === 'house' ? false : true
     }
   },
-  components:{
+  components: {
     searchIcon
   }
 }

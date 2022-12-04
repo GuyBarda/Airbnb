@@ -3,7 +3,7 @@
     <form @submit.prevent="addOrder">
       <header>
         <h4>
-          <span>{{ formattedPerNightPrice }}</span> per night
+          <span>{{ formattedPerNightPrice }}</span> night
         </h4>
         <review-average :reviews="house.reviews" />
       </header>
@@ -109,10 +109,10 @@ export default {
         currency: 'USD',
       });
       let price = formatter.format(num);
-      let dotIdx = price.indexOf('.')
-      return (price[dotIdx + 1] === '0') ? price.slice(0, dotIdx) : price
-      return price
-      return price.slice(0, dotIdx)
+      let dotIdx = price.indexOf('.');
+      return price[dotIdx + 1] === '0' ? price.slice(0, dotIdx) : price;
+      return price;
+      return price.slice(0, dotIdx);
     },
     formatDate(date) {
       const DATE = new Date(date);

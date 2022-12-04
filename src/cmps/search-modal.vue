@@ -44,7 +44,7 @@ import reactiveBtn from "./reactive-btn.vue";
 import destinationModal from "./destination-modal.vue";
 import datePicker from "./date-picker.vue";
 import guestsModal from "./guests-modal.vue";
-import { ref } from "vue";
+// import { ref } from "vue";
 
 export default {
   props: {
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       isSelect: "",
-      dates: ref(""),
+      dates: "",
       filterBy: {
         destination: "",
         dates: {
@@ -76,8 +76,12 @@ export default {
     if (this.zone === "In") {
       setTimeout(() => {
         this.$refs.datePicker.focus();
+        console.log('focusing')
       }, 300);
     }
+  },
+  unmounted() {
+    // this.$emit('closing')
   },
   methods: {
     setSearch() {
