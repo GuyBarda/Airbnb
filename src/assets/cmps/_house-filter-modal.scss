@@ -30,11 +30,6 @@
         }
     }
 
-    .selected {
-        color: white;
-        background-color: rgb(0, 0, 0);
-    }
-
     .close-filter {
         position: absolute;
         left: 20px;
@@ -44,34 +39,32 @@
             cursor: pointer;
         }
     }
-    
+
     h2 {
-        font-size: em(22px,16px);
+        font-size: em(22px, 16px);
         margin: 0;
         padding-bottom: 24px;
 
-        &:has(+p) {
+        &:has(+ p) {
             padding-block: 8px;
         }
     }
 
-    
     .form-wrapper {
         position: relative;
         height: 77%;
         overflow-y: auto;
-    
+
         > * {
             padding-block: 32px;
             border-bottom: 1px solid #dddddd;
         }
-    
-        .form-price {
 
+        .form-price {
             label {
                 font-size: em(12px, 16px);
             }
-    
+
             .price-inner {
                 display: flex;
                 flex-direction: column;
@@ -96,7 +89,7 @@
             .between-prices {
                 margin: auto;
             }
-    
+
             input {
                 border: none;
                 outline: none;
@@ -104,7 +97,7 @@
             // .form-rooms-and-beds {
             //   padding: 32px 0;
             //   border-bottom: 1px solid #dddddd;
-    
+
             //   h2 {
             //     padding-bottom: 24px;
             //   }
@@ -115,7 +108,7 @@
             //   }
             // }
         }
-    
+
         .place-types {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -123,14 +116,16 @@
             > * {
                 justify-self: start;
             }
-    
+
             .place-type {
                 // display: flex;
                 // gap: 10px;
                 // align-items: center;
                 // padding: 20px;
                 // padding-left: 0;
-    
+                display: grid;
+                grid-template-columns: auto 1fr;
+
                 input[type='checkbox'] {
                     height: 24px;
                     width: 39px;
@@ -151,20 +146,45 @@
             }
         }
         .form-rooms-and-beds {
-            
+            input {
+                display: none;
+                :checked {
+                    .btn-btn {
+                        color: white;
+                        background-color: rgb(0, 0, 0);
+                    }
+                }
+            }
+            #row1,
+            #row2,
+            #row3 {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                // background-color: blue;
+                .btns-group {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                }
+            }
+
+            .btn-btn {
+                margin-right: 6px;
+                padding: 10px 20px;
+                border-radius: 30px;
+                min-width: 59px;
+                font-size: em(14px, 16px);
+                border: 1px solid rgb(221, 221, 221);
+                background-color: #fff;
+            }
+            input:checked + .btn-btn {
+                color: white;
+                background-color: rgb(0, 0, 0);
+            }
         }
     }
-    
-    .btn-btn {
-        margin-right: 6px;
-        padding: 10px 20px ;
-        border-radius: 30px ;
-        min-width: 59px ;
-        font-size: em(14px,16px);
-        border: 1px solid rgb(221, 221, 221) ;
-        background-color: #fff;
-    }
-    
+
     .form-property-type {
         padding-bottom: 45px;
     }
@@ -194,29 +214,29 @@
             font-size: 16px;
         }
     }
-    
+
     .form-amenities {
         padding: 32px 0;
         border-bottom: 1px solid #dddddd;
     }
-    
+
     .form-title-amenities {
         padding-bottom: 24px;
         h2 {
             padding-bottom: 24px;
         }
     }
-    
+
     .essentials h3 {
         margin-bottom: 16px;
     }
-    
+
     .el-checkbox-group {
         display: grid;
         grid-template-columns: 2fr 2fr;
         gap: 12px;
     }
-    
+
     .el-checkbox {
         // color: var(--el-checkbox-text-color);
         // font-weight: var(--el-checkbox-font-weight);
@@ -233,7 +253,7 @@
         margin-right: 30px;
         height: 32px;
     }
-    
+
     .el-checkbox__input {
         white-space: nowrap;
         cursor: pointer;
@@ -241,7 +261,7 @@
         display: inline-flex;
         position: relative;
     }
-    
+
     .el-checkbox__label {
         display: inline-block;
         padding-left: 8px;
@@ -249,7 +269,7 @@
         margin: 10px 0 0 11px;
         font-size: 16px;
     }
-    
+
     .el-checkbox__original {
         opacity: 1;
         outline: 0;
@@ -259,11 +279,11 @@
         height: 24px;
         z-index: 5;
     }
-    
+
     span.el-checkbox__inner {
         margin-inline-end: 8px;
     }
-    
+
     el-checkbox__inner {
         display: inline-block;
         position: relative;
@@ -278,7 +298,7 @@
             background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
             outline 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
     }
-    
+
     .form-footer {
         -webkit-box-pack: justify !important;
         -webkit-box-align: center !important;
@@ -294,7 +314,7 @@
         margin: 2px;
         width: 100%;
         background: white;
-    
+
         button {
             text-decoration: underline;
             font-size: 1em;
@@ -307,7 +327,7 @@
             border: 1px solid rgba(0, 0, 0, 0);
         }
     }
-    
+
     .form-footer button:nth-child(2) {
         background: black;
         padding: 8px;
@@ -320,21 +340,21 @@
         color: #fff;
         font-size: 1em;
     }
-    
+
     .Type-of-place {
         .first-tow {
             display: flex;
         }
-    
+
         .checkbox {
             display: flex;
             width: 550px;
-    
+
             input {
                 height: 24px;
                 width: 39px;
             }
-    
+
             p {
                 margin-top: -4px;
                 color: #717171;

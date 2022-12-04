@@ -41,23 +41,23 @@
                 <h2>Type of place</h2>
                 <section class="place-types">
                     <article class="place-type">
-                        <input type="checkbox" name="entire" v-model="filterBy.type" value="Entire place" />
+                        <input type="checkbox" name="entire" v-model="filterBy.type" value="entire place" />
                         <div class="label-p">
-                            <label>Entire place</label>
+                            <label for="entire">Entire place</label>
                             <p>A place all to yourself</p>
                         </div>
                     </article>
                     <article class="place-type">
-                        <input type="checkbox" name="entire" v-model="filterBy.type" value="Entire place" />
+                        <input type="checkbox" name="private" v-model="filterBy.type" value="private room" />
                         <div class="label-p">
-                            <label>Private room</label>
+                            <label for="private">Private room</label>
                             <p>Your own room in a home or a hotel, plus some shared common spaces</p>
                         </div>
                     </article>
                     <article class="place-type">
-                        <input type="checkbox" name="entire" v-model="filterBy.type" value="Entire place" />
+                        <input type="checkbox" name="shared" v-model="filterBy.type" value="shared room" />
                         <div class="label-p">
-                            <label>Shared room</label>
+                            <label for="shared">Shared room</label>
                             <p>A sleeping space and common areas that may be shared with others</p>
                         </div>
                     </article>
@@ -97,31 +97,48 @@
 
             <div class="form-rooms-and-beds">
                 <h2>Rooms and beds</h2>
-                <h3>BedRooms</h3>
+                <h3>Bedrooms</h3>
                 <div id="row1">
-                    <button class="btn-btn">Any</button>
-                    <button type="radio" class="btn-btn" @click="setRoomsBeds('bedrooms', num)" v-for="num in 8"
-                        :key="num">
-                        {{ num }}
-                    </button>
+                    <input type="radio" id="bedroom0" name="bedroom" :value="all" v-model="filterBy.roomsBeds
+                    .bedrooms" />
+                    <label for="bedroom0" class="btn-btn">All</label>
+                    <div class="btns-group" v-for="num in 8">
+                        <input type="radio" :id="`bedroom${num}`" name="bedroom" :value="num" v-model="filterBy.roomsBeds
+                        .bedrooms" />
+                        <label :for="`bedroom${num}`" class="btn-btn">{{ num }}</label>
+                    </div>
                 </div>
 
+                <h3>beds</h3>
                 <div id="row2">
-                    <h3>beds</h3>
-                    <button class="btn-btn">Any</button>
+                    <input type="radio" id="bed0" name="bed" :value="all" v-model="filterBy.roomsBeds
+                    .beds" />
+                    <label for="bed0" class="btn-btn">All</label>
+                    <div class="btns-group" v-for="num in 8">
+                        <input type="radio" :id="`bed${num}`" name="bed" :value="num" v-model="filterBy.roomsBeds
+                        .beds" />
+                        <label :for="`bed${num}`" class="btn-btn">{{ num }}</label>
+                    </div>
 
-                    <button class="btn-btn" @click="setRoomsBeds('beds', num, $event, 'row2')" v-for="num in 8"
-                        :key="num">
-                        {{ num }}
-                    </button>
+                    <!-- <button class="btn-btn" @click="setRoomsBeds('beds', num, $event, 'row2')" v-for="num in 8"
+                                            :key="num">
+                                            {{ num }}
+                                        </button> -->
                 </div>
 
+                <h3>Bathrooms</h3>
                 <div id="row3">
-                    <h3>Bathrooms</h3>
-                    <button class="btn-btn">Any</button>
-                    <button class="btn-btn" @click="setRoomsBeds('bedrooms', num)" v-for="num in 8" :key="num">
+                    <input type="radio" id="bathroom0" name="bathroom" :value="all" v-model="filterBy.roomsBeds
+                    .bathrooms" />
+                    <label for="bathroom0" class="btn-btn">All</label>
+                    <!-- <button class="btn-btn" @click="setRoomsBeds('bedrooms', num)" v-for="num in 8" :key="num">
                         {{ num }}
-                    </button>
+                    </button> -->
+                    <div class="btns-group" v-for="num in 8">
+                        <input type="radio" :id="`bathroom${num}`" name="bathroom" :value="num" v-model="filterBy.roomsBeds
+                        .bathrooms" />
+                        <label :for="`bathroom${num}`" class="btn-btn">{{ num }}</label>
+                    </div>
                 </div>
             </div>
 
@@ -237,9 +254,9 @@ export default {
                 maxPrice: 800,
                 type: [],
                 roomsBeds: {
-                    bedrooms: 0,
-                    beds: 0,
-                    bathrooms: 0,
+                    bedrooms: 1,
+                    beds: 1,
+                    bathrooms: 1,
                 },
                 PropertyType: [],
                 Amenities: [],
@@ -247,7 +264,9 @@ export default {
             isSelect: false,
         };
     },
-    created() { },
+    updated() {
+        console.log(this.filterBy)
+    },
     computed: {
         prices() {
             const prices = this.houses.map(house => house.price + '')
