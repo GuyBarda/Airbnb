@@ -84,20 +84,30 @@
     }
     .search-btn {
       background-color: transparent;
+      :last-child{
+        padding: 20px;
+      }
       @media(max-width: 400px){
         display: none;
       }
     }
     button {
-      padding-inline: 16px ;
-      color: #222222;
-      font-size: em(14px, 16px);
-      font-weight: 600;
-      font-family: inherit;
+        padding-inline: 16px ;
+        color: #222222;
+        font-size: em(14px, 16px);
+        font-weight: 600;
+        font-family: inherit;
+ 
+        &.last{
+          font-family: CerealReg;
+        font-weight: 400;
+
+        }
       
       &:last-child {
+        font-family: CerealReg;
         color: #717171;
-        font-weight: 400;
+        // font-weight: 400;
       }
     }
   }
