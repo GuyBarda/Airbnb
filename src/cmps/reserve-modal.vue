@@ -17,15 +17,15 @@
           />
         </div>
         <section class="date-picker-container">
-        <el-date-picker
-        :teleported="false"
-        @change="setDates"
-        v-model="dates"
-          popper-class="date-picker-reserve"
-          type="daterange"
-          start-placeholder="Start date"
-          end-placeholder="End date"
-        />
+          <el-date-picker
+            :teleported="false"
+            @change="setDates"
+            v-model="dates"
+            popper-class="date-picker-reserve"
+            type="daterange"
+            start-placeholder="Start date"
+            end-placeholder="End date"
+          />
         </section>
         <div @click="showDatePicker = true" class="check-out picker">
           <label for="check-out">CHECK-OUT</label>
@@ -76,6 +76,7 @@
 
 <script>
 import { orderService } from '../services/order-service-local.js'
+import { ref } from "vue";
 
 import reviewAverage from "../cmps/review-average.vue";
 import reactiveBtn from "./reactive-btn.vue";
@@ -109,7 +110,7 @@ export default {
     setGuests(guests) {
       this.order.guests = { ...guests };
     },
-    methods: {
+
         addOrder() {
             this.$store.commit({ type: "toggleSuccessModal", bool: true });
             this.$store.dispatch({ type: 'addOrder', order: this.order })
@@ -140,7 +141,7 @@ export default {
             button.style.setProperty("--y", ev.clientY - y + 'px');
         }
 
-    },
+    
   },
   computed: {
     guestsCount() {
@@ -198,6 +199,7 @@ export default {
     // },
     // setBorderRadius() {
     // }
+
   },
   components: {
     reviewAverage,

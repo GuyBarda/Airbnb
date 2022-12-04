@@ -140,7 +140,6 @@ export default {
         user ? this.user = user : this.$store.commit({ type: "toggleMustLogin", bool: true });
 
         this.houseToEdit = id ? await houseService.getById(id) : houseService.getEmptyHouse();
-
         console.log("created", this.houseToEdit);
     },
     methods: {
