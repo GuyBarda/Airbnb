@@ -54,6 +54,8 @@ export default {
       currZone: "",
       currDest: '',
       currDate: '',
+                  headerObserver: null,
+      stickyNav: false,
     };
   },
   async created() {
@@ -63,7 +65,19 @@ export default {
       console.log("cant load");
     }
   },
+    mounted() {
+    this.headerObserver = new IntersectionObserver(this.onHeaderObserved, {
+      rootMargin: "-80px 0px 0px",
+    });
+    const elHeader = document.querySelector('header')
+    this.headerObserver.observe(elHeader);
+  },
   methods: {
+        onHeaderObserved(entries) {
+      entries.forEach((entry) => {
+        this.stickyNav = entry.isIntersecting ? false : true;
+      });
+    },
     setDate(str) {
       this.currDate = str
     },

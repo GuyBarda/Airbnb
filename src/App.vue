@@ -12,6 +12,7 @@
     :class="{
       open: isOpen || isOrderComplete || isFilterOpen || isMustLogin,
       search: isOpen,
+      modals: isOrderComplete || isFilterOpen || isMustLogin,
       must: isMustLogin,
     }"
   ></section>
