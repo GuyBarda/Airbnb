@@ -75,8 +75,7 @@
 </template>
 
 <script>
-import { orderService } from "../services/order-service-local.js";
-import { ref } from "vue";
+import { orderService } from '../services/order-service-local.js'
 
 import reviewAverage from "../cmps/review-average.vue";
 import reactiveBtn from "./reactive-btn.vue";
@@ -110,34 +109,37 @@ export default {
     setGuests(guests) {
       this.order.guests = { ...guests };
     },
-    addOrder() {
-      this.$store.commit({ type: "toggleSuccessModal", bool: true });
-      this.$store.dispatch({ type: "addOrder", order: this.order });
-    },
-    totalDays() {
-      const date1 = new Date(this.order.startDate);
-      const date2 = new Date(this.order.endDate);
-      const diffTime = Math.abs(date2 - date1);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      return diffDays;
-    },
-    format(num) {
-      const formatter = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      });
-      return formatter.format(num);
-    },
-    formatDate(date) {
-      const DATE = new Date(date);
-      return `${DATE.getDate()}/${DATE.getMonth() + 1}/${DATE.getFullYear()}`;
-      return DATE.getDate();
-    },
-    hoverEffect(ev) {
-      const button = ev.target;
-      const { x, y } = button.getBoundingClientRect();
-      button.style.setProperty("--x", ev.clientX - x + "px");
-      button.style.setProperty("--y", ev.clientY - y + "px");
+    methods: {
+        addOrder() {
+            this.$store.commit({ type: "toggleSuccessModal", bool: true });
+            this.$store.dispatch({ type: 'addOrder', order: this.order })
+        },
+        totalDays() {
+            const date1 = new Date(this.order.startDate);
+            const date2 = new Date(this.order.endDate);
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays
+        },
+        format(num) {
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            return formatter.format(num)
+        },
+        formatDate(date) {
+            const DATE = new Date(date)
+            return `${DATE.getDate()}/${DATE.getMonth() + 1}/${DATE.getFullYear()}`
+            return DATE.getDate()
+        },
+        hoverEffect(ev) {
+            const button = ev.target
+            const { x, y } = button.getBoundingClientRect();
+            button.style.setProperty("--x", ev.clientX - x + 'px');
+            button.style.setProperty("--y", ev.clientY - y + 'px');
+        }
+
     },
   },
   computed: {

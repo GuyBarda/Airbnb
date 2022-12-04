@@ -1,6 +1,6 @@
 [
     {
-        "_id": "10006546",
+        "_id": "10006547",
         "name": "Ribeira Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -29,7 +29,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
-        "type": ["place"],
+        "stayType": "Shared room",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -68,7 +69,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006536",
+        "_id": "1098234",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -99,7 +100,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["place"],
+        "stayType": "Shared room",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -148,7 +150,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006746",
+        "_id": "1293847",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -179,7 +181,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["place"],
+        "stayType": "Entire place",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -228,7 +231,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006446",
+        "_id": "69816809",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -259,7 +262,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
-        "type": ["Entir"],
+        "stayType": "Entire place",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -288,7 +292,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006546",
+        "_id": "7892909862",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -319,7 +323,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
-        "type": ["Entire place"],
+        "stayType": "Entire place",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -358,7 +363,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006536",
+        "_id": "5658817994",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -389,7 +394,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["private room"],
+        "stayType": "Private room",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -438,7 +444,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006746",
+        "_id": "1238094",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -469,7 +475,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["place"],
+        "stayType": "Shared room",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -518,7 +525,7 @@
         "likedByUsers": ["mini-user"]
     },
     {
-        "_id": "10006446",
+        "_id": "4089123",
         "name": "Ribeira Charming Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -548,7 +555,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
-        "type": ["Entire place"],
+        "stayType": "Entire place",
+        "propertyType": "Hotel",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
