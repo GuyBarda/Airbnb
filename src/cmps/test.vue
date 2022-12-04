@@ -1,7 +1,4 @@
 <template>
-  <section class="login-layout">
-
-  
   <div class="login-container">
 
     <div class="login-title-cont">
@@ -19,18 +16,13 @@
             <div class="form-line"></div>
             <input v-model="cred.password" class="login-password" placeholder="Password" type="password" autocomplete="password">
         </div>
-
-        <button @mousemove="hoverEffect" class="btn-container">Log in</button>
-        
-        <div class="login-or-line"></div>
+        <button>Log in </button>
         <div class="login-line-text">or</div>
-        
-        <button @mousemove="hoverEffect" class="btn-container">Continue as a guest</button>
-
+        <button>Continue as a guest</button>
         <div @click="openSingUp()" class="move-to-signup">Don't have an acount yet? sign up</div>
     </form>
 
-    <form @submit.prevent="signup" class="login-main-content" v-if="!isLogIn">
+    <form @submit.prevent="signup" class="signup-main-content" v-if="!isLogIn">
         <div class="login-header"> Welcome to Airbxb </div>
 
         <div class="login-form-cont">
@@ -40,66 +32,24 @@
             <div class="form-line"></div>
             <input v-model="signupCred.password" class="login-password" autocomplete="password" placeholder="Password" type="password">
         </div>
-
-        <button @mousemove="hoverEffect" class="btn-container">Log in</button>
-        
-        <div class="login-or-line"></div>
+        <button>Log in </button>
         <div class="login-line-text">or</div>
-        
-        <button @mousemove="hoverEffect" class="btn-container">Continue as a guest</button>
+        <button>Continue as a guest</button>
         <div @click="openSingUp()" class="move-to-signup">Already signed up?</div>
     </form>
 
     
   </div>
-</section>
 </template>
 
 <script>
 export default {
-  name: "login-page",
   props: {},
   data() {
-    return {
-      isLogIn: true,
-      cred: {
-        username: "",
-        password: "",
-      },
-      signupCred: {
-        fullname: "",
-        username: "",
-        password: "",
-      },
-    };
+    return {};
   },
   created() {},
-  methods: {
-    openSingUp() {
-      if (this.isLogIn) {
-        this.isLogIn = false;
-      } else {
-        this.isLogIn = true;
-      }
-    },
-    async login() {
-      await this.$store.dispatch({ type: "login", cred: this.cred });
-      this.$emit("closeModal");
-    },
-    async signup() {
-      await this.$store.dispatch({ type: "signup", cred: this.signupCred });
-      this.$emit("closeModal");
-    },
-  },
-  computed: {
-    users() {
-      console.log(
-        "this.$store.getters.loggedinUser",
-        this.$store.getters.loggedinUser
-      );
-      return this.$store.getters.loggedinUser;
-    },
-  },
+  methods: {},
   components: {},
 };
 </script>

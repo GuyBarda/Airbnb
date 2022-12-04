@@ -1,6 +1,77 @@
-.login-form {
+// .login-form {
+//   background-color: #fff;
+//   max-width: 401px;
+//   // height: 38vh;
+//   position: fixed;
+//   z-index: 1000000000000000000000000000;
+//   top: 0;
+//   right: 50%;
+//   transform: translate(50%, 10%);
+//   width: 100%;
+//   box-shadow: rgb(0 0 0 / 28%) 0 8px 28px;
+//   border-radius: 31px;
+//   overflow: hidden;
+//   margin-top: 180px;
+
+//   .login-form-body {
+//     text-align: center;
+//     padding-inline: 40px;
+//     padding-bottom: 15px;
+//     flex-direction: column;
+//     display: flex;
+//     h1 {
+//       padding: 10px;
+//       font-size: 1.625em;
+//       font-family: Cereal-medium, Helvetica, sans-serif;
+//       letter-spacing: 1px;
+//     }
+//     .login-input {
+//       width: 100%;
+//       padding: 15px;
+//       border: 1px solid #b6b6b6;
+//       border-radius: 13px;
+//       margin: 5px 5px 5px 0;
+//       font-size: 1rem;
+//       letter-spacing: 0.3px;
+//     }
+//     .login-input {
+//       width: 100%;
+//       padding: 15px;
+//       border: 1px solid #b6b6b6;
+//       border-radius: 13px;
+//       margin: 5px 5px 5px 0;
+//       font-size: 1rem;
+//       letter-spacing: 0.3px;
+//     }
+//     .login-btn {
+//       border: none;
+//       width: 100%;
+//       background-color: #ff385c;
+//       padding: 15px;
+//       margin: 13px 0;
+//       border-radius: 13px;
+//       color: #fff;
+//       font-weight: 600;
+//       font-family: airbnb-regular, sans-serif;
+//       font-size: 1rem;
+//       letter-spacing: 1px;
+//     }
+//     .login-actions-btns {
+//       display: flex;
+//       justify-content: center;
+//     }
+//     .actions-btn {
+//       border: none;
+//       font-size: 1rem;
+//       background-color: transparent;
+//       cursor: pointer;
+//     }
+//   }
+// }
+
+.login-layout {
   background-color: #fff;
-  max-width: 401px;
+  max-width: 550px;
   // height: 38vh;
   position: fixed;
   z-index: 1000000000000000000000000000;
@@ -13,58 +84,120 @@
   overflow: hidden;
   margin-top: 180px;
 
-  .login-form-body {
-    text-align: center;
-    padding-inline: 40px;
-    padding-bottom: 15px;
-    flex-direction: column;
-    display: flex;
-    h1 {
-      padding: 10px;
-      font-size: 1.625em;
-      font-family: Cereal-medium, Helvetica, sans-serif;
-      letter-spacing: 1px;
-    }
-    .login-input {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #b6b6b6;
-      border-radius: 13px;
-      margin: 5px 5px 5px 0;
-      font-size: 1rem;
-      letter-spacing: 0.3px;
-    }
-    .login-input {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #b6b6b6;
-      border-radius: 13px;
-      margin: 5px 5px 5px 0;
-      font-size: 1rem;
-      letter-spacing: 0.3px;
-    }
-    .login-btn {
-      border: none;
-      width: 100%;
-      background-color: #ff385c;
-      padding: 15px;
-      margin: 13px 0;
-      border-radius: 13px;
-      color: #fff;
-      font-weight: 600;
-      font-family: airbnb-regular, sans-serif;
-      font-size: 1rem;
-      letter-spacing: 1px;
-    }
-    .login-actions-btns {
+  .login-container {
+    cursor: auto;
+    animation: 0.4s ease-out 0s 1 slideInFromButtom;
+    width: 551px;
+    height: 61vh;
+    background-color: #fff;
+    border-radius: 12px;
+
+    .login-title-cont {
+      height: 10%;
       display: flex;
       justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid rgb(235, 235, 235) !important;
+
+      .login-title {
+        margin-left: 32px;
+        cursor: default;
+        font-family: CerealBd, Arial, sans-serif;
+      }
+      .exit-login-btn {
+        position: relative;
+        left: -322px;
+        border-radius: 50%;
+        padding: 8px;
+        transition: 0.2s;
+        cursor: pointer;
+        img {
+          display: block;
+          fill: none;
+          height: 16px;
+          width: 16px;
+          stroke: currentcolor;
+          stroke-width: 3;
+          overflow: visible;
+        }
+      }
     }
-    .actions-btn {
-      border: none;
-      font-size: 1rem;
-      background-color: transparent;
-      cursor: pointer;
+
+    .login-main-content {
+      padding: 24px;
+      .login-header {
+        font-family: CerealMd, Arial, sans-serif;
+        cursor: default;
+        letter-spacing: 0.29px;
+        margin-top: 8px !important;
+        margin-bottom: 24px !important;
+        font-size: 22px;
+        height: 20%;
+      }
+      .login-form-cont {
+        width: 100%;
+        height: 112px;
+        border-radius: 8px;
+        border: 1px solid rgba(27, 27, 27, 0.34);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        input {
+          font-size: 16px;
+          padding-left: 12px;
+          height: 47.5%;
+          border: 0;
+          border-radius: 8px;
+        }
+        .form-line {
+          height: 0.5px;
+          width: 100%;
+          background-color: #1b1b1b57;
+        }
+      }
+      .btn-container {
+        font-family: inherit;
+        width: 100%;
+        color: white;
+        border: none;
+        background: radial-gradient(
+          circle at left,
+          #ff385c 0%,
+          #e61e4d 27.5%,
+          #e31c5f 40%,
+          #d70466 57.5%,
+          #bd1e59 75%,
+          #bd1e59 100%
+        );
+        border-radius: 10px;
+        font-weight: 600;
+        height: 50px;
+        transition: 1s;
+        margin: 30px 0 28px;
+      }
+      .login-or-line {
+        height: 0.5px;
+        width: 100%;
+        background-color: #ddd !important;
+      }
+      .login-line-text {
+        cursor: default;
+        width: fit-content;
+        margin: -9px auto auto;
+        padding: 0 12px;
+        background-color: #fff;
+        font-family: circular-light;
+        font-size: 12px;
+        color: #484848;
+      }
+      .move-to-signup {
+        cursor: pointer;
+        color: #000;
+        font-family: circular-light;
+        margin: 15px auto auto;
+        width: fit-content;
+        text-decoration: underline;
+      }
     }
   }
 }
