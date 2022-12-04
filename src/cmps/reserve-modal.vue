@@ -10,30 +10,15 @@
       <div class="picker-container">
         <div @click="showDatePicker = true" class="check-in picker">
           <label for="check-in">CHECK-IN</label>
-          <input
-            type="text"
-            placeholder="MM/DD/YYYY"
-            :value="formatedStartDate"
-          />
+          <input type="text" placeholder="MM/DD/YYYY" :value="formatedStartDate" />
         </div>
         <section class="date-picker-container">
-          <el-date-picker
-            :teleported="false"
-            @change="setDates"
-            v-model="dates"
-            popper-class="date-picker-reserve"
-            type="daterange"
-            start-placeholder="Start date"
-            end-placeholder="End date"
-          />
+          <el-date-picker :teleported="false" @change="setDates" v-model="dates" popper-class="date-picker-reserve"
+            type="daterange" start-placeholder="Start date" end-placeholder="End date" />
         </section>
         <div @click="showDatePicker = true" class="check-out picker">
           <label for="check-out">CHECK-OUT</label>
-          <input
-            type="text"
-            placeholder="MM/DD/YYYY"
-            :value="formatedEndDate"
-          />
+          <input type="text" placeholder="MM/DD/YYYY" :value="formatedEndDate" />
           <!-- <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
                     </button> -->
@@ -44,21 +29,19 @@
           <!-- <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
                     </button> -->
-          <guests-modal
-            @setGuests="setGuests"
-            :class="{ open: showGuestPicker }"
-          ></guests-modal>
+          <guests-modal @setGuests="setGuests" :class="{ open: showGuestPicker }"></guests-modal>
         </div>
       </div>
-      <button @mousemove="hoverEffect" class="btn-reserve">Reserve</button>
+      <button @mousemove="hoverEffect" class="btn-reserve">
+        Reserve
+      </button>
 
-      <div
-        style="display: flex; gap: 25px; flex-direction: column"
-        v-if="order.startDate && order.endDate"
-      >
+      <div style="display: flex; gap: 25px; flex-direction: column" v-if="order.startDate && order.endDate">
         <p style="text-align: center">You won't be charged yet</p>
         <div class="prices">
-          <p>{{ formattedPerNightPrice }} x {{ getTotalDays }} nights</p>
+          <p>
+            {{ formattedPerNightPrice }} x {{ getTotalDays }} nights
+          </p>
           <p>{{ formattedTotalNightsPrice }}</p>
           <p>cleaning fee</p>
           <p>{{ formattedCleaningFee }}</p>
@@ -75,11 +58,11 @@
 </template>
 
 <script>
-import { orderService } from "../services/order-service-local.js";
-// import {ref}
-import reviewAverage from "../cmps/review-average.vue";
-import reactiveBtn from "./reactive-btn.vue";
-import guestsModal from "./guests-modal.vue";
+import { orderService } from '../services/order-service-local.js';
+
+import reviewAverage from '../cmps/review-average.vue';
+import reactiveBtn from './reactive-btn.vue';
+import guestsModal from './guests-modal.vue';
 
 export default {
   props: {
@@ -87,7 +70,7 @@ export default {
   },
   data() {
     return {
-      dates: "",
+      dates: '',
       order: null,
       cleaningFee: 0,
       serviceFee: 0,
@@ -103,15 +86,15 @@ export default {
   },
   methods: {
     setDates() {
-      this.order.startDate = this.dates["0"];
-      this.order.endDate = this.dates["1"];
+      this.order.startDate = this.dates['0'];
+      this.order.endDate = this.dates['1'];
     },
     setGuests(guests) {
       this.order.guests = { ...guests };
     },
     addOrder() {
-      this.$store.commit({ type: "toggleSuccessModal", bool: true });
-      this.$store.dispatch({ type: "addOrder", order: this.order });
+      this.$store.commit({ type: 'toggleSuccessModal', bool: true });
+      this.$store.dispatch({ type: 'addOrder', order: this.order });
     },
     totalDays() {
       const date1 = new Date(this.order.startDate);
@@ -121,22 +104,23 @@ export default {
       return diffDays;
     },
     format(num) {
-      const formatter = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
+      const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
       });
       return formatter.format(num);
     },
     formatDate(date) {
       const DATE = new Date(date);
-      return `${DATE.getDate()}/${DATE.getMonth() + 1}/${DATE.getFullYear()}`;
+      return `${DATE.getDate()}/${DATE.getMonth() + 1
+        }/${DATE.getFullYear()}`;
       return DATE.getDate();
     },
     hoverEffect(ev) {
       const button = ev.target;
       const { x, y } = button.getBoundingClientRect();
-      button.style.setProperty("--x", ev.clientX - x + "px");
-      button.style.setProperty("--y", ev.clientY - y + "px");
+      button.style.setProperty('--x', ev.clientX - x + 'px');
+      button.style.setProperty('--y', ev.clientY - y + 'px');
     },
   },
   computed: {
@@ -145,14 +129,13 @@ export default {
       const { adults, children, infants, pets } = this.order.guests;
       let str =
         adults || children
-          ? `${adults + children} ${
-              adults + children !== 1 ? "guests" : "guest"
-            },`
-          : "";
+          ? `${adults + children} ${adults + children !== 1 ? 'guests' : 'guest'
+          },`
+          : '';
       str += infants
-        ? ` ${infants} ${infants !== 1 ? "infants" : "infant"},`
-        : "";
-      str += pets ? ` ${pets} ${pets !== 1 ? "pets" : "pet"}` : "";
+        ? ` ${infants} ${infants !== 1 ? 'infants' : 'infant'},`
+        : '';
+      str += pets ? ` ${pets} ${pets !== 1 ? 'pets' : 'pet'}` : '';
       return str;
     },
     formatedStartDate() {
@@ -163,7 +146,7 @@ export default {
     },
     totalReviews() {
       const { reviews } = this.house;
-      if (reviews.length === 1) return "1 review";
+      if (reviews.length === 1) return '1 review';
       if (reviews.length > 1) return `${reviews.length} reviews`;
       if (!reviews.length) return `No reviews yet...`;
     },
@@ -187,7 +170,9 @@ export default {
     },
     formattedTotal() {
       return this.format(
-        this.serviceFee + this.cleaningFee + this.totalDays() * this.house.price
+        this.serviceFee +
+        this.cleaningFee +
+        this.totalDays() * this.house.price
       );
     },
     // getSrcSvg() {
