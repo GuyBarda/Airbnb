@@ -12,12 +12,12 @@
         </div>
       </button>
     </section>
+  </section>
     <filter-modal
       :houses="houses"
       @close="toggleFilterModal(false)"
       v-if="isFilterOpen"
     />
-  </section>
 </template>
 
 <script>

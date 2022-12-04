@@ -6,7 +6,7 @@
         <section>
         <p class="location">{{ location }}</p>
         <div>
-        <p class="createdAt">{{house.name}}</p>
+        <p class="house-name">{{house.name}}</p>
         <p class="date">{{date}}</p>
         </div>
         <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
@@ -36,17 +36,15 @@ export default {
         }
     },
     computed: {
-        createdAt() {
-            return utilService.time_ago(new Date(this.house.createdAt))
-        },
         date() {
             return utilService.getDates()
         },
         rate() {
             if (this.house.reviews.length === 0) return 'New'
-            let sum = this.house.reviews.reduce((acc, { rate }) => acc += rate, 0)
-            sum /= this.house.reviews.length
-            return `${sum}(${this.house.reviews.length})`
+            // let sum = this.house.reviews.reduce((acc, { rate }) => acc += rate, 0)
+            // sum /= this.house.reviews.length
+            let num = Math.round(Math.random()) * utilService.getRandomIntInclusive(1,5)
+            return `${num} (${this.house.reviews.length})`
         },
         location() {
             return `${this.house.loc.city}, ${this.house.loc.country}`
