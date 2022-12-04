@@ -8,7 +8,7 @@ export const userStore = {
     state: {
         loggedinUser: null,
         users: [],
-        watchedUser: null
+        watchedUser: null,
     },
     getters: {
         users({ users }) {
@@ -18,7 +18,7 @@ export const userStore = {
             console.log('loggedinUser',loggedinUser)
             return loggedinUser
         },
-        watchedUser({ watchedUser }) { return watchedUser }
+        watchedUser({ watchedUser }) { return watchedUser },
     },
     mutations: {
         setLoggedinUser(state, { user }) {

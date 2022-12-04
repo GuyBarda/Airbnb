@@ -10,7 +10,7 @@ export const houseService = {
     getById,
     remove,
     save,
-    getEmptyhouse,
+    getEmptyHouse,
     btnsAryy,
 };
 
@@ -18,9 +18,10 @@ export const houseService = {
 async function query(filterBy) {
     console.log('filterBy', filterBy)
      gHouses = await storageService.query(KEY);
-    let house = _filter(filterBy)
-    console.log('house', house)
-    return house
+     console.log("A1",gHouses);
+     let houses = _filter(filterBy)
+     console.log("A2",houses);
+    return Object.values(houses)
     // return storageService.query(KEY);
 }
 
@@ -28,11 +29,31 @@ function getById(id) {
     return storageService.get(KEY, id);
 }
 
-function getEmptyhouse() {
+function getEmptyHouse() {
     return {
-        title: '',
-        price: '',
-        reviews: [],
+        "name": "",
+        "imgUrls": [],
+        "price": 0,
+        "summary": "",
+        "capacity": 0,
+        "amenities": [],
+        "roomsAndBeds": {
+            "beds": 0,
+            "bedrooms": 0,
+            "Bathrooms": 0
+        },
+        "labels": [],
+        "type": [],
+        "loc": {
+            "country": "",
+            "countryCode": "",
+            "city": "",
+            "address": "",
+            "lat": 0,
+            "lng": 0
+        },
+        "reviews": [],
+        "likedByUsers": []
     };
 }
 

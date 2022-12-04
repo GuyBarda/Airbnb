@@ -24,7 +24,6 @@ export default {
         img: String,
         idx: Number,
     },
-    // components: { uploadIcon },
     data() {
         return {
             isLoading: false,
@@ -33,9 +32,6 @@ export default {
         }
     },
     methods: {
-        setImg(url){
-            this.imgUrls[this.idx] = url
-        },
         handleFile(ev) {
             console.log('ev', ev)
             let file
@@ -47,22 +43,18 @@ export default {
             this.isLoading = true
             this.isDragover = false
             const res = await uploadImg(file)
-            this.setImg(res.url)
-            // this.$emit('saved', res.url)
+            this.$emit('setImg',{ url: res.url, idx: this.idx})
             this.isLoading = false
             console.log('res:', res)
         },
     },
     computed:{
         background(){
-            console.log(this.img);
-            // if(this.img) 
             return {
                 'background-image': `url(${this.img})`,
                 'background-repeat': 'no-repeat',
                 'background-size': 'cover',
             }
-            // return 'background-color: lightgray'
         }
     }
 }

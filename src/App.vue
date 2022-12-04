@@ -6,9 +6,15 @@
     class="dark-site"
     :class="{ open: isOpen}"
   ></section> -->
-  <section @click="toggleSearch" class="dark-site"
-    :class="{ open: isOpen || isOrderComplete || isFilterOpen, search: isOpen }"></section>
-
+  <section
+    @click="toggleSearch"
+    class="dark-site"
+    :class="{
+      open: isOpen || isOrderComplete || isFilterOpen || isMustLogin,
+      search: isOpen,
+      must: isMustLogin,
+    }"
+  ></section>
 </template>
 
 <script>
@@ -22,24 +28,18 @@ export default {
   data() {
     return {};
   },
-  created() {
-    // console.log(document.querySelector('#app'))
-    // document.querySelector('#app').addEventListener('scroll', ev => {
-    //   console.log(ev)
-    // })
-    // document.querySelector('#app').addEventListener('click', ev => {
-    //   console.log(ev)
-    // })
-  },
   methods: {
     toggleSearch(ev) {
       console.log(ev)
       this.$store.commit({ type: "toggleSearch", bool: false });
       this.$store.commit({ type: "toggleSuccessModal", bool: false });
-      this.$store.commit({ type: "toggleFilterModal", bool: false })
+      this.$store.commit({ type: "toggleFilterModal", bool: false });
     },
   },
   computed: {
+    isMustLogin(){
+      return this.$store.getters.isMustLogin
+    },
     isFilterOpen() {
       return this.$store.getters.isFilterOpen
     },
