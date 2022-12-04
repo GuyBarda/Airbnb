@@ -5,13 +5,19 @@
             <div style="display: flex; align-items: center; gap: 4px;">
                 <review-average :reviews="house.reviews" />·
                 <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
-            </div>
-            <div>
-                <span>
-                    
-                </span>
+                <div class="share-save-actions">
+                    <span class="share-stay">
+                        <img src="../assets/svg/share.svg" alt="">
+                        <span>Share</span>
+                    </span>
+                    <span class="save-stay">
+                        <img src="../assets/svg/love.svg" alt="">
+                        <span style="outline: 0px;">Save</span>
+                    </span>
+                </div>
             </div>
         </div>
+<!-- <shareModal/> -->
         <div ref="imgsContainer" class="imgs-container" id="photos">
             <img v-for="img in house.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
         </div>
@@ -145,6 +151,7 @@ import reservationSuccess from '../cmps/reservation-success.vue'
 import reviewAverage from '../cmps/review-average.vue'
 import reserveModal from '../cmps/reserve-modal.vue'
 import detailsHeader from '../cmps/details-header.vue'
+// import shareModal from '../cmps/share-modal.vue'
 
 export default {
     data() {
@@ -235,6 +242,7 @@ export default {
         reviewAverage,
         reserveModal,
         detailsHeader,
+        // shareModal
     }
 }
 </script>
