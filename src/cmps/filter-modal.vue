@@ -145,23 +145,23 @@
             <div class="form-property-type">
                 <h2>Property type</h2>
                 <div class="flex">
-                    <input type="checkbox" v-model="filterBy.PropertyType" name="house">
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="house" value="house">
                     <label for="house" class="property-type">
                         <img src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg" alt="" />
                         <span>House</span>
                     </label>
-                    <input type="checkbox" v-model="filterBy.PropertyType" name="house">
-                    <label for="house" class="property-type">
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="apartment" value="apartment">
+                    <label for="apartment" class="property-type">
                         <img src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg" alt="" />
                         <span>Apartment</span>
                     </label>
-                    <input type="checkbox" v-model="filterBy.PropertyType" name="house">
-                    <label for="house" class="property-type">
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="guesthouse" value="guesthouse">
+                    <label for="guesthouse" class="property-type">
                         <img src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg" alt="" />
-                        <span>guesthouse</span>
+                        <span>Guesthouse</span>
                     </label>
-                    <input type="checkbox" v-model="filterBy.PropertyType" name="house">
-                    <label for="house" class="property-type">
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="hotel" value="hotel">
+                    <label for="hotel" class="property-type">
                         <img src="https://a0.muscache.com/pictures/64b27fed-56a1-4f03-950a-d8da08efb428.jpg" alt="" />
                         <span>Hotel</span>
                     </label>
