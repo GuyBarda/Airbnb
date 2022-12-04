@@ -32,9 +32,11 @@ function getEmptyOrder() {
         startDate: Date.now() + 1000 * 60 * 60 * 24,
         endDate: Date.now() + 1000 * 60 * 60 * 24 * 5,
         guests: {
-            adults: 2,
-            kids: 1,
-        },
+            adults: 1,
+            children: 0,
+            infants: 0,
+            pets: 0
+          },
         stay: {
             _id: '',
             name: '',

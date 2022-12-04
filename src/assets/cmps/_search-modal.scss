@@ -48,7 +48,7 @@
             grid-template-columns: 5em 1fr;
             grid-template-rows: 1fr 1fr;
             position: relative;
-
+            height: 100%;
             .sub-search {
                 position: relative;
                 z-index: 3;
@@ -102,9 +102,6 @@
             }
         }
 
-        .search-zone:not(:last-child){
-            box-shadow: 0 0 0;
-        }
         .search-zone {
             align-items: center;
             border-radius: 5em;

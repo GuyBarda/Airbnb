@@ -1,5 +1,5 @@
 <template>
-  <section class="guests-modal">
+  <section @click.stop class="guests-modal">
     <ul>
       <li>
         <div class="guest-info">
@@ -7,10 +7,10 @@
           <p>Ages 13 or above</p>
         </div>
         <div class="guest-adjust">
-          <button class="adjust-minus" @click="setGuests('adults', -1)"
+          <button class="adjust-minus" @click.stop.prevent="setGuests('adults', -1)"
             :disabled="guests.adults === 0"><minus-icon /></button>
           <div class="guests-value">{{ guests.adults }}</div>
-          <button class="adjust-plus" @click="setGuests('adults', 1)"
+          <button class="adjust-plus" @click.stop.prevent="setGuests('adults', 1)"
             :disabled="guests.adults === 10"><plus-icon /></button>
         </div>
       </li>
@@ -20,10 +20,10 @@
           <p>Ages 2-12</p>
         </div>
         <div class="guest-adjust">
-          <button class="adjust-minus" @click="setGuests('children', -1)"
+          <button class="adjust-minus" @click.stop.prevent="setGuests('children', -1)"
             :disabled="guests.children === 0"><minus-icon /></button>
           <div class="guests-value">{{ guests.children }}</div>
-          <button class="adjust-plus" @click="setGuests('children', 1)"
+          <button class="adjust-plus" @click.stop.prevent="setGuests('children', 1)"
             :disabled="guests.children === 10"><plus-icon /></button>
         </div>
       </li>
@@ -33,10 +33,10 @@
           <p>Under 2</p>
         </div>
         <div class="guest-adjust">
-          <button class="adjust-minus" @click="setGuests('infants', -1)"
+          <button class="adjust-minus" @click.stop.prevent="setGuests('infants', -1)"
             :disabled="guests.infants === 0"><minus-icon /></button>
           <div class="guests-value">{{ guests.infants }}</div>
-          <button class="adjust-plus" @click="setGuests('infants', 1)"
+          <button class="adjust-plus" @click.stop.prevent="setGuests('infants', 1)"
             :disabled="guests.infants === 10"><plus-icon /></button>
         </div>
       </li>
@@ -46,10 +46,10 @@
           <p>Bringing a service animal?</p>
         </div>
         <div class="guest-adjust">
-          <button class="adjust-minus" @click="setGuests('pets', -1)"
+          <button class="adjust-minus" @click.stop.prevent="setGuests('pets', -1)"
             :disabled="guests.pets === 0"><minus-icon /></button>
           <div class="guests-value">{{ guests.pets }}</div>
-          <button class="adjust-plus" @click="setGuests('pets',1)" :disabled="guests.pets === 10"><plus-icon /></button>
+          <button class="adjust-plus" @click.stop.prevent="setGuests('pets',1)" :disabled="guests.pets === 10"><plus-icon /></button>
         </div>
       </li>
     </ul>
