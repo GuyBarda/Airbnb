@@ -1,303 +1,317 @@
 .house-details {
-    font-family: 'CerealReg' ;
-    color: $clr-details-text;
+  font-family: "CerealReg";
+  color: $clr-details-text;
 
-    h2 {
-        margin: 0;
-        font-weight: 600;
-        font-size: em(26px, 16px);
-        margin-bottom: 10px;
-    }
-    h3 {
-        margin: 0;
-        margin-bottom: 15px;
-        font-size: 2em;
-        font-weight: bold;
+  h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: em(26px, 16px);
+    margin-bottom: 10px;
+  }
+  h3 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-block: 24px;
+    position: relative;
+
+    p {
+      margin: 0;
     }
 
-    .subtitle {
+    .host-image {
+      height: 56px;
+      width: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      right: 0;
+    }
+    //?----------
+    .share-save-actions {
+      display: flex;
+      align-items: center;
+      transition: 0.25s;
+      margin-left: auto;
+      .share-stay {
         display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        padding-block: 24px;
+        align-items: center;
+        outline: 0px solid #f7f7f7;
+      }
+      .save-stay{
+        display: flex;
+        align-items: center;
+        margin-left: 6px;
+      }
+      img {
+        fill: none;
+        stroke: currentcolor;
+        stroke-width: 2;
+        overflow: visible;
+        height: 16px;
+        width: 16px px;
+        margin-right: 7px;
+        margin-top: 1px;
+      }
+    }
+  }
+
+  .user-house-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    img {
+      width: 1.3rem;
+      // justify-self: center;
+    }
+    p {
+      margin: 0;
+    }
+    .subtext {
+      margin-top: 10px;
+      font-size: em(14px, 16px);
+      color: #717375;
+    }
+  }
+
+  .imgs-container {
+    display: grid;
+    grid-template: repeat(2, minmax(calc($details-max-width/4), 1fr)) / 2fr 1fr 1fr;
+    // grid-template:  275px 275px / 2fr 1fr 1fr;
+    border-radius: 20px;
+    gap: 8px;
+    margin-bottom: 15px;
+
+    :first-child {
+      grid-column: 1;
+      grid-row: 1/-1;
+      border-bottom-left-radius: 15px;
+      border-top-left-radius: 15px;
+    }
+    :nth-child(3) {
+      border-top-right-radius: 15px;
+    }
+    :nth-child(5) {
+      border-bottom-right-radius: 15px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      color: #222222;
+      object-fit: cover;
+    }
+
+    &.true {
+      .details-header {
+        position: fixed;
+        opacity: 1;
+      }
+    }
+    &.false {
+      .details-header {
         position: relative;
-
-        p{
-            margin: 0;
-        }
-        
-        .host-image {
-          height: 56px;
-          width: 56px;
-          border-radius: 50%;
-          object-fit: cover;
-          position: absolute;
-          right: 0;
-        }
+        opacity: 0;
+      }
     }
-
-    .user-house-info {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 10px;
-        img{
-            width: 1.3rem;
-            // justify-self: center;
-        }
-        p {
-            margin: 0;
-        }
-        .subtext {
-            margin-top: 10px;
-            font-size: em(14px,16px);
-            color: #717375;
-        }
+  }
+  .house-info {
+    display: flex;
+    justify-content: space-between;
+    .content {
+      width: 58.333333333333336%;
+      > * {
+        padding-block: 32px;
+        border-bottom: 1px solid #dddddd;
+      }
     }
-    
-    .imgs-container {
-        display: grid;
-        grid-template: repeat(2, minmax(calc($details-max-width/4),1fr )) / 2fr 1fr 1fr;
-        // grid-template:  275px 275px / 2fr 1fr 1fr;
-        border-radius: 20px;
-        gap: 8px;
-        margin-bottom: 15px;
-
-        :first-child{
-            grid-column: 1;
-            grid-row: 1/-1;
-            border-bottom-left-radius: 15px;
-            border-top-left-radius: 15px;
-        }
-        :nth-child(3) {
-            border-top-right-radius: 15px;
-        }
-        :nth-child(5) {
-            border-bottom-right-radius: 15px;
-        }
-        img {
-            width: 100%;
-            height: 100%;
-            color: #222222;
-            object-fit: cover;
-        }
-
-        &.true {
-            .details-header {
-                position: fixed;
-                opacity: 1;
-            }
-        }
-        &.false {
-            .details-header {
-                position: relative;
-                opacity: 0;
-            }
-        }
-    }
-    .house-info {
+    .reserve-modal {
+      form {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
-        .content {
-            width: 58.333333333333336%;
-            > * {
-                padding-block: 32px;
-                border-bottom: 1px solid #DDDDDD;
-            }
-        }
-        .reserve-modal {
-            form {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                gap: 25px;
-                margin-top: 32px;
-                margin-left: 8.333333333333332%;
-                border: 1px solid rgb(221, 221, 221);
-                border-radius: 12px;
-                padding: 24px;
-                position: sticky;
-                top: $m-top-reserve;
-                box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-                max-width: 400px;
+        gap: 25px;
+        margin-top: 32px;
+        margin-left: 8.333333333333332%;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 12px;
+        padding: 24px;
+        position: sticky;
+        top: $m-top-reserve;
+        box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        max-width: 400px;
 
-                .btn-reserve {
-                    @include reserve-btn() 
-                }
-                  
-                header {
-                    display: flex;
-                    justify-content: space-between;
-                    h4 {
-                        font-weight: normal;
-                        span {
-                            font-weight: 600;
-                            font-size: 1.3em;
-                        }
-                    }
-                }
-
-                .picker-container {
-                    display: grid;
-                    grid-template: 1fr 1fr / 1fr 1fr;
-                    cursor: pointer;
-                    border: 1px solid rgba(0,0,0,.32);
-                    border-radius: 8px;
-                    
-                    div {
-                        padding: 11px 16px;
-                        // display: flex;
-                        // flex-direction: column;
-                        position: relative;
-                        
-                        label {
-                            font-size: em(10px, 16px);
-                            font-weight: 800;
-                        }
-    
-                        button {
-                            position: absolute;
-                            right: 0;
-                            border: 0;
-                            border-radius: 50%;
-                            width: 32px;
-                            height: 32px;
-                            background-color: transparent;
-
-                            &:hover {
-                                background-color: rgb(247, 247, 247);
-                            }
-                        }
-                        input {
-                            font-size: em(14px, 16px);
-                            border: 0;
-                            width: 100%;
-
-                            &:focus {
-                                outline: none;
-                            }
-                        }
-
-                        &:last-child() {
-                            grid-column: 1/-1;
-                            // grid-row: 2;
-                        }
-                    }
-                    .guest-picker {
-                        position: relative;
-                        
-                        .guests-modal {
-                            position: absolute;
-                            
-                        }
-                    }
-                    
-                }
-
-
-                p:not(header)  {
-                    margin: 0;
-                }
-                .prices {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    padding-bottom: 15px;
-                    border-bottom: 1px solid #DDDDDD;
-                    gap: 10px;
-                    > *:nth-child(odd) {
-                        text-decoration: underline;
-                    }
-                    > *:nth-child(even) {
-                        justify-self: end;
-                    }
-                }
-                .total {
-                    font-weight: bold;
-                    display: flex;
-                    justify-content: space-between;
-                }
-            }
+        .btn-reserve {
+          @include reserve-btn();
         }
 
-        .amenities-container{
-
-            h2 {
-                margin-bottom: 24px;
-            }
-            .house-amenities{
-                display: grid;
-                grid-template-columns: auto auto;
-    
-                p {
-                    margin: 0;
-                }
-                div {
-                    padding-bottom: 16px;
-                }
-                
-            }
-        }
-    }
-    #reviews {
-        padding-block: 48px;
         header {
-            font-size: em(22px, 16px);
-            margin-bottom: 32px;
-
-            a{ 
-                text-decoration: none;
+          display: flex;
+          justify-content: space-between;
+          h4 {
+            font-weight: normal;
+            span {
+              font-weight: 600;
+              font-size: 1.3em;
             }
-
+          }
         }
-        .rating {
-            display: grid;
-            grid-template: repeat(3, 1fr)/ repeat(4, 1fr);
-            gap: 4px;
-            margin-bottom: 30px;
-            align-items: center;
-            p {
-                margin: 0;
-            }
-            > *:nth-child(even) {
-                width: 100%;
-                span {
-                    border-radius: 2px;
-                    width: 30px;
-                    height: 3px ;
-                    background-color: #222222;
-                }
-            }
-            .progress-container{
-                border-radius: 30em;
-                height: min-content;
-                width: 90%;
-                overflow: hidden;
-                display: flex;
-                align-items: center;
-            }
-            progress{
-                // -webkit-appearance: none;
-                height: 5px;
-                border-radius: 40px !important;
 
+        .picker-container {
+          display: grid;
+          grid-template: 1fr 1fr / 1fr 1fr;
+          cursor: pointer;
+          border: 1px solid rgba(0, 0, 0, 0.32);
+          border-radius: 8px;
 
+          div {
+            padding: 11px 16px;
+            // display: flex;
+            // flex-direction: column;
+            position: relative;
 
-                
+            label {
+              font-size: em(10px, 16px);
+              font-weight: 800;
             }
-            
-            ::-webkit-progress-bar {
-                background-color: #dddddd;
+
+            button {
+              position: absolute;
+              right: 0;
+              border: 0;
+              border-radius: 50%;
+              width: 32px;
+              height: 32px;
+              background-color: transparent;
+
+              &:hover {
+                background-color: rgb(247, 247, 247);
+              }
             }
-            ::-webkit-progress-value {
-                background-color: #222222;
+            input {
+              font-size: em(14px, 16px);
+              border: 0;
+              width: 100%;
+
+              &:focus {
+                outline: none;
+              }
             }
-            
+
+            &:last-child() {
+              grid-column: 1/-1;
+              // grid-row: 2;
+            }
+          }
+          .guest-picker {
+            position: relative;
+
+            .guests-modal {
+              position: absolute;
+            }
+          }
         }
-        .review-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            row-gap: 40px;
 
-            
+        p:not(header) {
+          margin: 0;
         }
+        .prices {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding-bottom: 15px;
+          border-bottom: 1px solid #dddddd;
+          gap: 10px;
+          > *:nth-child(odd) {
+            text-decoration: underline;
+          }
+          > *:nth-child(even) {
+            justify-self: end;
+          }
+        }
+        .total {
+          font-weight: bold;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
     }
+
+    .amenities-container {
+      h2 {
+        margin-bottom: 24px;
+      }
+      .house-amenities {
+        display: grid;
+        grid-template-columns: auto auto;
+
+        p {
+          margin: 0;
+        }
+        div {
+          padding-bottom: 16px;
+        }
+      }
+    }
+  }
+  #reviews {
+    padding-block: 48px;
+    header {
+      font-size: em(22px, 16px);
+      margin-bottom: 32px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+    .rating {
+      display: grid;
+      grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+      gap: 4px;
+      margin-bottom: 30px;
+      align-items: center;
+      p {
+        margin: 0;
+      }
+      > *:nth-child(even) {
+        width: 100%;
+        span {
+          border-radius: 2px;
+          width: 30px;
+          height: 3px;
+          background-color: #222222;
+        }
+      }
+      .progress-container {
+        border-radius: 30em;
+        height: min-content;
+        width: 90%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+      progress {
+        // -webkit-appearance: none;
+        height: 5px;
+        border-radius: 40px !important;
+      }
+
+      ::-webkit-progress-bar {
+        background-color: #dddddd;
+      }
+      ::-webkit-progress-value {
+        background-color: #222222;
+      }
+    }
+    .review-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 40px;
+    }
+  }
 }

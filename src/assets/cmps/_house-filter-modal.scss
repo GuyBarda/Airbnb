@@ -125,6 +125,7 @@
     width: 90%;
     margin: auto;
     padding-top: 28px;
+    
   }
   .between-prices {
     margin: auto;
@@ -132,9 +133,11 @@
   }
   .form-input {
     font-size: 16px;
+    
   }
   input {
     border: none;
+    outline: none;
   }
 
   .form-rooms-and-beds {

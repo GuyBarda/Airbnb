@@ -135,7 +135,7 @@
           <h3>beds</h3>
           <button class="btn-btn">Any</button>
 
-          <button  class="btn-btn btn-row2"  @click="setRoomsBeds('beds', num, $event, 'row2')" v-for="num in 8" :key="num" >
+          <button  class="btn-btn"  @click="setRoomsBeds('beds', num, $event, 'row2')" v-for="num in 8" :key="num" >
             {{ num }}
           </button>
         </div>
