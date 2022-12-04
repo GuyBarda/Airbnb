@@ -333,6 +333,7 @@ export default {
     },
     setRoomsBeds(key, num, ev, id) {
       console.log("ev", ev);
+      console.log("ev", id);
       ev.target.classList.toggle("selected");
 
       this.filterBy.roomsBeds[key] = num;
