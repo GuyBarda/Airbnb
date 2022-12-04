@@ -343,21 +343,35 @@
             background-color: transparent;
             height: fit-content;
             border: 1px solid rgba(0, 0, 0, 0);
+
+            &:nth-child(2) {
+                text-decoration: none;
+                background: #222222;
+                padding: 8px;
+                border-radius: 6px;
+                text-align: center;
+                width: 161px;
+                height: 48px;
+                align-items: end;
+                box-sizing: border-box;
+                color: #fff;
+                font-size: 1em;
+            }
         }
     }
 
-    .form-footer button:nth-child(2) {
-        background: black;
-        padding: 8px;
-        border-radius: 6px;
-        text-align: center;
-        width: 161px;
-        height: 48px;
-        align-items: end;
-        box-sizing: border-box;
-        color: #fff;
-        font-size: 1em;
-    }
+    // .form-footer button:nth-child(2) {
+    //     background: #222222;
+    //     padding: 8px;
+    //     border-radius: 6px;
+    //     text-align: center;
+    //     width: 161px;
+    //     height: 48px;
+    //     align-items: end;
+    //     box-sizing: border-box;
+    //     color: #fff;
+    //     font-size: 1em;
+    // }
 
     .Type-of-place {
         .first-tow {
