@@ -20,13 +20,13 @@
                         <img src="../assets/svg/close.svg" alt="">
                     </button> -->
                 </div>
-                <div @click="(showGuestPicker = true)" class="guests">
+                <div @click="showGuestPicker = !showGuestPicker" class="guests">
                     <label for="guests">GUESTS</label>
                     <p>{{ order.guests.adults }} guest</p>
                     <!-- <button v-if="order.endDate" @click="order.endDate = ''">
                         <img src="../assets/svg/close.svg" alt="">
                     </button> -->
-                    <!-- <guests-modal v-if="showGuestPicker"></guests-modal> -->
+                    <guests-modal :class="{open:showGuestPicker}"></guests-modal>
                 </div>
 
             </div>
