@@ -10,7 +10,7 @@ export const houseService = {
     getById,
     remove,
     save,
-    getEmptyhouse,
+    getEmptyHouse,
     btnsAryy,
 };
 
@@ -29,7 +29,7 @@ function getById(id) {
     return storageService.get(KEY, id);
 }
 
-function getEmptyhouse() {
+function getEmptyHouse() {
     return {
         "name": "",
         "imgUrls": [],

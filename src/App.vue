@@ -6,9 +6,15 @@
     class="dark-site"
     :class="{ open: isOpen}"
   ></section> -->
-  <section @click="toggleSearch" class="dark-site"
-    :class="{ open: isOpen || isOrderComplete || isFilterOpen || isMustLogin, search: isOpen , must: isMustLogin}"></section>
-
+  <section
+    @click="toggleSearch"
+    class="dark-site"
+    :class="{
+      open: isOpen || isOrderComplete || isFilterOpen || isMustLogin,
+      search: isOpen,
+      must: isMustLogin,
+    }"
+  ></section>
 </template>
 
 <script>
@@ -21,15 +27,6 @@ export default {
   },
   data() {
     return {};
-  },
-  created() {
-    // console.log(document.querySelector('#app'))
-    // document.querySelector('#app').addEventListener('scroll', ev => {
-    //   console.log(ev)
-    // })
-    // document.querySelector('#app').addEventListener('click', ev => {
-    //   console.log(ev)
-    // })
   },
   methods: {
     toggleSearch(ev) {

@@ -148,6 +148,7 @@ export default {
     };
   },
   async created() {
+    console.log('hi');
     const user = userService.getLoggedinUser();
     if (user) {
       this.user = user;
@@ -199,5 +200,5 @@ export default {
     uploadImg,
     loginSignupModal,
   },
-};
+}
 </script>
