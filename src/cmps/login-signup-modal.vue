@@ -33,12 +33,12 @@
     <form @submit.prevent="signup" class="login-main-content" v-if="!isLogIn">
         <div class="login-header"> Welcome to Airbxb </div>
 
-        <div class="login-form-cont">
+        <div class="sign-up-form-cont">
             <input v-model="signupCred.fullname" class="fullname-input" type="text" placeholder="Full name">
             <div class="form-line"></div>
-            <input v-model="signupCred.username" class="login-username" placeholder="Username">
+            <input v-model="signupCred.username" class="username-input" placeholder="Username">
             <div class="form-line"></div>
-            <input v-model="signupCred.password" class="login-password" autocomplete="password" placeholder="Password" type="password">
+            <input v-model="signupCred.password" class="password-input" autocomplete="password" placeholder="Password" type="password">
         </div>
 
         <button @mousemove="hoverEffect" class="btn-container">Log in</button>
