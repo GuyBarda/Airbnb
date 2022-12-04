@@ -1,6 +1,6 @@
 [
     {
-        "_id": "10006546",
+        "_id": "10006547",
         "name": "Ribeira Duplex",
         "imgUrls": [
             "https://res.cloudinary.com/dfvmo6yx4/image/upload/v1669652884/cld-sample-2.jpg",
@@ -29,7 +29,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
-        "type": ["place"],
+        "stayType": "Shared room",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -99,7 +100,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["place"],
+        "stayType": "Shared room",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -179,7 +181,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["place"],
+        "stayType": "Entire place",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -259,7 +262,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
-        "type": ["Entir"],
+        "stayType": "Entire place",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -319,7 +323,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
-        "type": ["Entire place"],
+        "stayType": "Entire place",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -389,7 +394,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["private room"],
+        "stayType": "Private room",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -469,7 +475,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Tropical"],
-        "type": ["place"],
+        "stayType": "Shared room",
+        "propertyType": "House",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
@@ -548,7 +555,8 @@
             "Bathrooms": 2
         },
         "labels": ["Top of the world", "Trending", "Play", "Tropical"],
-        "type": ["Entire place"],
+        "stayType": "Entire place",
+        "propertyType": "Hotel",
         "host": {
             "_id": "u101",
             "fullname": "Davit Pok",
