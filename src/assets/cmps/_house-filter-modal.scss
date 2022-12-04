@@ -184,6 +184,12 @@
                 border: 1px solid rgb(221, 221, 221);
                 background-color: #fff;
                 text-align: center;
+                cursor: pointer;
+                transition: 0.3s;
+
+                &:hover {
+                    border: 1px solid #222222;
+                }
             }
             input:checked + .btn-btn {
                 color: white;
@@ -193,45 +199,50 @@
     }
 
     .form-property-type {
-        padding-bottom: 45px;
+        // padding-bottom: 48px;
+        input {
+            display: none;
+
+            // &:checked + .property-type {
+            //     background-color: black;
+            // }
+        }
+        .property-type {
+            border: 1px solid;
+            width: 165.75px;
+            height: 120px;
+            margin-right: 13px;
+            border-radius: 11px;
+            border: 1px solid rgba(176, 176, 176, 0.5);
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+            padding: 16px;
+
+            &:hover {
+                border: 1px solid #222222;
+            }
+
+            img {
+                max-height: 30px;
+            }
+
+            span {
+                font-size: 13px;
+                position: absolute;
+                bottom: 20px;
+                left: 17px;
+                font-size: 16px;
+            }
+        }
     }
     .flex {
         display: flex;
-    }
-    .property-type {
-        border: 1px solid;
-        width: 165.75px;
-        height: 120px;
-        margin-right: 13px;
-        border-radius: 11px;
-        border: 1px solid rgba(176, 176, 176, 0.5);
-        position: relative;
-        cursor: pointer;
-        img {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            max-height: 30px;
-        }
-        span {
-            font-size: 13px;
-            position: absolute;
-            bottom: 20px;
-            left: 17px;
-            font-size: 16px;
-        }
     }
 
     .form-amenities {
         padding: 32px 0;
         border-bottom: 1px solid #dddddd;
-    }
-
-    .form-title-amenities {
-        padding-bottom: 24px;
-        h2 {
-            padding-bottom: 24px;
-        }
     }
 
     .essentials h3 {
