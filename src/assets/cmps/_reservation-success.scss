@@ -1,14 +1,15 @@
 .reservation-success {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     width: 40%;
+    font-size: 0.8em;
     height: max-content;
     border-radius: 10px;
     border: 1px solid grey;
     padding: 30px;
     background-color: #fff;
-    transform: translate(70%, 30%);
+    transform: translate(-50%, -50%);
     z-index: 21;
 
     h2 {
@@ -27,7 +28,7 @@
     header {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 25px;
+        margin-bottom: 5px;
 
         button {
             border: 0;

@@ -234,7 +234,7 @@ export default {
         reservationSuccess,
         reviewAverage,
         reserveModal,
-        detailsHeader
+        detailsHeader,
     }
 }
 </script>
