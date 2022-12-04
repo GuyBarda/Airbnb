@@ -1,15 +1,18 @@
 .house-filter {
-  display: flex;
+  // display: flex;
   align-items: center;
   // height: 78px;
   $clr-secondary: #b0b0b0;
   // width: 100%;
   // box-shadow: 0px 1px 2px 0px #dddddd;
   position: sticky;
-  top: 0;
+  top: 80px;
   z-index: 7;
   background-color: white;
   // margin-top: 80px;
+  @media(max-width: 400px){
+    border-bottom: 1px solid #a9a6a65c;
+  }
 
   .carousel__prev {
     margin: 0;

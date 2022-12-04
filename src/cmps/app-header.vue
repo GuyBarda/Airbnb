@@ -5,7 +5,7 @@
       <img src="../assets/svg/logo.svg" alt="" /> 
     </div>
 
-    <app-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"
+    <house-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"
       @click="toggleSearch($event, key)" />
     <search-modal @setDate="setDate" @setDest="setDest" @updateZone="openZone" :zone="zone" :class="{ open: isOpen }" />
 
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import appSearch from "./house-search.vue";
+import houseSearch from "./house-search.vue";
 import searchModal from "./search-modal.vue";
 import userMenu from "./user-menu.vue";
 
@@ -43,7 +43,7 @@ export default {
     },
   },
   components: {
-    appSearch,
+    houseSearch,
     searchModal,
     userMenu,
   },

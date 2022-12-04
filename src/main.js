@@ -16,7 +16,7 @@ const app = createApp(App);
 
 
 
-app.component(HistogramSlider);
+app.use(HistogramSlider);
 
 app.use(ElementPlus);
 app.use(router);

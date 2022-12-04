@@ -1,5 +1,9 @@
 <template>
-  <carousel class="carousel" :itemsToScroll="1" :items-to-show="4">
+  <carousel
+    class="carousel"
+    :settings="settings"
+    :breakpoints="breakpoints"
+  >
     <slide v-for="slide in btns" :key="slide">
       <div @click="setSort(slide.key)">
         <img class="img-btn" :src="slide.url" alt="" width="24" height="24" />
@@ -38,10 +42,35 @@ export default {
       filterBy: {
         labels: [],
       },
+      settings: {
+        itemsToShow: 3,
+        itemsToScroll: 1,
+        snapAlign: "center",
+      },
+      breakpoints: {
+        // 700px and up
+        700: {
+          itemsToShow: 4,
+          itemsToScroll: 4,
+          snapAlign: "center",
+        },
+        // 1024 and up
+        1024: {
+          itemsToShow: 5,
+          itemsToScroll: 1,
+          snapAlign: "start",
+        },
+      },
     };
   },
-  computed: {},
+  computed: {
+  },
   methods: {
+    resizeCarousel(event) {
+      const elCarousel = document.querySelector(".carousel");
+      const elCarouselWidth = elCarousel.clientWidth;
+      this.itemsToShow = Math.floor(elCarouselWidth / 80);
+    },
     setSort(label) {
       this.filterBy.labels.push(label);
       this.$emit("filtered", this.filterBy);

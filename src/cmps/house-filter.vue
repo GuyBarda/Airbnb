@@ -1,5 +1,6 @@
 <template>
-  <section class="house-filter">
+  <section class="house-filter main-container full">
+  <section class="main-container" style="display: flex; align-items:center">
     <!-- <filterBtns /> -->
     <filter-btns :btns="btnsAryy()" @filtered="setFilterBy" />
     <button @click="toggleFilterModal(true)" class="btn-filters">
@@ -10,6 +11,7 @@
     </button>
   </section>
     <filter-modal :houses="houses" @close="toggleFilterModal(false)" v-if="isFilterOpen" />
+  </section>
 </template>
 
 <script>

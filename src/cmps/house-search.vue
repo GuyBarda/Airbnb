@@ -7,16 +7,24 @@
       <button @click="openZone('In')" class="search-btn">{{ setDate }}</button>
       <span></span>
       <button @click="openZone('Who')" class="search-btn">Add guests</button>
-
+      <section class="search-in-mobile">
+          <search-icon class="img" />
+          <div>
+          <label>Where to?</label>
+          <p>Anywhere &bull; Any week &bull; Add guests</p>
+          </div>
+      </section>
     </div>
     <div v-else class="start-search">Start your search</div>
     <div class="little-search-icon">
-      <img src="../assets/svg/search.svg" alt="" />
+      <img src="../assets/svg/search.svg" class="svg-for-desktop" />
+      <img src="../assets/svg/filter-btn.svg" class="svg-for-mobile" />
     </div>
   </section>
 </template>
 
 <script>
+import searchIcon from '../assets/svg/search.vue'
 export default {
   props: {
     dest: String,
@@ -44,6 +52,8 @@ export default {
       return where === 'house' ? false : true
     }
   },
-
+  components:{
+    searchIcon
+  }
 }
 </script>
