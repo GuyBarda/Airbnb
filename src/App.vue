@@ -1,11 +1,7 @@
 <template>
   <app-header :close="isOpen" />
   <RouterView />
-  <!-- <section
-    @click="toggleSearch"
-    class="dark-site"
-    :class="{ open: isOpen}"
-  ></section> -->
+
   <section @click="toggleSearch" class="dark-site" :class="{
     open: isOpen || isOrderComplete || isFilterOpen || isMustLogin,
     search: isOpen,

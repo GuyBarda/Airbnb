@@ -73,19 +73,13 @@ export default {
         openZone(key) {
             this.currZone = key;
         },
-        toggleSearch(event) {
-            if (event.target.innerText === 'Any week') {
-                this.$emit('clickDate');
-                this.currZone = key;
-            }
-        },
-        // toggleSearch(event,key) {
-        //   if (event.target.innerText === "Any week") {
-        //     this.$emit("clickDate");
-        //   }
-        //   this.currZone = key
-        //   console.log('hi');
+        // toggleSearch(event) {
+        //     if (event.target.innerText === 'Any week') {
+        //         this.$emit('clickDate');
+        //         this.currZone = key;
+        //     }
         // },
+
         toggleSearch(event) {
             if (event.target.innerText === 'Any week') {
                 this.$emit('clickDate');

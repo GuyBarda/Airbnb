@@ -3,7 +3,6 @@
     <house-filter :houses="houses" />
     <house-list v-if="houses" :houses="houses" />
   </section>
-
 </template>
 
 <script>
@@ -14,7 +13,6 @@ export default {
   components: {
     houseFilter,
     houseList,
-
   },
   data() {
     return {
@@ -28,6 +26,8 @@ export default {
     } catch {
       console.log("cant load houses");
     }
+  },
+  methods:{
   },
   computed: {
     houses() {

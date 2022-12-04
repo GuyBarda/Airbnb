@@ -1,16 +1,22 @@
 <template>
-  <section class="house-filter main-container full">
-  <section class="main-container" style="display: flex; align-items:center">
-    <!-- <filterBtns /> -->
-    <filter-btns :btns="btnsAryy()" @filtered="setFilterBy" />
-    <button @click="toggleFilterModal(true)" class="btn-filters">
-      <div>
-        <img src="../assets/svg/filter-btn.svg" alt="" />
-        <span>Filters</span>
-      </div>
-    </button>
-  </section>
-    <filter-modal :houses="houses" @close="toggleFilterModal(false)" v-if="isFilterOpen" />
+  <section
+    class="house-filter main-container full"
+  >
+    <section class="main-container" style="display: flex; align-items: center">
+      <!-- <filterBtns /> -->
+      <filter-btns :btns="btnsAryy()" @filtered="setFilterBy" />
+      <button @click="toggleFilterModal(true)" class="btn-filters">
+        <div>
+          <img src="../assets/svg/filter-btn.svg" alt="" />
+          <span>Filters</span>
+        </div>
+      </button>
+    </section>
+    <filter-modal
+      :houses="houses"
+      @close="toggleFilterModal(false)"
+      v-if="isFilterOpen"
+    />
   </section>
 </template>
 
@@ -20,7 +26,7 @@ import filterModal from "./filter-modal.vue";
 import { houseService } from "../services/house-service-local.js";
 
 export default {
-  props:{
+  props: {
     houses: Array,
   },
   components: {
@@ -28,16 +34,19 @@ export default {
     filterModal,
   },
   data() {
-    return {};
+    return {
+
+    };
   },
 
   created() {},
   computed: {
-        isFilterOpen() {
+    isFilterOpen() {
       return this.$store.getters.isFilterOpen;
     },
   },
   methods: {
+
     toggleFilterModal(isShown) {
       this.$store.commit({ type: "toggleFilterModal", bool: isShown });
     },
