@@ -37,7 +37,7 @@
                         </div>
                     </section>
                     <section class="imgs-container">
-                        <upload-img v-for="x in 5" @setImg="setImg" :img="houseToEdit.imgUrls[x]" :key="x" :idx="x" />
+                        <upload-img v-for="x in 5" @setImg="setImg" :img="houseToEdit.imgUrls[x-1]" :key="x" :idx="(x-1)" />
                     </section>
                     <section class="below-imgs">
                         <div style="display: flex;justify-content: space-between;align-items: center;">

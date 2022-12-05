@@ -25,7 +25,6 @@
         "password": "secret"
     },
     {
-<<<<<<< HEAD
       "_id": "u102",
       "fullname": "User 2",
       "imgUrl": "/img/img2.jpg",
@@ -41,14 +40,4 @@
       "password": "guest"
       
     }
-    
-  ]
-=======
-        "_id": "u102",
-        "fullname": "User 2",
-        "imgUrl": "/img/img2.jpg",
-        "username": "user2",
-        "password": "secret"
-    }
 ]
->>>>>>> 01e48f9f9ce6d245bfd3fe85e2110e453c6f37bd
