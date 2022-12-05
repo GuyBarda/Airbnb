@@ -15,6 +15,7 @@ export const houseService = {
 };
 
 async function query(filterBy) {
+    
     gHouses = await storageService.query(KEY);
     let houses = _filter(filterBy);
     return Object.values(houses);
@@ -33,10 +34,8 @@ function getEmptyHouse() {
         summary: '',
         capacity: 0,
         amenities: [],
-
         bedrooms: 0,
         Bathrooms: 0,
-
         labels: [],
         type: [],
         loc: {
@@ -47,6 +46,7 @@ function getEmptyHouse() {
             lat: 0,
             lng: 0,
         },
+        host: {},
         reviews: [],
         likedByUsers: [],
     };

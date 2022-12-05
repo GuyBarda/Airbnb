@@ -79,7 +79,9 @@ export const houseStore = {
         },
         async updateHouse(context, { house }) {
             try {
+                console.log('house', house)
                 house = await houseService.save(house)
+
                 context.commit(getActionUpdateHouse(house))
                 return house
             } catch (err) {
@@ -90,6 +92,7 @@ export const houseStore = {
         async loadHouses({ commit, state }) {
             try {
                 let houses = await houseService.query(state.filterBy)
+                
                 commit({ type: 'setHouses', houses })
                 return houses
             } catch (err) {

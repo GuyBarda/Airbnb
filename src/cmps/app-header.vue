@@ -1,8 +1,8 @@
 <template>
     <header class="main-header full" :class="whichLayout">
-        <div @click="goToHome" class="logo">
-            <img src="../assets/svg/logo.svg" alt="" />
-            <!-- <span>airbxb</span> -->
+        <div @click="goToHome" class="logo-container">
+            <img src="../assets/img/favicon.png" alt="" />
+            <p>airbxb</p>
         </div>
 
         <house-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"
@@ -23,6 +23,7 @@
                     <img v-if="!user" class="host-image"
                         src="https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png" />
                     <img v-else class="host-image" :src="user.imgUrl" />
+                    
                 </button>
             </div>
 

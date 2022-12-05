@@ -140,6 +140,7 @@ export default {
         user ? this.user = user : this.$store.commit({ type: "toggleMustLogin", bool: true });
 
         this.houseToEdit = id ? await houseService.getById(id) : houseService.getEmptyHouse();
+        this.houseToEdit.host = this.user
         console.log("created", this.houseToEdit);
     },
     methods: {
@@ -148,7 +149,10 @@ export default {
             this.$store.commit({ type: "toggleMustLogin", bool: false });
         },
         setImg({ url, idx }) {
+            console.log('idx', idx)
             this.houseToEdit.imgUrls[idx] = url
+            // this.houseToEdit.imgUrls.push(url) 
+            console.log('this.houseToEdit', this.houseToEdit)
         },
         checkAmenities(amenity) {
             if (this.houseToEdit.amenities.includes(amenity)) {
