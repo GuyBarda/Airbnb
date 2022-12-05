@@ -1,6 +1,6 @@
 <template>
     <div class="order-preview">
-        <p>{{ trip.buyer.fullname }}</p>
+        <p>{{ trip.hostId }}</p>
         <p>{{ trip.house.name }}</p>
         <p>{{ trip.startDate }}</p>
         <p>{{ trip.endDate }}</p>
