@@ -27,5 +27,14 @@
       "username": "user2",
       "password": "secret"
       
+    },
+    {
+      "_id": "u107",
+      "fullname": "guest ",
+      "imgUrl": "../../Airbnb/src/assets/img/nadir.PNG",
+      "username": "guest",
+      "password": "guest"
+      
     }
+    
   ]
