@@ -41,24 +41,13 @@
         }
         .become-host {
             // font-family: Cereal-medium;
+            padding-right: 20px;
             text-decoration: none;
             cursor: pointer;
             background-color: transparent;
             height: fit-content;
             // font-family: Circular, Arial, sans-serif;
             @media (max-width: 900px) {
-                display: none;
-            }
-        }
-        .explore-btn {
-            display: flex;
-            height: 15px;
-            // display: flex;
-            // align-items: center;
-            // justify-content: center;
-            margin-left: 15px;
-            margin-right: 15px;
-            @media (max-width: 650px) {
                 display: none;
             }
         }

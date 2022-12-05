@@ -59,7 +59,23 @@
             padding-block: 32px;
             border-bottom: 1px solid #dddddd;
         }
-
+        .range-wrapper{
+            display: flex;
+            justify-content: center;
+            padding-top: 38px;
+            .irs-handle{
+                border: 1px solid #bababa;
+                &:hover{
+                    background-color: #ffffff;
+                }
+            }
+            .irs-grid-pol{
+                display: none;
+            }
+            .irs-from, .irs-to{
+                display: none;
+            }
+        }
         .form-price {
             label {
                 font-size: em(12px, 16px);
@@ -83,7 +99,10 @@
                 justify-content: space-between;
                 width: 90%;
                 margin: auto;
-                padding-top: 28px;
+                padding-top: 0;
+            }
+            .form-input{
+                align-items: flex-end;
             }
 
             .between-prices {

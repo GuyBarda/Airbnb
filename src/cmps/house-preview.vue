@@ -1,7 +1,7 @@
 <template>
     <router-link :to="'house/'+house._id" target="_blank">
     <article class="house-preview">
-        <heart-icon @click.prevent="isMark = !isMark" :class="{mark: isMark}" class="heart-btn"/>
+        <heart-icon @click.prevent="setWishlist(house._id)" :class="{mark: isMark}" class="heart-btn"/>
             <img-carousel @click.prevent :imgs="house.imgUrls"/>
         <section>
         <p class="location">{{ location }}</p>
@@ -34,6 +34,12 @@ export default {
         return {
             isMark: false,
         }
+    },
+    methods: {
+        setWishlist(houseId){
+            this.isMark = !this.isMark
+            this.$store.dispatch({type: 'setWishlist', houseId})
+        },
     },
     computed: {
         date() {

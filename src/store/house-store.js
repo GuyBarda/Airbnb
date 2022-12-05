@@ -34,23 +34,18 @@ export const houseStore = {
     },
     getters: {
         houses({ houses }) {
-            console.log('houses', Object.values(houses))
             return Object.values(houses)
         },
     },
     mutations: {
         setHouses(state, { houses }) {
-            console.log("A4",houses);
             state.houses=JSON.parse(JSON.stringify(houses))
-            console.log("A5",state.houses);
         },
         addHouse(state, { house }) {
             state.houses.push(house)
         },
         setFilter(state, { filterBy }) {
-            console.log('filterBy', filterBy)
             state.filterBy = { ...state.filterBy, ...JSON.parse(JSON.stringify(filterBy)) }
-            console.log('state.filterBy', state.filterBy)
         },
         updateHouse(state, { house }) {
             const idx = state.houses.findIndex(c => c.id === house._id)
@@ -94,7 +89,6 @@ export const houseStore = {
         async loadHouses({ commit, state }) {
             try {
                 let houses = await houseService.query(state.filterBy)
-                console.log("A3",houses);
                 commit({ type: 'setHouses', houses })
                 return houses
             } catch (err) {

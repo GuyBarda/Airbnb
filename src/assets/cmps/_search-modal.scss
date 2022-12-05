@@ -25,7 +25,8 @@
     grid-template-columns: 1.4fr 1px 14em 1px 0.9fr;
 
     span {
-      flex: 0 0 1px;
+      // flex: 0 0 1px;
+      align-self: center;
       height: 50%;
       width: 1px;
       background-color: #dddddd;

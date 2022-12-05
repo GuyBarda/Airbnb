@@ -6,7 +6,7 @@
 
     &.el-popper{
         border-radius: 30px;
-        padding: 50px;
+        padding: 75px;
     }
 
     .el-picker-panel{
@@ -31,8 +31,8 @@
         }
         
         td{
-            height: 46px !important;
-            width: 46px !important;
+            height: 50px !important;
+            width: 50px !important;
             padding: 0 !important;
             
             &.in-range{
@@ -51,7 +51,7 @@
         background-color: black !important;
     }
     .el-date-table-cell{
-        height: 46px !important;
+        height: 50px !important;
         padding: 0 !important;
 
         &:hover{
@@ -60,8 +60,8 @@
 
     }
     .el-date-table-cell__text{
-        width: 46px !important;
-        height: 46px !important;
+        width: 50px !important;
+        height: 50px !important;
         display: grid !important;
         place-items: center !important;
         font-family: CerealMd;

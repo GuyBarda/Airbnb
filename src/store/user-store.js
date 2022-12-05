@@ -1,4 +1,6 @@
 import { userService } from '../services/user-service'
+import { houseService } from '../services/house-service-local'
+import { utilService } from '../services/utils-service'
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket-service'
 
 // var localLoggedinUser = null
@@ -39,6 +41,25 @@ export const userStore = {
         },
     },
     actions: {
+        async setWishlist({commit},{houseId}){
+            let user = userService.getLoggedinUser()
+            const idxInWishlist = user.wishlist.findIndex(house => house._id === houseId)
+            if(idxInWishlist > -1){
+                user.wishlist.splice(idxInWishlist,1)
+                return
+            }
+            const {name,imgUrls,loc} = houseService.getById(houseId)
+            const miniHouse = {
+                houseId,
+                name,
+                imgUrls,
+                address: loc.address
+            }
+            user.wishlist.push(miniHouse)
+            user = await userService.update(user)
+            console.log(user);
+            // commit({ type: 'setUser', user })
+        },
         async login({ commit }, { cred }) {
             try {
                 console.log('cred', cred)

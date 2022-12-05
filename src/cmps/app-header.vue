@@ -12,9 +12,9 @@
         <div class="user">
             <a class="become-host" href="/#/login">Become a host</a>
 
-            <a href="/#/explore">
+            <!-- <a href="/#/explore">
                 <img class="explore-btn" src="../assets/svg/i18n.svg" />
-            </a>
+            </a> -->
 
             <div class="user-menu-btn" @click="toggleUserMenu()">
                 <button>
