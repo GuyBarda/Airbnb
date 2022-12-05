@@ -46,48 +46,26 @@ export const userStore = {
         },
     },
     actions: {
-<<<<<<< HEAD
         async setWishlist({ commit }, { houseId }) {
             let { _id } = userService.getLoggedinUser();
             let user = await userService.getById(_id);
-            console.log(user);
             const idx = user.wishlist.findIndex(
                 (house) => house._id === houseId
             );
-            console.log(idx);
             if (idx > -1) {
                 user.wishlist.splice(idx, 1);
                 user = await userService.update(user);
                 return;
-=======
-        async setWishlist({commit},{houseId}){
-            let {_id} = userService.getLoggedinUser()
-            let user = await userService.getById(_id)
-            const idx = user.wishlist.findIndex(house => house._id === houseId)
-            if(idx > -1){
-                user.wishlist.splice(idx,1)
-                user = await userService.update(user)
-                return
->>>>>>> fa48327830f75f012cef34b29c3acdcd314dd240
             }
             const { name, imgUrls, loc } = await houseService.getById(houseId);
             const miniHouse = {
                 _id: houseId,
                 name,
                 imgUrls,
-<<<<<<< HEAD
                 address: loc.address,
             };
             user.wishlist.push(miniHouse);
             user = await userService.update(user);
-            console.log(user);
-            commit({ type: 'setUser', user });
-=======
-                address: loc.address
-            }
-            user.wishlist.push(miniHouse)
-            user = await userService.update(user)
->>>>>>> fa48327830f75f012cef34b29c3acdcd314dd240
         },
         async login({ commit }, { cred }) {
             try {
