@@ -1,5 +1,14 @@
 <template>
 <section class="destination-modal">
+<section class="common-search">
+<p>Common search</p>
+    <ul>
+        <li><div class="spot-holder"><spot-icon /></div> Los Angeles, LA</li>
+        <li><div class="spot-holder"><spot-icon /></div> Tel Aviv, TLV</li>
+        <li><div class="spot-holder"><spot-icon /></div> New York, NYC</li>
+    </ul>
+</section>
+<section class="regions">
     <p>Search by region</p>
     <div @click="setDestination('Flex')">
     <img src="https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg" alt="Flexible">
@@ -26,14 +35,19 @@
         South America
     </div>
 </section>
+</section>
 </template>
 
 <script>
+import spotIcon from '../assets/svg/spot.vue'
     export default {
         methods:{
             setDestination(val){
                 this.$emit('setDestination',val)
             }
+        },
+        components:{
+            spotIcon
         }
     }
 </script>
