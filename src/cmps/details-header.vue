@@ -1,7 +1,7 @@
 <template>
-    <div class="">
+    <div class="full">
         <header ref="elDetailsHeader" :class="{ sticky: sticky }" class="details-header full secondary-container ">
-            <section>
+            <section class="secondary-container">
                 <nav class="details-nav">
                     <a href="#photos">Photos</a>
                     <a href="#amenities">Amenities</a>

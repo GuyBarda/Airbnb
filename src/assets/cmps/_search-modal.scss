@@ -34,6 +34,7 @@
       position: relative;
       flex-grow: 1;
       height: 100%;
+
     }
     &.btn-selected {
       background-color: #ebebeb;
@@ -120,7 +121,13 @@
       display: grid;
       cursor: grab;
       z-index: 40;
-
+ 
+      &.align-more{
+        padding-left: 2em;
+      }
+      &.align{
+        padding-left: 1.5em;
+      }
       &:hover {
         background-color: #dddddd;
         input[type="text"] {
