@@ -1,5 +1,6 @@
 import { storageService } from './async-storage-service';
 import { utilService } from './utils-service.js';
+import { houseService } from './house-service-local';
 // import { httpService } from './http.service'
 import { store } from '../store/store';
 import {
@@ -25,6 +26,7 @@ export const userService = {
     remove,
     update,
     changeScore,
+    setWishlist
 };
 
 window.userService = userService;
@@ -123,6 +125,27 @@ function getLoggedinUser() {
     return user;
 }
 
+async function setWishlist(houseId){
+    const { _id } = getLoggedinUser();
+    const user = await getById(_id);
+    const idx = user.wishlist.findIndex(
+        (house) => house._id === houseId
+    );
+    if (idx > -1) {
+        user.wishlist.splice(idx, 1);
+        await update(user);
+        return;
+    }
+    const { name, imgUrls, loc } = await houseService.getById(houseId);
+    const miniHouse = {
+        _id: houseId,
+        name,
+        imgUrls,
+        address: loc.address,
+    };
+    user.wishlist.push(miniHouse);
+    await update(user);
+}
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
 //     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})

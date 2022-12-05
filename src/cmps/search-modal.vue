@@ -144,8 +144,8 @@ export default {
         0
       );
 
-      this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
-      this.$store.dispatch({ type: "loadHouses" });
+      // this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
+      // this.$store.dispatch({ type: "loadHouses" });
 
       const queryStringParams = `?dest=${this.filterBy.destination}&guests=${this.filterBy.guests}`;
       const newUrl =
@@ -155,6 +155,7 @@ export default {
         window.location.pathname +
         queryStringParams;
       window.history.pushState({ path: newUrl }, "", newUrl);
+      this.$router.push({path: '/explore', query: { dest: this.filterBy.destination, guests: this.filterBy.guests}})
     },
     openZone(val) {
       this.isSelect = val;

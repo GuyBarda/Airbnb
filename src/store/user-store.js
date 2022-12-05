@@ -46,31 +46,15 @@ export const userStore = {
     },
     actions: {
         async setWishlist({ commit }, { houseId }) {
-            let { _id } = userService.getLoggedinUser();
-            let user = await userService.getById(_id);
-            const idx = user.wishlist.findIndex(
-                (house) => house._id === houseId
-            );
-            if (idx > -1) {
-                user.wishlist.splice(idx, 1);
-                user = await userService.update(user);
-                return;
+            try{
+                await userService.setWishlist(houseId)
+            }catch{
+                console.log('cant add to wishlist');
             }
-            const { name, imgUrls, loc } = await houseService.getById(houseId);
-            const miniHouse = {
-                _id: houseId,
-                name,
-                imgUrls,
-                address: loc.address,
-            };
-            user.wishlist.push(miniHouse);
-            user = await userService.update(user);
         },
         async login({ commit }, { cred }) {
             try {
-                console.log('cred', cred);
                 const user = await userService.login(cred);
-                console.log('user', user);
                 commit({ type: 'setLoggedinUser', user });
                 return user;
             } catch (err) {
@@ -80,7 +64,6 @@ export const userStore = {
         },
         async signup({ commit }, { cred }) {
             try {
-                console.log('cred', cred);
                 const user = await userService.signup(cred);
                 commit({ type: 'setLoggedinUser', user });
                 return user;
@@ -157,7 +140,6 @@ export const userStore = {
         async addOrderToUser({ commit }, { order }) {
             let { _id } = userService.getLoggedinUser();
             let user = await userService.getById(_id);
-            console.log(user);
             user.orders.push(order);
             user = await userService.update(user);
         },
