@@ -11,10 +11,16 @@ export const orderService = {
     remove,
     save,
     getEmptyOrder,
+    getOrdersByUserId,
 };
 
 function query() {
     return storageService.query(KEY);
+}
+
+async function getOrdersByUserId(userId) {
+    let orders = await storageService.query();
+    return orders.filter((order) => order.buyer._id === userId);
 }
 
 function getById(id) {

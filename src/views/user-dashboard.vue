@@ -27,7 +27,7 @@ export default {
         const { _id } = await userService.getLoggedinUser()
         console.log('from session storage', _id)
         this.user = await userService.getById(_id)
-        this.orders = 
+        // this.orders = 's';
     },
     computed: {
         userToShow() {
