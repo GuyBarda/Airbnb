@@ -2,8 +2,10 @@
     <div v-if="house" class="house-details secondary-container">
         <div class="subtitle">
             <h2>{{ house.name }}</h2>
-            <div style="display: flex; align-items: center; gap: 4px;">
+            <div class="subtitle-text" style="display: flex; align-items: center; gap: 4px;">
                 <review-average :reviews="house.reviews" />·
+                <span v-if="house.host.isSuperhost"> &#127894; Superhost ·</span>
+
                 <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
                 <div class="share-save-actions">
                     <span class="share-stay">
@@ -38,8 +40,8 @@
                     <img class="host-image" :src="`${house.host.thumbnailUrl}`" alt="">
                 </div>
                 <div class="user-house-info">
-                    <img src="../assets/svg/folder1/superhost.svg" alt="">
-                    <div>
+                    <img v-if="house.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="">
+                    <div v-if="house.host.isSuperhost">
                         <p style="font-weight: bold;">Renata is a Superhost</p>
                         <p class="subtext">
                             Superhosts are experienced, highly rated hosts who are committed to providing great stays
@@ -116,7 +118,7 @@
                 <review-average :reviews="house.reviews" />
             </header>
             <div class="rating">
-                <p>cleanliness</p>
+                <p>Cleanliness</p>
                 <span class="progress-container"><progress value="4" max="5"></progress></span>
                 <p>Communication</p>
                 <span class="progress-container"><progress value="3" max="5"></progress></span>
@@ -130,10 +132,13 @@
                 <span class="progress-container"><progress value="4.2" max="5"></progress></span>
             </div>
             <main class="review-container">
-                <review-preview v-for="review in !showMore ? house.reviews.slice(0, 2) : house.reviews"
-                    :review="review" />
+                <review-preview v-for="(review, idx) in !showMore ? house.reviews.slice(0, 6) : house.reviews"
+                    :review="review" :idx="idx" />
             </main>
-            <button @click="(showMore = !showMore)">{{ `Show ${!showMore ? 'More' : 'less'}` }}</button>
+            <button v-if="(house.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
+                            ${!showMore ? `all
+                            ${house.reviews.length} reviews` : 'less'}`
+            }}</button>
         </section>
 
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :house="house" />
@@ -199,9 +204,6 @@ export default {
             });
             return formatter.format(num)
         },
-        srcSvg() {
-            // return `../assets/svg/amenities/${a}.svg`
-        }
     },
     computed: {
         totalReviews() {

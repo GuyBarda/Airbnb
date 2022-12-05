@@ -1,7 +1,5 @@
 <template>
-  <section
-    class="house-filter main-container full"
-  >
+  <section class="house-filter main-container full">
     <section class="main-container" style="display: flex; align-items: center">
       <!-- <filterBtns /> -->
       <filter-btns :btns="btnsAryy()" @filtered="setFilterBy" />
@@ -12,12 +10,8 @@
         </div>
       </button>
     </section>
-    <filter-modal
-      :houses="houses"
-      @close="toggleFilterModal(false)"
-      v-if="isFilterOpen"
-    />
   </section>
+  <filter-modal :houses="houses" @close="toggleFilterModal(false)" v-if="isFilterOpen" />
 </template>
 
 <script>
@@ -39,7 +33,7 @@ export default {
     };
   },
 
-  created() {},
+  created() { },
   computed: {
     isFilterOpen() {
       return this.$store.getters.isFilterOpen;

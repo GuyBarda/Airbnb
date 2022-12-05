@@ -2,6 +2,7 @@
     <header class="main-header full" :class="whichLayout">
         <div @click="goToHome" class="logo">
             <img src="../assets/svg/logo.svg" alt="" />
+            <!-- <span>airbxb</span> -->
         </div>
 
         <house-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"

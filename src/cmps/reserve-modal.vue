@@ -43,9 +43,9 @@
             {{ formattedPerNightPrice }} x {{ getTotalDays }} nights
           </p>
           <p>{{ formattedTotalNightsPrice }}</p>
-          <p>cleaning fee</p>
+          <p>Cleaning fee</p>
           <p>{{ formattedCleaningFee }}</p>
-          <p>service fee</p>
+          <p>Service fee</p>
           <p>{{ formattedServiceFee }}</p>
         </div>
         <div class="total">
@@ -111,14 +111,11 @@ export default {
       let price = formatter.format(num);
       let dotIdx = price.indexOf('.');
       return price[dotIdx + 1] === '0' ? price.slice(0, dotIdx) : price;
-      return price;
-      return price.slice(0, dotIdx);
     },
     formatDate(date) {
       const DATE = new Date(date);
-      return `${DATE.getDate()}/${DATE.getMonth() + 1
+      return `${DATE.getMonth() + 1}/${DATE.getDate()
         }/${DATE.getFullYear()}`;
-      return DATE.getDate();
     },
     hoverEffect(ev) {
       const button = ev.target;
@@ -134,12 +131,12 @@ export default {
       let str =
         adults || children
           ? `${adults + children} ${adults + children !== 1 ? 'guests' : 'guest'
-          },`
+          }`
           : '';
       str += infants
-        ? ` ${infants} ${infants !== 1 ? 'infants' : 'infant'},`
+        ? ` , ${infants} ${infants !== 1 ? 'infants' : 'infant'}`
         : '';
-      str += pets ? ` ${pets} ${pets !== 1 ? 'pets' : 'pet'}` : '';
+      str += pets ? ` , ${pets} ${pets !== 1 ? 'pets' : 'pet'}` : '';
       return str;
     },
     formatedStartDate() {
