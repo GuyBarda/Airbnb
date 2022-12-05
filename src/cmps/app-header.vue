@@ -5,6 +5,7 @@
       <p>airbxb</p>
     </div>
 
+
     <house-search
       :date="currDate"
       :dest="currDest"

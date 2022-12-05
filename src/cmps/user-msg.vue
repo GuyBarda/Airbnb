@@ -1,5 +1,6 @@
 <template>
   <div v-show="alive" class="alert" :class="alertClass">
+    <i :class="iconClass"></i>
     {{ msg?.txt }}
   </div>
 </template>
@@ -30,6 +31,10 @@ export default {
     alertClass() {
       if (!this.msg) return
       return `alert-${this.msg.type}`
+    },
+    iconClass() {
+      if (!this.msg === 'success') return
+      return this.msg.icon
     },
   },
 }

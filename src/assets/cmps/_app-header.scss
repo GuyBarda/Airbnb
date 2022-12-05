@@ -57,12 +57,11 @@
       display: none;
     }
     .become-host {
-      // font-family: Cereal-medium;
       text-decoration: none;
       cursor: pointer;
       background-color: transparent;
       height: fit-content;
-      // font-family: Circular, Arial, sans-serif;
+      margin-right: 51px;
       @media (max-width: 900px) {
         display: none;
       }
