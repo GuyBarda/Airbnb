@@ -1,14 +1,8 @@
 <template>
     <header class="main-header full" :class="whichLayout">
-<<<<<<< HEAD
         <div @click="goToHome" class="logo-container">
             <img src="../assets/img/favicon.png" alt="" />
             <p>airbxb</p>
-=======
-        <div @click="goToHome" class="logo">
-            <img src="../assets/svg/logo.svg" alt="" />
-            <!-- <span>airbxb</span> -->
->>>>>>> 01e48f9f9ce6d245bfd3fe85e2110e453c6f37bd
         </div>
 
         <house-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"

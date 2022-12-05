@@ -26,9 +26,6 @@ export const userStore = {
 
     },
     mutations: {
-        setUser(state,{user}){
-            state.user = user
-        },
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = user ? { ...user } : null;
@@ -50,9 +47,7 @@ export const userStore = {
         async setWishlist({commit},{houseId}){
             let {_id} = userService.getLoggedinUser()
             let user = await userService.getById(_id)
-            console.log(user);
             const idx = user.wishlist.findIndex(house => house._id === houseId)
-            console.log(idx);
             if(idx > -1){
                 user.wishlist.splice(idx,1)
                 user = await userService.update(user)
@@ -67,8 +62,6 @@ export const userStore = {
             }
             user.wishlist.push(miniHouse)
             user = await userService.update(user)
-            console.log(user);
-            commit({ type: 'setUser', user })
         },
         async login({ commit }, { cred }) {
             try {

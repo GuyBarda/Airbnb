@@ -92,10 +92,7 @@ export const houseStore = {
         async loadHouses({ commit, state }) {
             try {
                 let houses = await houseService.query(state.filterBy)
-<<<<<<< HEAD
                 
-=======
->>>>>>> 01e48f9f9ce6d245bfd3fe85e2110e453c6f37bd
                 commit({ type: 'setHouses', houses })
                 return houses
             } catch (err) {
