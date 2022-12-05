@@ -13,6 +13,11 @@ const router = createRouter({
             component: houseApp,
         },
         {
+            path: '/explore',
+            name: 'explore',
+            component: houseApp,
+        },
+        {
             path: '/house/:id',
             name: 'details',
             component: houseDetails,

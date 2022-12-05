@@ -1,7 +1,10 @@
 import { storageService } from './async-storage-service';
 import { utilService } from './utils-service.js';
+import { houseService } from './house-service-local';
 // import { httpService } from './http.service'
 import { store } from '../store/store';
+import { orderService } from './order-service-local';
+
 import {
     socketService,
     SOCKET_EVENT_USER_UPDATED,
@@ -27,6 +30,8 @@ export const userService = {
     remove,
     update,
     changeScore,
+    setWishlist
+    getTripsByUserId,
 };
 
 window.userService = userService;
@@ -35,6 +40,11 @@ function getUsers() {
     let users = storageService.query('user');
     showSuccessMsg(`This user  just got updated from socket, new score:`);
     return users;
+}
+
+async function getTripsByUserId(userId) {
+    let orders = await orderService.query();
+    return orders.filter((order) => order.buyer._id === userId);
 }
 
 function onUserUpdate(user) {
@@ -90,7 +100,6 @@ async function signup(userCred) {
 
     const user = await storageService.post(STORAGE_KEY_USER, userCred);
     // const user = await httpService.post('auth/signup', userCred)
-    console.log('save to storage', user);
     // socketService.login(user._id)
     showSuccessMsg(` user ${user.fullname}  just signup`);
     return saveLocalUser(user);
@@ -112,7 +121,7 @@ async function changeScore(by) {
 }
 
 function saveLocalUser(user) {
-    delete user.password
+    delete user.password;
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
     localStorage.setItem('loggedinUser', JSON.stringify(user));
     return user;
@@ -126,6 +135,27 @@ function getLoggedinUser() {
     return user;
 }
 
+async function setWishlist(houseId){
+    const { _id } = getLoggedinUser();
+    const user = await getById(_id);
+    const idx = user.wishlist.findIndex(
+        (house) => house._id === houseId
+    );
+    if (idx > -1) {
+        user.wishlist.splice(idx, 1);
+        await update(user);
+        return;
+    }
+    const { name, imgUrls, loc } = await houseService.getById(houseId);
+    const miniHouse = {
+        _id: houseId,
+        name,
+        imgUrls,
+        address: loc.address,
+    };
+    user.wishlist.push(miniHouse);
+    await update(user);
+}
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
 //     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})

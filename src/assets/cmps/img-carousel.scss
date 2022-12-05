@@ -1,17 +1,23 @@
 .house-preview {
     .carousel {
-        
-        @media (max-width: 400px){
-            .carousel__viewport{
-                max-width: 320px !important;
-            }
-        }
+        // width: 100% !important;
+        // @media (max-width: 400px){
+        //     .carousel__viewport{
+        //         max-width: 320px !important;
+        //     }
+        // }
         .carousel__slide {
             width: 100% !important;
 
-            @media (min-width: 400px){
-                max-width: 100% !important;
-            }
+            // @media (min-width: 400px){
+            //     max-width: 100% !important;
+            // }
+            // @media (min-width: 600px){
+            //     max-width: 550px !important;
+            // }
+            // @media (min-width: 800px){
+            //     max-width: 750px !important;
+            // }
         }
         .carousel__pagination-button::after {
             padding: 2px;

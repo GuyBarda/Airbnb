@@ -27,8 +27,7 @@ export default {
       console.log("cant load houses");
     }
   },
-  methods:{
-  },
+  methods: {},
   computed: {
     houses() {
       return this.$store.getters.houses;

@@ -31,7 +31,10 @@ export default {
         house: Object
     },
     created(){
-
+        const {wishlist} = this.loggedinUser
+        if(!wishlist) return
+        const idx = wishlist.findIndex(house => house._id === this.house._id)
+        this.isMark = idx > -1 ? true : false  
     },
     data() {
         return {
@@ -69,6 +72,9 @@ export default {
             });
             let num = Number(formatter.format(this.house.price))
             return formatter.format(this.house.price)
+        },
+        loggedinUser(){
+            return this.$store.getters.loggedinUser
         }
     },
     components: {

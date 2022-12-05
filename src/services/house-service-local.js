@@ -15,6 +15,7 @@ export const houseService = {
 };
 
 async function query(filterBy) {
+    
     gHouses = await storageService.query(KEY);
     let houses = _filter(filterBy);
     return Object.values(houses);
