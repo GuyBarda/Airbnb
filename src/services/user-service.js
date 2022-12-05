@@ -31,7 +31,7 @@ export const userService = {
     update,
     changeScore,
     setWishlist,
-    getTripsByUserId
+    getTripsByUserId,
 };
 
 window.userService = userService;
