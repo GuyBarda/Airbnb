@@ -1,0 +1,28 @@
+.order-preview {
+    width: 100%;
+    padding-inline: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        button {
+            border-radius: 10px;
+            background-color: transparent;
+            font-family: inherit;
+            border: 1px solid #5f5f5f;
+            padding: 10px 15px;
+
+            &.approve {
+                color: greenyellow;
+            }
+            &.decline {
+                color: red;
+            }
+        }
+    }
+}

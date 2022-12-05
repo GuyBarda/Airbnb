@@ -7,11 +7,13 @@
     search: isOpen,
     must: isMustLogin,
   }"></section>
+  <app-footer />
 </template>
 
 <script>
 import { RouterLink, RouterView } from "vue-router";
 import appHeader from "./cmps/app-header.vue";
+import appFooter from "./cmps/app-footer.vue";
 
 export default {
   created() {
@@ -40,6 +42,7 @@ export default {
   },
   components: {
     appHeader,
+    appFooter
   },
 };
 </script>

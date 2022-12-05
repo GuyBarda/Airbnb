@@ -1,0 +1,22 @@
+<template>
+    <div class="order-container">
+        <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2>
+        <trip-list :trips="trips" />
+    </div>
+</template>
+
+<script>
+import tripList from './trip-list.vue';
+export default {
+    props: {
+        trips: Array,
+        user: Object
+    },
+    created() {
+        console.log(this.user)
+    },
+    components: {
+        tripList
+    }
+}
+</script>
