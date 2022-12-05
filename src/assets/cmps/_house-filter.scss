@@ -64,7 +64,10 @@
   }
   .carousel__slide {
     width: 80px !important;
-
+    
+  }
+  .carousel__slide:first-child{
+    margin-left: -28px;
   }
   .carousel__next--disabled, .carousel__prev--disabled{
     cursor: auto;

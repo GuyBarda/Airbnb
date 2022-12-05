@@ -43,9 +43,9 @@
             {{ formattedPerNightPrice }} x {{ getTotalDays }} nights
           </p>
           <p>{{ formattedTotalNightsPrice }}</p>
-          <p>cleaning fee</p>
+          <p>Cleaning fee</p>
           <p>{{ formattedCleaningFee }}</p>
-          <p>service fee</p>
+          <p>Service fee</p>
           <p>{{ formattedServiceFee }}</p>
         </div>
         <div class="total">
@@ -70,7 +70,7 @@ export default {
   },
   data() {
     return {
-      dates: '',
+      dates: [],
       order: null,
       cleaningFee: 0,
       serviceFee: 0,
@@ -80,9 +80,8 @@ export default {
     };
   },
   async created() {
-    const { id } = this.$route.params;
+    // const { id } = this.$route.params;
     this.order = orderService.getEmptyOrder();
-    console.log(this.order);
   },
   methods: {
     setDates() {
@@ -93,8 +92,8 @@ export default {
       this.order.guests = { ...guests };
     },
     addOrder() {
-      this.$store.commit({ type: 'toggleSuccessModal', bool: true });
-      this.$store.dispatch({ type: 'addOrder', order: this.order });
+      this.order.totalPrice = this.serviceFee + this.cleaningFee + this.totalDays() * this.house.price
+      this.$emit('addOrder', this.order)
     },
     totalDays() {
       const date1 = new Date(this.order.startDate);
@@ -111,14 +110,11 @@ export default {
       let price = formatter.format(num);
       let dotIdx = price.indexOf('.');
       return price[dotIdx + 1] === '0' ? price.slice(0, dotIdx) : price;
-      return price;
-      return price.slice(0, dotIdx);
     },
     formatDate(date) {
       const DATE = new Date(date);
-      return `${DATE.getDate()}/${DATE.getMonth() + 1
-        }/${DATE.getFullYear()}`;
-      return DATE.getDate();
+      return `${DATE.getMonth() + 1
+        }/${DATE.getDate()}/${DATE.getFullYear()}`;
     },
     hoverEffect(ev) {
       const button = ev.target;
@@ -129,7 +125,6 @@ export default {
   },
   computed: {
     guestsCount() {
-      console.log(this.order.guests);
       const { adults, children, infants, pets } = this.order.guests;
       let str =
         adults || children
@@ -179,11 +174,9 @@ export default {
         this.totalDays() * this.house.price
       );
     },
-    // getSrcSvg() {
-    //     return
-    // },
-    // setBorderRadius() {
-    // }
+  },
+  updated() {
+    console.log(this.order)
   },
   components: {
     reviewAverage,

@@ -33,30 +33,6 @@ export default {
             return 1300;
         }
     },
-    mounted() {
-        // const detailsHeader = this.$refs.detailsHeader;
-        // const observer = new IntersectionObserver(entries => {
-        //     entries.forEach(entry => {
-
-        //         if (!entry.isIntersecting) {
-        //             entry.target.classList.add('true')
-        //             entry.target.classList.remove('false')
-        //         }
-        //         else {
-        //             entry.target.classList.add('false')
-        //             entry.target.classList.remove('true')
-        //         }
-        //         console.log(entry)
-        //         // entry.target.classList.remove(entry.isIntersecting)
-        //         // if (entry.isIntersecting) observer.observe(detailsHeader)
-        //         // observer.unobserve(detailsHeader)
-        //     })
-        // })
-        // observer.observe(detailsHeader)
-    },
-    updated() {
-        console.log('update', this.sticky)
-    },
     components: {
         reviewAverage
     }

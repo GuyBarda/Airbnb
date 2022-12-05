@@ -10,16 +10,16 @@
   border-radius: 31px;
   overflow: hidden;
   margin-top: 100px;
-  
+  z-index: 10;
+
   .login-container {
     cursor: auto;
-    animation: 0.4s ease-out 0s 1 slideInFromButtom;
     width: 551px;
     background-color: #fff;
     border-radius: 12px;
-
+    
     .login-title-cont {
-      height: 10%;
+      // height: 10%;
       display: flex;
       justify-content: center;
       align-items: center;

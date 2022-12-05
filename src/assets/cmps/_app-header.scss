@@ -24,7 +24,11 @@
 
     .logo {
         justify-self: start;
-        // padding-left: 10px;
+
+        img {
+            // width: 40px;
+            // height: 40px;
+        }
         @media (max-width: 650px) {
             display: none;
         }

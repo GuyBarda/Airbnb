@@ -163,152 +163,62 @@
           </div>
         </div>
 
-        <h3>beds</h3>
-        <div id="row2">
-          <input
-            type="radio"
-            id="bed0"
-            name="bed"
-            :value="all"
-            v-model="filterBy.roomsBeds.beds"
-          />
-          <label for="bed0" class="btn-btn">All</label>
-          <div class="btns-group" v-for="num in 8">
-            <input
-              type="radio"
-              :id="`bed${num}`"
-              name="bed"
-              :value="num"
-              v-model="filterBy.roomsBeds.beds"
-            />
-            <label :for="`bed${num}`" class="btn-btn">{{ num }}</label>
-          </div>
-
-          <!-- <button class="btn-btn" @click="setRoomsBeds('beds', num, $event, 'row2')" v-for="num in 8"
-                                            :key="num">
-                                            {{ num }}
-                                        </button> -->
-        </div>
-
-        <h3>Bathrooms</h3>
-        <div id="row3">
-          <input
-            type="radio"
-            id="bathroom0"
-            name="bathroom"
-            :value="all"
-            v-model="filterBy.roomsBeds.bathrooms"
-          />
-          <label for="bathroom0" class="btn-btn">All</label>
-          <!-- <button class="btn-btn" @click="setRoomsBeds('bedrooms', num)" v-for="num in 8" :key="num">
-                        {{ num }}
-                    </button> -->
-          <div class="btns-group" v-for="num in 8">
-            <input
-              type="radio"
-              :id="`bathroom${num}`"
-              name="bathroom"
-              :value="num"
-              v-model="filterBy.roomsBeds.bathrooms"
-            />
-            <label :for="`bathroom${num}`" class="btn-btn">{{ num }}</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-property-type">
-        <h2>Property type</h2>
-        <div class="flex">
-          <input
-            type="checkbox"
-            v-model="filterBy.PropertyType"
-            name="house"
-            value="house"
-          />
-          <label for="house" class="property-type">
-            <img
-              src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg"
-              alt=""
-            />
-            <span>House</span>
-          </label>
-          <input
-            type="checkbox"
-            v-model="filterBy.PropertyType"
-            name="apartment"
-            value="apartment"
-          />
-          <label for="apartment" class="property-type">
-            <img
-              src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg"
-              alt=""
-            />
-            <span>Apartment</span>
-          </label>
-          <input
-            type="checkbox"
-            v-model="filterBy.PropertyType"
-            name="guesthouse"
-            value="guesthouse"
-          />
-          <label for="guesthouse" class="property-type">
-            <img
-              src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg"
-              alt=""
-            />
-            <span>Guesthouse</span>
-          </label>
-          <input
-            type="checkbox"
-            v-model="filterBy.PropertyType"
-            name="hotel"
-            value="hotel"
-          />
-          <label for="hotel" class="property-type">
-            <img
-              src="https://a0.muscache.com/pictures/64b27fed-56a1-4f03-950a-d8da08efb428.jpg"
-              alt=""
-            />
-            <span>Hotel</span>
-          </label>
-          <!-- <div class="property-type" @click="setPropertyType('house')">
-                        <div>
-                            <img src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg"
-                                alt="" />
-                            <span>House</span>
-                        </div>
+                <h3>beds</h3>
+                <div id="row2">
+                    <input type="radio" id="bed0" name="bed" :value="all" v-model="filterBy.roomsBeds
+                    .beds" />
+                    <label for="bed0" class="btn-btn">All</label>
+                    <div class="btns-group" v-for="num in 8">
+                        <input type="radio" :id="`bed${num}`" name="bed" :value="num" v-model="filterBy.roomsBeds
+                        .beds" />
+                        <label :for="`bed${num}`" class="btn-btn">{{ num }}</label>
                     </div>
+                </div>
 
-                    <div class="property-type" @click="setPropertyType('apartment')">
-                        <div>
-                            <img src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg"
-                                alt="" />
-                            <span>Apartment</span>
-                        </div>
+                <h3>Bathrooms</h3>
+                <div id="row3">
+                    <input type="radio" id="bathroom0" name="bathroom" :value="all" v-model="filterBy.roomsBeds
+                    .bathrooms" />
+                    <label for="bathroom0" class="btn-btn">All</label>
+                    <div class="btns-group" v-for="num in 8">
+                        <input type="radio" :id="`bathroom${num}`" name="bathroom" :value="num" v-model="filterBy.roomsBeds
+                        .bathrooms" />
+                        <label :for="`bathroom${num}`" class="btn-btn">{{ num }}</label>
                     </div>
+                </div>
+            </div>
 
-                    <div class="property-type" @click="setPropertyType('guesthouse')">
-                        <div>
-                            <img src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg"
-                                alt="" />
-                            <span>guesthouse</span>
-                        </div>
-                    </div>
-
-                    <div class="property-type" @click="setPropertyType('hotel')">
-                        <div>
-                            <img src="https://a0.muscache.com/pictures/64b27fed-56a1-4f03-950a-d8da08efb428.jpg"
-                                alt="" />
-                            <span>Hotel</span>
-                        </div>
-                    </div> -->
-        </div>
-      </div>
+            <div class="form-property-type">
+                <h2>Property type</h2>
+                <div class="flex">
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="house" value="house">
+                    <label for="house" class="property-type">
+                        <img src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg" alt="" />
+                        <span>House</span>
+                    </label>
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="apartment" value="apartment">
+                    <label for="apartment" class="property-type">
+                        <img src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg" alt="" />
+                        <span>Apartment</span>
+                    </label>
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="guesthouse" value="guesthouse">
+                    <label for="guesthouse" class="property-type">
+                        <img src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg" alt="" />
+                        <span>Guesthouse</span>
+                    </label>
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="hotel" value="hotel">
+                    <label for="hotel" class="property-type">
+                        <img src="https://a0.muscache.com/pictures/64b27fed-56a1-4f03-950a-d8da08efb428.jpg" alt="" />
+                        <span>Hotel</span>
+                    </label>
+                </div>
+            </div>
 
       <div class="form-amenities">
         <div class="form-title-amenities">
           <h2>Amenities</h2>
         </div>
+<<<<<<< HEAD
 
         <div class="essentials">
           <h3>Essentials</h3>
@@ -375,6 +285,11 @@
               </label>
             </div>
           </div>
+=======
+        <div class="form-footer">
+            <button @click="resetFilterBy">Clear all</button>
+            <button @click="filterHouses">Show {{ totalHouses }} homes</button>
+>>>>>>> 0b2f9a4ffc16243c413683eeb90a143306230d99
         </div>
       </div>
     </div>
@@ -422,6 +337,7 @@ export default {
       console.log("prices", prices);
       return prices;
     },
+<<<<<<< HEAD
   },
   methods: {
     setRange($event){
@@ -441,6 +357,51 @@ export default {
     },
     setPropertyType(key) {
       this.filterBy.PropertyType.push(key);
+=======
+    data() {
+        return {
+            filterBy: {
+                minPrice: 25,
+                maxPrice: 800,
+                type: [],
+                roomsBeds: {
+                    bedrooms: 1,
+                    beds: 1,
+                    bathrooms: 1,
+                },
+                PropertyType: [],
+                Amenities: [],
+            },
+            isSelect: false,
+        };
+    },
+    computed: {
+        prices() {
+            const prices = this.houses.map(house => house.price + '')
+            console.log('prices', prices);
+            return prices
+        }
+    },
+    methods: {
+        filterHouses() {
+            this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
+            this.$store.dispatch({ type: "loadHouses" });
+        },
+        resetFilterBy() {
+            this.filterBy = {
+                minPrice: 25,
+                maxPrice: 800,
+                type: [],
+                roomsBeds: {
+                    bedrooms: 1,
+                    beds: 1,
+                    bathrooms: 1,
+                },
+                PropertyType: [],
+                Amenities: [],
+            }
+        }
+>>>>>>> 0b2f9a4ffc16243c413683eeb90a143306230d99
     },
   },
 };

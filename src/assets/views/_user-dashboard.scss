@@ -1,0 +1,25 @@
+.user-dashboard {
+    font-family: CerealReg;
+    margin-top: 10px;
+
+    .dashboard-nav {
+        display: flex;
+        height: 40px;
+
+        a {
+            flex: 1;
+            background-color: transparent;
+            color: $clr1;
+            display: grid;
+            place-content: center;
+            text-decoration: none;
+            transition: 0.1s;
+            border-radius: 3px;
+
+            &:hover {
+                background-color: $clr1;
+                color: white;
+            }
+        }
+    }
+}
