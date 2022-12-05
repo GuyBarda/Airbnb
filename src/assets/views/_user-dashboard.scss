@@ -5,8 +5,9 @@
     .dashboard-nav {
         display: flex;
         height: 40px;
+        // gap: 3px;
 
-        a {
+        .btn-nav {
             flex: 1;
             background-color: transparent;
             color: $clr1;
@@ -15,6 +16,8 @@
             text-decoration: none;
             transition: 0.1s;
             border-radius: 3px;
+            border: 1px solid $clr1;
+            text-transform: uppercase;
 
             &:hover {
                 background-color: $clr1;

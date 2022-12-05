@@ -3,6 +3,8 @@ import { utilService } from './utils-service.js';
 import { houseService } from './house-service-local';
 // import { httpService } from './http.service'
 import { store } from '../store/store';
+import { orderService } from './order-service-local';
+
 import {
     socketService,
     SOCKET_EVENT_USER_UPDATED,
@@ -27,6 +29,7 @@ export const userService = {
     update,
     changeScore,
     setWishlist
+    getTripsByUserId,
 };
 
 window.userService = userService;
@@ -40,6 +43,11 @@ function getUsers() {
     // }
     // // gusers = users;
     return users;
+}
+
+async function getTripsByUserId(userId) {
+    let orders = await orderService.query();
+    return orders.filter((order) => order.buyer._id === userId);
 }
 
 function onUserUpdate(user) {
@@ -112,7 +120,7 @@ async function changeScore(by) {
 }
 
 function saveLocalUser(user) {
-    delete user.password
+    delete user.password;
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
     localStorage.setItem('loggedinUser', JSON.stringify(user));
     return user;

@@ -20,7 +20,7 @@ function query() {
 
 async function getOrdersByUserId(userId) {
     let orders = await storageService.query();
-    return orders.filter((order) => order.buyer._id === userId);
+    return orders.filter((order) => order.hostId === userId);
 }
 
 function getById(id) {
