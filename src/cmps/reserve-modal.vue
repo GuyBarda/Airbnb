@@ -134,9 +134,9 @@ export default {
           }`
           : '';
       str += infants
-        ? ` , ${infants} ${infants !== 1 ? 'infants' : 'infant'}`
+        ? `, ${infants} ${infants !== 1 ? 'infants' : 'infant'}`
         : '';
-      str += pets ? ` , ${pets} ${pets !== 1 ? 'pets' : 'pet'}` : '';
+      str += pets ? `, ${pets} ${pets !== 1 ? 'pets' : 'pet'}` : '';
       return str;
     },
     formatedStartDate() {

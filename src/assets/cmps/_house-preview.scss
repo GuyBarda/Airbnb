@@ -1,6 +1,7 @@
 .house-preview {
     position: relative;
     font-family: CerealReg;
+    padding-bottom: 20px;
 
     @media (min-width: 400px) {
         max-width: 320px;
@@ -21,16 +22,15 @@
             padding-top: 3px;
             padding-bottom: 10px;
         }
-        p {
-            margin: 0;
-            padding-block-start: 2px;
-            padding-block-end: 2px;
-        }
+            p {
+                margin: 0;
+                font-size: em(15px,16px);
+            }
 
         .rate {
             position: absolute;
             right: 0;
-            top: 7px;
+            top: 2px;
             display: flex;
             align-items: center;
         }
@@ -42,13 +42,17 @@
             }
         }
         .location {
-            padding-top: 7px;
-            // font-weight: bold;
+            padding-top: 2px;
             font-family: CerealMd;
         }
-        .createdAt,
+        .house-name,
         .date {
             color: #7c7c7c;
+        }
+        .house-name{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }
     }
 

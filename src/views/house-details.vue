@@ -72,38 +72,12 @@
                 <div class="summary">
                     {{ house.summary }}
                 </div>
-                <!-- <div class="choose-beds">
-                    <h3>Where you'll sleep</h3>
-                    <div class="beds-btns">
-                        <button>
-                            <img src="../assets/svg/bed.svg" alt="">
-                            <p>Bedroom 1</p>
-                            <span>1 single bed</span>
-                        </button>
-                        <button>
-                            <img src="../assets/svg/bed.svg" alt="">
-                            <p>Bedroom 1</p>
-                            <span>1 single bed</span>
-                        </button>
-                        <button>
-                            <img src="../assets/svg/bed.svg" alt="">
-                            <p>Bedroom 1</p>
-                            <span>1 single bed</span>
-                        </button>
-                        <button>
-                            <img src="../assets/svg/bed.svg" alt="">
-                            <p>Bedroom 1</p>
-                            <span>1 single bed</span>
-                        </button>
-                    </div>
-                </div> -->
                 <div class="amenities-container" id="amenities">
                     <h2>What this place offers</h2>
                     <div class="house-amenities">
                         <div v-for="a in house.amenities" style="display: flex; gap: 13px;">
                             <img :src="`/src/assets/svg/amenities/${a.split(' ')[0].toLowerCase()}.svg`" alt="np"
                                 style="width: 1.2em;">
-                            <!-- <img src="../assets/svg/amenities/tv.svg" alt=""> -->
                             <p>{{ a }}</p>
                         </div>
                     </div>
