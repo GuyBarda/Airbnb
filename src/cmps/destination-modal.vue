@@ -3,9 +3,11 @@
 <section class="common-search">
 <p>Common search</p>
     <ul>
-        <li><div class="spot-holder"><spot-icon /></div> Los Angeles, LA</li>
-        <li><div class="spot-holder"><spot-icon /></div> Tel Aviv, TLV</li>
-        <li><div class="spot-holder"><spot-icon /></div> New York, NYC</li>
+        <li @click="setDestination('Los Angeles')"><div class="spot-holder"><spot-icon /></div> Los Angeles, LA</li>
+        <li @click="setDestination('Tel Aviv')"><div class="spot-holder"><spot-icon /></div> Tel Aviv, TLV</li>
+        <li @click="setDestination('New York')"><div class="spot-holder"><spot-icon /></div> New York, NYC</li>
+        <li @click="setDestination('Tulum')"><div class="spot-holder"><spot-icon /></div> Tulum, Mexico</li>
+        <li @click="setDestination('Rome')"><div class="spot-holder"><spot-icon /></div> Rome, Italy</li>
     </ul>
 </section>
 <section class="regions">

@@ -4,7 +4,7 @@
       <div
         @click.prevent="openZone('Where')"
         :class="{ selected: isSelect === 'Where' }"
-        class="search-zone destination"
+        class="search-zone destination align-more"
       >
         <label>Where</label>
         <input
@@ -24,7 +24,7 @@
         <div
           @click.prevent="openZone('In')"
           :class="{ selected: isSelect === 'In' }"
-          class="search-zone"
+          class="search-zone align"
         >
           <label>Check in</label>
           <input
@@ -49,7 +49,7 @@
         <div
           @click.prevent="openZone('Out')"
           :class="{ selected: isSelect === 'Out' }"
-          class="search-zone"
+          class="search-zone align"
         >
           <label>Check out</label>
           <input
@@ -67,7 +67,7 @@
       <div
         @click.prevent="openZone('Who')"
         :class="{ selected: isSelect === 'Who' }"
-        class="search-zone search-btn"
+        class="search-zone search-btn align-more"
       >
         <label>Who</label>
         <input
