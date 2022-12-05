@@ -84,7 +84,6 @@
                 </div>
             </section>
             <reserve-modal @addOrder="addOrder" :house="house" />
-
         </div>
 
         <section id="reviews">
@@ -226,8 +225,7 @@ export default {
         },
         getSticky() {
             return this.sticky
-        }
-
+        },
     },
     components: {
         star,
@@ -237,6 +235,6 @@ export default {
         reserveModal,
         detailsHeader,
         // shareModal
-    }
+    },
 }
 </script>
