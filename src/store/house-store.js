@@ -34,12 +34,13 @@ export const houseStore = {
     },
     getters: {
         houses({ houses }) {
+            console.log(houses);
             return Object.values(houses)
         },
     },
     mutations: {
         setHouses(state, { houses }) {
-            state.houses=JSON.parse(JSON.stringify(houses))
+            state.houses= houses
         },
         addHouse(state, { house }) {
             state.houses.push(house)

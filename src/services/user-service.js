@@ -113,7 +113,7 @@ async function changeScore(by) {
 function saveLocalUser(user) {
     user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl };
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
-    localStorage.setItem('loggedinUser', user);
+    localStorage.setItem('loggedinUser', JSON.stringify(user));
     return user;
 }
 

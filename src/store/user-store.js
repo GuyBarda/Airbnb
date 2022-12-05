@@ -44,15 +44,19 @@ export const userStore = {
     },
     actions: {
         async setWishlist({commit},{houseId}){
-            let user = userService.getLoggedinUser()
-            const idxInWishlist = user.wishlist.findIndex(house => house._id === houseId)
-            if(idxInWishlist > -1){
-                user.wishlist.splice(idxInWishlist,1)
+            let {_id} = userService.getLoggedinUser()
+            let user = await userService.getById(_id)
+            console.log(user);
+            const idx = user.wishlist.findIndex(house => house._id === houseId)
+            console.log(idx);
+            if(idx > -1){
+                user.wishlist.splice(idx,1)
+                user = await userService.update(user)
                 return
             }
-            const {name,imgUrls,loc} = houseService.getById(houseId)
+            const {name,imgUrls,loc} = await houseService.getById(houseId)
             const miniHouse = {
-                houseId,
+                _id: houseId,
                 name,
                 imgUrls,
                 address: loc.address

@@ -218,7 +218,6 @@
         <div class="form-title-amenities">
           <h2>Amenities</h2>
         </div>
-<<<<<<< HEAD
 
         <div class="essentials">
           <h3>Essentials</h3>
@@ -285,18 +284,13 @@
               </label>
             </div>
           </div>
-=======
         <div class="form-footer">
             <button @click="resetFilterBy">Clear all</button>
             <button @click="filterHouses">Show {{ totalHouses }} homes</button>
->>>>>>> 0b2f9a4ffc16243c413683eeb90a143306230d99
         </div>
       </div>
     </div>
 
-    <div class="form-footer">
-      <button>Clear all</button>
-      <button @click="filterHouses">Show {{ totalHouses }} homes</button>
     </div>
   </div>
 </template>
@@ -337,27 +331,6 @@ export default {
       console.log("prices", prices);
       return prices;
     },
-<<<<<<< HEAD
-  },
-  methods: {
-    setRange($event){
-        this.filterBy.minPrice= $event.from
-        this.filterBy.maxPrice= $event.to
-    },
-    filterHouses() {
-      this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
-      this.$store.dispatch({ type: "loadHouses" });
-    },
-    setRoomsBeds(key, num, ev, id) {
-      console.log("ev", ev);
-      console.log("ev", id);
-      ev.target.classList.toggle("selected");
-
-      this.filterBy.roomsBeds[key] = num;
-    },
-    setPropertyType(key) {
-      this.filterBy.PropertyType.push(key);
-=======
     data() {
         return {
             filterBy: {
@@ -400,11 +373,24 @@ export default {
                 PropertyType: [],
                 Amenities: [],
             }
-        }
->>>>>>> 0b2f9a4ffc16243c413683eeb90a143306230d99
+        },
+            setRange($event){
+        this.filterBy.minPrice= $event.from
+        this.filterBy.maxPrice= $event.to
+    },
+    setRoomsBeds(key, num, ev, id) {
+      console.log("ev", ev);
+      console.log("ev", id);
+      ev.target.classList.toggle("selected");
+
+      this.filterBy.roomsBeds[key] = num;
+    },
+    setPropertyType(key) {
+      this.filterBy.PropertyType.push(key);
     },
   },
-};
+}
+}
 </script>
 
 <style></style>
