@@ -34,7 +34,6 @@ export const houseStore = {
     },
     getters: {
         houses({ houses }) {
-            console.log(houses);
             return Object.values(houses)
         },
     },
