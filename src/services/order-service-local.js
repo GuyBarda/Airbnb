@@ -35,9 +35,9 @@ function getEmptyOrder() {
             adults: 1,
             children: 0,
             infants: 0,
-            pets: 0
-          },
-        stay: {
+            pets: 0,
+        },
+        house: {
             _id: '',
             name: '',
             price: 0,

@@ -4,8 +4,9 @@
       <a v-if="!user" href="#" @click="openLogIn()">Log in</a>
       <!-- <a href="#">Sign up</a> -->
       <a v-if="user" href="#/wishList" class="a1">Wish List</a>
-      <a v-if="user" href="#/dashboard">Dashboard</a>
-      <a v-if="user" @click="logout" >Logout</a>
+      <router-link v-if="user" to="/dashboard">Dashboard</router-link>
+      <!-- <a v-if="user" href="#/dashboard">Dashboard</a> -->
+      <a v-if="user" @click="logout">Logout</a>
     </div>
   </div>
   <loginSignupModal v-if="isLogin" @closeModal="close" />
@@ -21,7 +22,9 @@ export default {
       isLogin: false,
     };
   },
-  created() {},
+  created() {
+
+  },
   methods: {
     openLogIn() {
       if (!this.isLogin) {
@@ -40,8 +43,8 @@ export default {
   },
   computed: {
     user() {
-      console.log('hey',this.$store.getters.loggedinUser)
-        return this.$store.getters.loggedinUser
+      console.log('hey', this.$store.getters.loggedinUser)
+      return this.$store.getters.loggedinUser
     },
   },
   components: {
@@ -49,4 +52,6 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+
+</style>

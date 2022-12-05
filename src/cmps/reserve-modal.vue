@@ -70,7 +70,7 @@ export default {
   },
   data() {
     return {
-      dates: '',
+      dates: [],
       order: null,
       cleaningFee: 0,
       serviceFee: 0,
@@ -80,9 +80,8 @@ export default {
     };
   },
   async created() {
-    const { id } = this.$route.params;
+    // const { id } = this.$route.params;
     this.order = orderService.getEmptyOrder();
-    console.log(this.order);
   },
   methods: {
     setDates() {
@@ -93,8 +92,8 @@ export default {
       this.order.guests = { ...guests };
     },
     addOrder() {
-      this.$store.commit({ type: 'toggleSuccessModal', bool: true });
-      this.$store.dispatch({ type: 'addOrder', order: this.order });
+      this.order.totalPrice = this.serviceFee + this.cleaningFee + this.totalDays() * this.house.price
+      this.$emit('addOrder', this.order)
     },
     totalDays() {
       const date1 = new Date(this.order.startDate);
@@ -114,8 +113,8 @@ export default {
     },
     formatDate(date) {
       const DATE = new Date(date);
-      return `${DATE.getMonth() + 1}/${DATE.getDate()
-        }/${DATE.getFullYear()}`;
+      return `${DATE.getMonth() + 1
+        }/${DATE.getDate()}/${DATE.getFullYear()}`;
     },
     hoverEffect(ev) {
       const button = ev.target;
@@ -126,7 +125,6 @@ export default {
   },
   computed: {
     guestsCount() {
-      console.log(this.order.guests);
       const { adults, children, infants, pets } = this.order.guests;
       let str =
         adults || children
@@ -176,11 +174,9 @@ export default {
         this.totalDays() * this.house.price
       );
     },
-    // getSrcSvg() {
-    //     return
-    // },
-    // setBorderRadius() {
-    // }
+  },
+  updated() {
+    console.log(this.order)
   },
   components: {
     reviewAverage,

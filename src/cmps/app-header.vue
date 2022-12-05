@@ -58,11 +58,11 @@ export default {
         };
     },
     async created() {
-        try {
-            await this.$store.getters.loggedinUser;
-        } catch {
-            console.log('cant load');
-        }
+        // try {
+        //     await this.$store.getters.loggedinUser;
+        // } catch {
+        //     console.log('cant load');
+        // }
     },
     methods: {
         setDate(str) {

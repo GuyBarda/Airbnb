@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </section>
-            <reserve-modal :house="house" />
+            <reserve-modal @addOrder="addOrder" :house="house" />
 
         </div>
 
@@ -122,6 +122,7 @@
 <script>
 import { houseService } from '../services/house-service-local.js'
 import { orderService } from '../services/order-service-local.js'
+import { userService } from '../services/user-service.js'
 
 import star from '../assets/svg/star.vue'
 
@@ -148,7 +149,10 @@ export default {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
         this.order = orderService.getEmptyOrder()
-        console.log(this.house)
+        this.$store.commit({ type: 'setLoggedinUser', user: userService.getLoggedinUser() })
+        console.log(this.$store.getters.loggedinUser)
+        // console.log(this.$store.getters.loggedinUser)
+        // this.$store.dispatch({ type: 'loadUser' })
     },
     mounted() {
         setTimeout(() => {
@@ -160,9 +164,20 @@ export default {
         }, 1000);
     },
     methods: {
-        addOrder() {
-            this.$store.commit({ type: "toggleSuccessModal", bool: true });
-            this.$store.dispatch({ type: 'addOrder', order: this.order })
+        addOrder(order) {
+            if (!this.$store.getters.loggedinUser) return;
+            this.order = order
+            this.order.buyer = this.$store.getters.loggedinUser
+            this.order.house = {
+                _id: this.house._id,
+                name: this.house.name,
+                price: this.house.price
+            }
+            this.order.hostId = this.house.host._id
+            console.log(this.order);
+
+            // this.$store.commit({ type: "toggleSuccessModal", bool: true });
+            // this.$store.dispatch({ type: 'addOrder', order: this.order })
         },
         totalDays() {
             const date1 = new Date(this.order.startDate);

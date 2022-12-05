@@ -4,31 +4,28 @@
 @import './setup/typography';
 @import './setup/functions';
 
-
 // BASE
-@import "./base/base";
+@import './base/base';
 @import './base/layout';
-
 
 // VIEWS
 @import './views/house-app';
-@import "./views/house-details";
+@import './views/house-details';
 @import './views/house-edit';
+@import './views/user-dashboard';
 
 // CMPS
-@import "./cmps/app-header";
-@import "./cmps/house-list";
-@import "./cmps/house-preview";
-@import "./cmps/house-filter";
-@import "./cmps/house-filter-modal";
-@import "./cmps/house-search";
-@import "./cmps/review-preview";
+@import './cmps/app-header';
+@import './cmps/house-list';
+@import './cmps/house-preview';
+@import './cmps/house-filter';
+@import './cmps/house-filter-modal';
+@import './cmps/house-search';
+@import './cmps/review-preview';
 @import './cmps/img-carousel.scss';
-@import "./cmps/review-totals";
-@import "./cmps/reservation-success";
-@import "./cmps/details-header";
-
-
+@import './cmps/review-totals';
+@import './cmps/reservation-success';
+@import './cmps/details-header';
 
 //MODALS
 @import './cmps/search-modal';
@@ -38,4 +35,3 @@
 @import './cmps/date-picker-reserve.scss';
 @import './cmps/login-signup-modal';
 @import './cmps/share-modal.scss';
-
