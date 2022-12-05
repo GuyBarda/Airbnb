@@ -167,17 +167,19 @@ export default {
         addOrder(order) {
             if (!this.$store.getters.loggedinUser) return;
             this.order = order
-            this.order.buyer = this.$store.getters.loggedinUser
+            this.order.buyer = {
+                _id: this.$store.getters.loggedinUser._id,
+                fullname: this.$store.getters.loggedinUser.fullname
+            }
             this.order.house = {
                 _id: this.house._id,
                 name: this.house.name,
                 price: this.house.price
             }
             this.order.hostId = this.house.host._id
-            console.log(this.order);
 
-            // this.$store.commit({ type: "toggleSuccessModal", bool: true });
-            // this.$store.dispatch({ type: 'addOrder', order: this.order })
+            this.$store.commit({ type: "toggleSuccessModal", bool: true });
+            this.$store.dispatch({ type: 'addOrder', order: this.order })
         },
         totalDays() {
             const date1 = new Date(this.order.startDate);

@@ -1,6 +1,6 @@
-import { userService } from '../services/user-service'
-import { houseService } from '../services/house-service-local'
-import { utilService } from '../services/utils-service'
+import { userService } from '../services/user-service';
+import { houseService } from '../services/house-service-local';
+import { utilService } from '../services/utils-service';
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket-service'
 
 // var localLoggedinUser = null
@@ -22,9 +22,11 @@ export const userStore = {
         watchedUser({ watchedUser }) {
             return watchedUser;
         },
-
     },
     mutations: {
+        setUser(state, { user }) {
+            state.user = user;
+        },
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = user ? { ...user } : null;
@@ -43,24 +45,26 @@ export const userStore = {
         },
     },
     actions: {
-        async setWishlist({commit},{houseId}){
-            let {_id} = userService.getLoggedinUser()
-            let user = await userService.getById(_id)
-            const idx = user.wishlist.findIndex(house => house._id === houseId)
-            if(idx > -1){
-                user.wishlist.splice(idx,1)
-                user = await userService.update(user)
-                return
+        async setWishlist({ commit }, { houseId }) {
+            let { _id } = userService.getLoggedinUser();
+            let user = await userService.getById(_id);
+            const idx = user.wishlist.findIndex(
+                (house) => house._id === houseId
+            );
+            if (idx > -1) {
+                user.wishlist.splice(idx, 1);
+                user = await userService.update(user);
+                return;
             }
-            const {name,imgUrls,loc} = await houseService.getById(houseId)
+            const { name, imgUrls, loc } = await houseService.getById(houseId);
             const miniHouse = {
                 _id: houseId,
                 name,
                 imgUrls,
-                address: loc.address
-            }
-            user.wishlist.push(miniHouse)
-            user = await userService.update(user)
+                address: loc.address,
+            };
+            user.wishlist.push(miniHouse);
+            user = await userService.update(user);
         },
         async login({ commit }, { cred }) {
             try {
@@ -149,6 +153,13 @@ export const userStore = {
                 console.log('userStore: Error in loadUsers', err);
                 throw err;
             }
+        },
+        async addOrderToUser({ commit }, { order }) {
+            let { _id } = userService.getLoggedinUser();
+            let user = await userService.getById(_id);
+            console.log(user);
+            user.orders.push(order);
+            user = await userService.update(user);
         },
         // Keep this action for compatability with a common user.service ReactJS/VueJS
         setWatchedUser({ commit }, payload) {
