@@ -23,8 +23,12 @@ export const userStore = {
         watchedUser({ watchedUser }) {
             return watchedUser;
         },
+
     },
     mutations: {
+        setUser(state,{user}){
+            state.user = user
+        },
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = user ? { ...user } : null;
@@ -64,7 +68,7 @@ export const userStore = {
             user.wishlist.push(miniHouse)
             user = await userService.update(user)
             console.log(user);
-            // commit({ type: 'setUser', user })
+            commit({ type: 'setUser', user })
         },
         async login({ commit }, { cred }) {
             try {

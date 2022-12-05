@@ -30,6 +30,9 @@ export default {
     props: {
         house: Object
     },
+    created(){
+
+    },
     data() {
         return {
             isMark: false,
