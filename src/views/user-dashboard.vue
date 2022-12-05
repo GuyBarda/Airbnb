@@ -7,7 +7,7 @@
             <a href="">WISHLIST</a>
             <a href="">ADD A STAY</a>
         </nav>
-        <orders :user="userToShow" />
+        <orders :orders="ordersToShow" />
     </div>
 </template>
 
@@ -19,13 +19,15 @@ import orders from '../cmps/dashboard/orders.vue';
 export default {
     data() {
         return {
-            user: null
+            user: null,
+            orders: null
         }
     },
     async created() {
         const { _id } = await userService.getLoggedinUser()
         console.log('from session storage', _id)
         this.user = await userService.getById(_id)
+        this.orders = 
     },
     computed: {
         userToShow() {
