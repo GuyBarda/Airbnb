@@ -15,7 +15,10 @@ export const houseService = {
 };
 
 async function query(filterBy) {
+<<<<<<< HEAD
     
+=======
+>>>>>>> 01e48f9f9ce6d245bfd3fe85e2110e453c6f37bd
     gHouses = await storageService.query(KEY);
     let houses = _filter(filterBy);
     return Object.values(houses);
@@ -106,8 +109,6 @@ function _filter(filterBy) {
         guests,
     } = filterBy;
 
-    console.log('filterBy', filterBy);
-
     const regex = new RegExp(name, 'i');
     let filteredHouses = gHouses.filter((house) => {
         return regex.test(house.name);
@@ -153,7 +154,6 @@ function _filter(filterBy) {
         return house.price < searchMax;
     });
 
-    console.log('filteredHouses', filteredHouses);
     return filteredHouses;
 }
 

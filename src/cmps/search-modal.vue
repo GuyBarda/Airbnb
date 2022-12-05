@@ -46,6 +46,8 @@
           end-placeholder="End date"
           value-format="x"
         />
+              <span></span>
+
         <div
           @click.prevent="openZone('Out')"
           :class="{ selected: isSelect === 'Out' }"

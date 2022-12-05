@@ -1,26 +1,31 @@
 [
     {
-      "_id": "u101",
-      "fullname": "User 1",
-      "imgUrl": "https://a0.muscache.com/im/users/6777022/profile_pic/1381075256/original.jpg?im_w=240",
-      "username": "gg",
-      "password": "gg1"
+        "_id": "u101",
+        "fullname": "User 1",
+        "imgUrl": "https://a0.muscache.com/im/users/6777022/profile_pic/1381075256/original.jpg?im_w=240",
+        "username": "gg",
+        "password": "gg1",
+        "orders": [],
+        "trips": [],
+        "houses": [],
+        "wishlist": []
     },
     {
-      "_id": "u102",
-      "fullname": "User 2",
-      "imgUrl": "/img/img2.jpg",
-      "username": "user2",
-      "password": "secret"
+        "_id": "u102",
+        "fullname": "User 2",
+        "imgUrl": "/img/img2.jpg",
+        "username": "user2",
+        "password": "secret"
     },
     {
-      "_id": "u101",
-      "fullname": "User 1",
-      "imgUrl": "/img/img1.jpg",
-      "username": "user1",
-      "password": "secret"
+        "_id": "u101",
+        "fullname": "User 1",
+        "imgUrl": "/img/img1.jpg",
+        "username": "user1",
+        "password": "secret"
     },
     {
+<<<<<<< HEAD
       "_id": "u102",
       "fullname": "User 2",
       "imgUrl": "/img/img2.jpg",
@@ -38,3 +43,12 @@
     }
     
   ]
+=======
+        "_id": "u102",
+        "fullname": "User 2",
+        "imgUrl": "/img/img2.jpg",
+        "username": "user2",
+        "password": "secret"
+    }
+]
+>>>>>>> 01e48f9f9ce6d245bfd3fe85e2110e453c6f37bd

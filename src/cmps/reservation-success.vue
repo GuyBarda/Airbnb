@@ -8,14 +8,12 @@
         </header>
         <div class="content">
             <div class="your-trip-container">
-                <h3>Your trip:</h3>
+                <h3>Your trip</h3>
                 <div class="info-container">
                     <p>Check-In</p>
                     <p>{{ order.startDate }}</p>
                     <p>Check-Out</p>
                     <p>{{ order.endDate }}</p>
-                    <p>Host name</p>
-                    <!-- <p>{{ order.host.fullname }}</p> -->
                 </div>
             </div>
             <div class="your-stay-details-container">
@@ -23,7 +21,8 @@
                 <div class="stay-details-info-container">
                     <img :src="house.imgUrls[0]" alt="">
                     <p>{{ house.name }}</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <p>Host {{ order.houstId }}</p>
+                    <div>
                         <review-average :reviews="house.reviews" />
                         <p>{{ formattedPerNightPrice }}</p>
                     </div>

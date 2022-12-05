@@ -140,9 +140,115 @@
     a:first-child {
       margin-top: 5px;
     }
+<<<<<<< HEAD
     a {
       padding: 15px 20px;
       text-decoration: none;
+=======
+
+    button {
+        border: 0;
+    }
+
+    .logo {
+        justify-self: start;
+
+        img {
+            // width: 40px;
+            // height: 40px;
+        }
+        @media (max-width: 650px) {
+            display: none;
+        }
+    }
+    .user {
+        display: flex;
+        justify-self: end;
+        justify-content: center;
+        align-items: center;
+        font-family: CerealReg, Arial, sans-serif;
+        // padding-right: 10px;
+        @media (max-width: 570px) {
+            display: none;
+        }
+        .become-host {
+            // font-family: Cereal-medium;
+            padding-right: 20px;
+            text-decoration: none;
+            cursor: pointer;
+            background-color: transparent;
+            height: fit-content;
+            // font-family: Circular, Arial, sans-serif;
+            @media (max-width: 900px) {
+                display: none;
+            }
+        }
+        .user-menu-btn {
+            display: flex;
+            color: #484848;
+            padding: 5px 5px 5px 10px;
+            border-radius: 21px;
+            background-color: #fff;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            line-height: 20px;
+            button {
+                display: flex;
+                border: none;
+                text-decoration: none;
+                cursor: pointer;
+                padding: 0;
+                margin: 0;
+                background-color: transparent;
+                height: fit-content;
+                .menu-btn {
+                    margin-right: 9px;
+                    width: 17px;
+                    height: 30px;
+                }
+                .host-image {
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+    .main-search-container {
+        justify-self: center;
+    }
+    > * {
+        grid-row: 1;
+    }
+
+    .user-nav {
+        color: #222;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        // right: 0px;
+        background-color: #fff;
+        border-radius: 12px;
+        width: 240px;
+        box-shadow: #0000002e 0 0 3px;
+    }
+    .user-nav-in {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 12px;
+
+        box-shadow: #0000002e 0 0 3px;
+        a:first-child {
+            margin-top: 5px;
+        }
+        a {
+            padding: 15px 20px;
+            text-decoration: none;
+        }
+>>>>>>> 01e48f9f9ce6d245bfd3fe85e2110e453c6f37bd
     }
   }
 }

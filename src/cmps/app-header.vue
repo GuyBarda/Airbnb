@@ -1,8 +1,14 @@
 <template>
     <header class="main-header full" :class="whichLayout">
+<<<<<<< HEAD
         <div @click="goToHome" class="logo-container">
             <img src="../assets/img/favicon.png" alt="" />
             <p>airbxb</p>
+=======
+        <div @click="goToHome" class="logo">
+            <img src="../assets/svg/logo.svg" alt="" />
+            <!-- <span>airbxb</span> -->
+>>>>>>> 01e48f9f9ce6d245bfd3fe85e2110e453c6f37bd
         </div>
 
         <house-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"
@@ -13,9 +19,9 @@
         <div class="user">
             <a class="become-host" href="/#/login">Become a host</a>
 
-            <a href="/#/explore">
+            <!-- <a href="/#/explore">
                 <img class="explore-btn" src="../assets/svg/i18n.svg" />
-            </a>
+            </a> -->
 
             <div class="user-menu-btn" @click="toggleUserMenu()">
                 <button>
@@ -59,11 +65,11 @@ export default {
         };
     },
     async created() {
-        try {
-            await this.$store.getters.loggedinUser;
-        } catch {
-            console.log('cant load');
-        }
+        // try {
+        //     await this.$store.getters.loggedinUser;
+        // } catch {
+        //     console.log('cant load');
+        // }
     },
     methods: {
         setDate(str) {

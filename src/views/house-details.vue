@@ -2,8 +2,10 @@
     <div v-if="house" class="house-details secondary-container">
         <div class="subtitle">
             <h2>{{ house.name }}</h2>
-            <div style="display: flex; align-items: center; gap: 4px;">
+            <div class="subtitle-text" style="display: flex; align-items: center; gap: 4px;">
                 <review-average :reviews="house.reviews" />·
+                <span v-if="house.host.isSuperhost"> &#127894; Superhost ·</span>
+
                 <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
                 <div class="share-save-actions">
                     <span class="share-stay">
@@ -38,8 +40,8 @@
                     <img class="host-image" :src="`${house.host.thumbnailUrl}`" alt="">
                 </div>
                 <div class="user-house-info">
-                    <img src="../assets/svg/folder1/superhost.svg" alt="">
-                    <div>
+                    <img v-if="house.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="">
+                    <div v-if="house.host.isSuperhost">
                         <p style="font-weight: bold;">Renata is a Superhost</p>
                         <p class="subtext">
                             Superhosts are experienced, highly rated hosts who are committed to providing great stays
@@ -81,7 +83,7 @@
                     </div>
                 </div>
             </section>
-            <reserve-modal :house="house" />
+            <reserve-modal @addOrder="addOrder" :house="house" />
 
         </div>
 
@@ -90,7 +92,7 @@
                 <review-average :reviews="house.reviews" />
             </header>
             <div class="rating">
-                <p>cleanliness</p>
+                <p>Cleanliness</p>
                 <span class="progress-container"><progress value="4" max="5"></progress></span>
                 <p>Communication</p>
                 <span class="progress-container"><progress value="3" max="5"></progress></span>
@@ -104,10 +106,13 @@
                 <span class="progress-container"><progress value="4.2" max="5"></progress></span>
             </div>
             <main class="review-container">
-                <review-preview v-for="review in !showMore ? house.reviews.slice(0, 2) : house.reviews"
-                    :review="review" />
+                <review-preview v-for="(review, idx) in !showMore ? house.reviews.slice(0, 6) : house.reviews"
+                    :review="review" :idx="idx" />
             </main>
-            <button @click="(showMore = !showMore)">{{ `Show ${!showMore ? 'More' : 'less'}` }}</button>
+            <button v-if="(house.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
+                            ${!showMore ? `all
+                            ${house.reviews.length} reviews` : 'less'}`
+            }}</button>
         </section>
 
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :house="house" />
@@ -117,6 +122,7 @@
 <script>
 import { houseService } from '../services/house-service-local.js'
 import { orderService } from '../services/order-service-local.js'
+import { userService } from '../services/user-service.js'
 
 import star from '../assets/svg/star.vue'
 
@@ -143,7 +149,10 @@ export default {
         const { id } = this.$route.params
         this.house = await houseService.getById(id)
         this.order = orderService.getEmptyOrder()
-        console.log(this.house)
+        this.$store.commit({ type: 'setLoggedinUser', user: userService.getLoggedinUser() })
+        console.log(this.$store.getters.loggedinUser)
+        // console.log(this.$store.getters.loggedinUser)
+        // this.$store.dispatch({ type: 'loadUser' })
     },
     mounted() {
         setTimeout(() => {
@@ -155,9 +164,20 @@ export default {
         }, 1000);
     },
     methods: {
-        addOrder() {
-            this.$store.commit({ type: "toggleSuccessModal", bool: true });
-            this.$store.dispatch({ type: 'addOrder', order: this.order })
+        addOrder(order) {
+            if (!this.$store.getters.loggedinUser) return;
+            this.order = order
+            this.order.buyer = this.$store.getters.loggedinUser
+            this.order.house = {
+                _id: this.house._id,
+                name: this.house.name,
+                price: this.house.price
+            }
+            this.order.hostId = this.house.host._id
+            console.log(this.order);
+
+            // this.$store.commit({ type: "toggleSuccessModal", bool: true });
+            // this.$store.dispatch({ type: 'addOrder', order: this.order })
         },
         totalDays() {
             const date1 = new Date(this.order.startDate);
@@ -173,9 +193,6 @@ export default {
             });
             return formatter.format(num)
         },
-        srcSvg() {
-            // return `../assets/svg/amenities/${a}.svg`
-        }
     },
     computed: {
         totalReviews() {

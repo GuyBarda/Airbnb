@@ -2,8 +2,9 @@
     position: relative;
     font-family: CerealReg;
     padding-bottom: 20px;
+    width: 100%;
 
-    @media (min-width: 400px) {
+    @media (max-width: 400px) {
         max-width: 320px;
     }
 
