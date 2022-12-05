@@ -28,7 +28,7 @@ export const userService = {
     remove,
     update,
     changeScore,
-    setWishlist
+    setWishlist,
     getTripsByUserId,
 };
 
