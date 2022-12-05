@@ -30,8 +30,8 @@ export const userService = {
     remove,
     update,
     changeScore,
-    setWishlist
-    getTripsByUserId,
+    setWishlist,
+    getTripsByUserId
 };
 
 window.userService = userService;
