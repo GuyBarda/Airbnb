@@ -7,22 +7,16 @@
     search: isOpen,
     must: isMustLogin,
   }"></section>
-<<<<<<< HEAD
   <user-msg/>
-=======
   <app-footer />
->>>>>>> 987ac4fb25f10b043a0d23785245867e9a0e272b
 </template>
 
 <script>
 import { RouterLink, RouterView } from "vue-router";
 import appHeader from "./cmps/app-header.vue";
-<<<<<<< HEAD
 import userMsg from './cmps/user-msg.vue'
 import { showSuccessMsg } from './services/event-bus-service.js'
-=======
 import appFooter from "./cmps/app-footer.vue";
->>>>>>> 987ac4fb25f10b043a0d23785245867e9a0e272b
 
 export default {
   created() {
@@ -52,11 +46,8 @@ export default {
   },
   components: {
     appHeader,
-<<<<<<< HEAD
-    userMsg
-=======
+    userMsg,
     appFooter
->>>>>>> 987ac4fb25f10b043a0d23785245867e9a0e272b
   },
 };
 </script>
