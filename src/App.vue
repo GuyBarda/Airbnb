@@ -7,17 +7,21 @@
     search: isOpen,
     must: isMustLogin,
   }"></section>
+  <user-msg/>
   <app-footer />
 </template>
 
 <script>
 import { RouterLink, RouterView } from "vue-router";
 import appHeader from "./cmps/app-header.vue";
+import userMsg from './cmps/user-msg.vue'
+import { showSuccessMsg } from './services/event-bus-service.js'
 import appFooter from "./cmps/app-footer.vue";
 
 export default {
   created() {
     this.$store.dispatch({ type: 'loadUser' })
+    showSuccessMsg('Admin has updated the store...')
   },
   methods: {
     toggleSearch(ev) {
@@ -42,6 +46,7 @@ export default {
   },
   components: {
     appHeader,
+    userMsg,
     appFooter
   },
 };

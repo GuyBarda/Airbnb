@@ -10,11 +10,13 @@ import {
     SOCKET_EVENT_USER_UPDATED,
     SOCKET_EMIT_USER_WATCH,
 } from './socket-service';
-import { showSuccessMsg } from './event-bus-service';
+import { showSuccessMsg, showErrorMsg } from './event-bus-service';
 import usersJson from '../../data/users.json' assert { type: 'json' };
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
-
+const STORAGE_KEY_USER = 'users';
+let gUsers
+_createUsers()
 // utilService.saveToStorage('user', usersJson);
 
 export const userService = {
@@ -36,12 +38,7 @@ window.userService = userService;
 
 function getUsers() {
     let users = storageService.query('user');
-    // var users = utilService.loadFromStorage(KEY);
-    // if (!users || !users.length) {
-    //     users = usersJson;
-    //     utilService.saveToStorage(KEY, users.slice(0, 100));
-    // }
-    // // gusers = users;
+    showSuccessMsg(`This user  just got updated from socket, new score:`);
     return users;
 }
 
@@ -58,7 +55,7 @@ function onUserUpdate(user) {
 }
 
 async function getById(userId) {
-    const user = await storageService.get('user', userId);
+    const user = await storageService.get(STORAGE_KEY_USER, userId);
     // const user = await httpService.get(`user/${userId}`)
 
     // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
@@ -68,12 +65,12 @@ async function getById(userId) {
     return user;
 }
 function remove(userId) {
-    return storageService.remove('user', userId);
+    return storageService.remove(STORAGE_KEY_USER, userId);
     // return httpService.delete(`user/${userId}`)
 }
 
 async function update(user) {
-    await storageService.put('user', user);
+    await storageService.put(STORAGE_KEY_USER, user);
     // user = await httpService.put(`user/${user._id}`, user)
     // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) saveLocalUser(user);
@@ -81,11 +78,12 @@ async function update(user) {
 }
 
 async function login(userCred) {
-    const users = await storageService.query('user');
+    const users = await storageService.query(STORAGE_KEY_USER);
 
     const user = users.find((user) => user.username === userCred.username);
     // const user = await httpService.post('auth/login', userCred)
     if (user) {
+        showSuccessMsg(` user ${user.fullname}  just login`);
         // socketService.login(user._id)
         return saveLocalUser(user);
     }
@@ -100,14 +98,17 @@ async function signup(userCred) {
     userCred.wishlist = [];
     userCred.houses = [];
 
-    const user = await storageService.post('user', userCred);
+    const user = await storageService.post(STORAGE_KEY_USER, userCred);
     // const user = await httpService.post('auth/signup', userCred)
     // socketService.login(user._id)
+    showSuccessMsg(` user ${user.fullname}  just signup`);
     return saveLocalUser(user);
 }
 async function logout() {
+    localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
     socketService.logout();
+    showErrorMsg(` user just logout`);
     // return await httpService.post('auth/logout')
 }
 
@@ -130,6 +131,7 @@ function getLoggedinUser() {
     const user =
         JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) ||
         JSON.parse(localStorage.getItem('loggedinUser'));
+    console.log(user);
     return user;
 }
 
@@ -159,3 +161,14 @@ async function setWishlist(houseId){
 //     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
 //     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
 // })()
+
+
+function _createUsers() {
+    var users = utilService.loadFromStorage(STORAGE_KEY_USER);
+    if (!users || !users.length) {
+        users = usersJson;
+        utilService.saveToStorage(STORAGE_KEY_USER, users);
+    }
+    gUsers = users;
+    return users;
+}

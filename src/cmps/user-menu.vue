@@ -6,7 +6,7 @@
       <a v-if="user" href="#/wishList" class="a1">Wish List</a>
       <router-link v-if="user" to="/dashboard">Dashboard</router-link>
       <!-- <a v-if="user" href="#/dashboard">Dashboard</a> -->
-      <a v-if="user" @click="logout">Logout</a>
+      <a v-if="user" @click.stop="logout">Logout</a>
     </div>
   </div>
   <loginSignupModal v-if="isLogin" @closeModal="close" />
@@ -38,6 +38,7 @@ export default {
       this.isLogin = false;
     },
     logout() {
+      console.log('hey')
       this.$store.dispatch("logout")
     },
   },
