@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import housePreview from "./house-preview.vue";
+import housePreview from "./house-preview.vue" 
 
 export default {
   props: {
@@ -16,5 +16,5 @@ export default {
   components: {
     housePreview,
   },
-};
+} 
 </script>

@@ -105,7 +105,7 @@ function _filter(filterBy) {
         destination,
         guests,
     } = filterBy;
-
+    console.log(filterBy);
     const regex = new RegExp(name, 'i');
     let filteredHouses = gHouses.filter((house) => {
         return regex.test(house.name);
