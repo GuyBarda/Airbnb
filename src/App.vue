@@ -2,12 +2,21 @@
   <app-header :close="isOpen" />
   <RouterView />
 
-  <section @click="toggleSearch" class="dark-site" :class="{
+  <!-- <section @click="toggleSearch" class="dark-site" :class="{
     open: isOpen || isOrderComplete || isFilterOpen || isMustLogin || isLogInOpen,
     search: isOpen,
     must: isMustLogin,
+  }"></section> -->
+  <section @click="toggleSearch" class="dark-site" :class="{
+    open: isOpen,
+    search: isOpen,
+    must: isMustLogin,
   }"></section>
-  <user-msg/>
+  <section @click="closeDarkForModals" class="dark-for-modals" :class="{
+    open: isOrderComplete || isFilterOpen || isMustLogin || isLogInOpen,
+    must: isMustLogin,
+  }"></section>
+  <user-msg />
   <app-footer />
 </template>
 
@@ -25,10 +34,15 @@ export default {
   },
   methods: {
     toggleSearch(ev) {
-      this.$store.commit({ type: "toggleSearch", bool: false }) 
-      this.$store.commit({ type: "toggleSuccessModal", bool: false }) 
-      this.$store.commit({ type: "toggleFilterModal", bool: false }) 
-      this.$store.commit({ type: "toggleLogInModal", bool: false }) 
+      this.$store.commit({ type: "toggleSearch", bool: false })
+      // this.$store.commit({ type: "toggleSuccessModal", bool: false }) 
+      // this.$store.commit({ type: "toggleFilterModal", bool: false }) 
+      // this.$store.commit({ type: "toggleLogInModal", bool: false }) 
+    },
+    closeDarkForModals() {
+      this.$store.commit({ type: "toggleSuccessModal", bool: false })
+      this.$store.commit({ type: "toggleFilterModal", bool: false })
+      this.$store.commit({ type: "toggleLogInModal", bool: false })
     }
   },
   computed: {
@@ -42,7 +56,7 @@ export default {
       return this.$store.getters.isLogInOpen
     },
     isOpen() {
-      return this.$store.getters.open 
+      return this.$store.getters.open
     },
     isOrderComplete() {
       return this.$store.state.isOrderComplete
