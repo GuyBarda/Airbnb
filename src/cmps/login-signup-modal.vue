@@ -85,14 +85,16 @@ export default {
     async login() {
       await this.$store.dispatch({ type: "login", cred: this.cred });
       this.$emit("closeModal");
+      this.$store.commit({ type: "toggleLogInModal", bool: false });
     },
     async signup() {
       await this.$store.dispatch({ type: "signup", cred: this.signupCred });
       this.$emit("closeModal");
+      this.$store.commit({ type: "toggleLogInModal", bool: false });
     },
     close(){
-      console.log('hey')
       this.$emit("closeModal");
+      this.$store.commit({ type: "toggleLogInModal", bool: false });
     }
   },
   computed: {
