@@ -31,7 +31,7 @@ export default {
         house: Object
     },
     created(){
-        const {wishlist} = this.loggedinUser
+        const wishlist = this.loggedinUser?.wishlist
         if(!wishlist) return
         const idx = wishlist.findIndex(house => house._id === this.house._id)
         this.isMark = idx > -1 ? true : false  

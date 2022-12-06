@@ -26,5 +26,5 @@ export function showSuccessMsg(txt) {
     showUserMsg({txt, type: 'success', icon: 'fa fa-check'})
 }
 export function showErrorMsg(txt) {
-    showUserMsg({txt, type: 'error', icon: 'fa fa-times-circle' })
+    showUserMsg({txt, type: 'error', icon: 'fa fa-times-circle'})
 }
