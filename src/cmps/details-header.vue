@@ -1,6 +1,10 @@
 <template>
     <div class="full">
-        <header ref="elDetailsHeader" :class="{ sticky: sticky }" class="details-header full secondary-container ">
+        <header
+            ref="elDetailsHeader"
+            :class="{ sticky: sticky }"
+            class="details-header full secondary-container"
+        >
             <section class="secondary-container">
                 <nav class="details-nav">
                     <a href="#photos">Photos</a>
@@ -10,10 +14,12 @@
                 </nav>
                 <div v-if="showReserve" class="reserve-container">
                     <div class="reserve-info-container">
-                        <p>{{ formattedPrice }} night</p>
+                        <p>${{ formattedPrice }} <span>night</span></p>
                         <review-average :reviews="stay.reviews" />
                     </div>
-                    <button class="btn-reserve">Reserve</button>
+                    <button @mousemove="hoverEffect" class="btn-reserve">
+                        Reserve
+                    </button>
                 </div>
             </section>
         </header>
@@ -21,21 +27,29 @@
 </template>
 
 <script>
-import reviewAverage from '../cmps/review-average.vue';
+import reviewAverage from "../cmps/review-average.vue";
 
 export default {
     props: {
         stay: Object,
         sticky: Boolean,
-        showReserve: Boolean
+        showReserve: Boolean,
+    },
+    methods: {
+        hoverEffect(ev) {
+            const button = ev.target;
+            const { x, y } = button.getBoundingClientRect();
+            button.style.setProperty("--x", ev.clientX - x + "px");
+            button.style.setProperty("--y", ev.clientY - y + "px");
+        },
     },
     computed: {
         formattedPrice() {
             return 1300;
-        }
+        },
     },
     components: {
-        reviewAverage
-    }
-}
+        reviewAverage,
+    },
+};
 </script>

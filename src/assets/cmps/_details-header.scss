@@ -40,18 +40,41 @@
 
         .reserve-container {
             display: flex;
+            align-items: center;
             .reserve-info-container {
                 width: 200px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                p {
+                    font-weight: bolder;
+                }
+                span {
+                    font-weight: normal;
+                    font-size: 14px;
+                }
                 .review-totals {
                     font-size: em(10px, 16px);
+                }
+                .review-totals {
+                    span {
+                        display: none;
+                    }
+                    path {
+                        display: none;
+                    }
+                    a {
+                        margin-left: -42px;
+                        margin-top: -19px;
+                        font-size: 12px;
+                    }
                 }
             }
             .btn-reserve {
                 @include reserve-btn();
+                font-size: 16px;
+                width: 109px;
             }
         }
     }
