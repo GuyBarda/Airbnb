@@ -19,11 +19,11 @@
             <div class="your-stay-details-container">
                 <h3>Stay details</h3>
                 <div class="stay-details-info-container">
-                    <img :src="house.imgUrls[0]" alt="">
-                    <p>{{ house.name }}</p>
+                    <img :src="stay.imgUrls[0]" alt="">
+                    <p>{{ stay.name }}</p>
                     <p>Host {{ order.houstId }}</p>
                     <div>
-                        <review-average :reviews="house.reviews" />
+                        <review-average :reviews="stay.reviews" />
                         <p>{{ formattedPerNightPrice }}</p>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ import reviewAverage from './review-average.vue';
 export default {
     props: {
         order: Object,
-        house: Object
+        stay: Object
     },
     created() {
         console.log(this.order)
@@ -82,12 +82,12 @@ export default {
     },
     computed: {
         formattedPerNightPrice() {
-            return this.format(this.house.price)
+            return this.format(this.stay.price)
         },
         formattedTotalPrice() {
             let diffDays = this.totalDays()
 
-            return this.format(diffDays * this.house.price)
+            return this.format(diffDays * this.stay.price)
         },
         getTotalDays() {
             return this.totalDays()

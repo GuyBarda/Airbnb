@@ -5,7 +5,7 @@
       <p>airbxb</p>
     </div>
 
-    <house-search
+    <stay-search
       :date="currDate"
       :dest="currDest"
       @toggleSearch="openZone"
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import houseSearch from "./house-search.vue";
+import staySearch from "./stay-search.vue";
 import searchModal from "./search-modal.vue";
 import userMenu from "./user-menu.vue";
 
@@ -57,7 +57,7 @@ export default {
     emptyZone: String,
   },
   components: {
-    houseSearch,
+    staySearch,
     searchModal,
     userMenu,
   },
@@ -121,7 +121,7 @@ export default {
     },
     whichLayout() {
       const layout = this.$route.path.split("/")[1];
-      return layout === "house" ? "secondary-container" : "main-container";
+      return layout === "stay" ? "secondary-container" : "main-container";
     },
   },
 };

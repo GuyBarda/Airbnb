@@ -5,7 +5,7 @@
         <h4>
           <span>{{ formattedPerNightPrice }}</span> night
         </h4>
-        <review-average :reviews="house.reviews" />
+        <review-average :reviews="stay.reviews" />
       </header>
       <div class="picker-container">
         <div @click="showDatePicker = true" class="check-in picker">
@@ -66,7 +66,7 @@ import guestsModal from './guests-modal.vue';
 
 export default {
   props: {
-    house: Object,
+    stay: Object,
   },
   data() {
     return {
@@ -92,7 +92,7 @@ export default {
       this.order.guests = { ...guests };
     },
     addOrder() {
-      this.order.totalPrice = this.serviceFee + this.cleaningFee + this.totalDays() * this.house.price
+      this.order.totalPrice = this.serviceFee + this.cleaningFee + this.totalDays() * this.stay.price
       this.$emit('addOrder', this.order)
     },
     totalDays() {
@@ -144,16 +144,16 @@ export default {
       return this.formatDate(this.order.endDate);
     },
     totalReviews() {
-      const { reviews } = this.house;
+      const { reviews } = this.stay;
       if (reviews.length === 1) return '1 review';
       if (reviews.length > 1) return `${reviews.length} reviews`;
       if (!reviews.length) return `No reviews yet...`;
     },
     formattedPerNightPrice() {
-      return this.format(this.house.price);
+      return this.format(this.stay.price);
     },
     formattedTotalNightsPrice() {
-      return this.format(this.totalDays() * this.house.price);
+      return this.format(this.totalDays() * this.stay.price);
     },
     isOrderComplete() {
       return this.$store.state.isOrderComplete;
@@ -171,7 +171,7 @@ export default {
       return this.format(
         this.serviceFee +
         this.cleaningFee +
-        this.totalDays() * this.house.price
+        this.totalDays() * this.stay.price
       );
     },
   },

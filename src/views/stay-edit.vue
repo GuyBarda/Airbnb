@@ -1,6 +1,6 @@
 <template>
     <section class="secondary-container">
-        <section v-if="this.houseToEdit" class="house-edit">
+        <section v-if="this.stayToEdit" class="stay-edit">
             <nav>
                 <ul>
                     <li><plus-icon style="width: 24px; height: 24px" />Add Stay</li>
@@ -10,42 +10,42 @@
                 </ul>
             </nav>
             <section class="edit-section">
-                <section class="house-data">
+                <section class="stay-data">
                     <div>Total Rate <span>0</span></div>
                     <div>Monthly Earning <span>0</span></div>
                     <div>Orders <span>0</span></div>
                     <div>Active Guests <span>0</span></div>
                 </section>
-                <section class="house-info">
-                    <section class="house-name">
+                <section class="stay-info">
+                    <section class="stay-name">
                         <h2>
                             <label>
                                 Name
-                                <input type="text" v-model="houseToEdit.name" placeholder="Stay name" />
+                                <input type="text" v-model="stayToEdit.name" placeholder="Stay name" />
                             </label>
                         </h2>
                         <div>
                             <label>
-                                Country <input type="text" v-model="houseToEdit.loc.country" />
+                                Country <input type="text" v-model="stayToEdit.loc.country" />
                             </label>
                             <label>
-                                City <input type="text" v-model="houseToEdit.loc.city" />
+                                City <input type="text" v-model="stayToEdit.loc.city" />
                             </label>
                             <label>
-                                Address <input type="text" v-model="houseToEdit.loc.address" />
+                                Address <input type="text" v-model="stayToEdit.loc.address" />
                             </label>
                         </div>
                     </section>
                     <section class="imgs-container">
-                        <upload-img v-for="x in 5" @setImg="setImg" :img="houseToEdit.imgUrls[x-1]" :key="x" :idx="(x-1)" />
+                        <upload-img v-for="x in 5" @setImg="setImg" :img="stayToEdit.imgUrls[x-1]" :key="x" :idx="(x-1)" />
                     </section>
                     <section class="below-imgs">
                         <div style="display: flex;justify-content: space-between;align-items: center;">
                             <label for="capacity">Capacity
-                                <input type="text" name="capacity" v-model="houseToEdit.capacity" />
+                                <input type="text" name="capacity" v-model="stayToEdit.capacity" />
                             </label>
                             <label for="stay-type">Stay type:
-                                <select name="stay-type" v-model="houseToEdit.stayType">
+                                <select name="stay-type" v-model="stayToEdit.stayType">
                                     <option value="Entire place">
                                         Entire place
                                     </option>
@@ -58,29 +58,29 @@
                                 </select>
                             </label>
                             <label for="property-type">Property type:
-                                <select name="property-type" v-model="houseToEdit.propertyType">
-                                    <option value="House">House</option>
+                                <select name="property-type" v-model="stayToEdit.propertyType">
+                                    <option value="Stay">Stay</option>
                                     <option value="apartment">Apartment</option>
-                                    <option value="Guesthouse">Guesthouse</option>
+                                    <option value="Gueststay">Gueststay</option>
                                     <option value="Hotel">Hotel</option>
                                 </select>
                             </label>
                             <label>
                                 Price:
-                                <input style="width: 40px" type="text" v-model="houseToEdit.price" />
+                                <input style="width: 40px" type="text" v-model="stayToEdit.price" />
                                 /night
                             </label>
                         </div>
                         <div>
                             <h3>Description</h3>
-                            <textarea v-model="houseToEdit.summary"></textarea>
+                            <textarea v-model="stayToEdit.summary"></textarea>
                         </div>
                         <div class="amenities-container">
                             <h3>Amenities</h3>
-                            <div class="house-amenities">
+                            <div class="stay-amenities">
                                 <div v-for="a in allAmenities" style="display: flex; gap: 13px">
                                     <input @change="checkAmenities(a)" type="checkbox" :name="a"
-                                        :checked="houseToEdit.amenities.includes(a)" />
+                                        :checked="stayToEdit.amenities.includes(a)" />
                                     <img :src="`/src/assets/svg/amenities/${a
                                     .split(' ')[0]
                                     .toLowerCase()}.svg`" alt="np" style="width: 1.2em" />
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <section class="confirm-area">
-                            <button @mousemove="hoverEffect" @click="saveHouse" class="btn-reserve">Save</button>
+                            <button @mousemove="hoverEffect" @click="saveStay" class="btn-reserve">Save</button>
                         </section>
                     </section>
                 </section>
@@ -105,7 +105,7 @@
 </template>
   
 <script>
-import { houseService } from "../services/house-service-local.js";
+import { stayService } from "../services/stay-service-local.js";
 import { userService } from "../services/user-service.js";
 import { utilService } from "../services/utils-service.js";
 
@@ -129,7 +129,7 @@ export default {
                 "Washer",
                 "Smoking allowed",
             ],
-            houseToEdit: null,
+            stayToEdit: null,
             user: null,
         };
     },
@@ -139,9 +139,9 @@ export default {
 
         user ? this.user = user : this.$store.commit({ type: "toggleMustLogin", bool: true });
 
-        this.houseToEdit = id ? await houseService.getById(id) : houseService.getEmptyHouse();
-        this.houseToEdit.host = this.user
-        console.log("created", this.houseToEdit);
+        this.stayToEdit = id ? await stayService.getById(id) : stayService.getEmptyStay();
+        this.stayToEdit.host = this.user
+        console.log("created", this.stayToEdit);
     },
     methods: {
         close() {
@@ -150,24 +150,24 @@ export default {
         },
         setImg({ url, idx }) {
             console.log('idx', idx)
-            this.houseToEdit.imgUrls[idx] = url
-            // this.houseToEdit.imgUrls.push(url) 
-            console.log('this.houseToEdit', this.houseToEdit)
+            this.stayToEdit.imgUrls[idx] = url
+            // this.stayToEdit.imgUrls.push(url) 
+            console.log('this.stayToEdit', this.stayToEdit)
         },
         checkAmenities(amenity) {
-            if (this.houseToEdit.amenities.includes(amenity)) {
-                const idx = this.houseToEdit.amenities.findIndex((a) => a === amenity);
-                this.houseToEdit.amenities.splice(idx, 1);
+            if (this.stayToEdit.amenities.includes(amenity)) {
+                const idx = this.stayToEdit.amenities.findIndex((a) => a === amenity);
+                this.stayToEdit.amenities.splice(idx, 1);
             } else {
-                this.houseToEdit.amenities.push(amenity);
+                this.stayToEdit.amenities.push(amenity);
             }
-            console.log("this.house.amenities", this.houseToEdit.amenities);
+            console.log("this.stay.amenities", this.stayToEdit.amenities);
         },
         hoverEffect(ev) {
             utilService.hoverEffect(ev)
         },
-        async saveHouse() {
-            await this.$store.dispatch({ type: 'updateHouse', house: this.houseToEdit })
+        async saveStay() {
+            await this.$store.dispatch({ type: 'updateStay', stay: this.stayToEdit })
             this.$router.push('/')
         }
     },

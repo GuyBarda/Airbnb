@@ -1,6 +1,6 @@
 import { storageService } from './async-storage-service';
 import { utilService } from './utils-service.js';
-import { houseService } from './house-service-local';
+import { stayService } from './stay-service-local';
 // import { httpService } from './http.service'
 import { store } from '../store/store';
 import { orderService } from './order-service-local';
@@ -96,7 +96,7 @@ async function signup(userCred) {
     userCred.orders = [];
     userCred.trips = [];
     userCred.wishlist = [];
-    userCred.houses = [];
+    userCred.stays = [];
 
     const user = await storageService.post(STORAGE_KEY_USER, userCred);
     // const user = await httpService.post('auth/signup', userCred)
@@ -135,25 +135,25 @@ function getLoggedinUser() {
     return user;
 }
 
-async function setWishlist(houseId){
+async function setWishlist(stayId){
     const { _id } = getLoggedinUser();
     const user = await getById(_id);
     const idx = user.wishlist.findIndex(
-        (house) => house._id === houseId
+        (stay) => stay._id === stayId
     );
     if (idx > -1) {
         user.wishlist.splice(idx, 1);
         await update(user);
         return;
     }
-    const { name, imgUrls, loc } = await houseService.getById(houseId);
-    const miniHouse = {
-        _id: houseId,
+    const { name, imgUrls, loc } = await stayService.getById(stayId);
+    const miniStay = {
+        _id: stayId,
         name,
         imgUrls,
         address: loc.address,
     };
-    user.wishlist.push(miniHouse);
+    user.wishlist.push(miniStay);
     await update(user);
 }
 // ;(async ()=>{
