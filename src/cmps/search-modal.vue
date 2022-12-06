@@ -145,7 +145,7 @@ export default {
       );
 
       // this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
-      // this.$store.dispatch({ type: "loadHouses" });
+      // this.$store.dispatch({ type: "loadStays" });
 
       // const queryStringParams = `?des=${this.filterBy.destination}&guests=${this.filterBy.guests}`;
       // const newUrl =

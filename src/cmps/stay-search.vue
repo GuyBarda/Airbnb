@@ -47,7 +47,7 @@ export default {
     },
     whichSearch() {
       const where = this.$route.path.split('/')[1]
-      return where === 'house' ? false : true
+      return where === 'stay' ? false : true
     }
   },
   components: {

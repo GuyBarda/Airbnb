@@ -1,12 +1,12 @@
 <template>
-    <div v-if="house" class="house-details secondary-container">
+    <div v-if="stay" class="stay-details secondary-container">
         <div class="subtitle">
-            <h2>{{ house.name }}</h2>
+            <h2>{{ stay.name }}</h2>
             <div class="subtitle-text" style="display: flex; align-items: center; gap: 4px;">
-                <review-average :reviews="house.reviews" />·
-                <span v-if="house.host.isSuperhost"> &#127894; Superhost ·</span>
+                <review-average :reviews="stay.reviews" />·
+                <span v-if="stay.host.isSuperhost"> &#127894; Superhost ·</span>
 
-                <p>{{ house.loc.city }}, {{ house.loc.country }}</p>
+                <p>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
                 <div class="share-save-actions">
                     <span class="share-stay">
                         <img src="../assets/svg/share.svg" alt="">
@@ -21,27 +21,27 @@
         </div>
         <!-- <shareModal/> -->
         <div ref="imgsContainer" class="imgs-container" id="photos">
-            <img v-for="img in house.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
+            <img v-for="img in stay.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
         </div>
 
-        <details-header :sticky="getSticky" :house="house" />
+        <details-header :sticky="getSticky" :stay="stay" />
 
-        <div class="house-info">
+        <div class="stay-info">
             <section class="content">
                 <div class="subtitle">
-                    <h2>Entire home hosted by {{ house.host.fullname }}</h2>
+                    <h2>Entire home hosted by {{ stay.host.fullname }}</h2>
                     <div>
-                        <span>{{ house.capacity }} guests </span>
+                        <span>{{ stay.capacity }} guests </span>
                         <span class="gray"> • </span>
-                        <span>{{ house.bathrooms }} Bathrooms </span>
+                        <span>{{ stay.bathrooms }} Bathrooms </span>
                         <span class="gray"> • </span>
-                        <span>{{ house.bedrooms }} bedrooms </span>
+                        <span>{{ stay.bedrooms }} bedrooms </span>
                     </div>
-                    <img class="host-image" :src="`${house.host.thumbnailUrl}`" alt="">
+                    <img class="host-image" :src="`${stay.host.thumbnailUrl}`" alt="">
                 </div>
-                <div class="user-house-info">
-                    <img v-if="house.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="">
-                    <div v-if="house.host.isSuperhost">
+                <div class="user-stay-info">
+                    <img v-if="stay.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="">
+                    <div v-if="stay.host.isSuperhost">
                         <p style="font-weight: bold;">Renata is a Superhost</p>
                         <p class="subtext">
                             Superhosts are experienced, highly rated hosts who are committed to providing great stays
@@ -70,12 +70,12 @@
                 </div>
 
                 <div class="summary">
-                    {{ house.summary }}
+                    {{ stay.summary }}
                 </div>
                 <div class="amenities-container" id="amenities">
                     <h2>What this place offers</h2>
-                    <div class="house-amenities">
-                        <div v-for="a in house.amenities" style="display: flex; gap: 13px;">
+                    <div class="stay-amenities">
+                        <div v-for="a in stay.amenities" style="display: flex; gap: 13px;">
                             <img :src="`/src/assets/svg/amenities/${a.split(' ')[0].toLowerCase()}.svg`" alt="np"
                                 style="width: 1.2em;">
                             <p>{{ a }}</p>
@@ -83,12 +83,12 @@
                     </div>
                 </div>
             </section>
-            <reserve-modal @addOrder="addOrder" :house="house" />
+            <reserve-modal @addOrder="addOrder" :stay="stay" />
         </div>
 
         <section id="reviews">
             <header>
-                <review-average :reviews="house.reviews" />
+                <review-average :reviews="stay.reviews" />
             </header>
             <div class="rating">
                 <p>Cleanliness</p>
@@ -105,21 +105,21 @@
                 <span class="progress-container"><progress value="4.2" max="5"></progress></span>
             </div>
             <main class="review-container">
-                <review-preview v-for="(review, idx) in !showMore ? house.reviews.slice(0, 6) : house.reviews"
+                <review-preview v-for="(review, idx) in !showMore ? stay.reviews.slice(0, 6) : stay.reviews"
                     :review="review" :idx="idx" />
             </main>
-            <button v-if="(house.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
+            <button v-if="(stay.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
                             ${!showMore ? `all
-                            ${house.reviews.length} reviews` : 'less'}`
+                            ${stay.reviews.length} reviews` : 'less'}`
             }}</button>
         </section>
 
-        <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :house="house" />
+        <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :stay="stay" />
     </div>
 </template>
 
 <script>
-import { houseService } from '../services/house-service-local.js'
+import { stayService } from '../services/stay-service-local.js'
 import { orderService } from '../services/order-service-local.js'
 import { userService } from '../services/user-service.js'
 
@@ -135,7 +135,7 @@ import detailsHeader from '../cmps/details-header.vue'
 export default {
     data() {
         return {
-            house: null,
+            stay: null,
             order: null,
             cleaningFee: 0,
             serviceFee: 0,
@@ -146,7 +146,7 @@ export default {
     },
     async created() {
         const { id } = this.$route.params
-        this.house = await houseService.getById(id)
+        this.stay = await stayService.getById(id)
         this.order = orderService.getEmptyOrder()
         this.$store.commit({ type: 'setLoggedinUser', user: userService.getLoggedinUser() })
         console.log(this.$store.getters.loggedinUser)
@@ -170,12 +170,12 @@ export default {
                 _id: this.$store.getters.loggedinUser._id,
                 fullname: this.$store.getters.loggedinUser.fullname
             }
-            this.order.house = {
-                _id: this.house._id,
-                name: this.house.name,
-                price: this.house.price
+            this.order.stay = {
+                _id: this.stay._id,
+                name: this.stay.name,
+                price: this.stay.price
             }
-            this.order.hostId = this.house.host._id
+            this.order.hostId = this.stay.host._id
 
             this.$store.commit({ type: "toggleSuccessModal", bool: true });
             this.$store.dispatch({ type: 'addOrder', order: this.order })
@@ -197,16 +197,16 @@ export default {
     },
     computed: {
         totalReviews() {
-            const { reviews } = this.house
+            const { reviews } = this.stay
             if (reviews.length === 1) return '1 review'
             if (reviews.length > 1) return `${reviews.length} reviews`
             if (!reviews.length) return `No reviews yet...`
         },
         formattedPerNightPrice() {
-            return this.format(this.house.price)
+            return this.format(this.stay.price)
         },
         formattedTotalNightsPrice() {
-            return this.format(this.totalDays() * this.house.price)
+            return this.format(this.totalDays() * this.stay.price)
         },
         isOrderComplete() {
             return this.$store.state.isOrderComplete
@@ -221,7 +221,7 @@ export default {
             return this.format(this.serviceFee)
         },
         formattedTotal() {
-            return this.format(this.serviceFee + this.cleaningFee + (this.totalDays() * this.house.price))
+            return this.format(this.serviceFee + this.cleaningFee + (this.totalDays() * this.stay.price))
         },
         getSticky() {
             return this.sticky

@@ -1,4 +1,4 @@
-.house-details {
+.stay-details {
     font-family: 'CerealReg';
     color: $clr-details-text;
 
@@ -71,7 +71,7 @@
         }
     }
 
-    .user-house-info {
+    .user-stay-info {
         display: grid;
         grid-template-columns: auto 1fr;
         gap: 10px;
@@ -130,7 +130,7 @@
             }
         }
     }
-    .house-info {
+    .stay-info {
         display: flex;
         justify-content: space-between;
         .content {
@@ -383,7 +383,7 @@
             h2 {
                 margin-bottom: 24px;
             }
-            .house-amenities {
+            .stay-amenities {
                 display: grid;
                 grid-template-columns: auto auto;
 
