@@ -1,39 +1,23 @@
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
 
 .alert {
-  background-color: lightgray;
-  position: absolute;
-  top: 0;
-  right: 0.5em;
-  padding: 1em;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  &.alert-success {
-    position: absolute;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 3px 3px 3px 3px;
-    top: 800px;
+    background-color: lightgray;
+    position: fixed;
+    bottom: 1em;
     right: 0.5em;
-    padding: 1em;
-    z-index: 8000;
-    color: #270;
-    background-color: #d6e9b7;
+    padding: 10px 20px;
+    font-family: CerealReg;
+    width: max-content;
     border-radius: 20px;
-    
-  }
-  &.alert-error {
-    position: absolute;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 3px 3px 3px 3px;
-    top: 800px;
-    right: 0.5em;
-    padding: 1em;
     z-index: 8000;
-    color: rgb(238, 207, 207);
-    background-color: #cc6464;
-    border-radius: 20px;
-  }
+
+    &.alert-success {
+        color: #270;
+        background-color: #d6e9b7;
+    }
+
+    &.alert-error {
+        color: rgb(238, 207, 207);
+        background-color: #cc6464;
+    }
 }
-
-

@@ -1,12 +1,24 @@
 <template>
     <div class="user-dashboard secondary-container">
-        <nav class="dashboard-nav">
-            <button class="btn-nav" @click="changeType('orders')">orders</button>
+        <nav class="dashboard-nav" @mousemove="hoverEffect">
+            <!-- <button class="btn-nav" @click="changeType('orders')">orders</button>
             <button class="btn-nav" @click="changeType('trips')">my trips</button>
-            <button class="btn-nav" @click="changeType('houses')">my houses</button>
-            <button class="btn-nav" @click="changeType('wishlist')">wishlist</button>
-            <!-- <button class="btn-nav" >add a stay</button> -->
-            <router-link class="btn-nav" to="/house/edit">add a stay</router-link>
+            <button class="btn-nav" @click="changeType('wishlist')">my houses</button>
+            <button class="btn-nav" @click="changeType('wishlist')">wishlist</button> -->
+
+            <input type="radio" id="orders" name="btn-nav" value="orders" v-model="type" />
+            <label for="orders" class="btn-nav">orders</label>
+
+            <input type="radio" id="trips" name="btn-nav" value="trips" v-model="type" />
+            <label for="trips" class="btn-nav">my trips</label>
+
+            <input type="radio" id="stays" name="btn-nav" value="stays" v-model="type" />
+            <label for="stays" class="btn-nav">my stays</label>
+
+            <input type="radio" id="wishlist" name="btn-nav" value="wishlist" v-model="type" />
+            <label for="wishlist" class="btn-nav">wishlist</label>
+
+            <router-link class="btn-nav" to="/stay/edit/">add a stay</router-link>
         </nav>
         <orders v-if="typeToShow === 'orders'" :user="userToShow" :orders="ordersToShow" />
         <my-trips v-if="typeToShow === 'trips'" :user="userToShow" :trips="tripsToShow" />
@@ -42,7 +54,14 @@ export default {
     methods: {
         changeType(str) {
             this.type = str
-        }
+        },
+        hoverEffect(ev) {
+            const button = ev.target;
+            const { x, y } = button.getBoundingClientRect();
+            console.log(x, y)
+            button.style.setProperty('--x', ev.clientX - x + 'px');
+            button.style.setProperty('--y', ev.clientY - y + 'px');
+        },
     },
     computed: {
         userToShow() {

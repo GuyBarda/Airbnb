@@ -5,29 +5,44 @@
     .dashboard-nav {
         display: flex;
         height: 40px;
+        border-radius: 10px;
+
+        @include reserve-btn();
+        font-size: em(17px, 16px);
+
+        input {
+            display: none;
+        }
 
         .btn-nav {
             flex: 1;
             background-color: transparent;
-            color: $clr1;
             display: grid;
             place-content: center;
             text-decoration: none;
             font-family: inherit;
-            transition: 0.1s;
-            border: 0;
-            border-right: 1px solid $clr1;
+            // transition: 0.1s;
+            // border: 0;
             text-transform: uppercase;
             font-size: em(14px, 16px);
+            cursor: pointer;
+            // background-color: $clr1;
+            color: white;
 
             &:hover {
-                // border-radius: 3px;
-                background-color: $clr1;
-                color: white;
+                // box-shadow: 1px 1px 1px 1px black;
             }
-            &:last-child {
-                border: 0;
-            }
+
+            // &:nth-child(2) {
+            //     border-bottom-left-radius: 10px;
+            //     border-top-left-radius: 10px;
+            //     // background-color: blue;
+            // }
+
+            // &:last-child {
+            //     border-bottom-right-radius: 10px;
+            //     border-top-right-radius: 10px;
+            // }
         }
     }
 }
