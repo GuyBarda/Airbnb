@@ -3,8 +3,8 @@
     <div class="user-nav-in">
       <a v-if="!user" href="#" @click="openLogIn()">Log in</a>
       <!-- <a href="#">Sign up</a> -->
-      <a v-if="user" href="#/wishList" class="a1">Wish List</a>
-      <router-link v-if="user" to="/dashboard">Dashboard</router-link>
+      <!-- <a v-if="user" href="#/wishList" class="a1">Wish List</a> -->
+      <router-link v-if="user" @click="closeMenu()" to="/dashboard">Dashboard</router-link>
       <!-- <a v-if="user" href="#/dashboard">Dashboard</a> -->
       <a v-if="user" @click.stop="logout">Logout</a>
     </div>
@@ -37,6 +37,9 @@ export default {
     },
     close() {
       this.isLogin = false;
+    },
+    closeMenu(){
+console.log('hiy')
     },
     logout() {
       this.$store.dispatch("logout")
