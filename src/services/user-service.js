@@ -10,7 +10,7 @@ import {
     SOCKET_EVENT_USER_UPDATED,
     SOCKET_EMIT_USER_WATCH,
 } from './socket-service';
-import { showSuccessMsg, showErrorMsg } from './event-bus-service';
+import { showSuccessMsg, showErrorMsg, WishlistMsg } from './event-bus-service';
 import usersJson from '../../data/users.json' assert { type: 'json' };
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
@@ -155,6 +155,7 @@ async function setWishlist(stayId){
     };
     user.wishlist.push(miniStay);
     await update(user);
+    WishlistMsg(`${miniStay.name} Saved to Wishlist`)
 }
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
