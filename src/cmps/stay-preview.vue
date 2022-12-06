@@ -10,7 +10,7 @@
                     <p class="date">{{ date }}</p>
                 </main>
                 <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
-                <p class="rate"><star-icon />&nbsp {{ rate }}</p>
+                <p class="rate"><star-icon />&nbsp; {{ rate }}</p>
             </section>
         </article>
     </router-link>
@@ -53,10 +53,14 @@ export default {
         },
         rate() {
             if (this.stay.reviews.length === 0) return 'New'
-            // let sum = this.stay.reviews.reduce((acc, { rate }) => acc += rate, 0)
-            // sum /= this.stay.reviews.length
-            let num = Math.round(Math.random()) * utilService.getRandomIntInclusive(1, 5)
-            return `${num} (${this.stay.reviews.length})`
+            let sum = this.stay.reviews.reduce((acc, { rate }) => {
+                 let rating = Object.values(rate)
+                 let calcRate = Number((rating.reduce((acc, num) => acc+=num,0) /6).toFixed(1) )
+                acc += calcRate
+                return acc
+            }, 0)
+            sum /= this.stay.reviews.length
+            return `${sum.toFixed(1)} (${this.stay.reviews.length})`
         },
         location() {
             return `${this.stay.loc.city}, ${this.stay.loc.country}`

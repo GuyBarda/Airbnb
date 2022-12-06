@@ -2,7 +2,13 @@
     <carousel class="carousel" :settings="settings" :breakpoints="breakpoints">
         <slide v-for="slide in btns" :key="slide">
             <div @click="setSort(slide.key)">
-                <img class="img-btn" :src="slide.url" alt="" width="24" height="24" />
+                <img
+                    class="img-btn"
+                    :src="slide.url"
+                    alt=""
+                    width="24"
+                    height="24"
+                />
                 <div class="imgKey">
                     <span>{{ slide.key }}</span>
                 </div>
@@ -16,7 +22,7 @@
         </template>
     </carousel>
 </template>
-  
+
 <script>
 // If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import "vue3-carousel/dist/carousel.css";
@@ -39,9 +45,9 @@ export default {
                 labels: [],
             },
             settings: {
-                itemsToShow: 3,
-                itemsToScroll: 1,
-                snapAlign: "center",
+            itemsToShow: 10,
+            itemsToScroll: 1,
+            snapAlign: "center",
             },
             breakpoints: {
                 // 700px and up
@@ -57,7 +63,7 @@ export default {
                     snapAlign: "start",
                 },
             },
-        };
+        }
     },
     computed: {
     },
@@ -74,4 +80,3 @@ export default {
     },
 };
 </script>
-  
