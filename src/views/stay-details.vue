@@ -12,7 +12,7 @@
                         <img src="../assets/svg/share.svg" alt="">
                         <span>Share</span>
                     </span>
-                    <span class="save-stay">
+                    <span @click="addToWishlist" class="save-stay">
                         <img src="../assets/svg/love.svg" alt="">
                         <span style="outline: 0px;">Save</span>
                     </span>
@@ -29,7 +29,7 @@
         <div class="stay-info">
             <section class="content">
                 <div class="subtitle">
-                    <h2>Entire home hosted by {{ stay.host.fullname }}</h2>
+                    <h2>{{ stay.roomType }} hosted by {{ stay.host.fullname }}</h2>
                     <div>
                         <span>{{ stay.capacity }} guests </span>
                         <span class="gray"> • </span>
@@ -122,7 +122,8 @@
 </template>
 
 <script>
-import { stayService } from '../services/stay-service-local.js'
+// import { stayService } from '../services/stay-service-local.js'
+import { stayService } from '../services/stay-service.js'
 import { orderService } from '../services/order-service-local.js'
 import { userService } from '../services/user-service.js'
 
@@ -154,8 +155,10 @@ export default {
         this.stay = await stayService.getById(id)
         this.order = orderService.getEmptyOrder()
         this.$store.commit({ type: 'setLoggedinUser', user: userService.getLoggedinUser() })
-        console.log(this.$store.getters.loggedinUser)
+        console.log(this.stay)
     },
+    //638f902aee9a8846d53bd7b9
+    //638f902aee9a8846d53bd7b9
     mounted() {
         setTimeout(() => {
             const imgsContainer = this.$refs.imgsContainer;
@@ -204,6 +207,11 @@ export default {
             });
             return formatter.format(num)
         },
+        async addToWishlist() {
+            console.log('hello')
+            await userService.setWishlist(this.stay._id)
+            console.log('added')
+        }
     },
     computed: {
         totalReviews() {

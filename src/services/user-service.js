@@ -1,6 +1,7 @@
 import { storageService } from './async-storage-service';
 import { utilService } from './utils-service.js';
-import { stayService } from './stay-service-local';
+// import { stayService } from './stay-service-local.js';
+import { stayService } from './stay-service.js';
 // import { httpService } from './http.service'
 import { store } from '../store/store';
 import { orderService } from './order-service-local';
@@ -15,8 +16,8 @@ import usersJson from '../../data/users.json' assert { type: 'json' };
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
 const STORAGE_KEY_USER = 'users';
-let gUsers
-_createUsers()
+let gUsers;
+_createUsers();
 // utilService.saveToStorage('user', usersJson);
 
 export const userService = {
@@ -105,7 +106,7 @@ async function signup(userCred) {
     return saveLocalUser(user);
 }
 async function logout() {
-    localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
     socketService.logout();
     showErrorMsg(` user just logout`);
@@ -135,18 +136,18 @@ function getLoggedinUser() {
     return user;
 }
 
-async function setWishlist(stayId){
+async function setWishlist(stayId) {
     const { _id } = getLoggedinUser();
     const user = await getById(_id);
-    const idx = user.wishlist.findIndex(
-        (stay) => stay._id === stayId
-    );
+    const idx = user.wishlist.findIndex((stay) => stay._id === stayId);
     if (idx > -1) {
         user.wishlist.splice(idx, 1);
         await update(user);
         return;
     }
+    console.log('before getting from server');
     const { name, imgUrls, loc } = await stayService.getById(stayId);
+    console.log(name);
     const miniStay = {
         _id: stayId,
         name,
@@ -155,14 +156,13 @@ async function setWishlist(stayId){
     };
     user.wishlist.push(miniStay);
     await update(user);
-    WishlistMsg(`${miniStay.name} Saved to Wishlist`)
+    WishlistMsg(`${miniStay.name} Saved to Wishlist`);
 }
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
 //     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
 //     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
 // })()
-
 
 function _createUsers() {
     var users = utilService.loadFromStorage(STORAGE_KEY_USER);

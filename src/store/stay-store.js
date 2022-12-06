@@ -1,122 +1,125 @@
-import { stayService } from '../services/stay-service-local.js'
+// import { stayService } from '../services/stay-service-local.js'
+import { stayService } from '../services/stay-service.js';
 
 export function getActionRemoveStay(stayId) {
     return {
         type: 'removeStay',
-        stayId
-    }
+        stayId,
+    };
 }
 export function getActionAddStay(stay) {
     return {
         type: 'addStay',
-        stay
-    }
+        stay,
+    };
 }
 export function getActionUpdateStay(stay) {
     return {
         type: 'updateStay',
-        stay
-    }
+        stay,
+    };
 }
 
 export function getActionAddStayMsg(stayId) {
     return {
         type: 'addStayMsg',
         stayId,
-        txt: 'Stam txt'
-    }
+        txt: 'Stam txt',
+    };
 }
 
 export const stayStore = {
     state: {
         stays: [],
-        filterBy: {}
+        filterBy: {},
     },
     getters: {
         stays({ stays }) {
-            return Object.values(stays)
+            return Object.values(stays);
         },
     },
     mutations: {
         setStays(state, { stays }) {
-            state.stays= stays
+            state.stays = stays;
         },
         addStay(state, { stay }) {
-            state.stays.push(stay)
+            state.stays.push(stay);
         },
         setFilter(state, { filterBy }) {
-            state.filterBy = { ...state.filterBy, ...JSON.parse(JSON.stringify(filterBy)) }
+            state.filterBy = {
+                ...state.filterBy,
+                ...JSON.parse(JSON.stringify(filterBy)),
+            };
         },
         updateStay(state, { stay }) {
-            const idx = state.stays.findIndex(c => c.id === stay._id)
-            state.stays.splice(idx, 1, stay)
+            const idx = state.stays.findIndex((c) => c.id === stay._id);
+            state.stays.splice(idx, 1, stay);
         },
         removeStay(state, { stayId }) {
-            state.stays = state.stays.filter(stay => stay._id !== stayId)
+            state.stays = state.stays.filter((stay) => stay._id !== stayId);
         },
         addStayMsg(state, { stayId, msg }) {
-            const stay = state.stays.find(stay => stay._id === stayId)
-            if (!stay.msgs) stay.msgs = []
-            stay.msgs.push(msg)
+            const stay = state.stays.find((stay) => stay._id === stayId);
+            if (!stay.msgs) stay.msgs = [];
+            stay.msgs.push(msg);
         },
     },
     actions: {
         setFilter({ commit, dispatch }, { filterBy }) {
-            commit({ type: 'setFilter', filterBy })
-            dispatch({ type: 'loadStays' })
+            commit({ type: 'setFilter', filterBy });
+            dispatch({ type: 'loadStays' });
             // state.filterBy = {...filterBy,...state.filterBy}
         },
         async addStay(context, { stay }) {
             try {
-                stay = await stayService.save(stay)
-                context.commit(getActionAddStay(stay))
-                return stay
+                stay = await stayService.save(stay);
+                context.commit(getActionAddStay(stay));
+                return stay;
             } catch (err) {
-                console.log('stayStore: Error in addStay', err)
-                throw err
+                console.log('stayStore: Error in addStay', err);
+                throw err;
             }
         },
         async updateStay(context, { stay }) {
             try {
-                console.log('stay', stay)
-                stay = await stayService.save(stay)
+                console.log('stay', stay);
+                stay = await stayService.save(stay);
 
-                context.commit(getActionUpdateStay(stay))
-                return stay
+                context.commit(getActionUpdateStay(stay));
+                return stay;
             } catch (err) {
-                console.log('stayStore: Error in updateStay', err)
-                throw err
+                console.log('stayStore: Error in updateStay', err);
+                throw err;
             }
         },
         async loadStays({ commit, state }) {
             try {
-                let stays = await stayService.query(state.filterBy)
-                
-                commit({ type: 'setStays', stays })
-                return stays
+                let stays = await stayService.query(state.filterBy);
+
+                commit({ type: 'setStays', stays });
+                return stays;
             } catch (err) {
-                console.log('stayStore: Error in loadStays', err)
-                throw err
+                console.log('stayStore: Error in loadStays', err);
+                throw err;
             }
         },
         async removeStay(context, { stayId }) {
             try {
-                await stayService.remove(stayId)
-                context.commit(getActionRemoveStay(stayId))
+                await stayService.remove(stayId);
+                context.commit(getActionRemoveStay(stayId));
             } catch (err) {
-                console.log('stayStore: Error in removeStay', err)
-                throw err
+                console.log('stayStore: Error in removeStay', err);
+                throw err;
             }
         },
         async addStayMsg(context, { stayId, txt }) {
             try {
-                const msg = await stayService.addStayMsg(stayId, txt)
-                context.commit({ type: 'addStayMsg', stayId, msg })
+                const msg = await stayService.addStayMsg(stayId, txt);
+                context.commit({ type: 'addStayMsg', stayId, msg });
             } catch (err) {
-                console.log('stayStore: Error in addStayMsg', err)
-                throw err
+                console.log('stayStore: Error in addStayMsg', err);
+                throw err;
             }
         },
-
-    }
-}
+    },
+};

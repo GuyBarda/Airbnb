@@ -1,4 +1,7 @@
 .wish-stay-preview {
+    a {
+        text-decoration: none;
+    }
     .imgs-container {
         display: grid;
         grid-template: repeat(2, 107px) / 2fr 1fr;
