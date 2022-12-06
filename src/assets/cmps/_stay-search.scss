@@ -47,7 +47,7 @@
         }
         .search-in-mobile {
             display: none;
-            // padding: 10px;
+
             .img {
                 height: 20px;
                 // grid-row: 1 / -1;
@@ -57,15 +57,18 @@
                 stroke: currentColor;
                 stroke-width: 3px;
             }
+
             div {
                 display: grid;
                 // align-items: center;
+
                 label {
                     font-weight: bold;
                     font-family: CerealReg;
                     font-size: 14px;
                     align-self: flex-end;
                 }
+
                 p {
                     margin: 0;
                     font-size: 12px;
@@ -73,6 +76,7 @@
                     color: #717171;
                 }
             }
+
             @media (max-width: 400px) {
                 display: grid;
                 align-items: center;
@@ -81,15 +85,19 @@
                 gap: 8px;
             }
         }
+
         .search-btn {
             background-color: transparent;
+
             :last-child {
                 padding: 20px;
             }
+
             @media (max-width: 400px) {
                 display: none;
             }
         }
+
         button {
             padding-inline: 16px;
             color: #222222;
@@ -105,7 +113,6 @@
             &:last-child {
                 font-family: CerealReg;
                 color: #717171;
-                // font-weight: 400;
             }
         }
     }

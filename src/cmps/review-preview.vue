@@ -3,7 +3,6 @@
         <div class="mini-user-details">
             <img :src="review.by.imgUrl" alt="">
             <p>{{ review.by.fullname }}</p>
-            <!-- <span>{{ review.createdAt }}</span> -->
             <span>{{ formattedDate }}</span>
         </div>
         <p :class="`text${idx}`">{{ review.txt }}</p>

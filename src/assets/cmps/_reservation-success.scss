@@ -36,9 +36,6 @@
                 height: 20px;
                 width: 20px;
             }
-            // &::before {
-            //     content: url(../svg/close.svg);
-            // }
         }
     }
     .content {
@@ -52,7 +49,6 @@
 
                 img {
                     width: 100%;
-                    // height: 300%;
                     grid-row: 1/-1;
                 }
 
@@ -93,6 +89,7 @@
             font-weight: bold;
         }
     }
+
     h3 {
         color: $clr1;
         margin-top: 0;

@@ -3,24 +3,26 @@
     bottom: 0;
     width: 100%;
     border-top: 1px solid #dddddd;
-    // display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #f7f7f7;
     font-family: CerealReg;
     padding-block: 10px;
-    font-size: em(18px,16px);
-    .wrapper{
+    font-size: em(18px, 16px);
+
+    .wrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         .coffeerights {
             display: flex;
             align-items: center;
             gap: 10px;
             color: #222222;
             font-size: em(14px, 16px);
-            p{
+
+            p {
                 margin: 0;
             }
         }

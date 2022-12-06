@@ -1,44 +1,45 @@
-.trip-list{
-    table{
+.trip-list {
+    table {
         width: 100%;
         border: 1px solid #dddddd;
 
         border-collapse: collapse;
-        th,td{
+        th,
+        td {
             padding: 20px 5px;
         }
-        thead{
-            th{
+
+        thead {
+            th {
                 border-bottom: 1px solid #dddddd;
                 text-align: start;
             }
         }
-        tbody{
 
-            td{
+        tbody {
+            td {
                 border-bottom: 1px solid #dddddd;
 
-                button{
+                button {
                     padding: 10px;
                     border: 0;
                     border-radius: 10px;
-                    &.approve{
+                    &.approve {
                         background-color: #33b249;
                         margin-right: 5px;
                     }
-                    &.reject{
+                    &.reject {
                         background-color: red;
                     }
-
                 }
-                span{
-                    .pending{
+                span {
+                    .pending {
                         color: blue;
                     }
-                    .approved{
+                    .approved {
                         color: greenyellow;
                     }
-                    .rejected{
+                    .rejected {
                         color: red;
                     }
                 }

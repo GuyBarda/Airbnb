@@ -1,17 +1,10 @@
 <template>
-    <section
-    :style="background"
-        class="img-upload"
-        :class="{ 'drag-zone': isDragover }"
-        @drop.prevent="handleFile"
-        @dragover.prevent="isDragover = true"
-        @dragleave="isDragover = false"
-    >
+    <section :style="background" class="img-upload" :class="{ 'drag-zone': isDragover }" @drop.prevent="handleFile"
+        @dragover.prevent="isDragover = true" @dragleave="isDragover = false">
         <label v-if="!isLoading" :class="{ drag: isDragover }">
             <p v-if="!this.img">Upload Image</p>
             <input type="file" @change="handleFile" hidden />
         </label>
-        <!-- <img v-else src="../assets/loader.gif" alt="" /> -->
     </section>
 </template>
 
@@ -28,12 +21,11 @@ export default {
         return {
             isLoading: false,
             isDragover: false,
-            imgUrls: ['','','','',''],
+            imgUrls: ['', '', '', '', ''],
         }
     },
     methods: {
         handleFile(ev) {
-            console.log('ev', ev)
             let file
             if (ev.type === 'change') file = ev.target.files[0]
             else if (ev.type === 'drop') file = ev.dataTransfer.files[0]
@@ -43,13 +35,12 @@ export default {
             this.isLoading = true
             this.isDragover = false
             const res = await uploadImg(file)
-            this.$emit('setImg',{ url: res.url, idx: this.idx})
+            this.$emit('setImg', { url: res.url, idx: this.idx })
             this.isLoading = false
-            console.log('res:', res)
         },
     },
-    computed:{
-        background(){
+    computed: {
+        background() {
             return {
                 'background-image': `url(${this.img})`,
                 'background-repeat': 'no-repeat',
@@ -59,7 +50,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

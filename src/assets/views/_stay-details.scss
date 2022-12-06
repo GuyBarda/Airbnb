@@ -133,6 +133,7 @@
     .stay-info {
         display: flex;
         justify-content: space-between;
+
         .content {
             width: 58.333333333333336%;
             > * {
@@ -466,7 +467,7 @@
             font-size: 1em;
         }
     }
-    .map{
+    .map {
         padding-bottom: 40px;
     }
 }
