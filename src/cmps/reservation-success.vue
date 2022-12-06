@@ -54,7 +54,6 @@ export default {
         stay: Object
     },
     created() {
-        console.log(this.order)
         this.order.startDate = '2022-12-16';
         this.order.endDate = '2022-12-18';
     },
@@ -92,7 +91,6 @@ export default {
         getTotalDays() {
             return this.totalDays()
         }
-
     },
     components: {
         reviewAverage,

@@ -1,4 +1,4 @@
-.stay-edit{
+.stay-edit {
     display: grid;
     grid-template-columns: 1fr;
     margin-top: 40px;
@@ -10,34 +10,35 @@
         font-family: inherit;
         border-bottom: 1px solid rgb(215, 215, 215);
     }
-    
-    .dot{
-        // content: '\00B7';
+
+    .dot {
         font-size: 24px;
     }
+
     label {
         margin-block: 10px;
     }
-    nav{
+
+    nav {
         margin-right: 10px;
-        ul{
+        ul {
             margin: 0;
             padding: 0;
             list-style-type: none;
 
-            li{
+            li {
                 display: flex;
                 align-items: center;
                 font-family: CerealBd;
                 padding: 10px;
                 gap: 10px;
 
-                &:hover{
+                &:hover {
                     box-shadow: 0 0 2px 1px #dddddd;
                     border-radius: 10px;
                 }
 
-                img{
+                img {
                     width: 24px;
                     height: 24px;
                 }
@@ -45,51 +46,50 @@
         }
     }
 
-    .edit-section{
+    .edit-section {
         display: grid;
         grid-template-rows: 80px 1fr;
         padding: 10px;
         background-color: #eff3f5;
         border-radius: 10px;
 
-        .stay-data{
+        .stay-data {
             display: flex;
             gap: 10px;
 
-            div{
+            div {
                 background-color: white;
                 border-radius: 10px;
                 padding: 10px;
                 display: grid;
                 align-items: center;
-                flex-basis: calc(900px/3);
-                
-                &:not(:last-child){
+                flex-basis: calc(900px / 3);
+
+                &:not(:last-child) {
                     flex: 1;
                 }
 
-                &:last-child{
+                &:last-child {
                     flex: 3;
                 }
             }
-
         }
-        .stay-info{
+        .stay-info {
             background-color: white;
             margin-top: 10px;
             border-radius: 10px;
             padding: 20px;
-            
-            .stay-name{
-                 h2{
+
+            .stay-name {
+                h2 {
                     input {
                         font-size: em(18px, 16px);
                     }
                     margin: 5px 0 0 0;
-                 }
-                 div{
+                }
+                div {
                     display: flex;
-                 }
+                }
             }
 
             .imgs-container {
@@ -99,8 +99,8 @@
                 gap: 8px;
                 margin-bottom: 15px;
                 height: 350px;
-        
-                :first-child{
+
+                :first-child {
                     grid-column: 1;
                     grid-row: 1/-1;
                     border-bottom-left-radius: 15px;
@@ -112,38 +112,37 @@
                 :nth-child(5) {
                     border-bottom-right-radius: 15px;
                 }
-                .img-upload{
+                .img-upload {
                     background-color: rgb(230, 230, 230);
                     font-family: CerealMd;
 
-                    label{
+                    label {
                         width: 100%;
                         height: 100%;
                         display: grid;
                         place-content: center;
-                        p{
+                        p {
                             margin: 0;
                         }
                     }
                 }
-
             }
             .below-imgs {
                 select {
                     padding: 0;
                     padding: 5px 10px;
                     border-radius: 5px;
-                    font-size: em(12px,16px);
+                    font-size: em(12px, 16px);
                 }
 
-                textarea{
+                textarea {
                     width: 100%;
                     height: 150px;
                     resize: none;
                     font-family: inherit;
                     padding: 15px;
                     border-radius: 5px;
-                    
+
                     &:focus {
                         outline: 1px solid rgb(77, 77, 77);
                     }
@@ -152,34 +151,30 @@
                 > *:not(:last-child) {
                     padding-block: 20px;
                     border-bottom: 1px solid rgb(215, 215, 215);
-
                 }
-                .amenities-container{
-
+                .amenities-container {
                     h2 {
                         margin-bottom: 24px;
                     }
-                    .stay-amenities{
+                    .stay-amenities {
                         display: grid;
                         grid-template-columns: auto auto;
-            
+
                         p {
                             margin: 0;
                         }
                         div {
                             padding-bottom: 16px;
                         }
-                        
                     }
                 }
             }
-            
         }
-        .confirm-area{
+        .confirm-area {
             padding-top: 20px;
             display: flex;
             justify-content: end;
-            .btn-reserve{
+            .btn-reserve {
                 @include reserve-btn();
                 width: max-content;
                 padding-inline: 30px;

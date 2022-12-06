@@ -1,4 +1,4 @@
-.destination-modal{
+.destination-modal {
     padding: 50px;
     display: grid;
     background-color: white;
@@ -6,8 +6,6 @@
     row-gap: 30px;
     border-radius: 30px;
     grid-template-columns: 1fr 1fr;
-    // grid-template-rows: 1fr 1fr 1fr;
-    // width: 100%;
     position: absolute;
     z-index: 15;
     top: 110%;
@@ -15,32 +13,35 @@
     display: none;
     cursor: alias;
 
-    &.open{
+    &.open {
         display: grid;
     }
-    .common-search{
+
+    .common-search {
         display: grid;
-        border-right: 1px solid #EBEBEB;
+        border-right: 1px solid #ebebeb;
         grid-template-rows: 3em 1fr;
-        p{
+
+        p {
             font-family: CerealBd;
             margin: 0;
         }
-        ul{
+
+        ul {
             margin: 0;
             margin-left: -20px;
             padding: 0;
             width: max-content;
 
-            li{
+            li {
                 display: flex;
                 padding: 10px;
-                padding-right:5.8em;
+                padding-right: 5.8em;
                 align-items: center;
-                &:hover{
+                &:hover {
                     background-color: rgb(247, 247, 247);
                 }
-                .spot-holder{
+                .spot-holder {
                     margin-left: 10px;
                     background-color: rgb(235, 235, 235) !important;
                     border-radius: 10px;
@@ -50,30 +51,30 @@
             }
         }
     }
-    .regions{
+
+    .regions {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 10px;
         row-gap: 30px;
         padding-left: 30px;
-        
-        p{
+
+        p {
             grid-column: 1/4;
             margin: 0;
             font-family: CerealBd;
         }
-        div{
+        div {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 0.9em;
         }
-        
-        img{
+
+        img {
             border: 1px solid #b4b3b3;
             border-radius: 5px;
             width: 122px;
             aspect-ratio: 1/1;
             cursor: pointer;
-            
         }
     }
 }

@@ -2,7 +2,6 @@
     font-family: CerealReg;
     margin-top: 10px;
 
-
     .dashboard-nav {
         display: flex;
         height: 40px;
@@ -22,12 +21,9 @@
             place-content: center;
             text-decoration: none;
             font-family: inherit;
-            // transition: 0.1s;
-            // border: 0;
             text-transform: uppercase;
             font-size: em(14px, 16px);
             cursor: pointer;
-            // background-color: $clr1;
             color: white;
 
             &:hover {
