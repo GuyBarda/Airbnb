@@ -24,7 +24,7 @@
             <img v-for="img in stay.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
         </div>
 
-        <details-header :sticky="getSticky" :stay="stay" />
+        <details-header :showReserve="getIsReserve" :sticky="getSticky" :stay="stay" />
 
         <div class="stay-info">
             <section class="content">
@@ -113,10 +113,10 @@
                             ${stay.reviews.length} reviews` : 'less'}`
             }}</button>
         </section>
-    <section class="map">
-    <h2>Where you'll be</h2>
-        <details-map :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address"/>
-    </section>
+        <section class="map">
+            <h2>Where you'll be</h2>
+            <details-map :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
+        </section>
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :stay="stay" />
     </div>
 </template>
@@ -145,7 +145,8 @@ export default {
             serviceFee: 0,
             amenitiesSrc: [],
             showMore: false,
-            sticky: false
+            sticky: false,
+            isReserveInHeader: false
         }
     },
     async created() {
@@ -157,11 +158,18 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            const observer = new IntersectionObserver(entries => {
+            const imgsContainer = this.$refs.imgsContainer;
+            const elReserveBtn = document.querySelector('.reserve-modal .btn-reserve');
+
+            const observerForImgs = new IntersectionObserver(entries => {
                 entries.forEach(entry => this.sticky = !entry.isIntersecting)
             })
-            const imgsContainer = this.$refs.imgsContainer;
-            observer.observe(imgsContainer)
+            const observerForReserveBtn = new IntersectionObserver(entries => {
+                entries.forEach(entry => this.isReserveInHeader = !entry.isIntersecting)
+            })
+            // console.log(elReserveBtn)
+            observerForImgs.observe(imgsContainer)
+            observerForReserveBtn.observe(elReserveBtn)
         }, 1000);
     },
     methods: {
@@ -228,6 +236,9 @@ export default {
         getSticky() {
             return this.sticky
         },
+        getIsReserve() {
+            return this.isReserveInHeader
+        }
     },
     components: {
         star,

@@ -1,6 +1,6 @@
 <template>
     <div class="user-dashboard secondary-container">
-        <nav class="dashboard-nav" @mousemove="hoverEffect">
+        <nav class="dashboard-nav" @mouseover.stop="hoverEffect">
             <!-- <button class="btn-nav" @click="changeType('orders')">orders</button>
             <button class="btn-nav" @click="changeType('trips')">my trips</button>
             <button class="btn-nav" @click="changeType('wishlist')">my houses</button>
@@ -57,6 +57,7 @@ export default {
         },
         hoverEffect(ev) {
             const button = ev.target;
+            console.log(button);
             const { x, y } = button.getBoundingClientRect();
             console.log(x, y)
             button.style.setProperty('--x', ev.clientX - x + 'px');

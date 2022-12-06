@@ -3,7 +3,7 @@
         <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2>
         <trip-list :trips="trips" />
     </div>
-    <pre>{{ trips }}</pre>
+    <!-- <pre>{{ trips }}</pre> -->
 </template>
 
 <script>
