@@ -14,7 +14,11 @@ export default {
         user: Object
     },
     created() {
-        console.log(this.user)
+        console.log(this.user);
+        console.log('hi')
+    },
+    updated() {
+        // console.log(this.user);
     },
     components: {
         tripList
