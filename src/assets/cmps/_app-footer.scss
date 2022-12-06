@@ -1,11 +1,13 @@
 .app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     border-top: 1px solid grey;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #f7f7f7;
     font-family: CerealReg;
-
     .coffeerights {
         display: flex;
         align-items: center;

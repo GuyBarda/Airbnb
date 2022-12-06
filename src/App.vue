@@ -3,7 +3,7 @@
   <RouterView />
 
   <section @click="toggleSearch" class="dark-site" :class="{
-    open: isOpen || isOrderComplete || isFilterOpen || isMustLogin,
+    open: isOpen || isOrderComplete || isFilterOpen || isMustLogin || isLogInOpen,
     search: isOpen,
     must: isMustLogin,
   }"></section>
@@ -28,6 +28,7 @@ export default {
       this.$store.commit({ type: "toggleSearch", bool: false }) 
       this.$store.commit({ type: "toggleSuccessModal", bool: false }) 
       this.$store.commit({ type: "toggleFilterModal", bool: false }) 
+      this.$store.commit({ type: "toggleLogInModal", bool: false }) 
     }
   },
   computed: {
@@ -36,6 +37,9 @@ export default {
     },
     isFilterOpen() {
       return this.$store.getters.isFilterOpen
+    },
+    isLogInOpen() {
+      return this.$store.getters.isLogInOpen
     },
     isOpen() {
       return this.$store.getters.open 

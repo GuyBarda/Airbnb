@@ -29,8 +29,10 @@ export default {
     openLogIn() {
       if (!this.isLogin) {
         this.isLogin = true;
+        this.$store.commit({ type: "toggleLogInModal", bool: true });
       } else {
         this.isLogin = false;
+        this.$store.commit({ type: "toggleLogInModal", bool: false });
       }
     },
     close() {
