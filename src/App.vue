@@ -12,16 +12,16 @@
 </template>
 
 <script>
-import { RouterLink, RouterView } from "vue-router" 
-import appHeader from "./cmps/app-header.vue" 
+import { RouterLink, RouterView } from "vue-router";
+import appHeader from "./cmps/app-header.vue";
 import userMsg from './cmps/user-msg.vue'
 import { showSuccessMsg } from './services/event-bus-service.js'
-import appFooter from "./cmps/app-footer.vue" 
+import appFooter from "./cmps/app-footer.vue";
 
 export default {
   created() {
     this.$store.dispatch({ type: 'loadUser' })
-    showSuccessMsg('Admin has updated the store...')
+    // showSuccessMsg('Admin has updated the store...')
   },
   methods: {
     toggleSearch(ev) {

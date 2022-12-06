@@ -1,5 +1,6 @@
 <template>
-  <div v-show="alive" class="alert" :class="alertClass">
+  <div v-if="msg" class="alert" :class="alertClass">
+    <i  :class="iconClass"></i>
     {{ msg?.txt }}
   </div>
 </template>
@@ -12,11 +13,13 @@ export default {
   created() {
     eventBus.on(SHOW_MSG, (msg) => {
       this.msg = msg
+      
       var delay = msg.delay || 2000
       this.alive = true
       window.scrollTo({top: 0, behavior: 'smooth'});
       setTimeout(() => {
         this.alive = false
+        this.msg = null
       }, delay)
     })
   },
@@ -30,6 +33,10 @@ export default {
     alertClass() {
       if (!this.msg) return
       return `alert-${this.msg.type}`
+    },
+    iconClass() {
+      if (!this.msg === 'success') return
+      return this.msg.icon
     },
   },
 }

@@ -1,8 +1,9 @@
 <template>
-    <div class="order-container">
+    <div v-if="user" class="order-container">
         <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2>
         <trip-list :trips="trips" />
     </div>
+    <pre>{{ trips }}</pre>
 </template>
 
 <script>

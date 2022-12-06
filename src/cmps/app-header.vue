@@ -70,9 +70,7 @@ export default {
       currDate: "",
     };
   },
-  async created() {
-   
-  },
+  async created() {},
   methods: {
     setDate(str) {
       this.currDate = str;
