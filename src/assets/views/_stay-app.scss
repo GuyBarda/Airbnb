@@ -1,9 +1,12 @@
 .stay-app{
     display: grid;
     grid-template-rows: 80px 1fr;
-    // font-family: 'CerealMd';
-    // overflow-x: hidden;
     position: relative;
-    // margin-top: 15px;
 
+    .exolore-sub-header{
+        display: flex;
+        align-items: center;
+        font-family: CerealBd;
+        font-size: 1em;
+    }
 }

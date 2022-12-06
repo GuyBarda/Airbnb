@@ -450,6 +450,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             row-gap: 40px;
+            border-bottom: 1px solid #dddddd;
         }
 
         .show-more {
@@ -464,5 +465,8 @@
             font-weight: 600;
             font-size: 1em;
         }
+    }
+    .map{
+        padding-bottom: 40px;
     }
 }

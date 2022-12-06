@@ -68,6 +68,7 @@ export default {
       currZone: "",
       currDest: "",
       currDate: "",
+      isSearch: false
     };
   },
   async created() {},

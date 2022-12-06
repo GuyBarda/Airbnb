@@ -20,11 +20,12 @@ a{
 //MAIN LAYOUT
 #app{
     // width: 100vw;
-    height: 100vh;
-    height: 100vh;
+    // height: 100vh;
+    // height: 100vh;
     // width: 90vw;
     // margin: 0 auto;
     display: grid;
+    position: relative;
     grid-template-rows: 80px 1fr;
     // font-family: 'Poppins';
 }

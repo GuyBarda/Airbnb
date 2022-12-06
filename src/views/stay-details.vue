@@ -113,7 +113,10 @@
                             ${stay.reviews.length} reviews` : 'less'}`
             }}</button>
         </section>
-
+    <section class="map">
+    <h2>Where you'll be</h2>
+        <details-map :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address"/>
+    </section>
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :stay="stay" />
     </div>
 </template>
@@ -130,6 +133,7 @@ import reservationSuccess from '../cmps/reservation-success.vue'
 import reviewAverage from '../cmps/review-average.vue'
 import reserveModal from '../cmps/reserve-modal.vue'
 import detailsHeader from '../cmps/details-header.vue'
+import detailsMap from '../cmps/details-map.vue'
 // import shareModal from '../cmps/share-modal.vue'
 
 export default {
@@ -150,8 +154,6 @@ export default {
         this.order = orderService.getEmptyOrder()
         this.$store.commit({ type: 'setLoggedinUser', user: userService.getLoggedinUser() })
         console.log(this.$store.getters.loggedinUser)
-        // console.log(this.$store.getters.loggedinUser)
-        // this.$store.dispatch({ type: 'loadUser' })
     },
     mounted() {
         setTimeout(() => {
@@ -234,6 +236,7 @@ export default {
         reviewAverage,
         reserveModal,
         detailsHeader,
+        detailsMap,
         // shareModal
     },
 }

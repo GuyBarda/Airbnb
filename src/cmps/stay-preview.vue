@@ -5,10 +5,10 @@
             <img-carousel @click.prevent :imgs="stay.imgUrls"/>
         <section>
         <p class="location">{{ location }}</p>
-        <div>
+        <main>
         <p class="stay-name">{{stay.name}}</p>
         <p class="date">{{date}}</p>
-        </div>
+        </main>
         <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
         <p class="rate"><star-icon />&nbsp {{rate}}</p>
         </section>
