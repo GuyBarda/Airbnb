@@ -28,7 +28,6 @@ export const userStore = {
             state.user = user;
         },
         setLoggedinUser(state, { user }) {
-            console.log('user', user)
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = user ? { ...user } : null;
             console.log('state.loggedinUser', state.loggedinUser)

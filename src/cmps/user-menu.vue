@@ -34,17 +34,14 @@ export default {
       }
     },
     close() {
-      console.log('hey',)
       this.isLogin = false;
     },
     logout() {
-      console.log('hey')
       this.$store.dispatch("logout")
     },
   },
   computed: {
     user() {
-      console.log('hey', this.$store.getters.loggedinUser)
       return this.$store.getters.loggedinUser
     },
   },

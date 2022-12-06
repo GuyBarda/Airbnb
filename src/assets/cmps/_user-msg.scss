@@ -20,4 +20,10 @@
         color: rgb(238, 207, 207);
         background-color: #cc6464;
     }
+    &.alert-Wishlist {
+        background-color: #fafafa;
+        i{
+            color: #dd1616;
+        }
+    }
 }
