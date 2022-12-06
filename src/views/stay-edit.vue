@@ -1,14 +1,6 @@
 <template>
     <section class="secondary-container">
         <section v-if="this.stayToEdit" class="stay-edit">
-            <nav>
-                <ul>
-                    <li><plus-icon style="width: 24px; height: 24px" />Add Stay</li>
-                    <li><img src="../assets/svg/stay-at-home.png" />My Stays</li>
-                    <li><img src="../assets/svg/check-list.png" />Orders</li>
-                    <li><star-icon style="width: 24px; height: 24px" />Rates</li>
-                </ul>
-            </nav>
             <section class="edit-section">
                 <section class="stay-data">
                     <div>Total Rate <span>0</span></div>

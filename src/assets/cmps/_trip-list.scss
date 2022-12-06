@@ -1,12 +1,11 @@
 .trip-list{
-
     table{
         width: 100%;
         border: 1px solid #dddddd;
 
         border-collapse: collapse;
         th,td{
-            padding: 20px 10px;
+            padding: 20px 5px;
         }
         thead{
             th{
@@ -19,6 +18,19 @@
             td{
                 border-bottom: 1px solid #dddddd;
 
+                button{
+                    padding: 10px;
+                    border: 0;
+                    border-radius: 10px;
+                    &.approve{
+                        background-color: #33b249;
+                        margin-right: 5px;
+                    }
+                    &.reject{
+                        background-color: red;
+                    }
+
+                }
                 span{
                     .pending{
                         color: blue;

@@ -1,5 +1,6 @@
 <template>
   <div class="app-footer secondary-container" :style="whichLayout">
+  <section class="wrapper">
     <div class="coffeerights">
       <p>© 2022 Airbxb, inc</p>
       •
@@ -12,6 +13,7 @@
     <div class="social-media">
       <a href="">facebook</a>
     </div>
+  </section>
   </div>
 </template>
 
@@ -20,7 +22,7 @@ export default {
   computed: {
     whichLayout() {
       const layout = this.$route.path.split("/")[1];
-      return layout === "stay" || layout === 'dashboard' ? { "position": "static" } : { "position": "fixed" };
+      return layout === "stay" ? { "position": "static" } : { "position": "fixed" };
     },
   },
 };

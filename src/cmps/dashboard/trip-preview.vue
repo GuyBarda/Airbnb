@@ -4,18 +4,19 @@
     <td>{{ trip.stay.name }}</td>
     <td>{{ trip.startDate }}</td>
     <td>{{ trip.endDate }}</td>
-    <td>{{ trip.totalPrice }}</td>
-    <td><span :class="status">{{ trip.status }}</span></td>
+    <td>{{ formattedPrice }}</td>
+    <td>
+      <span :class="status">{{ trip.status }}</span>
+    </td>
     <td class="actions">
       <button class="approve" @click="$emit('changeStatus', 'approve')">
         Approve
       </button>
-      <button class="decline" @click="$emit('changeStatus', 'decline')">
+      <button class="reject" @click="$emit('changeStatus', 'decline')">
         Reject
       </button>
     </td>
   </tr>
-
 </template>
 
 <script>
@@ -23,15 +24,24 @@ export default {
   props: {
     trip: Object,
   },
-  data(){
-    return{
-        status: 'pending',
-    }
+  data() {
+    return {
+      status: "pending",
+    };
   },
   computed: {
-    status(){
-        return this.status
-    }
+    status() {
+      return this.status;
+    },
+    formattedPrice() {
+      const formatter = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0,
+      });
+    //   let num = Number(formatter.format(this.stay.price));
+      return formatter.format(this.trip.totalPrice);
+    },
   },
 };
 </script>
