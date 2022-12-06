@@ -21,13 +21,13 @@ import appFooter from "./cmps/app-footer.vue";
 export default {
   created() {
     this.$store.dispatch({ type: 'loadUser' })
-    showSuccessMsg('Admin has updated the store...')
+    // showSuccessMsg('Admin has updated the store...')
   },
   methods: {
     toggleSearch(ev) {
-      this.$store.commit({ type: "toggleSearch", bool: false });
-      this.$store.commit({ type: "toggleSuccessModal", bool: false });
-      this.$store.commit({ type: "toggleFilterModal", bool: false });
+      this.$store.commit({ type: "toggleSearch", bool: false }) 
+      this.$store.commit({ type: "toggleSuccessModal", bool: false }) 
+      this.$store.commit({ type: "toggleFilterModal", bool: false }) 
     }
   },
   computed: {
@@ -38,7 +38,7 @@ export default {
       return this.$store.getters.isFilterOpen
     },
     isOpen() {
-      return this.$store.getters.open;
+      return this.$store.getters.open 
     },
     isOrderComplete() {
       return this.$store.state.isOrderComplete
@@ -49,5 +49,5 @@ export default {
     userMsg,
     appFooter
   },
-};
+}
 </script>

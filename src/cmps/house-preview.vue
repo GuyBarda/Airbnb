@@ -10,7 +10,7 @@
         <p class="date">{{date}}</p>
         </div>
         <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
-        <p class="rate"><star-icon />&nbsp;{{rate}}</p>
+        <p class="rate"><star-icon />&nbsp {{rate}}</p>
         </section>
     </article>
     </router-link>
@@ -62,14 +62,14 @@ export default {
             return `${this.house.loc.city}, ${this.house.loc.country}`
         },
         distanceFromMe() {
-            return this.house.position;
+            return this.house.position 
         },
         formattedPrice() {
             const formatter = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
                 maximumFractionDigits: 0,
-            });
+            }) 
             let num = Number(formatter.format(this.house.price))
             return formatter.format(this.house.price)
         },
@@ -84,5 +84,5 @@ export default {
         heartIcon,
         imgCarousel,
     }
-};
+} 
 </script>
