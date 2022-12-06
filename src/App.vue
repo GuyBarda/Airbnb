@@ -1,13 +1,7 @@
 <template>
   <app-header :close="isOpen" />
   <RouterView />
-
-  <!-- <section @click="toggleSearch" class="dark-site" :class="{
-    open: isOpen || isOrderComplete || isFilterOpen || isMustLogin || isLogInOpen,
-    search: isOpen,
-    must: isMustLogin,
-  }"></section> -->
-  <section @click="toggleSearch" class="dark-site" :class="{
+  <section @click.stop.prevent="toggleSearch" class="dark-site" :class="{
     open: isOpen,
     search: isOpen,
     must: isMustLogin,
@@ -24,7 +18,7 @@
 import { RouterLink, RouterView } from "vue-router";
 import appHeader from "./cmps/app-header.vue";
 import userMsg from './cmps/user-msg.vue'
-import { showSuccessMsg } from './services/event-bus-service.js'
+import { eventBus } from './services/event-bus-service.js'
 import appFooter from "./cmps/app-footer.vue";
 
 export default {
@@ -35,9 +29,7 @@ export default {
   methods: {
     toggleSearch(ev) {
       this.$store.commit({ type: "toggleSearch", bool: false })
-      // this.$store.commit({ type: "toggleSuccessModal", bool: false }) 
-      // this.$store.commit({ type: "toggleFilterModal", bool: false }) 
-      // this.$store.commit({ type: "toggleLogInModal", bool: false }) 
+      eventBus.emit('closeDatePicker')
     },
     closeDarkForModals() {
       this.$store.commit({ type: "toggleSuccessModal", bool: false })
@@ -61,6 +53,9 @@ export default {
     isOrderComplete() {
       return this.$store.state.isOrderComplete
     },
+    emptyZone() {
+      return this.zone
+    }
   },
   components: {
     appHeader,

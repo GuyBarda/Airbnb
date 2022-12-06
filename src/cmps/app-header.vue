@@ -5,8 +5,8 @@
             <p>airbxb</p>
         </div>
 
-        <stay-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }"
-            @click="toggleSearch($event, key)" />
+        <stay-search :date="currDate" :dest="currDest" @toggleSearch="openZone" :class="{ close: isOpen }" />
+        <!-- @click="toggleSearch($event, key)" -->
         <search-modal @setDate="setDate" @setDest="setDest" @updateZone="openZone" :zone="zone"
             :class="{ open: isOpen }" />
 
@@ -32,6 +32,8 @@
 </template>
   
 <script>
+import { eventBus } from "../services/event-bus-service";
+
 import staySearch from "./stay-search.vue";
 import searchModal from "./search-modal.vue";
 import userMenu from "./user-menu.vue";
@@ -53,33 +55,25 @@ export default {
             isSearch: false
         };
     },
+    created() {
+        eventBus.on('closeDatePicker', this.closeDatePicker)
+    },
     methods: {
+        closeDatePicker() {
+            this.currZone = ''
+        },
         setDate(str) {
             this.currDate = str;
         },
         setDest(val) {
             this.currDest = val;
         },
-        openZone(key) {
+        openZone({ ev, key }) {
             this.currZone = key;
-        },
-        // toggleSearch(event) {
-        //     if (event.target.innerText === 'Any week') {
-        //         this.$emit('clickDate');
-        //         this.currZone = key;
-        //     }
-        // },
-
-        toggleSearch(event) {
-            if (event.target.innerText === "Any week") this.$emit("clickDate");
+            if (ev.target.innerText === "Any week") this.$emit("clickDate");
             this.$store.commit({ type: "toggleSearch", bool: true });
         },
         toggleUserMenu() {
-            // if (!this.isMenu) {
-            //     this.isMenu = true;
-            // } else {
-            //     this.isMenu = false;
-            // }
             this.isMenu = !this.isMenu
         },
         closeMenu() {

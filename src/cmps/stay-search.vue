@@ -1,11 +1,11 @@
 <template>
     <section class="main-search-container">
         <div v-if="whichSearch" class="main-search">
-            <button @click="openZone('Where')" class="search-btn">{{ setDestination }}</button>
+            <button @click="openZone($event, 'Where')" class="search-btn">{{ setDestination }}</button>
             <span></span>
-            <button @click="openZone('In')" class="search-btn">{{ setDate }}</button>
+            <button @click="openZone($event, 'In')" class="search-btn">{{ setDate }}</button>
             <span></span>
-            <button @click="openZone('Who')" class="search-btn last">Add guests</button>
+            <button @click="openZone($event, 'Who')" class="search-btn last">Add guests</button>
             <section class="search-in-mobile">
                 <search-icon class="img" />
                 <div>
@@ -31,8 +31,8 @@ export default {
         date: String
     },
     methods: {
-        openZone(key) {
-            this.$emit('toggleSearch', key)
+        openZone(ev, key) {
+            this.$emit('toggleSearch', { ev, key })
         }
     },
     computed: {

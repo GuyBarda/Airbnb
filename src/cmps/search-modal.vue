@@ -75,11 +75,8 @@ export default {
     },
     updated() {
         this.isSelect = this.zone;
-        if (this.zone === "In") {
-            setTimeout(() => {
-                this.$refs.datePicker.focus();
-            }, 300);
-        }
+        if (this.zone === "In") setTimeout(() => this.$refs.datePicker.focus(), 300);
+
     },
     methods: {
         setSearch() {
