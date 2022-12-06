@@ -1,7 +1,7 @@
 <template>
     <div class="order-list">
         <div class="order-preview">
-            <p>house name</p>
+            <p>stay name</p>
             <p>host name</p>
             <p>check in</p>
             <p>check out</p>

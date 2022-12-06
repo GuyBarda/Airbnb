@@ -1,7 +1,7 @@
 <template>
     <div class="order-preview">
         <!-- <p>{{ order.buyer.fullname }}</p>
-        <p>{{ order.house.name }}</p>
+        <p>{{ order.stay.name }}</p>
         <p>{{ order.startDate }}</p>
         <p>{{ order.endDate }}</p>
         <p>{{ order.totalPrice }}</p>

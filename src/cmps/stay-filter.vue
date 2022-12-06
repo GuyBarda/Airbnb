@@ -1,5 +1,5 @@
 <template>
-  <section class="house-filter main-container full">
+  <section class="stay-filter main-container full">
     <section class="main-container" style="display: flex; align-items: center">
       <!-- <filterBtns /> -->
       <filter-btns :btns="btnsAryy()" @filtered="setFilterBy" />
@@ -11,17 +11,17 @@
       </button>
     </section>
   </section>
-  <filter-modal :houses="houses" @close="toggleFilterModal(false)" v-if="isFilterOpen" />
+  <filter-modal :stays="stays" @close="toggleFilterModal(false)" v-if="isFilterOpen" />
 </template>
 
 <script>
 import filterBtns from "./filter-btns.vue";
 import filterModal from "./filter-modal.vue";
-import { houseService } from "../services/house-service-local.js";
+import { stayService } from "../services/stay-service-local.js";
 
 export default {
   props: {
-    houses: Array,
+    stays: Array,
   },
   components: {
     filterBtns,
@@ -49,7 +49,7 @@ export default {
       this.$store.dispatch({ type: "setFilter", filterBy });
     },
     btnsAryy() {
-      return houseService.btnsAryy();
+      return stayService.btnsAryy();
     },
   },
 };

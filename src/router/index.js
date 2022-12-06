@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import houseEdit from '../views/house-edit.vue';
-import houseDetails from '../views/house-details.vue';
-import houseApp from '../views/house-app.vue';
+import stayEdit from '../views/stay-edit.vue';
+import stayDetails from '../views/stay-details.vue';
+import stayApp from '../views/stay-app.vue';
 import userDashboard from '../views/user-dashboard.vue';
 
 const router = createRouter({
@@ -10,22 +10,22 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: houseApp,
+            component: stayApp,
         },
         {
             path: '/explore',
             name: 'explore',
-            component: houseApp,
+            component: stayApp,
         },
         {
-            path: '/house/:id',
+            path: '/stay/:id',
             name: 'details',
-            component: houseDetails,
+            component: stayDetails,
         },
         {
-            path: '/house/edit/:id?',
+            path: '/stay/edit/:id?',
             name: 'edit',
-            component: houseEdit,
+            component: stayEdit,
         },
         {
             path: '/dashboard',

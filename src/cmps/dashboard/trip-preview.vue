@@ -1,7 +1,7 @@
 <template>
     <div class="order-preview">
         <p>{{ trip.hostId }}</p>
-        <p>{{ trip.house.name }}</p>
+        <p>{{ trip.stay.name }}</p>
         <p>{{ trip.startDate }}</p>
         <p>{{ trip.endDate }}</p>
         <p>{{ trip.totalPrice }}</p>

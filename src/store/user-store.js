@@ -1,5 +1,5 @@
 import { userService } from '../services/user-service';
-import { houseService } from '../services/house-service-local';
+import { stayService } from '../services/stay-service-local';
 import { utilService } from '../services/utils-service';
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket-service'
 
@@ -47,9 +47,9 @@ export const userStore = {
         },
     },
     actions: {
-        async setWishlist({ commit }, { houseId }) {
+        async setWishlist({ commit }, { stayId }) {
             try{
-                await userService.setWishlist(houseId)
+                await userService.setWishlist(stayId)
             }catch{
                 console.log('cant add to wishlist');
             }

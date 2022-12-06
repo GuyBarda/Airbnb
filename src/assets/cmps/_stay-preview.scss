@@ -1,4 +1,4 @@
-.house-preview {
+.stay-preview {
     position: relative;
     font-family: CerealReg;
     padding-bottom: 20px;
@@ -46,11 +46,11 @@
             padding-top: 2px;
             font-family: CerealMd;
         }
-        .house-name,
+        .stay-name,
         .date {
             color: #7c7c7c;
         }
-        .house-name{
+        .stay-name{
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;

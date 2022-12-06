@@ -7,7 +7,7 @@
         "password": "gg1",
         "orders": [],
         "trips": [],
-        "houses": [],
+        "stays": [],
         "wishlist": []
     },
     {
@@ -40,5 +40,4 @@
       "password": "guest"
       
     }
-    
-  ]
+]

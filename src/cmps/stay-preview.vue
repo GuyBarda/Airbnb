@@ -1,16 +1,16 @@
 <template>
-    <router-link :to="'house/'+house._id" target="_blank">
-    <article class="house-preview">
-        <heart-icon @click.prevent="setWishlist(house._id)" :class="{mark: isMark}" class="heart-btn"/>
-            <img-carousel @click.prevent :imgs="house.imgUrls"/>
+    <router-link :to="'stay/'+stay._id" target="_blank">
+    <article class="stay-preview">
+        <heart-icon @click.prevent="setWishlist(stay._id)" :class="{mark: isMark}" class="heart-btn"/>
+            <img-carousel @click.prevent :imgs="stay.imgUrls"/>
         <section>
         <p class="location">{{ location }}</p>
         <div>
-        <p class="house-name">{{house.name}}</p>
+        <p class="stay-name">{{stay.name}}</p>
         <p class="date">{{date}}</p>
         </div>
         <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
-        <p class="rate"><star-icon />&nbsp;{{rate}}</p>
+        <p class="rate"><star-icon />&nbsp {{rate}}</p>
         </section>
     </article>
     </router-link>
@@ -28,12 +28,12 @@ import { utilService } from '../services/utils-service.js'
 
 export default {
     props: {
-        house: Object
+        stay: Object
     },
     created(){
         const wishlist = this.loggedinUser?.wishlist
         if(!wishlist) return
-        const idx = wishlist.findIndex(house => house._id === this.house._id)
+        const idx = wishlist.findIndex(stay => stay._id === this.stay._id)
         this.isMark = idx > -1 ? true : false  
     },
     data() {
@@ -42,9 +42,9 @@ export default {
         }
     },
     methods: {
-        setWishlist(houseId){
+        setWishlist(stayId){
             this.isMark = !this.isMark
-            this.$store.dispatch({type: 'setWishlist', houseId})
+            this.$store.dispatch({type: 'setWishlist', stayId})
         },
     },
     computed: {
@@ -52,26 +52,26 @@ export default {
             return utilService.getDates()
         },
         rate() {
-            if (this.house.reviews.length === 0) return 'New'
-            // let sum = this.house.reviews.reduce((acc, { rate }) => acc += rate, 0)
-            // sum /= this.house.reviews.length
+            if (this.stay.reviews.length === 0) return 'New'
+            // let sum = this.stay.reviews.reduce((acc, { rate }) => acc += rate, 0)
+            // sum /= this.stay.reviews.length
             let num = Math.round(Math.random()) * utilService.getRandomIntInclusive(1,5)
-            return `${num} (${this.house.reviews.length})`
+            return `${num} (${this.stay.reviews.length})`
         },
         location() {
-            return `${this.house.loc.city}, ${this.house.loc.country}`
+            return `${this.stay.loc.city}, ${this.stay.loc.country}`
         },
         distanceFromMe() {
-            return this.house.position;
+            return this.stay.position 
         },
         formattedPrice() {
             const formatter = new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
                 maximumFractionDigits: 0,
-            });
-            let num = Number(formatter.format(this.house.price))
-            return formatter.format(this.house.price)
+            }) 
+            let num = Number(formatter.format(this.stay.price))
+            return formatter.format(this.stay.price)
         },
         loggedinUser(){
             return this.$store.getters.loggedinUser
@@ -84,5 +84,5 @@ export default {
         heartIcon,
         imgCarousel,
     }
-};
+} 
 </script>

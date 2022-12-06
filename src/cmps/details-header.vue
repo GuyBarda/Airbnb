@@ -11,7 +11,7 @@
                 <div v-if="false" class="reserve-container">
                     <div class="reserve-container">
                         <p>{{ formattedPrice }} night</p>
-                        <review-average :reviews="house.reviews" />
+                        <review-average :reviews="stay.reviews" />
                     </div>
                     <button class="reserve-btn">Reserve</button>
                 </div>
@@ -25,7 +25,7 @@ import reviewAverage from '../cmps/review-average.vue';
 
 export default {
     props: {
-        house: Object,
+        stay: Object,
         sticky: Boolean
     },
     computed: {

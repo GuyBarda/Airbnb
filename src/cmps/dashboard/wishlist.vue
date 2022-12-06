@@ -1,11 +1,11 @@
 <template>
     <div v-if="user" class="wishlist-container">
-        <wish-house-list :wishHouses="wishlist" />
+        <wish-stay-list :wishStays="wishlist" />
     </div>
 </template>
 
 <script>
-import wishHouseList from './wish-house-list.vue';
+import wishStayList from './wish-stay-list.vue';
 
 export default {
     props: {
@@ -16,7 +16,7 @@ export default {
         console.log(this.user)
     },
     components: {
-        wishHouseList
+        wishStayList
     }
 }
 </script>

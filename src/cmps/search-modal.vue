@@ -145,17 +145,17 @@ export default {
       );
 
       // this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
-      // this.$store.dispatch({ type: "loadHouses" });
+      // this.$store.dispatch({ type: "loadStays" });
 
-      const queryStringParams = `?dest=${this.filterBy.destination}&guests=${this.filterBy.guests}`;
-      const newUrl =
-        window.location.protocol +
-        "//" +
-        window.location.host +
-        window.location.pathname +
-        queryStringParams;
-      window.history.pushState({ path: newUrl }, "", newUrl);
-      this.$router.push({path: '/explore', query: { dest: this.filterBy.destination, guests: this.filterBy.guests}})
+      // const queryStringParams = `?des=${this.filterBy.destination}&guests=${this.filterBy.guests}`;
+      // const newUrl =
+      //   window.location.protocol +
+      //   "//" +
+      //   window.location.host +
+      //   window.location.pathname +
+      //   queryStringParams;
+      // window.history.pushState({ path: newUrl }, "", newUrl);
+      this.$router.push({path: '/explore', query: { destination: this.filterBy.destination, guests: this.filterBy.guests}})
     },
     openZone(val) {
       this.isSelect = val;

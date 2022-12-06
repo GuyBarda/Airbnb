@@ -1,24 +1,24 @@
 import { utilService } from './utils-service.js';
 import { storageService } from './async-storage-service.js';
-import housesJson from '../../data/house.json' assert { type: 'json' };
+import staysJson from '../../data/stay.json' assert { type: 'json' };
 
-let gHouses;
-const KEY = 'housesDB';
-_createHouses();
-export const houseService = {
+let gStays;
+const KEY = 'staysDB';
+_createStays();
+export const stayService = {
     query,
     getById,
     remove,
     save,
-    getEmptyHouse,
+    getEmptyStay,
     btnsAryy,
 };
 
 async function query(filterBy) {
     
-    gHouses = await storageService.query(KEY);
-    let houses = _filter(filterBy);
-    return Object.values(houses);
+    gStays = await storageService.query(KEY);
+    let stays = _filter(filterBy);
+    return Object.values(stays);
     // return storageService.query(KEY);
 }
 
@@ -26,7 +26,7 @@ function getById(id) {
     return storageService.get(KEY, id);
 }
 
-function getEmptyHouse() {
+function getEmptyStay() {
     return {
         name: '',
         imgUrls: [],
@@ -56,36 +56,36 @@ function remove(id) {
     return storageService.remove(KEY, id);
 }
 
-function save(house) {
-    return house._id
-        ? storageService.put(KEY, house)
-        : storageService.post(KEY, house);
+function save(stay) {
+    return stay._id
+        ? storageService.put(KEY, stay)
+        : storageService.post(KEY, stay);
 }
 
-function _add(house) {
-    house._id = utilService.makeId();
-    house.createdAt = Date.now();
-    gHouses.push(house);
-    return house;
+function _add(stay) {
+    stay._id = utilService.makeId();
+    stay.createdAt = Date.now();
+    gStays.push(stay);
+    return stay;
 }
 
-function _update(house) {
-    const idx = gHouses.findIndex((currhouse) => currhouse._id === house._id);
-    gHouses.splice(idx, 1, house);
-    return house;
+function _update(stay) {
+    const idx = gStays.findIndex((currstay) => currstay._id === stay._id);
+    gStays.splice(idx, 1, stay);
+    return stay;
 }
 
-function _createHouses() {
-    var houses = utilService.loadFromStorage(KEY);
-    if (!houses || !houses.length) {
-        houses = housesJson;
-        utilService.saveToStorage(KEY, houses.slice(0, 100));
+function _createStays() {
+    var stays = utilService.loadFromStorage(KEY);
+    if (!stays || !stays.length) {
+        stays = staysJson;
+        utilService.saveToStorage(KEY, stays.slice(0, 100));
     }
-    gHouses = houses;
-    return houses;
+    gStays = stays;
+    return stays;
 }
 
-function _createHouse(title, price) {
+function _createStay(title, price) {
     return {
         _id: utilService.makeId(),
         title,
@@ -105,53 +105,53 @@ function _filter(filterBy) {
         destination,
         guests,
     } = filterBy;
-
+    console.log(filterBy);
     const regex = new RegExp(name, 'i');
-    let filteredHouses = gHouses.filter((house) => {
-        return regex.test(house.name);
+    let filteredStays = gStays.filter((stay) => {
+        return regex.test(stay.name);
     });
 
     if (labels && labels.length) {
-        filteredHouses = filteredHouses.filter((house) => {
-            return labels.some((l) => house.labels.includes(l));
+        filteredStays = filteredStays.filter((stay) => {
+            return labels.some((l) => stay.labels.includes(l));
         });
     }
 
     if (Amenities && Amenities.length) {
-        filteredHouses = filteredHouses.filter((house) => {
-            return Amenities.some((a) => house.amenities.includes(a));
+        filteredStays = filteredStays.filter((stay) => {
+            return Amenities.some((a) => stay.amenities.includes(a));
         });
     }
 
     if (type && type.length) {
-        filteredHouses = filteredHouses.filter((house) => {
-            return type.some((t) => house.type.includes(t));
+        filteredStays = filteredStays.filter((stay) => {
+            return type.some((t) => stay.type.includes(t));
         });
     }
 
     if (destination && destination.length) {
-        filteredHouses = filteredHouses.filter(
-            (house) => house.loc.country === destination
+        filteredStays = filteredStays.filter(
+            (stay) => stay.loc.country === destination
         );
     }
 
     if (guests) {
-        filteredHouses = filteredHouses.filter(
-            (house) => house.capacity >= guests
+        filteredStays = filteredStays.filter(
+            (stay) => stay.capacity >= guests
         );
     }
 
     const searchMin = minPrice ? minPrice : 0;
-    filteredHouses = filteredHouses.filter((house) => {
-        return house.price > searchMin;
+    filteredStays = filteredStays.filter((stay) => {
+        return stay.price > searchMin;
     });
 
     const searchMax = maxPrice ? maxPrice : Infinity;
-    filteredHouses = filteredHouses.filter((house) => {
-        return house.price < searchMax;
+    filteredStays = filteredStays.filter((stay) => {
+        return stay.price < searchMax;
     });
 
-    return filteredHouses;
+    return filteredStays;
 }
 
 function btnsAryy() {
