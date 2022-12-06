@@ -8,12 +8,12 @@
                     <a href="#reviews">Reviews</a>
                     <!-- <a href="#">Location</a> -->
                 </nav>
-                <div v-if="false" class="reserve-container">
-                    <div class="reserve-container">
+                <div v-if="showReserve" class="reserve-container">
+                    <div class="reserve-info-container">
                         <p>{{ formattedPrice }} night</p>
                         <review-average :reviews="stay.reviews" />
                     </div>
-                    <button class="reserve-btn">Reserve</button>
+                    <button class="btn-reserve">Reserve</button>
                 </div>
             </section>
         </header>
@@ -26,7 +26,8 @@ import reviewAverage from '../cmps/review-average.vue';
 export default {
     props: {
         stay: Object,
-        sticky: Boolean
+        sticky: Boolean,
+        showReserve: Boolean
     },
     computed: {
         formattedPrice() {
