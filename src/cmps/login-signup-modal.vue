@@ -6,7 +6,7 @@
 
     <div class="login-title-cont">
       <div class="login-title">Log in or sign up</div>
-      <div class="exit-login-btn">
+      <div @click="close" class="exit-login-btn">
         <img src="../assets/svg/close.svg" alt="" />
       </div>
     </div>
@@ -41,7 +41,7 @@
             <input v-model="signupCred.password" class="password-input" autocomplete="password" placeholder="Password" type="password">
         </div>
 
-        <button @mousemove="hoverEffect" class="btn-container">Log in</button>
+        <button @mousemove="hoverEffect" class="btn-container">Sign up</button>
         
         <div class="login-or-line"></div>
         <div class="login-line-text">or</div>
@@ -85,18 +85,20 @@ export default {
     async login() {
       await this.$store.dispatch({ type: "login", cred: this.cred });
       this.$emit("closeModal");
+      this.$store.commit({ type: "toggleLogInModal", bool: false });
     },
     async signup() {
       await this.$store.dispatch({ type: "signup", cred: this.signupCred });
       this.$emit("closeModal");
+      this.$store.commit({ type: "toggleLogInModal", bool: false });
     },
+    close(){
+      this.$emit("closeModal");
+      this.$store.commit({ type: "toggleLogInModal", bool: false });
+    }
   },
   computed: {
     users() {
-      console.log(
-        "this.$store.getters.loggedinUser",
-        this.$store.getters.loggedinUser
-      );
       return this.$store.getters.loggedinUser;
     },
   },

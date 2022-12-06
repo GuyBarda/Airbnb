@@ -29,22 +29,21 @@ export default {
     openLogIn() {
       if (!this.isLogin) {
         this.isLogin = true;
+        this.$store.commit({ type: "toggleLogInModal", bool: true });
       } else {
         this.isLogin = false;
+        this.$store.commit({ type: "toggleLogInModal", bool: false });
       }
     },
     close() {
-      console.log('hey',)
       this.isLogin = false;
     },
     logout() {
-      console.log('hey')
       this.$store.dispatch("logout")
     },
   },
   computed: {
     user() {
-      console.log('hey', this.$store.getters.loggedinUser)
       return this.$store.getters.loggedinUser
     },
   },

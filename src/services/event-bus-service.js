@@ -1,6 +1,7 @@
 export const SHOW_MSG = 'show-msg'
 
 function createEventEmitter() {
+    
     const listenersMap = {}
     return {
         on(evName, listener){
@@ -25,6 +26,11 @@ export function showUserMsg(msg) {
 export function showSuccessMsg(txt) {
     showUserMsg({txt, type: 'success', icon: 'fa fa-check'})
 }
+
 export function showErrorMsg(txt) {
     showUserMsg({txt, type: 'error', icon: 'fa fa-times-circle'})
+}
+
+export function WishlistMsg(txt) {
+    showUserMsg({txt, type: 'Wishlist', icon: 'fa fa-duotone fa-heart'})
 }

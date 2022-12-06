@@ -14,7 +14,7 @@ const storeOptions = {
             isOrderComplete: false,
             isFilterOpen: false,
             isMustLogin: false,
-            
+            isLogInOpen:false
         };
     },
     mutations: {
@@ -30,6 +30,9 @@ const storeOptions = {
         toggleSuccessModal(state, { bool }) {
             state.isOrderComplete = bool;
         },
+        toggleLogInModal(state, { bool }) {
+            state.isLogInOpen = bool;
+        },
     },
     getters: {
         isMustLogin({isMustLogin}){
@@ -37,6 +40,9 @@ const storeOptions = {
         },
         isFilterOpen({isFilterOpen}){
             return isFilterOpen
+        },
+        isLogInOpen({isLogInOpen}){
+            return isLogInOpen
         },
         open({ isOpen }) {
             return isOpen;
