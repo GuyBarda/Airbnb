@@ -1,0 +1,36 @@
+.trip-list{
+
+    table{
+        width: 100%;
+        border: 1px solid #dddddd;
+
+        border-collapse: collapse;
+        th,td{
+            padding: 20px 10px;
+        }
+        thead{
+            th{
+                border-bottom: 1px solid #dddddd;
+                text-align: start;
+            }
+        }
+        tbody{
+
+            td{
+                border-bottom: 1px solid #dddddd;
+
+                span{
+                    .pending{
+                        color: blue;
+                    }
+                    .approved{
+                        color: greenyellow;
+                    }
+                    .rejected{
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -13,7 +13,8 @@ const storeOptions = {
             isOpen: false,
             isOrderComplete: false,
             isFilterOpen: false,
-            isMustLogin: false
+            isMustLogin: false,
+            
         };
     },
     mutations: {
