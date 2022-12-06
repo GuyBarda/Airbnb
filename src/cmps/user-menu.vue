@@ -39,7 +39,7 @@ export default {
             this.isLogin = false;
         },
         closeMenu() {
-            console.log("hiy");
+            this.$emit("closeMenu");
         },
         logout() {
             this.$store.dispatch("logout");
