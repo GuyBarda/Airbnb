@@ -21,7 +21,6 @@ import appFooter from "./cmps/app-footer.vue";
 export default {
   created() {
     this.$store.dispatch({ type: 'loadUser' })
-    showSuccessMsg('Admin has updated the store...')
   },
   methods: {
     toggleSearch(ev) {
