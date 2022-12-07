@@ -62,7 +62,7 @@ export default {
                 1024: {
                     itemsToShow: 13,
                     itemsToScroll: 4,
-                    snapAlign: "start",
+                    snapAlign: "center",
                 },
             },
         }
