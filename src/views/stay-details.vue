@@ -10,8 +10,6 @@
                     :reviews="stay.reviews.length"
                     :rateMap="rate"
                 /><span>·</span>
-                <!-- <span v-if="stay.host.isSuperhost"> &#127894; Superhost ·</span> -->
-
                 <p>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
                 <div class="share-save-actions">
                     <span class="share-stay">
@@ -25,7 +23,6 @@
                 </div>
             </div>
         </div>
-        <!-- <shareModal/> -->
         <div ref="imgsContainer" class="imgs-container" id="photos">
             <img
                 v-for="img in stay.imgUrls.slice(0, 5)"
@@ -136,7 +133,7 @@
             <div class="rating">
                 <p>Cleanliness</p>
                 <span class="progress-container"
-                    ><progress value="4" max="5">{{ rate }}</progress></span
+                    ><progress value="4" max="5"></progress></span
                 >
                 <p>Communication</p>
                 <span class="progress-container"
@@ -315,6 +312,7 @@ export default {
     },
     computed: {
         rate() {
+            if(this.stay.reviews.length === 0) return 'new'
             const rateKeys = Object.keys(this.stay.reviews[0].rate);
             const rateMap = {};
             rateKeys.forEach((key) => {
