@@ -115,7 +115,7 @@
         </section>
         <section class="map">
             <h2>Where you'll be</h2>
-            <details-map :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
+            <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
         </section>
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :stay="stay" />
     </div>
@@ -186,7 +186,11 @@ export default {
             this.order.stay = {
                 _id: this.stay._id,
                 name: this.stay.name,
-                price: this.stay.price
+                price: this.stay.price,
+                loc: {
+                    address: this.stay.loc.address,
+                    position: { lat: this.stay.loc.lat,lng: this.stay.loc.lan},
+                }
             }
             this.order.hostId = this.stay.host._id
 

@@ -1,5 +1,5 @@
 <template>
-    <tr>
+    <!-- <tr>
         <td>{{ trip.hostId }}</td>
         <td>{{ trip.stay.name }}</td>
         <td>{{ trip.startDate }}</td>
@@ -8,15 +8,11 @@
         <td>
             <span :class="status">{{ trip.status }}</span>
         </td>
-        <!-- <td class="actions">
-            <button class="approve" @click="$emit('changeStatus', 'approve')">
-                Approve
-            </button>
-            <button class="reject" @click="$emit('changeStatus', 'decline')">
-                Reject
-            </button>
-        </td> -->
-    </tr>
+    </tr> -->
+    <section class="trip-preview">
+        <h4>{{trip.stay.name}}</h4>
+        <p><span>{{trip.startDate}} - {{trip.endDate}}</span> {{trip.status}} </p>
+    </section>
 </template>
   
 <script>

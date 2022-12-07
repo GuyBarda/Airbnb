@@ -1,13 +1,18 @@
 .user-dashboard {
     font-family: CerealReg;
     margin-top: 10px;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    gap: 20px;
+    min-height: 80vh;
 
     .dashboard-nav {
-        display: flex;
-        height: 40px;
-        border-radius: 10px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        // height: 40px;
 
-        @include reserve-btn();
+        // @include reserve-btn();
         font-size: em(17px, 16px);
 
         input {
@@ -15,31 +20,16 @@
         }
 
         .btn-nav {
-            flex: 1;
-            background-color: transparent;
+            padding: 10px;
+            // flex: 1;
+            border-radius: 10px;
+            box-shadow: 0 1px 20px 3px rgb(0 0 0 / 8%), 0px 0px 0px rgb(0 0 0 / 5%);
             display: grid;
-            place-content: center;
             text-decoration: none;
             font-family: inherit;
             text-transform: uppercase;
             font-size: em(14px, 16px);
             cursor: pointer;
-            color: white;
-
-            &:hover {
-                // box-shadow: 1px 1px 1px 1px black;
-            }
-
-            // &:nth-child(2) {
-            //     border-bottom-left-radius: 10px;
-            //     border-top-left-radius: 10px;
-            //     // background-color: blue;
-            // }
-
-            // &:last-child {
-            //     border-bottom-right-radius: 10px;
-            //     border-top-right-radius: 10px;
-            // }
         }
     }
 }

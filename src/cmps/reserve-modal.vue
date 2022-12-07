@@ -86,6 +86,10 @@ export default {
             this.order.guests = { ...guests };
         },
         addOrder() {
+            this.order.stay.loc.address= {
+                address: this.stay.loc.address,
+                position: { lat: this.stay.loc.lat,lng: this.stay.loc.lan}
+            }
             this.order.totalPrice = this.serviceFee + this.cleaningFee + this.totalDays() * this.stay.price
             this.$emit('addOrder', this.order)
         },
