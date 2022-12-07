@@ -1,4 +1,4 @@
-import { userService } from '../services/user-service';
+import { userService } from '../services/user-service.js';
 import { stayService } from '../services/stay-service-local';
 import { utilService } from '../services/utils-service';
 // import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket-service'
@@ -42,8 +42,10 @@ export const userStore = {
         },
     },
     actions: {
-        async setWishlist({ commit,state }, { miniStay }) {
+        async setWishlist({ commit, state }, { stayId }) {
             try {
+                console.log('from store');
+                console.log(stayId);
                 let user = await userService.setWishlist(stayId);
                 commit({ type: 'setLoggedinUser', user });
                 return user;
@@ -158,6 +160,3 @@ export const userStore = {
         },
     },
 };
-
-
-
