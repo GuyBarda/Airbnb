@@ -77,6 +77,7 @@ export default {
         },
         hoverEffect(ev) {
             utilService.hoverEffect(ev)
+            
         }
     },
     computed: {
