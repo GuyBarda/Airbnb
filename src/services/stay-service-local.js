@@ -4,7 +4,7 @@ import staysJson from '../../data/stay.json' assert { type: 'json' };
 import { showSuccessMsg, showErrorMsg, WishlistMsg } from './event-bus-service';
 let gStays;
 const KEY = 'staysDB';
-_createStays();
+// _createStays();
 export const stayService = {
     query,
     getById,
