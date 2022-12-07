@@ -2,14 +2,8 @@
     <div v-if="stay" class="stay-details secondary-container">
         <div class="subtitle">
             <h2>{{ stay.name }}</h2>
-            <div
-                class="subtitle-text"
-                style="display: flex; align-items: center; gap: 4px"
-            >
-                <review-average
-                    :reviews="stay.reviews.length"
-                    :rateMap="rate"
-                /><span>·</span>
+            <div class="subtitle-text" style="display: flex; align-items: center; gap: 4px">
+                <review-average :reviews="stay.reviews.length" :rateMap="rate" /><span>·</span>
                 <p>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
                 <div class="share-save-actions">
                     <span class="share-stay">
@@ -24,18 +18,10 @@
             </div>
         </div>
         <div ref="imgsContainer" class="imgs-container" id="photos">
-            <img
-                v-for="img in stay.imgUrls.slice(0, 5)"
-                :src="img"
-                :style="setBorderRadius"
-            />
+            <img v-for="img in stay.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius" />
         </div>
 
-        <details-header
-            :showReserve="getIsReserve"
-            :sticky="getSticky"
-            :stay="stay"
-        />
+        <details-header :showReserve="getIsReserve" :sticky="getSticky" :stay="stay" />
 
         <div class="stay-info">
             <section class="content">
@@ -43,11 +29,7 @@
                     <h2>
                         {{ stay.roomType }} hosted by {{ stay.host.fullname }}
                     </h2>
-                    <img
-                        class="host-image"
-                        :src="`${stay.host.thumbnailUrl}`"
-                        alt=""
-                    />
+                    <img class="host-image" :src="`${stay.host.thumbnailUrl || stay.host.imgUrl}`" alt="" />
                     <div>
                         <span>{{ stay.capacity }} guests </span>
                         <span class="gray"> • </span>
@@ -57,11 +39,7 @@
                     </div>
                 </div>
                 <div class="user-stay-info">
-                    <img
-                        v-if="stay.host.isSuperhost"
-                        src="../assets/svg/folder1/superhost.svg"
-                        alt=""
-                    />
+                    <img v-if="stay.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="" />
                     <div v-if="stay.host.isSuperhost">
                         <p style="font-weight: bold">Renata is a Superhost</p>
                         <p class="subtext">
@@ -107,17 +85,10 @@
                 <div class="amenities-container" id="amenities">
                     <h2>What this place offers</h2>
                     <div class="stay-amenities">
-                        <div
-                            v-for="a in stay.amenities"
-                            style="display: flex; gap: 13px"
-                        >
-                            <img
-                                :src="`/src/assets/svg/amenities/${a
-                                    .split(' ')[0]
-                                    .toLowerCase()}.svg`"
-                                alt="np"
-                                style="width: 1.2em"
-                            />
+                        <div v-for="a in stay.amenities" style="display: flex; gap: 13px">
+                            <img :src="`/src/assets/svg/amenities/${a
+                            .split(' ')[0]
+                            .toLowerCase()}.svg`" alt="np" style="width: 1.2em" />
                             <p>{{ a }}</p>
                         </div>
                     </div>
@@ -132,70 +103,39 @@
             </header>
             <div class="rating">
                 <p>Cleanliness</p>
-                <span class="progress-container"
-                    ><progress value="4" max="5"></progress></span
-                >
+                <span class="progress-container"><progress value="4" max="5"></progress></span>
                 <p>Communication</p>
-                <span class="progress-container"
-                    ><progress value="3" max="5"></progress
-                ></span>
+                <span class="progress-container"><progress value="3" max="5"></progress></span>
                 <p>Check-in</p>
-                <span class="progress-container"
-                    ><progress value="4.5" max="5"></progress
-                ></span>
+                <span class="progress-container"><progress value="4.5" max="5"></progress></span>
                 <p>Accuracy</p>
-                <span class="progress-container"
-                    ><progress value="3.8" max="5"></progress
-                ></span>
+                <span class="progress-container"><progress value="3.8" max="5"></progress></span>
                 <p>Location</p>
-                <span class="progress-container"
-                    ><progress value="3.9" max="5"></progress
-                ></span>
+                <span class="progress-container"><progress value="3.9" max="5"></progress></span>
                 <p>Value</p>
-                <span class="progress-container"
-                    ><progress value="4.2" max="5"></progress
-                ></span>
+                <span class="progress-container"><progress value="4.2" max="5"></progress></span>
             </div>
             <main class="review-container">
-                <review-preview
-                    v-for="(review, idx) in !showMore
-                        ? stay.reviews.slice(0, 6)
-                        : stay.reviews"
-                    :review="review"
-                    :idx="idx"
-                />
+                <review-preview v-for="(review, idx) in !showMore
+                ? stay.reviews.slice(0, 6)
+                : stay.reviews" :review="review" :idx="idx" />
             </main>
-            <button
-                v-if="stay.reviews.length >= 6"
-                @click="showMore = !showMore"
-                class="show-more"
-            >
+            <button v-if="stay.reviews.length >= 6" @click="showMore = !showMore" class="show-more">
                 {{
-                    `Show
-                            ${
-                                !showMore
-                                    ? `all
-                            ${stay.reviews.length} reviews`
-                                    : "less"
-                            }`
+                        `Show
+                                ${!showMore
+                            ? `all
+                                ${stay.reviews.length} reviews`
+                            : "less"
+                        }`
                 }}
             </button>
         </section>
         <section class="map">
             <h2>Where you'll be</h2>
-            <details-map
-                class="map-for-details"
-                :lat="stay.loc.lat"
-                :lng="stay.loc.lan"
-                :title="stay.loc.address"
-            />
+            <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
         </section>
-        <reservation-success
-            @close="isOrderComplete = false"
-            v-if="isOrderComplete"
-            :order="order"
-            :stay="stay"
-        />
+        <reservation-success @close="isOrderComplete = false" v-if="isOrderComplete" :order="order" :stay="stay" />
     </div>
 </template>
 
@@ -312,7 +252,7 @@ export default {
     },
     computed: {
         rate() {
-            if(this.stay.reviews.length === 0) return 'new'
+            if (this.stay.reviews.length === 0) return 'new'
             const rateKeys = Object.keys(this.stay.reviews[0].rate);
             const rateMap = {};
             rateKeys.forEach((key) => {
@@ -350,8 +290,8 @@ export default {
         formattedTotal() {
             return this.format(
                 this.serviceFee +
-                    this.cleaningFee +
-                    this.totalDays() * this.stay.price
+                this.cleaningFee +
+                this.totalDays() * this.stay.price
             );
         },
         getSticky() {

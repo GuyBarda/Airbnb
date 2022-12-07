@@ -77,21 +77,19 @@ export default {
     },
     async created() {
         this.order = orderService.getEmptyOrder();
+        console.log(this.order)
     },
     methods: {
         setDates() {
-            this.order.startDate = this.dates['0'];
-            this.order.endDate = this.dates['1'];
+            this.order.startDate = this.dates['0'].getTime();
+            this.order.endDate = this.dates['1'].getTime();
         },
         setGuests(guests) {
             this.order.guests = { ...guests };
         },
         addOrder() {
-            this.order.stay.loc.address= {
-                address: this.stay.loc.address,
-                position: { lat: this.stay.loc.lat,lng: this.stay.loc.lan}
-            }
-            this.order.totalPrice = this.serviceFee + this.cleaningFee + this.totalDays() * this.stay.price
+            this.order.stay.loc.address = this.stay.loc.address,
+                this.order.totalPrice = this.serviceFee + this.cleaningFee + this.totalDays() * this.stay.price
             this.$emit('addOrder', this.order)
         },
         totalDays() {
