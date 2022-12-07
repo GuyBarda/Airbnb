@@ -4,7 +4,8 @@ import { utilService } from './utils-service.js';
 import { stayService } from './stay-service.js';
 import { httpService } from './http-service.js';
 import { store } from '../store/store';
-import { orderService } from './order-service-local';
+// import { orderService } from './order-service-local';
+import { orderService } from './order-service.js';
 
 import {
     socketService,
@@ -90,10 +91,17 @@ async function login(userCred) {
     }
 }
 async function signup(userCred) {
+    // guest 1
+    // gg gg1
+    // Nadir 123
+    // Shon shon1 (?)
     if (!userCred.imgUrl)
         userCred.imgUrl =
-            'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png';
-
+            // 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png';
+            'https://res.cloudinary.com/dirvusyaz/image/upload/v1670419729/77_eaxuqe.png';
+    // 'https://res.cloudinary.com/dirvusyaz/image/upload/v1670345530/nadir_ri9xaj.png';
+    // 'https://res.cloudinary.com/dirvusyaz/image/upload/v1670419391/65b33e0e-4ac6-43c9-b226-ce2cb5799465_gd6sox.webp';
+    // 'https://res.cloudinary.com/dirvusyaz/image/upload/v1670419617/Gigi-Hadid-ujawnila-imie-swojej-coki.-Zrobila-to-w-nietypowy-sposob_article_gybjfe.jpg';
     // const user = await storageService.post(STORAGE_KEY_USER, userCred);
     const user = await httpService.post('auth/signup', userCred);
     // socketService.login(user._id)
@@ -119,7 +127,6 @@ function getLoggedinUser() {
     const user =
         JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) ||
         JSON.parse(localStorage.getItem('loggedinUser'));
-    console.log(user);
     return user;
 }
 

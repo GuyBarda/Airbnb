@@ -30,7 +30,6 @@ export const userStore = {
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = user ? { ...user } : null;
-            console.log('state.loggedinUser', state.loggedinUser)
         },
         setWatchedUser(state, { user }) {
             state.watchedUser = user;
@@ -47,9 +46,9 @@ export const userStore = {
     },
     actions: {
         async setWishlist({ commit }, { stayId }) {
-            try{
-                await userService.setWishlist(stayId)
-            }catch{
+            try {
+                await userService.setWishlist(stayId);
+            } catch {
                 console.log('cant add to wishlist');
             }
         },
@@ -76,7 +75,7 @@ export const userStore = {
         async logout({ commit }) {
             try {
                 await userService.logout();
-                
+
                 commit({ type: 'setLoggedinUser', user: null });
             } catch (err) {
                 console.log('userStore: Error in logout', err);

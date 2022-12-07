@@ -53,7 +53,8 @@
 </template>
   
 <script>
-import { orderService } from '../services/order-service-local.js';
+// import { orderService } from '../services/order-service-local.js';
+import { orderService } from '../services/order-service.js';
 
 import reviewAverage from '../cmps/review-average.vue';
 import reactiveBtn from './reactive-btn.vue';
