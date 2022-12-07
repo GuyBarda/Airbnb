@@ -53,7 +53,7 @@
             v-if="typeToShow === 'wishlist'"
             :user="getLoggedinUser"
         />
-        <my-stays v-if="typeToShow === 'stays'"/>
+        <my-stays v-if="typeToShow === 'stays'" :user="getLoggedinUser"/>
     </div>
 </template>
 
@@ -69,14 +69,8 @@ import myStays from '../cmps/dashboard/my-stays.vue';
 export default {
     data() {
         return {
-            user: null,
-            orders: null,
-            trips: null,
-            wishlist: null,
             type: "trips",
         };
-    },
-    async created() {
     },
     methods: {
         changeType(str) {

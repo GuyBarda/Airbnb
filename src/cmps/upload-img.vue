@@ -45,8 +45,7 @@ export default {
                 'background-image': `url(${this.img})`,
                 'background-repeat': 'no-repeat',
                 'background-size': 'cover',
-                // 'aspect-ratio': '1/1',
-                // 'object-fit': 'cover',
+
             }
         }
     }

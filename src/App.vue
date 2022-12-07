@@ -20,6 +20,7 @@ import appHeader from "./cmps/app-header.vue";
 import userMsg from './cmps/user-msg.vue'
 import { eventBus } from './services/event-bus-service.js'
 import appFooter from "./cmps/app-footer.vue";
+import loginSignupModal from './cmps/login-signup-modal.vue'
 
 export default {
   created() {
@@ -60,7 +61,8 @@ export default {
   components: {
     appHeader,
     userMsg,
-    appFooter
+    appFooter,
+    loginSignupModal
   },
 }
 </script>
