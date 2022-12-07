@@ -33,6 +33,7 @@ export const userService = {
     update,
     setWishlist,
     getTripsByUserId,
+    addToUserStays,
 };
 
 window.userService = userService;
@@ -148,6 +149,13 @@ async function setWishlist(stayId) {
         address: loc.address,
     };
     user.wishlist.push(miniStay);
+    return await update(user);
+}
+
+async function addToUserStays(miniStay) {
+    const { _id } = getLoggedinUser();
+    const user = await getById(_id);
+    user.stays.push(miniStay);
     return await update(user);
 }
 // ;(async ()=>{

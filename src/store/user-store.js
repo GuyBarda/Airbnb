@@ -51,6 +51,15 @@ export const userStore = {
                 console.log('cant add to wishlist');
             }
         },
+        async addToUserStays({ commit }, { miniStay }) {
+            try {
+                let user = await userService.addToUserStays(miniStay);
+                commit({ type: 'setLoggedinUser', user });
+                return user;
+            } catch {
+                console.log("cant add to user's stays");
+            }
+        },
         async login({ commit }, { cred }) {
             try {
                 const user = await userService.login(cred);

@@ -177,12 +177,15 @@ export default {
             utilService.hoverEffect(ev);
         },
         async saveStay() {
-            await this.$store.dispatch({
+            let stay = await this.$store.dispatch({
                 type: "updateStay",
                 stay: this.stayToEdit,
             });
+            if (!this.stayToEdit._id) {
+                await this.$store.dispatch({ type: 'addToUserStays', miniStay: { _id: stay._id, name: stay.name, type: stay.type, loc: stay.loc } })
+            }
             setTimeout(
-                () => this.$router.push("/stay/" + this.stayToEdit._id),
+                () => this.$router.push("/stay/" + stay._id),
                 1500
             );
         },

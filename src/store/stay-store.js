@@ -82,9 +82,7 @@ export const stayStore = {
         },
         async updateStay(context, { stay }) {
             try {
-                console.log('stay', stay);
                 stay = await stayService.save(stay);
-
                 context.commit(getActionUpdateStay(stay));
                 return stay;
             } catch (err) {
