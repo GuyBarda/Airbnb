@@ -66,7 +66,7 @@
                     <h3 style="font-family: CerealMd;"><span style="color: #fe385c;">air</span>cover</h3>
                     <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other
                         issues like trouble checking in.</p>
-                    <a href="#">Learn more</a>
+                    <!-- <a href="#">Learn more</a> -->
                 </div>
 
                 <div class="summary">

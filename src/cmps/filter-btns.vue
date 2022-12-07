@@ -1,7 +1,8 @@
 <template>
     <carousel class="carousel" :settings="settings" :breakpoints="breakpoints">
         <slide v-for="slide in btns" :key="slide">
-            <div @click="setSort(slide.key)">
+            <div class="slide-wrapper" @click="setSort(slide.key)">
+                <div class="img-wrapper">
                 <img
                     class="img-btn"
                     :src="slide.url"
@@ -12,12 +13,13 @@
                 <div class="imgKey">
                     <span>{{ slide.key }}</span>
                 </div>
+                </div>
             </div>
         </slide>
 
         <template #addons>
             <div class="filter-navigation">
-                <navigation />
+                <navigation :slideWidth="100" />
             </div>
         </template>
     </carousel>
@@ -45,21 +47,21 @@ export default {
                 labels: [],
             },
             settings: {
-            itemsToShow: 10,
-            itemsToScroll: 1,
+            itemsToShow: 3,
+            itemsToScroll: 3,
             snapAlign: "center",
             },
             breakpoints: {
                 // 700px and up
                 700: {
-                    itemsToShow: 4,
+                    itemsToShow: 7,
                     itemsToScroll: 4,
                     snapAlign: "center",
                 },
                 // 1024 and up
                 1024: {
-                    itemsToShow: 5,
-                    itemsToScroll: 1,
+                    itemsToShow: 13,
+                    itemsToScroll: 4,
                     snapAlign: "start",
                 },
             },

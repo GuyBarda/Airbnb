@@ -8,7 +8,7 @@
             <th>Check out</th>
             <th>Total</th>
             <th>Status</th>
-            <th>Actions</th>
+            <!-- <th>Actions</th> -->
         </thead>
         <!-- <div class="order-preview">
             <p>Stay name</p>

@@ -8,14 +8,14 @@
         <td>
             <span :class="status">{{ trip.status }}</span>
         </td>
-        <td class="actions">
+        <!-- <td class="actions">
             <button class="approve" @click="$emit('changeStatus', 'approve')">
                 Approve
             </button>
             <button class="reject" @click="$emit('changeStatus', 'decline')">
                 Reject
             </button>
-        </td>
+        </td> -->
     </tr>
 </template>
   
