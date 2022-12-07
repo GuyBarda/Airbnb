@@ -10,7 +10,7 @@
                     <p class="date">{{ date }}</p>
                 </main>
                 <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
-                <p class="rate"><star-icon />&nbsp; {{ rate }}</p>
+                <p class="rate"><star-icon />&nbsp; {{ rate }} <span class="review-length">({{this.stay.reviews.length}})</span></p>
             </section>
         </article>
     </router-link>
@@ -51,6 +51,7 @@ export default {
         date() {
             return utilService.getDates()
         },
+
         rate() {
             if (this.stay.reviews.length === 0) return 'New'
             let sum = this.stay.reviews.reduce((acc, { rate }) => {
@@ -60,7 +61,7 @@ export default {
                 return acc
             }, 0)
             sum /= this.stay.reviews.length
-            return `${sum.toFixed(1)} (${this.stay.reviews.length})`
+            return `${sum.toFixed(1)}`
         },
         location() {
             return `${this.stay.loc.city}, ${this.stay.loc.country}`
