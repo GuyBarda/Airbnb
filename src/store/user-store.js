@@ -45,9 +45,9 @@ export const userStore = {
         },
     },
     actions: {
-        async setWishlist({ commit }, { stayId }) {
+        async setWishlist({ commit,state }, { miniStay }) {
             try {
-                await userService.setWishlist(stayId);
+                await userService.setWishlist(state.loggedinUser,miniStay);
             } catch {
                 console.log('cant add to wishlist');
             }

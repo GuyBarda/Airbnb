@@ -1,7 +1,7 @@
 <template>
     <router-link :to="'stay/' + stay._id" target="_blank">
         <article class="stay-preview">
-            <heart-icon @click.prevent="setWishlist(stay._id)" :class="{ mark: isMark }" class="heart-btn" />
+            <heart-icon @click.prevent="setWishlist(stay)" :class="{ mark: isMark }" class="heart-btn" />
             <img-carousel @click.prevent :imgs="stay.imgUrls" />
             <section>
                 <p class="location">{{ location }}</p>
@@ -42,9 +42,14 @@ export default {
         this.isMark = idx > -1 ? true : false
     },
     methods: {
-        setWishlist(stayId) {
+        setWishlist(stay) {
+            const miniStay={
+                _id: stay._id,
+                name: stay.name,
+                imgUrls: stay.imgUrls.slice(0,3)
+            }
             this.isMark = !this.isMark
-            this.$store.dispatch({ type: 'setWishlist', stayId })
+            this.$store.dispatch({ type: 'setWishlist', miniStay })
         },
     },
     computed: {

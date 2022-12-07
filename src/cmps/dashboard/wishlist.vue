@@ -12,6 +12,9 @@ export default {
         wishlist: Array,
         user: Object
     },
+    created(){
+        console.log(this.user);
+    },
     components: {
         wishStayList
     }
