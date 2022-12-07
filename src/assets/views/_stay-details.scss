@@ -1,5 +1,5 @@
 .stay-details {
-    font-family: 'CerealReg';
+    font-family: "CerealReg";
     color: $clr-details-text;
 
     h2 {
@@ -25,6 +25,9 @@
         .subtitle-text {
             :not(span) {
                 font-weight: 600;
+                font-size: 14px;
+                color: rgb(34, 34, 34);
+                text-decoration: underline;
             }
         }
 

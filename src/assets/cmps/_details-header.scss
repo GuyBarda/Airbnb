@@ -58,16 +58,14 @@
                     font-size: em(10px, 16px);
                 }
                 .review-totals {
-                    span {
-                        display: none;
-                    }
-                    path {
-                        display: none;
+                    margin-top: -12px;
+                    margin-left: 25px;
+                    svg {
+                        margin-right: 5px;
                     }
                     a {
-                        margin-left: -42px;
-                        margin-top: -19px;
-                        font-size: 12px;
+                        font-size: 13px;
+                        margin-left: 5px;
                     }
                 }
             }

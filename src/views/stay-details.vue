@@ -3,10 +3,10 @@
         <div class="subtitle">
             <h2>{{ stay.name }}</h2>
             <div class="subtitle-text" style="display: flex; align-items: center; gap: 4px;">
-                <review-average :reviews="stay.reviews" />·
-                <span v-if="stay.host.isSuperhost"> &#127894; Superhost ·</span>
+                <review-average :reviews="stay.reviews" /> ·
+                <!-- <span v-if="stay.host.isSuperhost"> &#127894; Superhost ·</span> -->
 
-                <p>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
+                <p>{{  stay.loc.city }}, {{ stay.loc.country }}</p>
                 <div class="share-save-actions">
                     <span class="share-stay">
                         <img src="../assets/svg/share.svg" alt="">
