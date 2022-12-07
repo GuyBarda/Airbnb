@@ -42,7 +42,7 @@ export const userStore = {
         },
     },
     actions: {
-        async setWishlist({ commit }, { stayId }) {
+        async setWishlist({ commit,state }, { miniStay }) {
             try {
                 let user = await userService.setWishlist(stayId);
                 commit({ type: 'setLoggedinUser', user });
@@ -146,15 +146,18 @@ export const userStore = {
                 throw err;
             }
         },
-        async addOrderToUser({ commit }, { order }) {
-            let { _id } = userService.getLoggedinUser();
-            let user = await userService.getById(_id);
-            user.orders.push(order);
-            user = await userService.update(user);
-        },
+        // async addOrderToUser({ commit }, { order }) {
+        //     let { _id } = userService.getLoggedinUser();
+        //     let user = await userService.getById(_id);
+        //     user.orders.push(order);
+        //     user = await userService.update(user);
+        // },
         // Keep this action for compatability with a common user.service ReactJS/VueJS
         setWatchedUser({ commit }, payload) {
             commit(payload);
         },
     },
 };
+
+
+

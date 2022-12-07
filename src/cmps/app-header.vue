@@ -29,6 +29,12 @@
             <userMenu v-if="isMenu" @closeMenu="closeMenu" />
         </div>
     </header>
+
+    <!-- <div class="alert alert-error">
+        <i class="fa fa-times-circle"></i>
+        user are updet
+    </div> -->
+
 </template>
   
 <script>

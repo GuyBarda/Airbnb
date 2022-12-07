@@ -1,7 +1,7 @@
 <template>
     <router-link :to="'stay/' + stay._id" target="_blank">
         <article class="stay-preview">
-            <heart-icon @click.prevent="setWishlist(stay._id)" :class="{ mark: isMark }" class="heart-btn" />
+            <heart-icon @click.prevent="setWishlist(stay)" :class="{ mark: isMark }" class="heart-btn" />
             <img-carousel @click.prevent :imgs="stay.imgUrls" />
             <section>
                 <p class="location">{{ location }}</p>

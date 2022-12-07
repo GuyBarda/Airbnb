@@ -3,10 +3,10 @@
         <div class="subtitle">
             <h2>{{ stay.name }}</h2>
             <div class="subtitle-text" style="display: flex; align-items: center; gap: 4px;">
-                <review-average :reviews="stay.reviews" />·
-                <span v-if="stay.host.isSuperhost"> &#127894; Superhost ·</span>
+                <review-average :reviews="stay.reviews" /><span>·</span> 
+                <!-- <span v-if="stay.host.isSuperhost"> &#127894; Superhost ·</span> -->
 
-                <p>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
+                <p>{{  stay.loc.city }}, {{ stay.loc.country }}</p>
                 <div class="share-save-actions">
                     <span class="share-stay">
                         <img src="../assets/svg/share.svg" alt="">
@@ -30,6 +30,7 @@
             <section class="content">
                 <div class="subtitle">
                     <h2>{{ stay.roomType }} hosted by {{ stay.host.fullname }}</h2>
+                    <img class="host-image" :src="`${stay.host.thumbnailUrl}`" alt="">
                     <div>
                         <span>{{ stay.capacity }} guests </span>
                         <span class="gray"> • </span>
@@ -37,7 +38,6 @@
                         <span class="gray"> • </span>
                         <span>{{ stay.bedrooms }} bedrooms </span>
                     </div>
-                    <img class="host-image" :src="`${stay.host.thumbnailUrl}`" alt="">
                 </div>
                 <div class="user-stay-info">
                     <img v-if="stay.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="">
