@@ -29,7 +29,6 @@
                     <h2>
                         {{ stay.roomType }} hosted by {{ stay.host.fullname }}
                     </h2>
-                    <img class="host-image" :src="`${stay.host.thumbnailUrl || stay.host.imgUrl}`" alt="" />
                     <div>
                         <span>{{ stay.capacity }} guests </span>
                         <span class="gray"> • </span>
@@ -37,6 +36,7 @@
                         <span class="gray"> • </span>
                         <span>{{ stay.bedrooms }} bedrooms </span>
                     </div>
+                    <img class="host-image" :src="`${stay.host.thumbnailUrl || stay.host.imgUrl}`" alt="" />
                 </div>
                 <div class="user-stay-info">
                     <img v-if="stay.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="" />
