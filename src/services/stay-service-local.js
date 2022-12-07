@@ -4,7 +4,7 @@ import staysJson from '../../data/stay.json' assert { type: 'json' };
 import { showSuccessMsg, showErrorMsg, WishlistMsg } from './event-bus-service';
 let gStays;
 const KEY = 'staysDB';
-_createStays();
+// _createStays();
 export const stayService = {
     query,
     getById,
@@ -15,7 +15,6 @@ export const stayService = {
 };
 
 async function query(filterBy) {
-
     gStays = await storageService.query(KEY);
     let stays = _filter(filterBy);
     return Object.values(stays);
@@ -59,7 +58,7 @@ function remove(id) {
 function save(stay) {
     // return stay._id ? storageService.put(KEY, stay)  : storageService.post(KEY, stay);
     if (stay._id) {
-        storageService.put(KEY, stay)
+        storageService.put(KEY, stay);
         showSuccessMsg(`"${stay.name}" just got updated`);
     } else {
         storageService.post(KEY, stay);
@@ -141,9 +140,7 @@ function _filter(filterBy) {
     }
 
     if (guests) {
-        filteredStays = filteredStays.filter(
-            (stay) => stay.capacity >= guests
-        );
+        filteredStays = filteredStays.filter((stay) => stay.capacity >= guests);
     }
 
     const searchMin = minPrice ? minPrice : 0;
