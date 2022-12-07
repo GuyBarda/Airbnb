@@ -3,7 +3,7 @@
         <!-- <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2> -->
         <trip-list @openToDisplay="setTripDisplay" :trips="trips" />
         <section class="trip-display">
-            <details-map class="map-for-dashboard"/>
+            <details-map class="map-for-dashboard" :lat="currTrip.stay.loc.position" :lng="stay.loc.lan" :title="stay.loc.address"/>
         </section>
     </div>
 </template>
