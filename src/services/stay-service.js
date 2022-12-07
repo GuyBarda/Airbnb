@@ -63,26 +63,28 @@ async function addStayMsg(stayId, txt) {
 function getEmptyStay() {
     return {
         name: '',
+        type: '',
         imgUrls: [],
         price: 0,
         summary: '',
         capacity: 0,
         amenities: [],
         bedrooms: 0,
-        Bathrooms: 0,
-        labels: [],
-        type: [],
+        bathrooms: 0,
+        beds: 0,
+        roomType: '',
+        host: {},
         loc: {
             country: '',
             countryCode: '',
             city: '',
             address: '',
-            lat: 0,
-            lng: 0,
+            lat: 31,
+            lng: 31,
         },
-        host: {},
         reviews: [],
         likedByUsers: [],
+        propertyType: '',
     };
 }
 
