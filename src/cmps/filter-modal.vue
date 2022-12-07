@@ -68,8 +68,8 @@
                         </div>
                     </article>
                 </section>
-
-                <!-- <div class="first-tow">
+            </section>
+            <!-- <div class="first-tow">
     
             <div class="checkbox">
               <input type="checkbox" name="entire" v-model="filterBy.type" value="Entire place"/>
@@ -99,7 +99,6 @@
               <p>A sleeping space and common areas that may be shared with others</p>
              </div>
             </div> -->
-            </section>
 
             <div class="form-rooms-and-beds">
                 <h2>Rooms and beds</h2>
@@ -166,12 +165,17 @@
                 </div>
             </div>
 
-            <div class="form-amenities">
-                <div class="form-title-amenities">
-                    <h2>Amenities</h2>
+            <div class="amenities-container">
+                <h2>Amenities</h2>
+                <div class="stay-amenities">
+                    <div v-for="a in allAmenities" style="display:flex ; gap: 10px;">
+                        <input type="checkbox" :name="a" v-model="filterBy.amenities" :value="a" />
+                        <label :for="a">{{ a }}</label>
+                    </div>
                 </div>
+            </div>
 
-                <div class="essentials">
+            <!-- <div class="essentials">
                     <h3>Essentials</h3>
                     <div>
                         <div class="el-checkbox-group">
@@ -215,13 +219,23 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-footer">
-                        <button @click="resetFilterBy">Clear all</button>
-                        <button @click="filterStays">Show {{ totalStays }} homes</button>
+                </div> -->
+            <!-- <div class="essentials">
+                    <h3>Amenities</h3>
+                    <div class="el-checkbox-group">
+                        <div v-for="a in allAmenities" style="display:flex ; gap: 10px;">
+                            <input class="el-checkbox__original" type="checkbox" :name="a" v-model="filterBy.amenities"
+                                :value="a" />
+                            <label :for="a">{{ a }}</label>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div> -->
+            <!-- <img :src="`/src/assets/svg/amenities/${a.split(' ')[0].toLowerCase()}.svg`" style="width: 1.2em" /> -->
 
+        </div>
+        <div class="form-footer">
+            <button @click="resetFilterBy">Clear all</button>
+            <button @click="filterStays">Show {{ totalStays }} homes</button>
         </div>
     </div>
 </template>
@@ -246,10 +260,14 @@ export default {
                     bathrooms: 1,
                 },
                 PropertyType: [],
-                Amenities: [],
+                amenities: [],
             },
             isSelect: false,
+            allAmenities: this.$store.getters.amenities
         };
+    },
+    updated() {
+        console.log(this.filterBy)
     },
     computed: {
         prices() {
@@ -273,7 +291,7 @@ export default {
                     bathrooms: 1,
                 },
                 PropertyType: [],
-                Amenities: [],
+                amenities: [],
             }
         },
         setRange($event) {
