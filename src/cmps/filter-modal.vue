@@ -104,8 +104,7 @@
                 <h2>Rooms and beds</h2>
                 <h3>Bedrooms</h3>
                 <div id="row1">
-                    <input type="radio" id="bedroom0" name="bedroom" :value="all"
-                        v-model="filterBy.roomsBeds.bedrooms" />
+                    <input type="radio" id="bedroom0" name="bedroom" :value="0" v-model="filterBy.roomsBeds.bedrooms" />
                     <label for="bedroom0" class="btn-btn">All</label>
                     <div class="btns-group" v-for="num in 8">
                         <input type="radio" :id="`bedroom${num}`" name="bedroom" :value="num"
@@ -114,9 +113,9 @@
                     </div>
                 </div>
 
-                <h3>beds</h3>
+                <h3>Beds</h3>
                 <div id="row2">
-                    <input type="radio" id="bed0" name="bed" :value="all" v-model="filterBy.roomsBeds
+                    <input type="radio" id="bed0" name="bed" :value="0" v-model="filterBy.roomsBeds
                     .beds" />
                     <label for="bed0" class="btn-btn">All</label>
                     <div class="btns-group" v-for="num in 8">
@@ -128,7 +127,7 @@
 
                 <h3>Bathrooms</h3>
                 <div id="row3">
-                    <input type="radio" id="bathroom0" name="bathroom" :value="all" v-model="filterBy.roomsBeds
+                    <input type="radio" id="bathroom0" name="bathroom" :value="0" v-model="filterBy.roomsBeds
                     .bathrooms" />
                     <label for="bathroom0" class="btn-btn">All</label>
                     <div class="btns-group" v-for="num in 8">
@@ -142,20 +141,20 @@
             <div class="form-property-type">
                 <h2>Property type</h2>
                 <div class="flex">
-                    <input type="checkbox" v-model="filterBy.PropertyType" name="stay" value="stay">
-                    <label for="stay" class="property-type">
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="house" value="house">
+                    <label for="house" class="property-type">
                         <img src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg" alt="" />
-                        <span>Stay</span>
+                        <span>House</span>
                     </label>
                     <input type="checkbox" v-model="filterBy.PropertyType" name="apartment" value="apartment">
                     <label for="apartment" class="property-type">
                         <img src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg" alt="" />
                         <span>Apartment</span>
                     </label>
-                    <input type="checkbox" v-model="filterBy.PropertyType" name="gueststay" value="gueststay">
-                    <label for="gueststay" class="property-type">
+                    <input type="checkbox" v-model="filterBy.PropertyType" name="guesthouse" value="guesthouse">
+                    <label for="guesthouse" class="property-type">
                         <img src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg" alt="" />
-                        <span>Gueststay</span>
+                        <span>Guesthouse</span>
                     </label>
                     <input type="checkbox" v-model="filterBy.PropertyType" name="hotel" value="hotel">
                     <label for="hotel" class="property-type">

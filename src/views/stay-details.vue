@@ -18,10 +18,11 @@
             </div>
         </div>
         <div ref="imgsContainer" class="imgs-container" id="photos">
-            <img v-for="img in stay.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius" />
+            <img v-for="img in stay.imgUrls.slice(0, 5)" :src="img" />
         </div>
 
-        <details-header :showReserve="getIsReserve" :sticky="getSticky" :stay="stay" />
+        <details-header :showReserve="getIsReserve" :sticky="getSticky" :stay="stay" :reviews="stay.reviews.length"
+            :rateMap="rate" />
 
         <div class="stay-info">
             <section class="content">
@@ -94,26 +95,38 @@
                     </div>
                 </div>
             </section>
-            <reserve-modal @addOrder="addOrder" :stay="stay" />
+            <reserve-modal @addOrder="addOrder" :stay="stay" :reviews="stay.reviews.length" :rateMap="rate" />
         </div>
 
         <section id="reviews">
             <header>
-                <review-average :reviews="stay.reviews" :rateMap="rate" />
+                <review-average :reviews="stay.reviews.length" :rateMap="rate" />
             </header>
             <div class="rating">
                 <p>Cleanliness</p>
-                <span class="progress-container"><progress value="4" max="5"></progress></span>
+                <span class="progress-container"><progress :value="rate.Cleanliness" max="5"></progress>{{
+                        rate.Cleanliness.toFixed(1)
+                }}</span>
                 <p>Communication</p>
-                <span class="progress-container"><progress value="3" max="5"></progress></span>
+                <span class="progress-container"><progress :value="rate.Communication" max="5"></progress>{{
+                        rate.Communication.toFixed(1)
+                }}</span>
                 <p>Check-in</p>
-                <span class="progress-container"><progress value="4.5" max="5"></progress></span>
+                <span class="progress-container"><progress :value="rate['Check-in']" max="5"></progress>{{
+                        rate['Check-in'].toFixed(1)
+                }}</span>
                 <p>Accuracy</p>
-                <span class="progress-container"><progress value="3.8" max="5"></progress></span>
+                <span class="progress-container"><progress :value="rate.Accuracy" max="5"></progress>{{
+                        rate.Accuracy.toFixed(1)
+                }}</span>
                 <p>Location</p>
-                <span class="progress-container"><progress value="3.9" max="5"></progress></span>
+                <span class="progress-container"><progress :value="rate.Location" max="5"></progress>{{
+                        rate.Location.toFixed(1)
+                }}</span>
                 <p>Value</p>
-                <span class="progress-container"><progress value="4.2" max="5"></progress></span>
+                <span class="progress-container"><progress :value="rate.Value" max="5"></progress>{{
+                        rate.Value.toFixed(1)
+                }}</span>
             </div>
             <main class="review-container">
                 <review-preview v-for="(review, idx) in !showMore ? stay.reviews.slice(0, 6) : stay.reviews"
@@ -185,16 +198,16 @@ export default {
                 entries.forEach(
                     (entry) => (this.sticky = !entry.isIntersecting)
                 );
-            });
+            },);
             const observerForReserveBtn = new IntersectionObserver(
                 (entries) => {
                     entries.forEach(
                         (entry) =>
                             (this.isReserveInHeader = !entry.isIntersecting)
                     );
-                }
+                }, { threshold: 1 }
             );
-            // console.log(elReserveBtn)
+            console.log(elReserveBtn)
             observerForImgs.observe(imgsContainer);
             observerForReserveBtn.observe(elReserveBtn);
         }, 1000);
@@ -253,6 +266,7 @@ export default {
                 }, 0);
                 rateMap[key] = sum / this.stay.reviews.length;
             });
+            console.log(rateMap)
             return rateMap;
         },
         totalReviews() {
