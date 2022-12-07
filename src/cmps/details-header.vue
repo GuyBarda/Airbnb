@@ -1,10 +1,6 @@
 <template>
     <div class="full">
-        <header
-            ref="elDetailsHeader"
-            :class="{ sticky: sticky }"
-            class="details-header full secondary-container"
-        >
+        <header ref="elDetailsHeader" :class="{ sticky: sticky }" class="details-header full secondary-container">
             <section class="secondary-container">
                 <nav class="details-nav">
                     <a href="#photos">Photos</a>
@@ -15,7 +11,7 @@
                 <div v-if="showReserve" class="reserve-container">
                     <div class="reserve-info-container">
                         <p>{{ formattedPrice }} <span>night</span></p>
-                        <review-average :reviews="stay.reviews" />
+                        <review-average :reviews="reviews" :rateMap="rateMap" />
                     </div>
                     <button @mousemove="hoverEffect" class="btn-reserve">
                         Reserve
@@ -34,6 +30,8 @@ export default {
         stay: Object,
         sticky: Boolean,
         showReserve: Boolean,
+        reviews: Number,
+        rateMap: Object,
     },
     methods: {
         hoverEffect(ev) {

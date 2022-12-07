@@ -5,7 +5,7 @@
                 <h4>
                     <span>{{ formattedPerNightPrice }}</span> night
                 </h4>
-                <review-average :reviews="stay.reviews" />
+                <review-average :reviews="stay.reviews.length" :rateMap="rateMap" />
             </header>
             <div class="picker-container">
                 <div @click="showDatePicker = true" class="check-in picker">
@@ -63,6 +63,8 @@ import guestsModal from './guests-modal.vue';
 export default {
     props: {
         stay: Object,
+        reviews: Number,
+        rateMap: Object,
     },
     data() {
         return {

@@ -21,7 +21,8 @@
             <img v-for="img in stay.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius" />
         </div>
 
-        <details-header :showReserve="getIsReserve" :sticky="getSticky" :stay="stay" />
+        <details-header :showReserve="getIsReserve" :sticky="getSticky" :stay="stay" :reviews="stay.reviews.length"
+            :rateMap="rate" />
 
         <div class="stay-info">
             <section class="content">
@@ -94,12 +95,12 @@
                     </div>
                 </div>
             </section>
-            <reserve-modal @addOrder="addOrder" :stay="stay" />
+            <reserve-modal @addOrder="addOrder" :stay="stay" :reviews="stay.reviews.length" :rateMap="rate" />
         </div>
 
         <section id="reviews">
             <header>
-                <review-average :reviews="stay.reviews" :rateMap="rate" />
+                <review-average :reviews="stay.reviews.length" :rateMap="rate" />
             </header>
             <div class="rating">
                 <p>Cleanliness</p>
@@ -174,8 +175,6 @@ export default {
         });
         console.log(this.stay);
     },
-    //638f902aee9a8846d53bd7b9
-    //638f902aee9a8846d53bd7b9
     mounted() {
         setTimeout(() => {
             const imgsContainer = this.$refs.imgsContainer;
@@ -187,16 +186,16 @@ export default {
                 entries.forEach(
                     (entry) => (this.sticky = !entry.isIntersecting)
                 );
-            });
+            },);
             const observerForReserveBtn = new IntersectionObserver(
                 (entries) => {
                     entries.forEach(
                         (entry) =>
                             (this.isReserveInHeader = !entry.isIntersecting)
                     );
-                }
+                }, { threshold: 1 }
             );
-            // console.log(elReserveBtn)
+            console.log(elReserveBtn)
             observerForImgs.observe(imgsContainer);
             observerForReserveBtn.observe(elReserveBtn);
         }, 1000);
