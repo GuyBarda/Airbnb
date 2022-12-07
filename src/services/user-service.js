@@ -46,7 +46,7 @@ function getUsers() {
 }
 
 async function getTripsByUserId(buyerId) {
-    return await orderService.query({buyerId});
+    return await orderService.query({ buyerId });
     // return orders.filter((order) => order.buyer._id === userId);
 }
 
@@ -132,10 +132,9 @@ function getLoggedinUser() {
 }
 
 async function setWishlist(stayId) {
-
     const { _id } = getLoggedinUser();
     const user = await getById(_id);
-    
+
     const idx = user.wishlist.findIndex((stay) => stay._id === stayId);
     if (idx > -1) {
         user.wishlist.splice(idx, 1);

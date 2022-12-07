@@ -1,7 +1,7 @@
 <template>
     <router-link :to="'stay/' + stay._id" target="_blank">
         <article class="stay-preview">
-            <heart-icon @click.prevent="setWishlist(stay)" :class="{ mark: isMark }" class="heart-btn" />
+            <heart-icon @click.prevent="setWishlist" :class="{ mark: isMark }" class="heart-btn" />
             <img-carousel @click.prevent :imgs="stay.imgUrls" />
             <section>
                 <p class="location">{{ location }}</p>
@@ -45,9 +45,9 @@ export default {
         this.isMark = idx > -1 ? true : false
     },
     methods: {
-        async setWishlist(stayId) {
+        async setWishlist() {
             this.isMark = !this.isMark
-            await this.$store.dispatch({ type: 'setWishlist', stayId })
+            await this.$store.dispatch({ type: 'setWishlist', stayId: this.stay._id })
             WishlistMsg(`${this.stay.name} Saved to Wishlist`);
         },
     },
