@@ -11,6 +11,7 @@
     border-radius: 10px;
     height: 45px;
     z-index: 8000;
+    // transform: translateX(calc(100% + -192px));
 
     &.alert-success {
         background-color: rgb(118, 173, 96);

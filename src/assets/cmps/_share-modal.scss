@@ -1,6 +1,6 @@
 .share-modal {
     z-index: 2000 !important;
-    position: fixed !important;
+    position: absolute !important;
     inset: 0px !important;
     display: block !important;
     background: rgb(255, 255, 255) !important;
@@ -86,5 +86,3 @@
     }
 }
 
-@media screen and (min-width: 744px) {
-}

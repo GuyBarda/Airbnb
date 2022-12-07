@@ -116,23 +116,17 @@
                 <span class="progress-container"><progress value="4.2" max="5"></progress></span>
             </div>
             <main class="review-container">
-                <review-preview v-for="(review, idx) in !showMore
-                ? stay.reviews.slice(0, 6)
-                : stay.reviews" :review="review" :idx="idx" />
+                <review-preview v-for="(review, idx) in !showMore ? stay.reviews.slice(0, 6) : stay.reviews"
+                    :review="review" :idx="idx" />
+                <button v-if="(stay.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
+                                    ${!showMore ? `all
+                                    ${stay.reviews.length} reviews` : 'less'}`
+                }}</button>
             </main>
-            <button v-if="stay.reviews.length >= 6" @click="showMore = !showMore" class="show-more">
-                {{
-                        `Show
-                                ${!showMore
-                            ? `all
-                                ${stay.reviews.length} reviews`
-                            : "less"
-                        }`
-                }}
-            </button>
         </section>
         <section class="map">
             <h2>Where you'll be</h2>
+            <h1>{{ stay.loc.city }}, {{ stay.loc.country }}</h1>
             <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
         </section>
         <reservation-success @close="isOrderComplete = false" v-if="isOrderComplete" :order="order" :stay="stay" />
