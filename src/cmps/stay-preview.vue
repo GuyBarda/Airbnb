@@ -44,6 +44,7 @@ export default {
     methods: {
         setWishlist(stayId) {
             this.isMark = !this.isMark
+            console.log('styId', stayId)
             this.$store.dispatch({ type: 'setWishlist', stayId })
         },
     },

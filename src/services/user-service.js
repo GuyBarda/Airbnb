@@ -124,8 +124,10 @@ function getLoggedinUser() {
 }
 
 async function setWishlist(stayId) {
+
     const { _id } = getLoggedinUser();
     const user = await getById(_id);
+    
     const idx = user.wishlist.findIndex((stay) => stay._id === stayId);
     if (idx > -1) {
         user.wishlist.splice(idx, 1);
