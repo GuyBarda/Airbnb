@@ -1,7 +1,7 @@
 <template>
     <div class="review-preview">
         <div class="mini-user-details">
-            <img :src="review.by.imgUrl" alt="">
+            <img :src="review.by.imgUrl" alt="" />
             <p>{{ review.by.fullname }}</p>
             <span>{{ formattedDate }}</span>
         </div>
@@ -14,25 +14,31 @@
 export default {
     props: {
         review: Object,
-        idx: Number
+        idx: Number,
     },
     data() {
         return {
-            isShowMore: true
-        }
+            isShowMore: true,
+        };
     },
     methods: {
         showMore(ev) {
-            ev.target.innerText = `Show ${this.isShowMore ? 'less' : 'more'}`
-            document.querySelector(`.text${this.idx}`).style.display = this.isShowMore ? 'block' : '-webkit-box'
-            this.isShowMore = !this.isShowMore
+            ev.target.innerText = `Show ${this.isShowMore ? "less" : "more"}`;
+            document.querySelector(`.text${this.idx}`).style.display = this
+                .isShowMore
+                ? "block"
+                : "-webkit-box";
+            this.isShowMore = !this.isShowMore;
         },
     },
     computed: {
         formattedDate() {
-            let date = new Date(this.review.at).toLocaleDateString("en-us", { month: "short", year: "numeric" });
-            return date === "Invalid Date" ? '' : date
-        }
-    }
-}
+            let date = new Date(this.review.at).toLocaleDateString("en-us", {
+                month: "short",
+                year: "numeric",
+            });
+            return date === "Invalid Date" ? "" : date;
+        },
+    },
+};
 </script>
