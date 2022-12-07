@@ -66,7 +66,7 @@
                     <h3 style="font-family: CerealMd;"><span style="color: #fe385c;">air</span>cover</h3>
                     <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other
                         issues like trouble checking in.</p>
-                    <a href="#">Learn more</a>
+                    <!-- <a href="#">Learn more</a> -->
                 </div>
 
                 <div class="summary">
@@ -115,7 +115,7 @@
         </section>
         <section class="map">
             <h2>Where you'll be</h2>
-            <details-map :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
+            <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
         </section>
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :stay="stay" />
     </div>
@@ -190,7 +190,10 @@ export default {
                 _id: this.stay._id,
                 name: this.stay.name,
                 price: this.stay.price,
-                imgUrls: this.stay.imgUrls.slice(0, 3)
+                imgUrls: this.stay.imgUrls.slice(0, 3),
+                loc: {
+                    address: this.stay.loc.address,
+                }
             }
             this.order.hostId = this.stay.host._id
 

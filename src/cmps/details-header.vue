@@ -10,11 +10,11 @@
                     <a href="#photos">Photos</a>
                     <a href="#amenities">Amenities</a>
                     <a href="#reviews">Reviews</a>
-                    <!-- <a href="#">Location</a> -->
+                    <a href="#">Location</a>
                 </nav>
                 <div v-if="showReserve" class="reserve-container">
                     <div class="reserve-info-container">
-                        <p>${{ formattedPrice }} <span>night</span></p>
+                        <p>{{ formattedPrice }} <span>night</span></p>
                         <review-average :reviews="stay.reviews" />
                     </div>
                     <button @mousemove="hoverEffect" class="btn-reserve">
@@ -45,7 +45,13 @@ export default {
     },
     computed: {
         formattedPrice() {
-            return 1300;
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0,
+            })
+            let num = Number(formatter.format(this.stay.price))
+            return formatter.format(this.stay.price)
         },
     },
     components: {

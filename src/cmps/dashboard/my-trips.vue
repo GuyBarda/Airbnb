@@ -1,19 +1,55 @@
 <template>
-    <div v-if="user" class="order-container">
-        <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2>
-        <trip-list :trips="trips" />
+    <div v-if="user" class="trips-container">
+        <!-- <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2> -->
+        <trip-list @openToDisplay="setTripDisplay" :trips="trips" />
+        <section class="trip-display">
+            <details-map v-if="currTrip" class="map-for-dashboard" :lat="getTripLocLat" :lng="getTripLocLng" :title="currTrip.stay.loc.address"/>
+            <main class="trip-info">
+                <h3>{{currTrip.stay.loc.address}}</h3>
+                <p>Dates: {{currTrip.startDate}} - {{currTrip.endDate}}</p>
+                <p>Guests: {{currTrip.guests.adults}}</p>
+                <p>Total price: {{currTrip.totalPrice}}</p>
+                <p class="last">Order Status: {{currTrip.status}}</p>
+            </main>
+        </section>
     </div>
 </template>
 
 <script>
 import tripList from './trip-list.vue';
+import detailsMap from '../details-map.vue'
+
 export default {
     props: {
         trips: Array,
         user: Object
     },
+    created(){
+        console.log(this.trips);
+        this.currTrip = this.trips[0]
+        console.log(this.currTrip);
+    },
+    data(){
+        return{
+            currTrip: ''
+        }
+    },
     components: {
-        tripList
+        tripList,
+        detailsMap
+    },
+    methods:{
+        setTripDisplay(trip){
+            this.currTrip = trip
+        }
+    },
+    computed:{
+        getTripLocLat(){
+            return this.currTrip.stay.loc.position.lat
+        },
+        getTripLocLng(){
+            return this.currTrip.stay.loc.position.lng
+        }
     }
 }
 </script>

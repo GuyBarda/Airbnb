@@ -1,48 +1,55 @@
-.trip-list {
-    table {
-        width: 100%;
-        border: 1px solid #dddddd;
-
-        border-collapse: collapse;
-        th,
-        td {
-            padding: 20px 5px;
-        }
-
-        thead {
-            th {
-                border-bottom: 1px solid #dddddd;
-                text-align: start;
+.trips-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    gap: 20px;
+    .trip-list {
+        border-radius: 20px;
+        box-shadow: 0 1px 20px 13px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+        padding: 10px;
+        // display: grid;
+        align-content: start;
+        // gap: 10px;
+        height: 70vh;
+        overflow: auto;
+        .trip-preview {
+            background-color: white;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 0 1px 0px;
+            transition: 0.4s;
+            &:hover{
+                transform: scale(1.02);
+            }
+            h4 {
+                margin: 0;
+            }
+            p {
+                margin: 5px 0 0 0;
+                display: flex;
+                justify-content: space-between;
+                font-family: Arial, Helvetica, sans-serif;
             }
         }
+    }
+    .trip-display {
+        height: 70vh;
 
-        tbody {
-            td {
-                border-bottom: 1px solid #dddddd;
+        border-radius: 20px;
+        box-shadow: 0 1px 20px 13px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+        .trip-info{
+            display: grid;
+            align-items: flex-start;
+            padding: 10px;
+            h3{
+                margin: 0;
+            }
+            p{
+                font-family: CerealReg;
+                // font-weight: bold;
+                margin: 0;
 
-                button {
-                    padding: 10px;
-                    border: 0;
-                    border-radius: 10px;
-                    &.approve {
-                        background-color: #33b249;
-                        margin-right: 5px;
-                    }
-                    &.reject {
-                        background-color: red;
-                    }
-                }
-                span {
-                    .pending {
-                        color: blue;
-                    }
-                    .approved {
-                        color: greenyellow;
-                    }
-                    .rejected {
-                        color: red;
-                    }
-                }
             }
         }
     }

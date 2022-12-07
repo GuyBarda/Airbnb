@@ -1,6 +1,6 @@
 <template>
     <div class="user-dashboard secondary-container">
-        <nav class="dashboard-nav" @mouseover.stop="hoverEffect">
+        <nav class="dashboard-nav" >
             <!-- <button class="btn-nav" @click="changeType('orders')">orders</button>
             <button class="btn-nav" @click="changeType('trips')">my trips</button>
             <button class="btn-nav" @click="changeType('wishlist')">my houses</button>

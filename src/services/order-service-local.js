@@ -47,6 +47,9 @@ function getEmptyOrder() {
             _id: '',
             name: '',
             price: 0,
+            loc: {
+                
+            }
         },
         msgs: [],
         status: 'pending', // pending, approved
