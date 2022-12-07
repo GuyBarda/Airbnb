@@ -67,6 +67,7 @@ async function getById(userId) {
 
     return user;
 }
+
 function remove(userId) {
     // return storageService.remove(STORAGE_KEY_USER, userId);
     return httpService.delete(`user/${userId}`);

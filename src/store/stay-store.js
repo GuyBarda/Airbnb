@@ -32,10 +32,31 @@ export const stayStore = {
     state: {
         stays: [],
         filterBy: {},
+        amenities: [
+            'Garden view',
+            'Air conditioning',
+            'Elevator',
+            'Heating',
+            'TV',
+            'Kitchen',
+            'Wifi',
+            'Free parking on premises',
+            'Cooking basics',
+            'Dedicated workspace',
+            'Washer',
+            'Smoke detector',
+            'Essentials',
+            'Dryer',
+            'Carbon monoxide detector',
+            'Iron',
+        ],
     },
     getters: {
         stays({ stays }) {
             return Object.values(stays);
+        },
+        amenities({ amenities }) {
+            return amenities;
         },
     },
     mutations: {

@@ -122,17 +122,7 @@ import loginSignupModal from "../cmps/login-signup-modal.vue";
 export default {
     data() {
         return {
-            allAmenities: [
-                "Garden view",
-                "TV",
-                "Kitchen",
-                "Wifi",
-                "Free parking on premises",
-                "Cooking basics",
-                "Dedicated workspace",
-                "Washer",
-                "Smoking allowed",
-            ],
+            allAmenities: this.$store.getters.amenities,
             stayToEdit: null,
             user: null,
         };

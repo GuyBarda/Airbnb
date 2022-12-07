@@ -10,9 +10,13 @@ export default {
     props: {
         trip: Object,
     },
+    created(){
+        // this.trip.startDate
+        console.log(this.trip.startDate);
+    },
     data() {
         return {
-            status: "pending",
+            // status: "pending",
         };
     },
     computed: {

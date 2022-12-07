@@ -100,6 +100,7 @@ export default {
         setDates(dates) {
             this.filterBy.dates.start = this.dates["0"];
             this.filterBy.dates.end = this.dates["1"];
+            
             let str = this.formattedStartDate + " - " + this.formattedEndDate;
             this.$emit("setDate", str);
         },
