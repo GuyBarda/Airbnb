@@ -1,4 +1,4 @@
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
 
 .alert {
     background-color: lightgray;
@@ -8,21 +8,37 @@
     padding: 10px 20px;
     font-family: CerealReg;
     width: max-content;
-    border-radius: 20px;
+    border-radius: 10px;
+    height: 45px;
     z-index: 8000;
 
     &.alert-success {
-        color: #270;
-        background-color: #d6e9b7;
+        background-color: rgb(118, 173, 96);
+        color: aliceblue;
+        i {
+            background-color: #270;
+            color: white;
+            padding: 5px 5px 5px 5px;
+            border-radius: 50%;
+            margin-right: 30px;
+        }
     }
 
     &.alert-error {
         color: rgb(238, 207, 207);
         background-color: #cc6464;
-    }
-    &.alert-Wishlist {
-        background-color: #fafafa;
+        border: 1px solid rgb(235, 12, 12);
         i{
+            color: white;
+            margin-right: 20px;
+            
+        }
+    }
+
+    &.alert-Wishlist {
+        background-color: #eba2a2;
+        border: 1px solid rgb(235, 12, 12);
+        i {
             color: #dd1616;
         }
     }

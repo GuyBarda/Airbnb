@@ -24,9 +24,6 @@ export const userStore = {
         },
     },
     mutations: {
-        setUser(state, { user }) {
-            state.user = user;
-        },
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = user ? { ...user } : null;
@@ -47,7 +44,13 @@ export const userStore = {
     actions: {
         async setWishlist({ commit,state }, { miniStay }) {
             try {
+<<<<<<< HEAD
                 await userService.setWishlist(state.loggedinUser,miniStay);
+=======
+                let user = await userService.setWishlist(stayId);
+                commit({ type: 'setLoggedinUser', user });
+                return user;
+>>>>>>> f9434bf82991d0272a4205e231d11c09e8a72f4b
             } catch {
                 console.log('cant add to wishlist');
             }

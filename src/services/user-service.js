@@ -131,17 +131,16 @@ function getLoggedinUser() {
 }
 
 async function setWishlist(stayId) {
+
     const { _id } = getLoggedinUser();
     const user = await getById(_id);
+    
     const idx = user.wishlist.findIndex((stay) => stay._id === stayId);
     if (idx > -1) {
         user.wishlist.splice(idx, 1);
-        await update(user);
-        return;
+        return await update(user);
     }
-    console.log('before getting from server');
     const { name, imgUrls, loc } = await stayService.getById(stayId);
-    console.log(name);
     const miniStay = {
         _id: stayId,
         name,
@@ -149,8 +148,7 @@ async function setWishlist(stayId) {
         address: loc.address,
     };
     user.wishlist.push(miniStay);
-    await update(user);
-    WishlistMsg(`${miniStay.name} Saved to Wishlist`);
+    return await update(user);
 }
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})

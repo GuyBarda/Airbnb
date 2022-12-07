@@ -2,6 +2,7 @@
 import { httpService } from './http-service.js';
 // import { utilService } from './util.service.js';
 import { userService } from './user-service.js';
+import { showSuccessMsg, showErrorMsg, WishlistMsg } from './event-bus-service';
 
 const STORAGE_KEY = 'stay';
 
@@ -43,11 +44,13 @@ async function save(stay) {
     if (stay._id) {
         // savedStay = await storageService.put(STORAGE_KEY, stay)
         savedStay = await httpService.put(`stay/${stay._id}`, stay);
+        showSuccessMsg(`"${stay.name}" just got updated`);
     } else {
         // Later, owner is set by the backend
         stay.owner = userService.getLoggedinUser();
         // savedStay = await storageService.post(STORAGE_KEY, stay)
         savedStay = await httpService.post('stay', stay);
+        showSuccessMsg(`"${stay.name}" just got added `);
     }
     return savedStay;
 }
