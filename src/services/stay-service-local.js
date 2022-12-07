@@ -194,10 +194,7 @@ function btnsAryy() {
             key: 'Skiing',
             url: 'https://a0.muscache.com/pictures/c8bba3ed-34c0-464a-8e6e-27574d20e4d2.jpg',
         },
-        {
-            key: 'Countryside',
-            url: 'https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg',
-        },
+        
         {
             key: 'Private',
             url: 'https://a0.muscache.com/pictures/c8e2ed05-c666-47b6-99fc-4cb6edcde6b4.jpg',
@@ -253,6 +250,10 @@ function btnsAryy() {
         {
             key: 'Earth homes',
             url: 'https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg',
+        },
+        {
+            key: 'Countryside',
+            url: 'https://a0.muscache.com/pictures/6ad4bd95-f086-437d-97e3-14d12155ddfe.jpg',
         },
     ];
 }

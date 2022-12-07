@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <button @mousemove="hoverEffect" class="btn-reserve">Look for more places to stay</button>
+        <button @click="goToDashboard" @mousemove="hoverEffect" class="btn-reserve">Look for more places to stay</button>
     </div>
 </template>
 
@@ -77,7 +77,12 @@ export default {
         },
         hoverEffect(ev) {
             utilService.hoverEffect(ev)
-        }
+            
+        },
+        goToDashboard(){
+            console.log('hey')
+            this.$router.push("/dashboard");
+        },
     },
     computed: {
         formattedPerNightPrice() {

@@ -51,6 +51,7 @@
                 <div @click="openSingUp()" class="move-to-signup">Already signed up?</div>
             </form>
         </div>
+        
     </section>
 </template>
   
