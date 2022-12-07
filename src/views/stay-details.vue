@@ -174,8 +174,6 @@ export default {
         });
         console.log(this.stay);
     },
-    //638f902aee9a8846d53bd7b9
-    //638f902aee9a8846d53bd7b9
     mounted() {
         setTimeout(() => {
             const imgsContainer = this.$refs.imgsContainer;
