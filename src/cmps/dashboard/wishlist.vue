@@ -9,10 +9,16 @@ import wishStayList from './wish-stay-list.vue';
 
 export default {
     props: {
-        wishlist: Array,
+        // wishlist: Array,
         user: Object
     },
+    data(){
+        return {
+            wishlist
+        }
+    },
     created(){
+        this.wishlist = this.user.wishlist
         console.log(this.user);
     },
     components: {

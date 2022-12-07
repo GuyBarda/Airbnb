@@ -45,9 +45,9 @@ function getUsers() {
     return users;
 }
 
-async function getTripsByUserId(userId) {
-    let orders = await orderService.query();
-    return orders.filter((order) => order.buyer._id === userId);
+async function getTripsByUserId(buyerId) {
+    return await orderService.query({buyerId});
+    // return orders.filter((order) => order.buyer._id === userId);
 }
 
 function onUserUpdate(user) {

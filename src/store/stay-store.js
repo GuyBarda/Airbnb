@@ -93,7 +93,6 @@ export const stayStore = {
         async loadStays({ commit, state }) {
             try {
                 let stays = await stayService.query(state.filterBy);
-
                 commit({ type: 'setStays', stays });
                 return stays;
             } catch (err) {

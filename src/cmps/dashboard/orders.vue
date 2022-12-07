@@ -9,8 +9,10 @@
 import orderList from './order-list.vue';
 export default {
     props: {
-        orders: Array,
         user: Object
+    },
+    async created(){
+        // this.orders = await orderService.getOrdersByUserId(this.user._id);
     },
     components: {
         orderList

@@ -13,14 +13,11 @@ import stayList from "../cmps/stay-list.vue";
 export default {
   data() {
     return {
-      //   stays: null,
-      num: 1,
       currPath: "/",
     };
   },
 
   async created() {
-    this.changeData();
     try {
       await this.$store.dispatch("loadStays");
     } catch {
@@ -28,11 +25,6 @@ export default {
     }
   },
   methods: {
-    changeData() {
-      setInterval(() => {
-        this.num += this.num;
-      }, 1000);
-    },
   },
   computed: {
     stays() {
