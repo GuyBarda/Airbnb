@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <!-- <shareModal/> -->
+        
         <div ref="imgsContainer" class="imgs-container" id="photos">
             <img v-for="img in stay.imgUrls.slice(0, 5)" :src="img" :style="setBorderRadius">
         </div>
@@ -107,14 +107,15 @@
             <main class="review-container">
                 <review-preview v-for="(review, idx) in !showMore ? stay.reviews.slice(0, 6) : stay.reviews"
                     :review="review" :idx="idx" />
-            </main>
-            <button v-if="(stay.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
+                    <button v-if="(stay.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
                             ${!showMore ? `all
-                            ${stay.reviews.length} reviews` : 'less'}`
-            }}</button>
+                                ${stay.reviews.length} reviews` : 'less'}`
+                            }}</button>
+                            </main>
         </section>
         <section class="map">
             <h2>Where you'll be</h2>
+            <h1>{{  stay.loc.city }}, {{ stay.loc.country }}</h1>
             <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
         </section>
         <reservation-success @close="(isOrderComplete = false)" v-if="isOrderComplete" :order="order" :stay="stay" />
@@ -171,7 +172,7 @@ export default {
             })
             const observerForReserveBtn = new IntersectionObserver(entries => {
                 entries.forEach(entry => this.isReserveInHeader = !entry.isIntersecting)
-            })
+            },{threshold: 1})
             // console.log(elReserveBtn)
             observerForImgs.observe(imgsContainer)
             observerForReserveBtn.observe(elReserveBtn)

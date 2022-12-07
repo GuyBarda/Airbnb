@@ -6,8 +6,13 @@
         margin: 0;
         font-weight: 600;
         font-size: em(26px, 16px);
-        margin-bottom: 10px;
-        margin-top: 8px;
+        padding: 0px 0px 24px
+    }
+    h1{
+        margin: 0;
+        padding: 0px 0px 24px;
+        font-size: 16px;
+        font-weight: 500;
     }
     h3 {
         margin: 0;
@@ -402,7 +407,8 @@
         }
     }
     #reviews {
-        padding-block: 48px;
+        // padding-block: 48px;
+        padding-top: 48px;
         header {
             font-size: em(22px, 16px);
             margin-bottom: 32px;
@@ -456,10 +462,11 @@
             grid-template-columns: 1fr 1fr;
             row-gap: 40px;
             border-bottom: 1px solid #dddddd;
+            padding-bottom: 48px
         }
 
         .show-more {
-            margin-top: 40px;
+            justify-self: start;
             font-family: inherit;
             background-color: #fff;
             border-radius: 5px;
@@ -472,6 +479,7 @@
         }
     }
     .map {
-        padding-bottom: 40px;
+        // padding-bottom: 40px;
+        padding-block: 48px;
     }
 }
