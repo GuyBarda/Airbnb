@@ -1,6 +1,6 @@
 <template>
     <div class="trip-list">
-        <trip-preview @click="openToDisplay(trip)" v-for="trip in trips" :trip="trip" />
+        <trip-preview @click="openToDisplay(trip)" v-for="trip in trips" :trip="trip" :key="trip._id"/>
     </div>
 </template>
   
