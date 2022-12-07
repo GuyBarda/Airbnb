@@ -10,13 +10,16 @@
                     <p class="date">{{ date }}</p>
                 </main>
                 <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
-                <p class="rate"><star-icon />&nbsp; {{ rate }} <span class="review-length">({{this.stay.reviews.length}})</span></p>
+                <p class="rate"><star-icon />&nbsp; {{ rate }} <span class="review-length">({{ this.stay.reviews.length
+                }})</span></p>
             </section>
         </article>
     </router-link>
 </template>
 
 <script>
+import { WishlistMsg } from '../services/event-bus-service.js';
+
 import arrowLeft from '../assets/svg/arrow-left.vue'
 import arrowRight from '../assets/svg/arrow-right.vue'
 import starIcon from '../assets/svg/star.vue'
@@ -42,10 +45,10 @@ export default {
         this.isMark = idx > -1 ? true : false
     },
     methods: {
-        setWishlist(stayId) {
+        async setWishlist(stayId) {
             this.isMark = !this.isMark
-            console.log('styId', stayId)
-            this.$store.dispatch({ type: 'setWishlist', stayId })
+            await this.$store.dispatch({ type: 'setWishlist', stayId })
+            WishlistMsg(`${this.stay.name} Saved to Wishlist`);
         },
     },
     computed: {
@@ -56,8 +59,8 @@ export default {
         rate() {
             if (this.stay.reviews.length === 0) return 'New'
             let sum = this.stay.reviews.reduce((acc, { rate }) => {
-                 let rating = Object.values(rate)
-                 let calcRate = Number((rating.reduce((acc, num) => acc+=num,0) /6).toFixed(1) )
+                let rating = Object.values(rate)
+                let calcRate = Number((rating.reduce((acc, num) => acc += num, 0) / 6).toFixed(1))
                 acc += calcRate
                 return acc
             }, 0)

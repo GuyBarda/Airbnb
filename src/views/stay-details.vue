@@ -124,7 +124,9 @@
 <script>
 // import { stayService } from '../services/stay-service-local.js'
 import { stayService } from '../services/stay-service.js'
-import { orderService } from '../services/order-service-local.js'
+// import { orderService } from '../services/order-service-local.js'
+import { orderService } from '../services/order-service.js'
+
 import { userService } from '../services/user-service.js'
 
 import star from '../assets/svg/star.vue'
@@ -177,7 +179,8 @@ export default {
     },
     methods: {
         addOrder(order) {
-            if (!this.$store.getters.loggedinUser) return;
+            // if (!this.$store.getters.loggedinUser) return;
+            console.log('from details', order)
             this.order = order
             this.order.buyer = {
                 _id: this.$store.getters.loggedinUser._id,
@@ -187,9 +190,9 @@ export default {
                 _id: this.stay._id,
                 name: this.stay.name,
                 price: this.stay.price,
+                imgUrls: this.stay.imgUrls.slice(0, 3),
                 loc: {
                     address: this.stay.loc.address,
-                    position: { lat: this.stay.loc.lat,lng: this.stay.loc.lan},
                 }
             }
             this.order.hostId = this.stay.host._id

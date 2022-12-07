@@ -26,9 +26,9 @@ export default {
         },
         whichContainer() {
             const layout = this.$route.path.split("/")[1];
-            return layout === "stay" ? 'secondary-container': 'main-container';
+            return layout === "stay" || layout==="dashboard" ? 'secondary-container': 'main-container';
         },
     },
-};
+}
 </script>
   
