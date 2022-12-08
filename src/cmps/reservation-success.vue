@@ -23,7 +23,7 @@
                     <p>{{ stay.name }}</p>
                     <p>Host {{ order.houstId }}</p>
                     <div>
-                        <review-average :reviews="stay.reviews" />
+                        <review-average :reviews="stay.reviews.length" :rateMap="rateMap" />
                         <p>{{ formattedPerNightPrice }}</p>
                     </div>
                 </div>
@@ -40,7 +40,8 @@
                 </div>
             </div>
         </div>
-        <button @click="goToDashboard" @mousemove="hoverEffect" class="btn-reserve">Look for more places to stay</button>
+        <button @click="goToDashboard" @mousemove="hoverEffect" class="btn-reserve">Look for more places to
+            stay</button>
     </div>
 </template>
 
@@ -51,6 +52,7 @@ import reviewAverage from './review-average.vue';
 export default {
     props: {
         order: Object,
+        rateMap: Object,
         stay: Object
     },
     created() {
@@ -77,9 +79,9 @@ export default {
         },
         hoverEffect(ev) {
             utilService.hoverEffect(ev)
-            
+
         },
-        goToDashboard(){
+        goToDashboard() {
             this.$router.push("/dashboard");
         },
     },
