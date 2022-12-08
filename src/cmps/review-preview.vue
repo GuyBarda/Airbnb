@@ -5,8 +5,8 @@
             <p>{{ review.by.fullname }}</p>
             <span>{{ formattedDate }}</span>
         </div>
-        <p :class="`text${idx}`">{{ review.txt }}</p>
-        <button @click="showMore">Show more</button>
+        <p class="review-text" ref="reviewText" :class="`text${idx}`">{{ review.txt }}</p>
+        <button v-if="isMoreThan3" @click="showMore">Show more</button>
     </div>
 </template>
 
@@ -19,7 +19,12 @@ export default {
     data() {
         return {
             isShowMore: true,
+            isMoreThan3: false
         };
+    },
+    created() {
+        setTimeout(this.moreThanThreeLines, 1)
+        // this.moreThanThreeLines()
     },
     methods: {
         showMore(ev) {
@@ -30,6 +35,13 @@ export default {
                 : "-webkit-box";
             this.isShowMore = !this.isShowMore;
         },
+        moreThanThreeLines() {
+            const elP = this.$refs.reviewText
+            if (elP.clientHeight > 72) {
+                elP.classList.add('long-text')
+                this.isMoreThan3 = true
+            }
+        }
     },
     computed: {
         formattedDate() {
@@ -39,6 +51,10 @@ export default {
             });
             return date === "Invalid Date" ? "" : date;
         },
+        // elP() {
+        //     return this.$refs.reviewText
+        // }
+
     },
 };
 </script>

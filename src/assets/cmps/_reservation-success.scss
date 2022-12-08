@@ -26,7 +26,11 @@
     header {
         display: flex;
         justify-content: space-between;
-        margin-bottom: em(3px, 16px);
+        margin-bottom: 7px;
+
+        h2 {
+            padding: 0;
+        }
 
         button {
             border: 0;
