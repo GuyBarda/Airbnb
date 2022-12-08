@@ -19,7 +19,6 @@ export default {
     },
     created(){
         this.wishlist = this.user.wishlist
-        console.log(this.user);
     },
     components: {
         wishStayList

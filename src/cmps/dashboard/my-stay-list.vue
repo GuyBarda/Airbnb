@@ -14,15 +14,11 @@ export default {
     props: {
         stays: Array,
     },
-    created() {
-        console.log(this.stays);
-    },
     components: {
         myStayPreview,
     },
     methods: {
         deleteStay(stayId) {
-            console.log('hi');
             this.$emit("deleteStay", stayId);
         },
     },

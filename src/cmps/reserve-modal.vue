@@ -23,7 +23,7 @@
                 </div>
                 <div @click="showGuestPicker = !showGuestPicker" class="guests picker">
                     <label for="guests">GUESTS</label>
-                    <p>{{ guestsCount }}</p>
+                    <input type="text" :value="guestsCount" style="color: black;background-color: white" disabled/>
                     <guests-modal @setGuests="setGuests" :class="{ open: showGuestPicker }"></guests-modal>
                 </div>
             </div>
@@ -80,7 +80,6 @@ export default {
     },
     async created() {
         this.order = orderService.getEmptyOrder();
-        console.log(this.order)
         eventBus.on('reserveOrder', this.addOrder)
     },
     methods: {
@@ -101,7 +100,10 @@ export default {
             const date2 = new Date(this.order.endDate);
             const diffTime = Math.abs(date2 - date1);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            this.serviceFee = diffDays * this.stay.price * 0.17
+            this.cleaningFee = diffDays * this.stay.price * 0.10
             return diffDays;
+
         },
         format(num) {
             const formatter = new Intl.NumberFormat('en-US', {

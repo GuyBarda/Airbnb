@@ -1,20 +1,27 @@
-.order-container{
+.order-container {
     display: grid;
     grid-template-columns: 1fr;
     height: 100%;
-    gap: 20px;
-    .order-list{
+    // gap: 10px;
+    h2 {
         border-radius: 20px;
         box-shadow: 0 1px 20px 13px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
         padding: 10px;
+        background-color: white;
+    }
+    .order-list {
+        border-radius: 20px;
+        box-shadow: 0 1px 20px 13px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+        padding: 10px;
+        background-color: white;
         // display: grid;
         align-content: start;
         // gap: 10px;
         height: 57vh;
         overflow: auto;
-        .order-list-header{
+        .order-list-header {
             display: grid;
-            grid-template-columns: repeat(6,1fr);
+            grid-template-columns: repeat(6, 1fr);
             border-bottom: 1px solid #dddddd;
             font-size: bold;
         }

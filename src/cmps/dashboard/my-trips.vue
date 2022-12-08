@@ -38,7 +38,6 @@ export default {
     },
     async created() {
         this.trips = await userService.getTripsByUserId(this.user._id);
-        console.log(this.trips);
         if (!this.trips) return;
         this.currTrip = this.trips[0];
     },

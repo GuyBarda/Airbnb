@@ -44,8 +44,6 @@ export const userStore = {
     actions: {
         async setWishlist({ commit, state }, { stayId }) {
             try {
-                console.log('from store');
-                console.log(stayId);
                 let user = await userService.setWishlist(stayId);
                 commit({ type: 'setLoggedinUser', user });
                 return user;

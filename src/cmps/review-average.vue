@@ -22,7 +22,6 @@ export default {
         },
         averageRate() {
             const rateMap = this.rateMap;
-            console.log(rateMap);
             if(rateMap === 'new') return 0
             var sum = 0;
             for (const key in rateMap) {
