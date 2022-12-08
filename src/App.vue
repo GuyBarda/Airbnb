@@ -1,19 +1,20 @@
 <template>
-  <app-header :close="isOpen" />
-  <RouterView />
-  <section @click.stop.prevent="toggleSearch" class="dark-site" :class="{
-    open: isOpen,
-    search: isOpen,
-    must: isMustLogin,
-  }"></section>
-  <section @click="closeDarkForModals" class="dark-for-modals" :class="{
-    open: isOrderComplete || isFilterOpen || isMustLogin || isLogInOpen,
-    must: isMustLogin,
-  }"></section>
-  <user-msg />
-  <app-footer />
+    <app-header :close="isOpen" />
+    <RouterView />
+    <section @click.stop.prevent="toggleSearch" class="dark-site" :class="{
+        open: isOpen,
+        search: isOpen,
+        must: isMustLogin,
+    }"></section>
+    <section @click="closeDarkForModals" class="dark-for-modals" :class="{
+        open: isOrderComplete || isFilterOpen || isMustLogin || isLogInOpen,
+        must: isMustLogin,
+    }"></section>
+    <loginSignupModal v-if="isLogInOpen" @closeModal="close" />
+    <user-msg />
+    <app-footer />
 </template>
-
+  
 <script>
 import { RouterLink, RouterView } from "vue-router";
 import appHeader from "./cmps/app-header.vue";
@@ -23,46 +24,47 @@ import appFooter from "./cmps/app-footer.vue";
 import loginSignupModal from './cmps/login-signup-modal.vue'
 
 export default {
-  created() {
-    this.$store.dispatch({ type: 'loadUser' })
-    // showSuccessMsg('Admin has updated the store...')
-  },
-  methods: {
-    toggleSearch(ev) {
-      this.$store.commit({ type: "toggleSearch", bool: false })
-      eventBus.emit('closeDatePicker')
+
+    created() {
+        this.$store.dispatch({ type: 'loadUser' })
     },
-    closeDarkForModals() {
-      this.$store.commit({ type: "toggleSuccessModal", bool: false })
-      this.$store.commit({ type: "toggleFilterModal", bool: false })
-      this.$store.commit({ type: "toggleLogInModal", bool: false })
-    }
-  },
-  computed: {
-    isMustLogin() {
-      return this.$store.getters.isMustLogin
+    methods: {
+        toggleSearch() {
+            this.$store.commit({ type: "toggleSearch", bool: false })
+            eventBus.emit('closeDatePicker')
+        },
+        closeDarkForModals() {
+            this.$store.commit({ type: "toggleSuccessModal", bool: false })
+            this.$store.commit({ type: "toggleFilterModal", bool: false })
+            this.$store.commit({ type: "toggleLogInModal", bool: false })
+        },
     },
-    isFilterOpen() {
-      return this.$store.getters.isFilterOpen
+    computed: {
+        isMustLogin() {
+            return this.$store.getters.isMustLogin
+        },
+        isFilterOpen() {
+            return this.$store.getters.isFilterOpen
+        },
+        isLogInOpen() {
+            return this.$store.getters.isLogInOpen
+        },
+        isOpen() {
+            return this.$store.getters.open
+        },
+        isOrderComplete() {
+            return this.$store.state.isOrderComplete
+        },
+        emptyZone() {
+            return this.zone
+        }
     },
-    isLogInOpen() {
-      return this.$store.getters.isLogInOpen
+    components: {
+        appHeader,
+        userMsg,
+        appFooter,
+        loginSignupModal
     },
-    isOpen() {
-      return this.$store.getters.open
-    },
-    isOrderComplete() {
-      return this.$store.state.isOrderComplete
-    },
-    emptyZone() {
-      return this.zone
-    }
-  },
-  components: {
-    appHeader,
-    userMsg,
-    appFooter,
-    loginSignupModal
-  },
 }
 </script>
+  
