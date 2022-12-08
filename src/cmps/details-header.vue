@@ -13,7 +13,7 @@
                         <p>{{ formattedPrice }} <span>night</span></p>
                         <review-average :reviews="reviews" :rateMap="rateMap" />
                     </div>
-                    <button @mousemove="hoverEffect" class="btn-reserve">
+                    <button @mousemove="hoverEffect" @click="addOrder" class="btn-reserve">
                         Reserve
                     </button>
                 </div>
@@ -24,6 +24,7 @@
 
 <script>
 import reviewAverage from "../cmps/review-average.vue";
+import { eventBus } from "../services/event-bus-service";
 
 export default {
     props: {
@@ -40,6 +41,9 @@ export default {
             button.style.setProperty("--x", ev.clientX - x + "px");
             button.style.setProperty("--y", ev.clientY - y + "px");
         },
+        addOrder() {
+            eventBus.emit('reserveOrder')
+        }
     },
     computed: {
         formattedPrice() {
