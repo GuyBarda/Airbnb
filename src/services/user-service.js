@@ -34,6 +34,7 @@ export const userService = {
     setWishlist,
     getTripsByUserId,
     addToUserStays,
+    getStaysByUserId
 };
 
 window.userService = userService;
@@ -48,6 +49,10 @@ function getUsers() {
 async function getTripsByUserId(buyerId) {
     return await orderService.query({ buyerId });
     // return orders.filter((order) => order.buyer._id === userId);
+}
+async function getStaysByUserId(userId) {
+    const user =  await userService.getById(userId);
+    return user.stays
 }
 
 function onUserUpdate(user) {

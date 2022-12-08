@@ -31,7 +31,6 @@
 import { userService } from "../../services/user-service.js";
 
 import tripList from "./trip-list.vue";
-import detailsMap from "../details-map.vue";
 
 export default {
     props: {
@@ -40,7 +39,6 @@ export default {
     async created() {
         this.trips = await userService.getTripsByUserId(this.user._id);
         console.log(this.trips);
-        console.log(userService);
         if (!this.trips) return;
         this.currTrip = this.trips[0];
     },
@@ -52,7 +50,6 @@ export default {
     },
     components: {
         tripList,
-        detailsMap,
     },
     methods: {
         setTripDisplay(trip) {

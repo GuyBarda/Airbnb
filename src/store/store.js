@@ -14,15 +14,15 @@ const storeOptions = {
             isOrderComplete: false,
             isFilterOpen: false,
             isMustLogin: false,
-            isLogInOpen:false
+            isLogInOpen: false,
         };
     },
     mutations: {
-        toggleMustLogin(state,{bool}){
-            state.isMustLogin =bool
+        toggleMustLogin(state, { bool }) {
+            state.isMustLogin = bool;
         },
-        toggleFilterModal(state,{bool}){
-            state.isFilterOpen = bool
+        toggleFilterModal(state, { bool }) {
+            state.isFilterOpen = bool;
         },
         toggleSearch(state, { bool }) {
             state.isOpen = bool;
@@ -35,14 +35,14 @@ const storeOptions = {
         },
     },
     getters: {
-        isMustLogin({isMustLogin}){
-            return isMustLogin
+        isMustLogin({ isMustLogin }) {
+            return isMustLogin;
         },
-        isFilterOpen({isFilterOpen}){
-            return isFilterOpen
+        isFilterOpen({ isFilterOpen }) {
+            return isFilterOpen;
         },
-        isLogInOpen({isLogInOpen}){
-            return isLogInOpen
+        isLogInOpen({ isLogInOpen }) {
+            return isLogInOpen;
         },
         open({ isOpen }) {
             return isOpen;

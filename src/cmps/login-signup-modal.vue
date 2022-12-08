@@ -1,66 +1,63 @@
 <template>
     <section class="login-layout">
-        <div class="login-container">
+        <header class="login-title-cont">
+            <h2>Log in or sign up</h2>
+            <button @click="close" class="exit-login-btn">
+                <img src="../assets/svg/close.svg" alt="" />
+            </button>
+        </header>
 
-            <div class="login-title-cont">
-                <div class="login-title">Log in or sign up</div>
-                <div @click="close" class="exit-login-btn">
-                    <img src="../assets/svg/close.svg" alt="" />
-                </div>
+        <form @submit.prevent="login" class="login-main-content" v-if="isLogin">
+            <h3> Welcome to Airbxb </h3>
+
+            <div class="login-form-cont">
+                <input v-model="cred.username" autocomplete="username" placeholder="Username">
+                <div class="form-line"></div>
+                <input v-model="cred.password" placeholder="Password" type="password" autocomplete="password">
             </div>
 
-            <form @submit.prevent="login" class="login-main-content" v-if="isLogIn">
-                <div class="login-header"> Welcome to Airbxb </div>
+            <button @mousemove="hoverEffect" class="btn-container">Log in</button>
 
-                <div class="login-form-cont">
-                    <input v-model="cred.username" autocomplete="username" class="login-username"
-                        placeholder="Username">
-                    <div class="form-line"></div>
-                    <input v-model="cred.password" class="login-password" placeholder="Password" type="password"
-                        autocomplete="password">
-                </div>
+            <div class="login-or-line"></div>
+            <div class="login-line-text">or</div>
 
-                <button @mousemove="hoverEffect" class="btn-container">Log in</button>
+            <button @click="loginAsGuest" @mousemove="hoverEffect" class="btn-container">Continue as a guest</button>
 
-                <div class="login-or-line"></div>
-                <div class="login-line-text">or</div>
+            <div @click="openSignUp()" class="move-to-signup">Don't have an acount yet? sign up</div>
+        </form>
 
-                <button @mousemove="hoverEffect" class="btn-container">Continue as a guest</button>
+        <form @submit.prevent="signup" class="login-main-content" v-if="!isLogin">
+            <h3> Welcome to Airbxb </h3>
 
-                <div @click="openSingUp()" class="move-to-signup">Don't have an acount yet? sign up</div>
-            </form>
+            <div class="sign-up-form-cont">
+                <input v-model="signupCred.fullname" class="fullname-input" type="text" placeholder="Full name">
+                <div class="form-line"></div>
+                <input v-model="signupCred.username" class="username-input" placeholder="Username">
+                <div class="form-line"></div>
+                <input v-model="signupCred.password" class="password-input" autocomplete="password"
+                    placeholder="Password" type="password">
+            </div>
 
-            <form @submit.prevent="signup" class="login-main-content" v-if="!isLogIn">
-                <div class="login-header"> Welcome to Airbxb </div>
+            <button @mousemove="hoverEffect" class="btn-container">Sign up</button>
 
-                <div class="sign-up-form-cont">
-                    <input v-model="signupCred.fullname" class="fullname-input" type="text" placeholder="Full name">
-                    <div class="form-line"></div>
-                    <input v-model="signupCred.username" class="username-input" placeholder="Username">
-                    <div class="form-line"></div>
-                    <input v-model="signupCred.password" class="password-input" autocomplete="password"
-                        placeholder="Password" type="password">
-                </div>
+            <div class="login-or-line"></div>
+            <div class="login-line-text">or</div>
 
-                <button @mousemove="hoverEffect" class="btn-container">Sign up</button>
+            <button @mousemove="hoverEffect" class="btn-container">Continue as a guest</button>
 
-                <div class="login-or-line"></div>
-                <div class="login-line-text">or</div>
+            <div @click="openSignUp()" class="move-to-signup">Already signed up?</div>
 
-                <button @mousemove="hoverEffect" class="btn-container">Continue as a guest</button>
-                <div @click="openSingUp()" class="move-to-signup">Already signed up?</div>
-            </form>
-        </div>
-        
+        </form>
     </section>
 </template>
   
 <script>
+import { eventBus } from '../services/event-bus-service';
 export default {
     name: "login-page",
     data() {
         return {
-            isLogIn: true,
+            isLogin: true,
             cred: {
                 username: "",
                 password: "",
@@ -73,12 +70,8 @@ export default {
         };
     },
     methods: {
-        openSingUp() {
-            if (this.isLogIn) {
-                this.isLogIn = false;
-            } else {
-                this.isLogIn = true;
-            }
+        openSignUp() {
+            this.isLogin = !this.isLogin;
         },
         async login() {
             await this.$store.dispatch({ type: "login", cred: this.cred });
@@ -91,8 +84,14 @@ export default {
             this.$store.commit({ type: "toggleLogInModal", bool: false });
         },
         close() {
-            this.$emit("closeModal");
+            // this.$emit("closeModal");
             this.$store.commit({ type: "toggleLogInModal", bool: false });
+            eventBus.emit('closeLoginModal')
+        },
+        loginAsGuest() {
+            this.cred.username = 'guest'
+            this.cred.password = '1'
+            this.login()
         }
     },
     computed: {
