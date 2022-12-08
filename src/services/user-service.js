@@ -34,7 +34,8 @@ export const userService = {
     setWishlist,
     getTripsByUserId,
     addToUserStays,
-    getStaysByUserId
+    getStaysByUserId,
+    removeFromUserStays
 };
 
 window.userService = userService;
@@ -162,6 +163,14 @@ async function addToUserStays(miniStay) {
     const user = await getById(_id);
     user.stays.push(miniStay);
     return await update(user);
+}
+async function removeFromUserStays(stayId){
+    const { _id } = getLoggedinUser();
+    const user = await getById(_id);
+    const idx = user.stays.findIndex(stay => stay._id === stayId)
+    user.stays.splice(idx,1)
+    return await update(user);
+
 }
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})

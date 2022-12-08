@@ -62,6 +62,15 @@ export const userStore = {
                 console.log("cant add to user's stays");
             }
         },
+        async removeFromUserStays({commit}, {stayId}){
+            try{
+                let user = await userService.removeFromUserStays(stayId);
+                commit({ type: 'setLoggedinUser', user });
+                return user;
+            }catch{
+                console.log("cant remove stay from user");
+            }
+        },
         async login({ commit }, { cred }) {
             try {
                 const user = await userService.login(cred);
