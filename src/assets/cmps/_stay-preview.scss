@@ -1,13 +1,8 @@
 .stay-preview {
     position: relative;
     font-family: CerealReg;
-    // padding-bottom: 10px;
     width: 100%;
-    // height: max-content;
-    // @media (max-width: 400px) {
-    //     max-width: 320px;
-    // }
-
+    
     img {
         width: 100%;
         aspect-ratio: 1.055081967213115/1;
@@ -31,7 +26,6 @@
         }
 
         .rate {
-            // position: absolute;
             right: 0;
             top: 2px;
             display: flex;
@@ -82,3 +76,4 @@
         }
     }
 }
+
