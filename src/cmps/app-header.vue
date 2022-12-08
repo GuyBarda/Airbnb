@@ -78,7 +78,9 @@ export default {
         setDest(val) {
             this.currDest = val;
         },
-        openZone({ ev, key }) {
+        openZone( ev, key ) {
+            console.log('key', key)
+            console.log('ev', ev)
             this.currZone = key;
             if (ev.target.innerText === "Any week") this.$emit("clickDate");
             this.$store.commit({ type: "toggleSearch", bool: true });
