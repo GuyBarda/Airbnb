@@ -1,8 +1,8 @@
 <template>
     <section v-if="user && stays" class="my-stay-container">
-        <my-stays-list ::trips="trips" />
+        <my-stays-list :stays="stays" />
     </section>
-    <section class="my-stay-else">
+    <section v-else class="my-stay-else">
         <main class="stay-wrapper">
             <h3>You have 0 stays</h3>
             <button @click="navigate" @mousemove="hoverEffect">
@@ -39,7 +39,10 @@ export default {
         },
         navigate(){
             this.$router.push('/stay/edit')
-        }
+        },
+    },
+    computed:{
+        
     },
     components: {
         myStaysList,

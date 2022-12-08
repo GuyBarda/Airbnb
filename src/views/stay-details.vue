@@ -98,7 +98,7 @@
             <reserve-modal @addOrder="addOrder" :stay="stay" :reviews="stay.reviews.length" :rateMap="rate" />
         </div>
 
-        <section id="reviews">
+        <section v-if="stay.reviews.length" id="reviews">
             <header>
                 <review-average :reviews="stay.reviews.length" :rateMap="rate" />
             </header>
@@ -136,6 +136,10 @@
                                     ${stay.reviews.length} reviews` : 'less'}`
                 }}</button>
             </main>
+        </section>
+        <section v-else class="reviews-else">
+            <!-- <h4>No reviews yet...</h4> -->
+            <h4>This stay have 0 reviews</h4>
         </section>
         <section class="map">
             <h2>Where you'll be</h2>

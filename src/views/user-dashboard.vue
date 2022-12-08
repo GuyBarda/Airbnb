@@ -78,26 +78,12 @@ export default {
         },
         hoverEffect(ev) {
             const button = ev.target;
-            console.log(button);
             const { x, y } = button.getBoundingClientRect();
-            console.log(x, y);
             button.style.setProperty("--x", ev.clientX - x + "px");
             button.style.setProperty("--y", ev.clientY - y + "px");
         },
     },
     computed: {
-        userToShow() {
-            return this.user;
-        },
-        ordersToShow() {
-            return this.orders;
-        },
-        tripsToShow() {
-            return this.trips;
-        },
-        wishListToShow() {
-            return this.wishlist;
-        },
         typeToShow() {
             return this.type;
         },
