@@ -20,18 +20,19 @@
                     <p class="stay-name">{{ stay.name }}</p>
                     <p class="date">{{ date }}</p>
                 </main>
-                <p class="price">
-                    <span class="price-label">{{ formattedPrice }}</span> night
-                </p>
-                <!-- <p class="rate"><star-icon />&nbsp; {{ rate }} <span class="review-length">({{ this.stay.reviews.length
-                }})</span></p> -->
+                <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
+               
             </section>
         </article>
     </router-link>
+   
+
+
 </template>
 
 <script>
-import { WishlistMsg } from "../services/event-bus-service.js";
+import { WishlistMsg } from '../services/event-bus-service.js';
+// import skeleton from './skeleton.vue';
 
 import arrowLeft from "../assets/svg/arrow-left.vue";
 import arrowRight from "../assets/svg/arrow-right.vue";

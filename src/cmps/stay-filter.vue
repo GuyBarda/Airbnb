@@ -9,7 +9,7 @@
             <button @click="toggleFilterModal(true)" class="btn-filters">
                 <div>
                     <img src="../assets/svg/filter-btn.svg" alt="" />
-                    <span>Filters</span>
+                    <p>Filters</p>
                 </div>
             </button>
         </section>
