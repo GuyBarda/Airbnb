@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         openZone(ev, key) {
-            this.$emit('toggleSearch', { ev, key })
+            this.$emit('toggleSearch',  ev, key )
         }
     },
     computed: {
