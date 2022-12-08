@@ -31,10 +31,10 @@
 
     </header>
 
-    <!-- <div class="alert alert-error">
-        <i class="fa fa-times-circle"></i>
+    <div class="alert alert-Wishlist">
+        <i class="fa fa-duotone fa-heart"></i>
         user are updet
-    </div> -->
+    </div>
 
 
 
