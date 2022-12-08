@@ -11,7 +11,8 @@
                         <span>Share</span>
                     </span>
                     <span @click="addToWishlist" class="save-stay">
-                        <img src="../assets/svg/love.svg" alt="" />
+                        <!-- <img src="../assets/svg/love.svg" alt="" /> -->
+                        <heart-icon @click.prevent="setWishlist" :class="{ mark: isMark }" class="heart-btn" />
                         <span style="outline: 0px">Save</span>
                     </span>
                 </div>
@@ -152,14 +153,12 @@
 </template>
 
 <script>
-// import { stayService } from '../services/stay-service-local.js'
 import { stayService } from "../services/stay-service.js";
-// import { orderService } from '../services/order-service-local.js'
 import { orderService } from "../services/order-service.js";
-
 import { userService } from "../services/user-service.js";
+import { WishlistMsg } from '../services/event-bus-service.js';
 
-import star from "../assets/svg/star.vue";
+import heartIcon from '../assets/svg/heart.vue'
 
 import reviewPreview from "../cmps/review-preview.vue";
 import reservationSuccess from "../cmps/reservation-success.vue";
@@ -167,7 +166,6 @@ import reviewAverage from "../cmps/review-average.vue";
 import reserveModal from "../cmps/reserve-modal.vue";
 import detailsHeader from "../cmps/details-header.vue";
 import detailsMap from "../cmps/details-map.vue";
-// import shareModal from '../cmps/share-modal.vue'
 
 export default {
     data() {
@@ -180,6 +178,7 @@ export default {
             showMore: false,
             sticky: false,
             isReserveInHeader: false,
+            isMark: false,
         };
     },
     async created() {
@@ -251,7 +250,10 @@ export default {
             return formatter.format(num);
         },
         async addToWishlist() {
-            await userService.setWishlist(this.stay._id);
+            this.isMark = !this.isMark
+            await this.$store.dispatch({ type: 'setWishlist', stayId: this.stay._id })
+            WishlistMsg(`${this.stay.name} Saved to Wishlist`);
+
         },
     },
     computed: {
@@ -306,14 +308,13 @@ export default {
         },
     },
     components: {
-        star,
         reviewPreview,
         reservationSuccess,
         reviewAverage,
         reserveModal,
         detailsHeader,
         detailsMap,
-        // shareModal
+        heartIcon
     },
 };
 </script>
