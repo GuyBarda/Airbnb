@@ -1,10 +1,17 @@
 .user-dashboard {
     font-family: CerealReg;
     margin-top: 10px;
-    display: grid;
-    grid-template-rows: 50px 1fr;
-    gap: 20px;
-    // height: 80vh;
+
+    .dashboard-container {
+        grid-template-rows: 50px 1fr;
+        gap: 20px;
+        display: grid;
+        background-color: #eff3f5;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        height: 100%;
+    }
 
     .dashboard-nav {
         display: grid;
@@ -21,7 +28,7 @@
 
         .btn-nav {
             padding: 10px;
-            // flex: 1;
+            background-color: white;
             border-radius: 10px;
             box-shadow: 0 1px 20px 3px rgb(0 0 0 / 8%), 0px 0px 0px rgb(0 0 0 / 5%);
             display: grid;

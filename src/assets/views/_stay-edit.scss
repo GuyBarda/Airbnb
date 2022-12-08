@@ -3,7 +3,7 @@
     grid-template-columns: 1fr;
     margin-top: 40px;
     font-family: CerealReg;
-
+    margin-bottom: 10px;
     input {
         border: 0;
         outline: 0;
@@ -90,6 +90,7 @@
                 div {
                     display: flex;
                     font-size: 1.3em;
+                    gap: 50px;
                 }
             }
 
@@ -160,7 +161,7 @@
                     }
                     .stay-amenities {
                         display: grid;
-                        grid-template-columns: auto auto;
+                        grid-template-columns: auto auto auto;
 
                         p {
                             margin: 0;
@@ -177,9 +178,15 @@
             display: flex;
             justify-content: end;
             .btn-reserve {
-                @include reserve-btn();
+                // @include reserve-btn();
+                background-color: #cce8f5;
+                border-radius: 5px;
+                border: 1px solid #dddddd;
+                padding: 5px 40px;
                 width: max-content;
-                padding-inline: 30px;
+                font-family: CerealReg;
+                font-weight: bold;
+                font-size: em(15px,16px);
             }
         }
     }

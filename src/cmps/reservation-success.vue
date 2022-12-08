@@ -80,7 +80,6 @@ export default {
             
         },
         goToDashboard(){
-            console.log('hey')
             this.$router.push("/dashboard");
         },
     },

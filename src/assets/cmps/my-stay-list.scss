@@ -43,7 +43,7 @@
             }
             .my-stay-options{
                 display: grid;
-                grid-template-columns: repeat(2,1fr);
+                grid-template-columns: 5fr 1fr;
                 gap: 10px;
 
                 >*{
@@ -54,8 +54,18 @@
                 .update-btn{
                     background-color: lightblue;
                 }
-                .delete-btn{
-                    background-color: red;
+                .elipsis-btn{
+                    background-color: lightgray;
+                    position: relative;
+                    .delete-btn{
+                        position: absolute;
+                        background-color: rgb(249, 119, 119);
+                        top: -50%;
+                        left: 100%;
+                        border-radius: 5px;
+                        padding: 5px 40px;
+
+                    }
                 }
             }
         }
@@ -66,9 +76,10 @@
 
 .my-stay-else{
     display: grid;
-    height: 65vh;
+    height: 70vh;
     place-content: center;
     border-radius: 20px;
+    background-color: white;
     box-shadow: 0 1px 20px 13px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
     padding: 10px;
     justify-content: center;

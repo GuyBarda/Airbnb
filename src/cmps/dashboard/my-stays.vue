@@ -41,7 +41,6 @@ export default {
         },
         async deleteStay(stayId) {
             try {
-                console.log("hi");
                 await this.$store.dispatch({ type: "removeStay", stayId });
                 await this.$store.dispatch({
                     type: "removeFromUserStays",
@@ -49,7 +48,6 @@ export default {
                 });
                 this.stays = await userService.getStaysByUserId(this.user._id);
 
-                console.log("XXXX", this.stays);
             } catch {
                 console.log("cant remove stay");
             }

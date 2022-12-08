@@ -189,7 +189,6 @@ export default {
             type: "setLoggedinUser",
             user: userService.getLoggedinUser(),
         });
-        console.log(this.stay);
     },
     mounted() {
         setTimeout(() => {
@@ -211,15 +210,12 @@ export default {
                     );
                 }, { threshold: 1 }
             );
-            console.log(elReserveBtn)
             observerForImgs.observe(imgsContainer);
             observerForReserveBtn.observe(elReserveBtn);
         }, 1000);
     },
     methods: {
         addOrder(order) {
-            // if (!this.$store.getters.loggedinUser) return;
-            console.log("from details", order);
             this.order = order;
             this.order.buyer = {
                 _id: this.$store.getters.loggedinUser._id,
@@ -254,9 +250,7 @@ export default {
             return formatter.format(num);
         },
         async addToWishlist() {
-            console.log("hello");
             await userService.setWishlist(this.stay._id);
-            console.log("added");
         },
     },
     computed: {
@@ -270,7 +264,6 @@ export default {
                 }, 0);
                 rateMap[key] = sum / this.stay.reviews.length;
             });
-            console.log(rateMap)
             return rateMap;
         },
         totalReviews() {

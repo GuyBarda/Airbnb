@@ -2,13 +2,7 @@
     <section class="secondary-container">
         <section v-if="this.stayToEdit" class="stay-edit">
             <section class="edit-section">
-                <!-- <section class="stay-data">
-                    <div>Total Rate <span>0</span></div>
-                    <div>Monthly Earning <span>0</span></div>
-                    <div>Orders <span>0</span></div>
-                    <div>Active Guests <span>0</span></div> 
-                </section> -->
-                <section class="stay-info">
+                <form @submit.prevent="saveStay" class="stay-info">
                     <section class="stay-name">
                         <h2>
                             <input
@@ -19,24 +13,27 @@
                         </h2>
                         <div>
                             <label>
-                                Country
+                                <!-- Country -->
                                 <input
                                     type="text"
                                     v-model="stayToEdit.loc.country"
+                                    placeholder="Enter Country"
                                 />
                             </label>
                             <label>
-                                City
+                                <!-- City -->
                                 <input
                                     type="text"
                                     v-model="stayToEdit.loc.city"
+                                    placeholder="Enter City"
                                 />
                             </label>
                             <label>
-                                Address
+                                <!-- Address -->
                                 <input
                                     type="text"
                                     v-model="stayToEdit.loc.address"
+                                    placeholder="Enter address"
                                 />
                             </label>
                         </div>
@@ -141,15 +138,14 @@
                         </div>
                         <section class="confirm-area">
                             <button
-                                @mousemove="hoverEffect"
-                                @click="saveStay"
+                                
                                 class="btn-reserve"
                             >
                                 Save
                             </button>
                         </section>
                     </section>
-                </section>
+                </form>
             </section>
         </section>
     </section>
@@ -190,7 +186,6 @@ export default {
             ? await stayService.getById(id)
             : stayService.getEmptyStay();
         this.stayToEdit.host = this.user;
-        console.log("created", this.stayToEdit);
     },
     methods: {
         close() {
@@ -198,10 +193,7 @@ export default {
             this.$store.commit({ type: "toggleMustLogin", bool: false });
         },
         setImg({ url, idx }) {
-            console.log("idx", idx);
             this.stayToEdit.imgUrls[idx] = url;
-            // this.stayToEdit.imgUrls.push(url)
-            console.log("this.stayToEdit", this.stayToEdit);
         },
         checkAmenities(amenity) {
             if (this.stayToEdit.amenities.includes(amenity)) {
@@ -212,7 +204,6 @@ export default {
             } else {
                 this.stayToEdit.amenities.push(amenity);
             }
-            console.log("this.stay.amenities", this.stayToEdit.amenities);
         },
         hoverEffect(ev) {
             utilService.hoverEffect(ev);
@@ -227,12 +218,12 @@ export default {
                 name: stay.name,
                 type: stay.type,
                 loc: stay.loc,
-                imgUrls: stay.imgUrls.slice(0,3)
+                imgUrls: stay.imgUrls.slice(0, 3),
             };
             if (!this.stayToEdit._id) {
                 await this.$store.dispatch({
                     type: "addToUserStays",
-                    miniStay
+                    miniStay,
                 });
             }
             setTimeout(() => this.$router.push("/stay/" + stay._id), 1500);

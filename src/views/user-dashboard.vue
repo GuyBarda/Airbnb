@@ -1,5 +1,6 @@
 <template>
     <div class="user-dashboard secondary-container">
+    <section class="dashboard-container">
         <nav class="dashboard-nav">
             <input
                 type="radio"
@@ -45,6 +46,7 @@
         <my-trips v-if="typeToShow === 'trips'" :user="getLoggedinUser" />
         <wishlist v-if="typeToShow === 'wishlist'" :user="getLoggedinUser" />
         <my-stays v-if="typeToShow === 'stays'" :user="getLoggedinUser" />
+    </section>
     </div>
 </template>
 
