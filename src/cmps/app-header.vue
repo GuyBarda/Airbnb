@@ -24,9 +24,9 @@
                         src="https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png" />
                     <img v-else class="host-image" :src="user.imgUrl" />
                 </button>
+            <userMenu v-click-outside="closeMenu" v-if="isMenu" @closeMenu="closeMenu" />
             </div>
 
-            <userMenu v-if="isMenu" @closeMenu="closeMenu" />
         </div>
 
     </header>

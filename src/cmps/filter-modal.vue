@@ -297,7 +297,7 @@ export default {
     computed: {},
     methods: {
         filterStays() {
-            this.$router.push({ path: "/explore", query: this.filterBy });
+            this.$router.push({ path: "/explore", query: {...this.filterBy, amenities: this.filterBy.amenities.join(',')} });
             // this.$store.commit({ type: "setFilter", filterBy: { ...this.filterBy } });
             // this.$store.dispatch({ type: "loadStays" });
         },
