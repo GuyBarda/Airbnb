@@ -1,22 +1,21 @@
 <template>
     <section class="trip-preview">
-        <h4>{{trip.stay.name}}</h4>
-        <p><span>{{trip.startDate}}</span> {{trip.status}} </p>
+        <h4>{{ trip.stay.name }}</h4>
+        <p>
+            <span>{{ formattedStartDate }}</span> {{ trip.status }}
+        </p>
     </section>
 </template>
-  
+
 <script>
 export default {
     props: {
         trip: Object,
     },
-    created(){
-        // this.trip.startDate
-        console.log(this.trip.startDate);
+    created() {
     },
     data() {
         return {
-            // status: "pending",
         };
     },
     computed: {
@@ -31,7 +30,14 @@ export default {
             });
             return formatter.format(this.trip.totalPrice);
         },
+        formattedStartDate() {
+            let date = new Date(this.trip.startDate).toLocaleDateString(
+                "en-us",
+                { month: "short", day: "numeric" }
+            );
+            if (date === "Invalid Date") return "";
+            return date;
+        },
     },
 };
 </script>
-  

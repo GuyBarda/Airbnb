@@ -1,8 +1,8 @@
 <template>
-    <section v-if="user && stays" class="my-stay-container">
-        <my-stays-list ::trips="trips" />
+    <section v-if="user && stays && stays.length" class="my-stay-container">
+        <my-stays-list @deleteStay="deleteStay" :stays="stays" />
     </section>
-    <section class="my-stay-else">
+    <section v-else class="my-stay-else">
         <main class="stay-wrapper">
             <h3>You have 0 stays</h3>
             <button @click="navigate" @mousemove="hoverEffect">
@@ -13,34 +13,49 @@
 </template>
 
 <script>
-import {userService} from '../../services/user-service.js'
+import { userService } from "../../services/user-service.js";
 import myStaysList from "./my-stay-list.vue";
 
 export default {
-    props:{
+    props: {
         user: Object,
     },
     async created() {
         this.stays = await userService.getStaysByUserId(this.user._id);
-        console.log(this.stays);
-        if (!this.stays) return
+        if (!this.stays) return;
     },
-    data(){
+    data() {
         return {
-            stays:null,
-        }
+            stays: null,
+        };
     },
-    methods:{
+    methods: {
         hoverEffect(ev) {
             const button = ev.target;
             const { x, y } = button.getBoundingClientRect();
-            button.style.setProperty('--x', ev.clientX - x + 'px');
-            button.style.setProperty('--y', ev.clientY - y + 'px');
+            button.style.setProperty("--x", ev.clientX - x + "px");
+            button.style.setProperty("--y", ev.clientY - y + "px");
         },
-        navigate(){
-            this.$router.push('/stay/edit')
-        }
+        navigate() {
+            this.$router.push("/stay/edit");
+        },
+        async deleteStay(stayId) {
+            try {
+                console.log("hi");
+                await this.$store.dispatch({ type: "removeStay", stayId });
+                await this.$store.dispatch({
+                    type: "removeFromUserStays",
+                    stayId,
+                });
+                this.stays = await userService.getStaysByUserId(this.user._id);
+
+                console.log("XXXX", this.stays);
+            } catch {
+                console.log("cant remove stay");
+            }
+        },
     },
+    computed: {},
     components: {
         myStaysList,
     },

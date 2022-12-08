@@ -41,19 +41,10 @@
                 >add a stay</router-link
             >
         </nav>
-        <orders
-            v-if="typeToShow === 'orders'"
-            :user="getLoggedinUser"
-        />
-        <my-trips
-            v-if="typeToShow === 'trips'"
-            :user="getLoggedinUser"
-        />
-        <wishlist
-            v-if="typeToShow === 'wishlist'"
-            :user="getLoggedinUser"
-        />
-        <my-stays v-if="typeToShow === 'stays'" :user="getLoggedinUser"/>
+        <orders v-if="typeToShow === 'orders'" :user="getLoggedinUser" />
+        <my-trips v-if="typeToShow === 'trips'" :user="getLoggedinUser" />
+        <wishlist v-if="typeToShow === 'wishlist'" :user="getLoggedinUser" />
+        <my-stays v-if="typeToShow === 'stays'" :user="getLoggedinUser" />
     </div>
 </template>
 
@@ -64,7 +55,7 @@
 import orders from "../cmps/dashboard/orders.vue";
 import myTrips from "../cmps/dashboard/my-trips.vue";
 import wishlist from "../cmps/dashboard/wishlist.vue";
-import myStays from '../cmps/dashboard/my-stays.vue';
+import myStays from "../cmps/dashboard/my-stays.vue";
 
 export default {
     data() {
@@ -78,38 +69,24 @@ export default {
         },
         hoverEffect(ev) {
             const button = ev.target;
-            console.log(button);
             const { x, y } = button.getBoundingClientRect();
-            console.log(x, y);
             button.style.setProperty("--x", ev.clientX - x + "px");
             button.style.setProperty("--y", ev.clientY - y + "px");
         },
     },
     computed: {
-        userToShow() {
-            return this.user;
-        },
-        ordersToShow() {
-            return this.orders;
-        },
-        tripsToShow() {
-            return this.trips;
-        },
-        wishListToShow() {
-            return this.wishlist;
-        },
         typeToShow() {
             return this.type;
         },
-        getLoggedinUser(){
-            return this.$store.getters.loggedinUser
-        }
+        getLoggedinUser() {
+            return this.$store.getters.loggedinUser;
+        },
     },
     components: {
         orders,
         myTrips,
         wishlist,
-        myStays
+        myStays,
     },
 };
 </script>
