@@ -109,7 +109,6 @@ function _filter(filterBy) {
         destination,
         guests,
     } = filterBy;
-    console.log(filterBy);
     const regex = new RegExp(name, 'i');
     let filteredStays = gStays.filter((stay) => {
         return regex.test(stay.name);

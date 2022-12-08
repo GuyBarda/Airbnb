@@ -11,7 +11,8 @@
                         <span>Share</span>
                     </span>
                     <span @click="addToWishlist" class="save-stay">
-                        <img src="../assets/svg/love.svg" alt="" />
+                        <!-- <img src="../assets/svg/love.svg" alt="" /> -->
+                        <heart-icon @click.prevent="setWishlist" :class="{ mark: isMark }" class="heart-btn" />
                         <span style="outline: 0px">Save</span>
                     </span>
                 </div>
@@ -33,7 +34,7 @@
                     <div style="margin-top: 3px;">
                         <span>{{ stay.capacity }} guests </span>
                         <span class="gray"> • </span>
-                        <span>{{ stay.bathrooms }} Bathrooms </span>
+                        <span>{{ stay.bathrooms }} bathrooms </span>
                         <span class="gray"> • </span>
                         <span>{{ stay.bedrooms }} bedrooms </span>
                     </div>
@@ -131,11 +132,11 @@
             <main class="review-container">
                 <review-preview v-for="(review, idx) in !showMore ? stay.reviews.slice(0, 6) : stay.reviews"
                     :review="review" :idx="idx" />
-                <button v-if="(stay.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
-                                    ${!showMore ? `all
-                                    ${stay.reviews.length} reviews` : 'less'}`
-                }}</button>
             </main>
+            <button v-if="(stay.reviews.length >= 6)" @click="(showMore = !showMore)" class="show-more">{{ `Show
+                            ${!showMore ? `all
+                            ${stay.reviews.length} reviews` : 'less'}`
+            }}</button>
         </section>
         <section v-else class="reviews-else">
             <!-- <h4>No reviews yet...</h4> -->
@@ -146,19 +147,18 @@
             <h1>{{ stay.loc.city }}, {{ stay.loc.country }}</h1>
             <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
         </section>
-        <reservation-success @close="isOrderComplete = false" v-if="isOrderComplete" :order="order" :stay="stay" />
+        <reservation-success @close="isOrderComplete = false" v-if="isOrderComplete" :order="order" :stay="stay"
+            :rateMap="rate" />
     </div>
 </template>
 
 <script>
-// import { stayService } from '../services/stay-service-local.js'
 import { stayService } from "../services/stay-service.js";
-// import { orderService } from '../services/order-service-local.js'
 import { orderService } from "../services/order-service.js";
-
 import { userService } from "../services/user-service.js";
+import { WishlistMsg } from '../services/event-bus-service.js';
 
-import star from "../assets/svg/star.vue";
+import heartIcon from '../assets/svg/heart.vue'
 
 import reviewPreview from "../cmps/review-preview.vue";
 import reservationSuccess from "../cmps/reservation-success.vue";
@@ -166,7 +166,6 @@ import reviewAverage from "../cmps/review-average.vue";
 import reserveModal from "../cmps/reserve-modal.vue";
 import detailsHeader from "../cmps/details-header.vue";
 import detailsMap from "../cmps/details-map.vue";
-// import shareModal from '../cmps/share-modal.vue'
 
 export default {
     data() {
@@ -179,6 +178,7 @@ export default {
             showMore: false,
             sticky: false,
             isReserveInHeader: false,
+            isMark: false,
         };
     },
     async created() {
@@ -189,7 +189,6 @@ export default {
             type: "setLoggedinUser",
             user: userService.getLoggedinUser(),
         });
-        console.log(this.stay);
     },
     mounted() {
         setTimeout(() => {
@@ -211,15 +210,12 @@ export default {
                     );
                 }, { threshold: 1 }
             );
-            console.log(elReserveBtn)
             observerForImgs.observe(imgsContainer);
             observerForReserveBtn.observe(elReserveBtn);
         }, 1000);
     },
     methods: {
         addOrder(order) {
-            // if (!this.$store.getters.loggedinUser) return;
-            console.log("from details", order);
             this.order = order;
             this.order.buyer = {
                 _id: this.$store.getters.loggedinUser._id,
@@ -254,9 +250,10 @@ export default {
             return formatter.format(num);
         },
         async addToWishlist() {
-            console.log("hello");
-            await userService.setWishlist(this.stay._id);
-            console.log("added");
+            this.isMark = !this.isMark
+            await this.$store.dispatch({ type: 'setWishlist', stayId: this.stay._id })
+            WishlistMsg(`${this.stay.name} Saved to Wishlist`);
+
         },
     },
     computed: {
@@ -270,7 +267,6 @@ export default {
                 }, 0);
                 rateMap[key] = sum / this.stay.reviews.length;
             });
-            console.log(rateMap)
             return rateMap;
         },
         totalReviews() {
@@ -312,14 +308,13 @@ export default {
         },
     },
     components: {
-        star,
         reviewPreview,
         reservationSuccess,
         reviewAverage,
         reserveModal,
         detailsHeader,
         detailsMap,
-        // shareModal
+        heartIcon
     },
 };
 </script>

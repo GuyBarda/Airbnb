@@ -10,7 +10,9 @@
         <h4>{{stay.name}}</h4>
         <section class="my-stay-options">
             <button class="update-btn" @click.prevent="navigateToUpdate()">Update</button>
-            <button class="delete-btn" @click.prevent="deleteStay()">Delete</button>
+            <button class="elipsis-btn" @click.prevent="openSubMenu" ><elipsisIcon />
+                <div v-if="subMenu" @click.stop.prevent="deleteStay()" class="delete-btn">Delete</div>
+            </button>
         </section>
     </section>
 </router-link>
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import elipsisIcon from '../../assets/svg/ellipsis.vue'
     export default {
         props:{
             stay: Object
@@ -26,9 +29,16 @@
         },
         data(){
             return{
+                subMenu: false,
             }
         },
+        components:{
+            elipsisIcon
+        },
         methods: {
+            openSubMenu(){
+                this.subMenu = !this.subMenu
+            },
             navigateToUpdate(){
                 this.$router.push('/stay/edit/' + this.stay._id)
             },

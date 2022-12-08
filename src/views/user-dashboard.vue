@@ -1,50 +1,55 @@
 <template>
     <div class="user-dashboard secondary-container">
-        <nav class="dashboard-nav">
-            <input
-                type="radio"
-                id="orders"
-                name="btn-nav"
-                value="orders"
-                v-model="type"
-            />
-            <label for="orders" class="btn-nav">orders</label>
+        <section class="dashboard-container">
+            <nav class="dashboard-nav">
+                <input
+                    type="radio"
+                    id="orders"
+                    name="btn-nav"
+                    value="orders"
+                    v-model="type"
+                />
+                <label for="orders" class="btn-nav">orders</label>
 
-            <input
-                type="radio"
-                id="trips"
-                name="btn-nav"
-                value="trips"
-                v-model="type"
-            />
-            <label for="trips" class="btn-nav">my trips</label>
+                <input
+                    type="radio"
+                    id="trips"
+                    name="btn-nav"
+                    value="trips"
+                    v-model="type"
+                />
+                <label for="trips" class="btn-nav">my trips</label>
 
-            <input
-                type="radio"
-                id="stays"
-                name="btn-nav"
-                value="stays"
-                v-model="type"
-            />
-            <label for="stays" class="btn-nav">my stays</label>
+                <input
+                    type="radio"
+                    id="stays"
+                    name="btn-nav"
+                    value="stays"
+                    v-model="type"
+                />
+                <label for="stays" class="btn-nav">my stays</label>
 
-            <input
-                type="radio"
-                id="wishlist"
-                name="btn-nav"
-                value="wishlist"
-                v-model="type"
-            />
-            <label for="wishlist" class="btn-nav">wishlist</label>
+                <input
+                    type="radio"
+                    id="wishlist"
+                    name="btn-nav"
+                    value="wishlist"
+                    v-model="type"
+                />
+                <label for="wishlist" class="btn-nav">wishlist</label>
 
-            <router-link class="btn-nav" to="/stay/edit/"
-                >add a stay</router-link
-            >
-        </nav>
-        <orders v-if="typeToShow === 'orders'" :user="getLoggedinUser" />
-        <my-trips v-if="typeToShow === 'trips'" :user="getLoggedinUser" />
-        <wishlist v-if="typeToShow === 'wishlist'" :user="getLoggedinUser" />
-        <my-stays v-if="typeToShow === 'stays'" :user="getLoggedinUser" />
+                <router-link class="btn-nav" to="/stay/edit/"
+                    >add a stay</router-link
+                >
+            </nav>
+            <orders v-if="typeToShow === 'orders'" :user="getLoggedinUser" />
+            <my-trips v-if="typeToShow === 'trips'" :user="getLoggedinUser" />
+            <wishlist
+                v-if="typeToShow === 'wishlist'"
+                :user="getLoggedinUser"
+            />
+            <my-stays v-if="typeToShow === 'stays'" :user="getLoggedinUser" />
+        </section>
     </div>
 </template>
 

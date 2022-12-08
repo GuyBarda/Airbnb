@@ -11,9 +11,9 @@
                 <h3>Your trip</h3>
                 <div class="info-container">
                     <p>Check-In</p>
-                    <p>{{ order.startDate }}</p>
+                    <p>{{ formatedStartDate }}</p>
                     <p>Check-Out</p>
-                    <p>{{ order.endDate }}</p>
+                    <p>{{ formatedEndDate }}</p>
                 </div>
             </div>
             <div class="your-stay-details-container">
@@ -22,10 +22,8 @@
                     <img :src="stay.imgUrls[0]" alt="">
                     <p>{{ stay.name }}</p>
                     <p>Host {{ order.houstId }}</p>
-                    <div>
-                        <review-average :reviews="stay.reviews" />
-                        <p>{{ formattedPerNightPrice }}</p>
-                    </div>
+                    <review-average :reviews="stay.reviews.length" :rateMap="rateMap" />
+                    <!-- <p>{{ formattedPerNightPrice }}</p> -->
                 </div>
             </div>
             <div class="price-details-container">
@@ -40,7 +38,8 @@
                 </div>
             </div>
         </div>
-        <button @click="goToDashboard" @mousemove="hoverEffect" class="btn-reserve">Look for more places to stay</button>
+        <button @click="goToDashboard" @mousemove="hoverEffect" class="btn-reserve">Look for more places to
+            stay</button>
     </div>
 </template>
 
@@ -51,11 +50,13 @@ import reviewAverage from './review-average.vue';
 export default {
     props: {
         order: Object,
+        rateMap: Object,
         stay: Object
     },
     created() {
-        this.order.startDate = '2022-12-16';
-        this.order.endDate = '2022-12-18';
+        // this.order.startDate = '2022-12-16';
+        // this.order.endDate = '2022-12-18';
+        console.log(this.order)
     },
     methods: {
         closeSuccessModal() {
@@ -75,12 +76,15 @@ export default {
             });
             return formatter.format(num)
         },
+        formatDate(date) {
+            const DATE = new Date(date);
+            return `${DATE.getMonth() + 1
+                }/${DATE.getDate()}/${DATE.getFullYear()}`;
+        },
         hoverEffect(ev) {
             utilService.hoverEffect(ev)
-            
         },
-        goToDashboard(){
-            console.log('hey')
+        goToDashboard() {
             this.$router.push("/dashboard");
         },
     },
@@ -90,12 +94,17 @@ export default {
         },
         formattedTotalPrice() {
             let diffDays = this.totalDays()
-
             return this.format(diffDays * this.stay.price)
         },
         getTotalDays() {
             return this.totalDays()
-        }
+        },
+        formatedStartDate() {
+            return this.formatDate(this.order.startDate);
+        },
+        formatedEndDate() {
+            return this.formatDate(this.order.endDate);
+        },
     },
     components: {
         reviewAverage,

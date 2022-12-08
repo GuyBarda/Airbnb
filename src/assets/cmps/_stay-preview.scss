@@ -1,7 +1,7 @@
 .stay-preview {
     position: relative;
     font-family: CerealReg;
-    padding-bottom: 20px;
+    // padding-bottom: 10px;
     width: 100%;
     // height: max-content;
     // @media (max-width: 400px) {
@@ -31,7 +31,7 @@
         }
 
         .rate {
-            position: absolute;
+            // position: absolute;
             right: 0;
             top: 2px;
             display: flex;
@@ -50,6 +50,8 @@
         .location {
             padding-top: 2px;
             font-family: CerealMd;
+            display: flex;
+            justify-content: space-between;
         }
         .stay-name,
         .date {

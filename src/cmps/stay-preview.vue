@@ -4,14 +4,15 @@
             <heart-icon @click.prevent="setWishlist" :class="{ mark: isMark }" class="heart-btn" />
             <img-carousel @click.prevent :imgs="stay.imgUrls" />
             <section>
-                <p class="location">{{ location }}</p>
+                <p class="location">{{ location }}<span class="rate"><star-icon />&nbsp; {{ rate }} <span class="review-length">({{ this.stay.reviews.length
+                }})</span></span></p>
                 <main>
                     <p class="stay-name">{{ stay.name }}</p>
                     <p class="date">{{ date }}</p>
                 </main>
                 <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
-                <p class="rate"><star-icon />&nbsp; {{ rate }} <span class="review-length">({{ this.stay.reviews.length
-                }})</span></p>
+                <!-- <p class="rate"><star-icon />&nbsp; {{ rate }} <span class="review-length">({{ this.stay.reviews.length
+                }})</span></p> -->
             </section>
         </article>
     </router-link>
