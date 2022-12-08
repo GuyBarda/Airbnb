@@ -28,6 +28,10 @@
         padding-block: 24px;
         position: relative;
 
+        h2 {
+            padding: 0;
+        }
+
         .subtitle-text {
             :not(span) {
                 font-weight: 600;
@@ -47,6 +51,8 @@
             border-radius: 50%;
             object-fit: cover;
             position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             right: 0;
         }
         //?----------
@@ -389,20 +395,15 @@
             }
         }
 
-        .amenities-container {
-            h2 {
-                margin-bottom: 24px;
-            }
-            .stay-amenities {
-                display: grid;
-                grid-template-columns: auto auto;
+        .amenities-container .stay-amenities {
+            display: grid;
+            grid-template-columns: auto auto;
 
-                p {
-                    margin: 0;
-                }
-                div {
-                    padding-bottom: 16px;
-                }
+            p {
+                margin: 0;
+            }
+            div {
+                padding-bottom: 16px;
             }
         }
     }
