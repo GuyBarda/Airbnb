@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { WishlistMsg } from '../services/event-bus-service.js';
+import { wishlistMsg } from '../services/event-bus-service.js';
 // import skeleton from './skeleton.vue';
 
 import arrowLeft from "../assets/svg/arrow-left.vue";
@@ -65,7 +65,7 @@ export default {
                 type: "setWishlist",
                 stayId: this.stay._id,
             });
-            WishlistMsg(`${this.stay.name} Saved to Wishlist`);
+            wishlistMsg(`${this.stay.name} saved to wishlist`);
         },
     },
     computed: {

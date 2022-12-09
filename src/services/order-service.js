@@ -2,7 +2,6 @@ import { httpService } from './http-service.js';
 import { userService } from './user-service.js';
 
 const STORAGE_KEY = 'order';
-
 export const orderService = {
     query,
     getById,

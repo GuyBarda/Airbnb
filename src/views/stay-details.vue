@@ -156,7 +156,7 @@
 import { stayService } from "../services/stay-service.js";
 import { orderService } from "../services/order-service.js";
 import { userService } from "../services/user-service.js";
-import { WishlistMsg } from '../services/event-bus-service.js';
+import { wishlistMsg } from '../services/event-bus-service.js';
 
 import heartIcon from '../assets/svg/heart.vue'
 
@@ -252,7 +252,7 @@ export default {
         async addToWishlist() {
             this.isMark = !this.isMark
             await this.$store.dispatch({ type: 'setWishlist', stayId: this.stay._id })
-            WishlistMsg(`${this.stay.name} Saved to Wishlist`);
+            wishlistMsg(`${this.stay.name} saved to wishlist`);
 
         },
     },

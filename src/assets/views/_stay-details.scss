@@ -361,7 +361,7 @@
                             }
                         }
 
-                        &:last-child() {
+                        &:last-child {
                             grid-column: 1/-1;
                             // grid-row: 2;
                         }

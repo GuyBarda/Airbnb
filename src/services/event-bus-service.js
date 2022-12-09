@@ -31,6 +31,6 @@ export function showErrorMsg(txt) {
     showUserMsg({txt, type: 'error', icon: 'fa fa-times-circle'})
 }
 
-export function WishlistMsg(txt) {
+export function wishlistMsg(txt) {
     showUserMsg({txt, type: 'Wishlist', icon: 'fa fa-duotone fa-heart'})
 }
