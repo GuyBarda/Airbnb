@@ -2,7 +2,7 @@
 import { httpService } from './http-service.js';
 // import { utilService } from './util.service.js';
 import { userService } from './user-service.js';
-import { showSuccessMsg, showErrorMsg, WishlistMsg } from './event-bus-service';
+import { showSuccessMsg, showErrorMsg, wishlistMsg } from './event-bus-service';
 
 const STORAGE_KEY = 'stay';
 

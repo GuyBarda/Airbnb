@@ -1,11 +1,21 @@
 <template>
     <router-link :to="'stay/' + stay._id" target="_blank">
         <article class="stay-preview">
-            <heart-icon @click.prevent="setWishlist" :class="{ mark: isMark }" class="heart-btn" />
+            <heart-icon
+                @click.prevent="setWishlist"
+                :class="{ mark: isMark }"
+                class="heart-btn"
+            />
             <img-carousel @click.prevent :imgs="stay.imgUrls" />
             <section>
-                <p class="location">{{ location }}<span class="rate"><star-icon />&nbsp; {{ rate }} <span class="review-length">({{ this.stay.reviews.length
-                }})</span></span></p>
+                <p class="location">
+                    {{ location
+                    }}<span class="rate"
+                        ><star-icon />&nbsp; {{ rate }} ({{
+                            this.stay.reviews.length
+                        }})</span
+                    >
+                </p>
                 <main>
                     <p class="stay-name">{{ stay.name }}</p>
                     <p class="date">{{ date }}</p>
@@ -21,74 +31,81 @@
 </template>
 
 <script>
-import { WishlistMsg } from '../services/event-bus-service.js';
+import { wishlistMsg } from '../services/event-bus-service.js';
 // import skeleton from './skeleton.vue';
 
-import arrowLeft from '../assets/svg/arrow-left.vue'
-import arrowRight from '../assets/svg/arrow-right.vue'
-import starIcon from '../assets/svg/star.vue'
-import heartIcon from '../assets/svg/heart.vue'
-import imgCarousel from '../cmps/img-carousel.vue'
+import arrowLeft from "../assets/svg/arrow-left.vue";
+import arrowRight from "../assets/svg/arrow-right.vue";
+import starIcon from "../assets/svg/star.vue";
+import heartIcon from "../assets/svg/heart.vue";
+import imgCarousel from "../cmps/img-carousel.vue";
 
 //temporary
-import { utilService } from '../services/utils-service.js'
+import { utilService } from "../services/utils-service.js";
 
 export default {
     props: {
-        stay: Object
+        stay: Object,
     },
     data() {
         return {
             isMark: false,
-        }
+        };
     },
     created() {
-        const wishlist = this.loggedinUser?.wishlist
-        if (!wishlist) return
-        const idx = wishlist.findIndex(stay => stay._id === this.stay._id)
-        this.isMark = idx > -1 ? true : false
+        const wishlist = this.loggedinUser?.wishlist;
+        if (!wishlist) return;
+        const idx = wishlist.findIndex((stay) => stay._id === this.stay._id);
+        this.isMark = idx > -1 ? true : false;
     },
     methods: {
         async setWishlist() {
-            this.isMark = !this.isMark
-            await this.$store.dispatch({ type: 'setWishlist', stayId: this.stay._id })
-            WishlistMsg(`${this.stay.name} Saved to Wishlist`);
+            this.isMark = !this.isMark;
+            await this.$store.dispatch({
+                type: "setWishlist",
+                stayId: this.stay._id,
+            });
+            wishlistMsg(`${this.stay.name} saved to wishlist`);
         },
     },
     computed: {
         date() {
-            return utilService.getDates()
+            return utilService.getDates();
         },
 
         rate() {
-            if (this.stay.reviews.length === 0) return 'New'
+            if (this.stay.reviews.length === 0) return "New";
             let sum = this.stay.reviews.reduce((acc, { rate }) => {
-                let rating = Object.values(rate)
-                let calcRate = Number((rating.reduce((acc, num) => acc += num, 0) / 6).toFixed(1))
-                acc += calcRate
-                return acc
-            }, 0)
-            sum /= this.stay.reviews.length
-            return `${sum.toFixed(1)}`
+                let rating = Object.values(rate);
+                let calcRate = Number(
+                    (rating.reduce((acc, num) => (acc += num), 0) / 6).toFixed(
+                        1
+                    )
+                );
+                acc += calcRate;
+                return acc;
+            }, 0);
+            sum /= this.stay.reviews.length;
+            return `${sum.toFixed(1)}`;
         },
         location() {
-            return `${this.stay.loc.city}, ${this.stay.loc.country}`
+            return `${this.stay.loc.city}, ${this.stay.loc.country}`;
         },
         distanceFromMe() {
-            return this.stay.position
+            return this.stay.position;
         },
         formattedPrice() {
-            const formatter = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
+            const formatter = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
                 maximumFractionDigits: 0,
-            })
-            let num = Number(formatter.format(this.stay.price))
-            return formatter.format(this.stay.price)
+            });
+            let num = Number(formatter.format(this.stay.price));
+            return formatter.format(this.stay.price);
         },
         loggedinUser() {
-            return this.$store.getters.loggedinUser
-        }
+            return this.$store.getters.loggedinUser;
+        },
     },
     components: {
         arrowLeft,
@@ -96,6 +113,6 @@ export default {
         starIcon,
         heartIcon,
         imgCarousel,
-    }
-} 
+    },
+};
 </script>

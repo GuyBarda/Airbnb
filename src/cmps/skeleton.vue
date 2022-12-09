@@ -1,19 +1,16 @@
 <template>
-    <article class="stay-preview">
+    <article class="stay-preview" style="display: flex; flex-direction: column; gap: 10px;">
         <div class="img-skeleton skeleton"></div>
         <!-- <img class="skeleton" src="######" alt="" /> -->
-        <section>
-            <div class="location">
-                <div class="skeleton skeleton-txt"></div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="display: flex; justify-content: space-between;">
+                <div class="skeleton skeleton-txt skeleton-name"></div>
+                <div class="skeleton skeleton-txt skeleton-rate"></div>
             </div>
-            <main>
-                <p class="stay-name skeleton-txt"></p>
-                <div class="skeleton skeleton-txt"></div>
-                <p class="date skeleton-txt"></p>
-            </main>
-            <p class="price skeleton-txt"></p>
-            <div class="skeleton skeleton-txt"></div>
-        </section>
+            <div class="skeleton skeleton-txt skeleton-desc"></div>
+            <div class="skeleton skeleton-txt skeleton-date"></div>
+        </div>
+        <div class="skeleton skeleton-txt skeleton-price"></div>
     </article>
 </template>
 
@@ -32,4 +29,3 @@ export default {
     components: {},
 };
 </script>
-<style></style>

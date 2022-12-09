@@ -41,18 +41,30 @@
             transform: translateX(-50%);
         }
 
-        .carousel__prev,
-        .carousel__next {
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
         &:hover {
             .carousel__prev,
             .carousel__next {
                 background: #fff !important;
                 border-radius: 5em;
+                opacity: 85%;
+            }
+        }
+        .carousel__prev,
+        .carousel__next {
+            opacity: 0;
+            transition: opacity 0.4s;
+            margin:  0px 15px;
+
+            &:hover{
                 opacity: 1;
+                width: 31px;
+                height: 31px;
+                color: black;
+            }
+
+            .carousel__icon{
+                width: 20px;
+                height: 20px;
             }
         }
         .carousel__next--disabled,

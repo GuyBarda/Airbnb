@@ -1,7 +1,7 @@
 import { utilService } from './utils-service.js';
 import { storageService } from './async-storage-service.js';
 import staysJson from '../../data/stay.json' assert { type: 'json' };
-import { showSuccessMsg, showErrorMsg, WishlistMsg } from './event-bus-service';
+import { showSuccessMsg, showErrorMsg, wishlistMsg } from './event-bus-service';
 let gStays;
 const KEY = 'staysDB';
 // _createStays();
@@ -62,7 +62,7 @@ function save(stay) {
         showSuccessMsg(`"${stay.name}" just got updated`);
     } else {
         storageService.post(KEY, stay);
-        showSuccessMsg(`"${stay.name}" just got added `);
+        showSuccessMsg(`"${stay.name}" added successfully`);
     }
 }
 
