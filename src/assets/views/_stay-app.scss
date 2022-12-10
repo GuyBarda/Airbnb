@@ -1,12 +1,13 @@
-.stay-app{
+.stay-app {
     display: grid;
     grid-template-rows: 90px 1fr;
     position: relative;
 
-    .exolore-sub-header{
+    .explore-sub-header {
         display: flex;
         align-items: center;
         font-family: CerealBd;
         font-size: 1em;
+        padding-block: 15px;
     }
 }
