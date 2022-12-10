@@ -8,7 +8,7 @@
             <p>Status</p>
             <p>Actions</p>
         </section>
-        <order-preview v-for="order in orders" :order="order" />
+        <order-preview @changeStatus="updateStatus" v-for="order in orders" :order="order" />
     </div>
 </template>
   
@@ -20,6 +20,11 @@ export default {
         orders: {
             type: Array,
         },
+    },
+    methods: {
+        updateStatus(val, id) {
+            this.$emit('changeStatus', val, id)
+        }
     },
     components: {
         orderPreview,

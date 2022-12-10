@@ -51,11 +51,11 @@ export default {
   },
   watch: {
     async changePath(query) {
-      console.log(query)
+      this.isLoading = true
       if (this.$route.path === "/explore") {
         const filterBy = query;
         this.$store.commit({ type: "setFilter", filterBy: { ...filterBy } });
-        this.$store.dispatch({ type: "loadStays" });
+        await this.$store.dispatch({ type: "loadStays" });
         this.$store.commit({ type: "toggleSearch", bool: false });
       } else {
         this.$store.commit({
@@ -76,10 +76,9 @@ export default {
             guests: 0
           },
         });
-        this.isLoading = true
         await this.$store.dispatch({ type: "loadStays" });
-        this.isLoading = false
       }
+      this.isLoading = false
     },
   },
 };

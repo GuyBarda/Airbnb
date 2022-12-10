@@ -223,6 +223,7 @@ export default {
             this.order.buyer = {
                 _id: this.$store.getters.loggedinUser._id,
                 fullname: this.$store.getters.loggedinUser.fullname,
+                imgUrl: this.$store.getters.loggedinUser.imgUrl
             };
             this.order.stay = {
                 _id: this.stay._id,

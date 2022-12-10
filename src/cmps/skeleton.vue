@@ -19,13 +19,5 @@ export default {
     props: {
         stay: Object,
     },
-    data() {
-        return {};
-    },
-    created() {
-        console.log("hey skeleton");
-    },
-    methods: {},
-    components: {},
 };
 </script>

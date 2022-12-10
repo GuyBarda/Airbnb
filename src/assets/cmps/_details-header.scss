@@ -23,6 +23,9 @@
         position: fixed;
         top: calc(100% - 90px);
     }
+    @media (max-width: 550px) {
+        z-index: 3;
+    }
 
     section {
         display: flex;

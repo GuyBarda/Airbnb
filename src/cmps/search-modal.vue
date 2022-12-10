@@ -41,8 +41,15 @@
             </div>
         </section>
     </section>
-    <section class="search-modal-mobile">
-    </section>
+    <!-- <section class="search-modal-mobile">
+        <destination-modal @setDestination="setDestination" :class="{ open: isSelect === 'Where' }" />
+        <el-date-picker @change="setDates" ref="datePicker" popper-class="datePicker" v-model="dates" type="daterange"
+            start-placeholder="Start date" end-placeholder="End date" value-format="x" />
+        <guests-modal @setGuests="setGuests" :class="{ open: isSelect === 'Who' }" />
+        <button @click.stop.prevent="setSearch" class="sub-search">
+            <img src="../assets/svg/search.svg" alt="" />Search
+        </button>
+    </section> -->
 </template>
   
 <script>

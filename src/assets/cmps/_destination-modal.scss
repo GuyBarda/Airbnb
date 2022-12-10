@@ -11,14 +11,16 @@
     top: 110%;
     place-content: center;
     display: none;
-    cursor: alias;
-    @media(max-width: 400px){
-        position: fixed;
-        top: 80px;
-        right: 0;
-        height: 100vh;
-        grid-template-columns: 1fr;
+    cursor: pointer;
+
+    @media (max-width: 400px) {
+        // display: block;
+        // position: relative;
+        // top: 40px;
+        // grid-template-columns: 1fr;
+        // height: 30%;
     }
+
     &.open {
         display: grid;
     }
@@ -64,8 +66,8 @@
         gap: 10px;
         row-gap: 30px;
         padding-left: 30px;
-        @media(max-width:400px){
-            display: none;
+        @media (max-width: 400px) {
+            // display: none;
         }
         p {
             grid-column: 1/4;

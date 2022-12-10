@@ -33,9 +33,13 @@
             justify-content: space-between;
             flex-direction: column;
         }
+
         h2 {
             padding: 0;
             margin-bottom: 7px;
+            @media (max-width: 550px) {
+                font-size: em(20px, 16px);
+            }
         }
 
         .subtitle-text {
@@ -50,6 +54,10 @@
                 align-items: center;
                 transition: 0.25s;
                 margin-left: auto;
+
+                @media (max-width: 550px) {
+                    display: none;
+                }
 
                 .share-stay {
                     font-weight: 400;
@@ -163,6 +171,14 @@
         display: grid;
         grid-template: repeat(2, 275px) / 2fr 1fr 1fr;
 
+        @media (max-width: 550px) {
+            grid-column: 1/-1;
+            grid-template: repeat(2, 275px) / 1fr;
+            > *:not(:first-child) {
+                display: none;
+            }
+        }
+
         // grid-template:  275px 275px / 2fr 1fr 1fr;
         border-radius: 20px;
         gap: 8px;
@@ -173,6 +189,11 @@
             grid-row: 1/-1;
             border-bottom-left-radius: 15px;
             border-top-left-radius: 15px;
+            @media (max-width: 550px) {
+                border-radius: 0;
+                grid-column: 1 /-1;
+                aspect-ratio: 667/444;
+            }
         }
 
         :nth-child(3) {
@@ -239,7 +260,7 @@
             }
 
             .reserve-modal {
-                display: none;
+                // display: none;
             }
         }
         .reserve-modal {
@@ -295,6 +316,10 @@
                         height: 50%;
                         width: 100%;
                         z-index: 20;
+                        @media (max-width: 400px) {
+                            // display: block;
+                            // flex-direction: column;
+                        }
 
                         .el-popper.is-pure.is-light.el-picker__popper.date-picker-reserve {
                             left: -360px !important;
@@ -494,6 +519,9 @@
             div {
                 padding-bottom: 16px;
             }
+            @media (max-width: 550px) {
+                grid-template-columns: 1fr;
+            }
         }
     }
     #reviews {
@@ -517,15 +545,9 @@
             p {
                 margin: 0;
             }
-            // > *:nth-child(even) {
-            //     // margin-right: 93px;
-            //     // span {
-            //     //     border-radius: 2px;
-            //     //     width: 30px;
-            //     //     height: 3px;
-            //     //     background-color: #222222;
-            //     // }
-            // }
+            @media (max-width: 550px) {
+                grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+            }
             .progress-container {
                 border-radius: 30em;
                 height: min-content;
@@ -553,6 +575,9 @@
             grid-template-columns: 1fr 1fr;
             row-gap: 40px;
             margin-bottom: 40px;
+            @media (max-width: 550px) {
+                grid-template-columns: 1fr;
+            }
         }
 
         .show-more {

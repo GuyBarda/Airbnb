@@ -48,11 +48,15 @@
 
     .content .your-stay-details-container .stay-details-info-container {
         height: 100px;
-        min-width: 400px;
         display: grid;
         grid-template-columns: 150px 2fr;
         grid-template-rows: 1fr 1fr;
         gap: em(10px, 16px) em(30px, 16px);
+
+        // @media (min-width: 550px) {
+        //     grid-template-columns: 1fr;
+        //     grid-template-rows: 1fr 1fr 1fr 1fr;
+        // }
 
         img {
             width: 100%;
@@ -60,6 +64,9 @@
             object-fit: cover;
             height: 100%;
             grid-row: 1/4;
+            // @media (min-width: 550px) {
+            //     grid-row: 1;
+            // }
         }
 
         a {
