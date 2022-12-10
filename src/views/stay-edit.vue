@@ -152,6 +152,11 @@ export default {
             utilService.hoverEffect(ev);
         },
         async saveStay() {
+            this.stayToEdit.capacity = +this.stayToEdit.capacity
+            this.stayToEdit.price = +this.stayToEdit.price
+            this.stayToEdit.bedrooms = 1
+            this.stayToEdit.bathrooms = 1
+            this.stayToEdit.beds = 1
             let stay = await this.$store.dispatch({
                 type: "updateStay",
                 stay: this.stayToEdit,

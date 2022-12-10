@@ -1,7 +1,7 @@
 <template>
   <section class="stay-app main-container">
-    <stay-filter v-if="this.$route.path !== '/explore'" :stays="stays" />
-    <section class="exolore-sub-header" v-else>Found {{ stays.length }} homes</section>
+    <stay-filter :stays="stays" />
+    <section class="exolore-sub-header" v-if="this.$route.path === '/explore'">Found {{ stays.length }} homes</section>
     <stay-list v-if="!isLoading" :stays="stays" />
 
     <div class="stay-list" v-else>
