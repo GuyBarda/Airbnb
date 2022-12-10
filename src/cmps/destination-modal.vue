@@ -4,7 +4,7 @@
             <p>Common search</p>
             <ul>
                 <li @click="setDestination('Brazil')">
-                    <div class="spot-holder"><spot-icon /></div> Brazil, BR
+                    <div class="spot-holder"><spot-icon /></div> Qatar, QA
                 </li>
                 <li @click="setDestination('Canada')">
                     <div class="spot-holder"><spot-icon /></div> Canada, CA
