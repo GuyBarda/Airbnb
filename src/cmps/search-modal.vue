@@ -34,7 +34,7 @@
                 <label>Who</label>
                 <input :value="guestsCount" :class="{ set: guestsCount }" class="guest-input" type="text"
                     placeholder="Add guests" disabled />
-                <button @click="setSearch" class="sub-search">
+                <button @click.stop.prevent="setSearch" class="sub-search">
                     <img src="../assets/svg/search.svg" alt="" />Search
                 </button>
                 <guests-modal @setGuests="setGuests" :class="{ open: isSelect === 'Who' }" />

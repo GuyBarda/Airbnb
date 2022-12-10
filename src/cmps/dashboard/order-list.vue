@@ -1,13 +1,13 @@
 <template>
     <div class="order-list">
-        <!-- <section class="order-list-header"> -->
-            <p>Stay Name</p>
+        <section class="order-preview">
             <p>Buyer</p>
+            <p>Stay Name</p>
             <p>Date</p>
             <p>Total Price</p>
             <p>Status</p>
             <p>Actions</p>
-        <!-- </section> -->
+        </section>
         <order-preview v-for="order in orders" :order="order" />
     </div>
 </template>

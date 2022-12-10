@@ -1,5 +1,5 @@
 <template>
-    <!-- <div class="order-preview"> -->
+    <div class="order-preview">
         <p>{{ order.buyer.fullname }}</p>
         <p>{{ order.stay.name }}</p>
         <p>{{ order.startDate }}</p>
@@ -11,7 +11,7 @@
             <button class="decline" @click="$emit('changeStatus', 'decline')">Decline</button>
         </div>
         <!-- <pre>{{ order }}</pre> -->
-    <!-- </div> -->
+    </div>
 </template>
 
 <script>
