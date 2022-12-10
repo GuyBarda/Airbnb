@@ -12,7 +12,13 @@
     place-content: center;
     display: none;
     cursor: alias;
-
+    @media(max-width: 400px){
+        position: fixed;
+        top: 80px;
+        right: 0;
+        height: 100vh;
+        grid-template-columns: 1fr;
+    }
     &.open {
         display: grid;
     }
@@ -58,7 +64,9 @@
         gap: 10px;
         row-gap: 30px;
         padding-left: 30px;
-
+        @media(max-width:400px){
+            display: none;
+        }
         p {
             grid-column: 1/4;
             margin: 0;
