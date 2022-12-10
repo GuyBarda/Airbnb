@@ -1,41 +1,24 @@
 .order-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    height: 100%;
-    // gap: 10px;
-    h2 {
-        border-radius: 20px;
+    > * {
+        border-radius: 10px;
         box-shadow: 0 1px 20px 13px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
-        padding: 10px;
         background-color: white;
+        padding: 10px;
     }
+
+    h2 {
+        padding-block: 15px;
+    }
+
     .order-list {
-        border-radius: 20px;
-        box-shadow: 0 1px 20px 13px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
-        padding: 10px;
-        background-color: white;
-        // display: grid;
-        align-content: start;
-        // gap: 10px;
         height: 57vh;
         overflow: auto;
-        display: grid;
-        // grid-template-columns: 1fr;
-        grid-template-columns: .7fr 2fr 1fr .7fr 0.4fr 1fr;
-        align-items: center;
-        p{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        p {
             margin: 0;
-            padding: 20px;
-        }
-        >*{
-            border-bottom: 1px solid #dddddd;
-        }
-        .order-list-header {
-            display: grid;
-            // grid-template-columns: auto auto auto auto auto auto ;
-            // grid-template-columns: repeat(6, 1fr);
-            border-bottom: 1px solid #dddddd;
-            font-size: bold;
         }
     }
 }

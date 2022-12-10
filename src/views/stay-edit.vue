@@ -5,70 +5,38 @@
                 <form @submit.prevent="saveStay" class="stay-info">
                     <section class="stay-name">
                         <h2>
-                            <input
-                                type="text"
-                                v-model="stayToEdit.name"
-                                placeholder="Stay name"
-                            />
+                            <input type="text" v-model="stayToEdit.name" placeholder="Stay name" />
                         </h2>
                         <div>
                             <label>
                                 <!-- Country -->
-                                <input
-                                    type="text"
-                                    v-model="stayToEdit.loc.country"
-                                    placeholder="Enter Country"
-                                />
+                                <input type="text" v-model="stayToEdit.loc.country" placeholder="Enter Country" />
                             </label>
                             <label>
                                 <!-- City -->
-                                <input
-                                    type="text"
-                                    v-model="stayToEdit.loc.city"
-                                    placeholder="Enter City"
-                                />
+                                <input type="text" v-model="stayToEdit.loc.city" placeholder="Enter City" />
                             </label>
                             <label>
                                 <!-- Address -->
-                                <input
-                                    type="text"
-                                    v-model="stayToEdit.loc.address"
-                                    placeholder="Enter address"
-                                />
+                                <input type="text" v-model="stayToEdit.loc.address" placeholder="Enter address" />
                             </label>
                         </div>
                     </section>
                     <section class="imgs-container">
-                        <upload-img
-                            v-for="x in 5"
-                            @setImg="setImg"
-                            :img="stayToEdit.imgUrls[x - 1]"
-                            :key="x"
-                            :idx="x - 1"
-                        />
+                        <upload-img v-for="x in 5" @setImg="setImg" :img="stayToEdit.imgUrls[x - 1]" :key="x"
+                            :idx="x - 1" />
                     </section>
                     <section class="below-imgs">
-                        <div
-                            style="
+                        <div style="
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;
-                            "
-                        >
-                            <label for="capacity"
-                                >Capacity
-                                <input
-                                    type="text"
-                                    name="capacity"
-                                    v-model="stayToEdit.capacity"
-                                />
+                            ">
+                            <label for="capacity">Capacity
+                                <input type="text" name="capacity" v-model="stayToEdit.capacity" />
                             </label>
-                            <label for="stay-type"
-                                >Stay type:
-                                <select
-                                    name="stay-type"
-                                    v-model="stayToEdit.roomType"
-                                >
+                            <label for="stay-type">Stay type:
+                                <select name="stay-type" v-model="stayToEdit.roomType">
                                     <option value="Entire place">
                                         Entire place
                                     </option>
@@ -80,12 +48,8 @@
                                     </option>
                                 </select>
                             </label>
-                            <label for="property-type"
-                                >Property type:
-                                <select
-                                    name="property-type"
-                                    v-model="stayToEdit.propertyType"
-                                >
+                            <label for="property-type">Property type:
+                                <select name="property-type" v-model="stayToEdit.propertyType">
                                     <option value="Stay">Stay</option>
                                     <option value="apartment">Apartment</option>
                                     <option value="Gueststay">Gueststay</option>
@@ -94,11 +58,7 @@
                             </label>
                             <label>
                                 Price:
-                                <input
-                                    style="width: 40px"
-                                    type="text"
-                                    v-model="stayToEdit.price"
-                                />
+                                <input style="width: 40px" type="text" v-model="stayToEdit.price" />
                                 /night
                             </label>
                         </div>
@@ -109,38 +69,23 @@
                         <div class="amenities-container">
                             <h3>Amenities</h3>
                             <div class="stay-amenities">
-                                <div
-                                    v-for="a in allAmenities"
-                                    style="display: flex; gap: 13px"
-                                >
-                                    <input
-                                        @change="checkAmenities(a)"
-                                        type="checkbox"
-                                        :name="a"
-                                        :checked="
-                                            stayToEdit.amenities.includes(a)
-                                        "
-                                    />
-                                    <img
-                                        :src="`/src/assets/svg/amenities/${a
-                                            .split(' ')[0]
-                                            .toLowerCase()}.svg`"
-                                        alt="np"
-                                        style="width: 1.2em"
-                                    />
+                                <div v-for="a in allAmenities" style="display: flex; gap: 13px">
+                                    <input @change="checkAmenities(a)" type="checkbox" :name="a" :checked="
+                                        stayToEdit.amenities.includes(a)
+                                    " />
+                                    <img :src="`/src/assets/svg/amenities/${a
+                                    .split(' ')[0]
+                                    .toLowerCase()}.svg`" alt="np" style="width: 1.2em" />
                                     <!-- <img src="../assets/svg/amenities/tv.svg" alt=""> -->
                                     <label :for="a">{{
-                                        a.charAt(0).toUpperCase() +
-                                        a.slice(1).replaceAll("-", " ")
+                                            a.charAt(0).toUpperCase() +
+                                            a.slice(1).replaceAll("-", " ")
                                     }}</label>
                                 </div>
                             </div>
                         </div>
                         <section class="confirm-area">
-                            <button
-                                
-                                class="btn-reserve"
-                            >
+                            <button class="btn-reserve">
                                 Save
                             </button>
                         </section>
@@ -155,9 +100,7 @@
 </template>
 
 <script>
-// import { stayService } from "../services/stay-service-local.js";
 import { stayService } from "../services/stay-service.js";
-
 import { userService } from "../services/user-service.js";
 import { utilService } from "../services/utils-service.js";
 

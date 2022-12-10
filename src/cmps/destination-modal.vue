@@ -3,20 +3,20 @@
         <section class="common-search">
             <p>Common search</p>
             <ul>
-                <li @click="setDestination('Los Angeles')">
-                    <div class="spot-holder"><spot-icon /></div> Los Angeles, LA
+                <li @click="setDestination('Brazil')">
+                    <div class="spot-holder"><spot-icon /></div> Brazil, BR
                 </li>
-                <li @click="setDestination('Tel Aviv')">
-                    <div class="spot-holder"><spot-icon /></div> Tel Aviv, TLV
+                <li @click="setDestination('Canada')">
+                    <div class="spot-holder"><spot-icon /></div> Canada, CA
                 </li>
-                <li @click="setDestination('New York')">
-                    <div class="spot-holder"><spot-icon /></div> New York, NYC
+                <li @click="setDestination('Portugal')">
+                    <div class="spot-holder"><spot-icon /></div> Portugal, PT
                 </li>
-                <li @click="setDestination('Tulum')">
-                    <div class="spot-holder"><spot-icon /></div> Tulum, Mexico
+                <li @click="setDestination('Spain')">
+                    <div class="spot-holder"><spot-icon /></div> Spain, ES
                 </li>
-                <li @click="setDestination('Rome')">
-                    <div class="spot-holder"><spot-icon /></div> Rome, Italy
+                <li @click="setDestination('Turkey')">
+                    <div class="spot-holder"><spot-icon /></div> Turkey, TR
                 </li>
             </ul>
         </section>

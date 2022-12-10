@@ -27,7 +27,7 @@ export default {
     try {
       this.isLoading = true
       console.log(' this.isLoading', this.isLoading)
-      await this.$store.dispatch("loadStays");
+      await this.$store.dispatch({ type: "loadStays" });
       this.isLoading = false
       console.log(' this.isLoading', this.isLoading)
     } catch {
@@ -50,11 +50,35 @@ export default {
     skeleton
   },
   watch: {
-    changePath(query) {
+    async changePath(query) {
+      console.log(query)
       if (this.$route.path === "/explore") {
         const filterBy = query;
         this.$store.commit({ type: "setFilter", filterBy: { ...filterBy } });
         this.$store.dispatch({ type: "loadStays" });
+        this.$store.commit({ type: "toggleSearch", bool: false });
+      } else {
+        this.$store.commit({
+          type: "setFilter", filterBy: {
+            minPrice: 25,
+            maxPrice: 800,
+            type: [],
+            bedrooms: 1,
+            beds: 1,
+            bathrooms: 1,
+            PropertyType: [],
+            amenities: [],
+            destination: "",
+            dates: {
+              start: "",
+              end: "",
+            },
+            guests: 0
+          },
+        });
+        this.isLoading = true
+        await this.$store.dispatch({ type: "loadStays" });
+        this.isLoading = false
       }
     },
   },
