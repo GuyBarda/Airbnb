@@ -1,6 +1,6 @@
 <template>
     <div v-if="stay" class="stay-details secondary-container">
-        <div class="subtitle">
+        <div class="subtitle header">
             <h2>{{ stay.name }}</h2>
             <div class="subtitle-text" style="display: flex; align-items: center; gap: 4px">
                 <review-average :reviews="stay.reviews.length" :rateMap="rate" /><span>·</span>
@@ -28,15 +28,18 @@
         <div class="stay-info">
             <section class="content">
                 <div class="subtitle">
-                    <h2>
-                        {{ stay.roomType }} hosted by {{ stay.host.fullname }}
-                    </h2>
-                    <div style="margin-top: 3px;">
-                        <span>{{ stay.capacity }} guests </span>
-                        <span class="gray"> • </span>
-                        <span>{{ stay.bathrooms }} bathrooms </span>
-                        <span class="gray"> • </span>
-                        <span>{{ stay.bedrooms }} bedrooms </span>
+                    <div class="">
+
+                        <h2>
+                            {{ stay.roomType }} hosted by {{ stay.host.fullname }}
+                        </h2>
+                        <div style="margin-top: 3px; grid-column: 1;">
+                            <span>{{ stay.capacity }} guests </span>
+                            <span class="gray"> • </span>
+                            <span>{{ stay.bathrooms }} bathrooms </span>
+                            <span class="gray"> • </span>
+                            <span>{{ stay.bedrooms }} bedrooms </span>
+                        </div>
                     </div>
                     <img class="host-image" :src="`${stay.host.thumbnailUrl || stay.host.imgUrl}`" alt="" />
                 </div>

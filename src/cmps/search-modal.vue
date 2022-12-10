@@ -1,7 +1,7 @@
 <template>
     <section class="search-modal full">
         <section :class="{ 'btn-selected': isSelect !== ' ' }" class="search-input">
-            <div @click.prevent="openZone($event,'Where')" :class="{ selected: isSelect === 'Where' }"
+            <div @click.prevent="openZone($event, 'Where')" :class="{ selected: isSelect === 'Where' }"
                 class="search-zone destination align-more">
                 <label>Where</label>
                 <input class="dest-input" :class="{ set: filterBy.destination }" type="text"
@@ -10,7 +10,8 @@
             </div>
             <span></span>
             <section class="date">
-                <div @click.prevent="openZone($event,'In')" :class="{ selected: isSelect === 'In' }" class="search-zone align">
+                <div @click.prevent="openZone($event, 'In')" :class="{ selected: isSelect === 'In' }"
+                    class="search-zone align">
                     <label>Check in</label>
                     <input :class="{ set: formattedStartDate }" :value="formattedStartDate" class="date-input"
                         type="text" placeholder="Add dates" disabled />
@@ -19,7 +20,7 @@
                     type="daterange" start-placeholder="Start date" end-placeholder="End date" value-format="x" />
                 <span></span>
 
-                <div @click.prevent="openZone($event,'Out')" :class="{ selected: isSelect === 'Out' }"
+                <div @click.prevent="openZone($event, 'Out')" :class="{ selected: isSelect === 'Out' }"
                     class="search-zone align">
                     <label>Check out</label>
                     <input :class="{ set: formattedEndDate }" :value="formattedEndDate" class="date-input" type="text"
@@ -28,7 +29,7 @@
             </section>
             <span></span>
 
-            <div @click.prevent="openZone($event,'Who')" :class="{ selected: isSelect === 'Who' }"
+            <div @click.prevent="openZone($event, 'Who')" :class="{ selected: isSelect === 'Who' }"
                 class="search-zone search-btn align-more">
                 <label>Who</label>
                 <input :value="guestsCount" :class="{ set: guestsCount }" class="guest-input" type="text"
@@ -86,10 +87,10 @@ export default {
             );
             this.$router.push({ path: '/explore', query: { destination: this.filterBy.destination, guests: this.filterBy.guests } })
         },
-        openZone(ev,val) {
-            
+        openZone(ev, val) {
+
             this.isSelect = val;
-            this.$emit("updateZone",ev, val);
+            this.$emit("updateZone", ev, val);
         },
         setDestination(dest) {
             this.filterBy.destination = dest;
@@ -101,7 +102,7 @@ export default {
         setDates(dates) {
             this.filterBy.dates.start = this.dates["0"];
             this.filterBy.dates.end = this.dates["1"];
-            
+
             let str = this.formattedStartDate + " - " + this.formattedEndDate;
             this.$emit("setDate", str);
         },
