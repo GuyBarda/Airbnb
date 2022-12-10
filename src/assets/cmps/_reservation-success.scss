@@ -35,6 +35,9 @@
         button {
             border: 0;
             background-color: inherit;
+            padding: 0;
+            display: grid;
+            place-content: center;
 
             img {
                 height: 20px;
@@ -42,48 +45,43 @@
             }
         }
     }
-    .content {
-        .your-stay-details-container {
-            .stay-details-info-container {
-                height: 100px;
-                min-width: 400px;
-                display: grid;
-                grid-template-columns: 150px 2fr;
-                grid-template-rows: 1fr 1fr;
-                gap: em(10px, 16px) em(30px, 16px);
 
-                img {
-                    width: 100%;
-                    aspect-ratio: 1/1;
-                    object-fit: cover;
-                    height: 100%;
-                    grid-row: 1/4;
-                }
+    .content .your-stay-details-container .stay-details-info-container {
+        height: 100px;
+        min-width: 400px;
+        display: grid;
+        grid-template-columns: 150px 2fr;
+        grid-template-rows: 1fr 1fr;
+        gap: em(10px, 16px) em(30px, 16px);
 
-                a {
-                    pointer-events: none;
-                }
+        img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            height: 100%;
+            grid-row: 1/4;
+        }
 
-                p {
-                    margin: 0;
-                }
+        a {
+            pointer-events: none;
+        }
 
-                div {
-                    display: flex;
-                    // justify-content: space-between;
-                    align-items: center;
-                    grid-column: 2;
-                }
-            }
+        p {
+            margin: 0;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            grid-column: 2;
         }
     }
 
     .content > * {
         padding: 24px 0px;
-    }
-
-    .content > *:not(:last-child) {
-        border-bottom: 1px solid grey;
+        &:not(:last-child) {
+            border-bottom: 1px solid rgb(222, 222, 222);
+        }
     }
 
     .info-container {
