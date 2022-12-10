@@ -210,6 +210,7 @@
 
         @media (max-width: 1320px) {
             grid-template: repeat(2, 50%) / 2fr 1fr 1fr;
+
             img {
                 width: 100%;
                 aspect-ratio: 1/1;
@@ -232,13 +233,14 @@
         @media (max-width: 750px) {
             display: flex;
             flex-direction: column;
+
             .content {
                 width: 100%;
             }
-            // .reserve-modal {
-            //     position: fixed;
-            //     bottom: 0;
-            // }
+
+            .reserve-modal {
+                display: none;
+            }
         }
         .reserve-modal {
             form {
@@ -484,7 +486,7 @@
 
         .amenities-container .stay-amenities {
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: 1fr 1fr;
 
             p {
                 margin: 0;
