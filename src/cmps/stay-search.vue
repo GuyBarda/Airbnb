@@ -6,7 +6,7 @@
             <button @click="openZone($event, 'In')" class="search-btn">{{ setDate }}</button>
             <span></span>
             <button @click="openZone($event, 'Who')" class="search-btn last">Add guests</button>
-            <section class="search-in-mobile">
+            <section @click="openZone($event, 'Where')" class="search-in-mobile">
                 <search-icon class="img" />
                 <div>
                     <label>Where to?</label>

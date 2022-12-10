@@ -10,6 +10,9 @@
     padding: 0;
     justify-content: center;
     overflow: hidden;
+    @media(max-width:400px){
+        display: none;
+    }
 
     &.open {
         height: 80px;
@@ -219,4 +222,9 @@
     &.open {
         display: block;
     }
+}
+
+
+.search-modal-mobile{
+    
 }

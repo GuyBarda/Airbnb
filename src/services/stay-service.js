@@ -114,7 +114,7 @@ function btnsAryy() {
             url: 'https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg',
         },
         {
-            key: 'Iconic cities',
+            key: 'Iconic',
             url: 'https://a0.muscache.com/pictures/ed8b9e47-609b-44c2-9768-33e6a22eccb2.jpg',
         },
         {
@@ -122,8 +122,16 @@ function btnsAryy() {
             url: 'https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg',
         },
         {
-            key: 'Off-the-grid',
-            url: 'https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg',
+            key: 'Campers',
+            url: 'https://a0.muscache.com/pictures/31c1d523-cc46-45b3-957a-da76c30c85f9.jpg',
+        },
+        {
+            key: 'Ryokans',
+            url: 'https://a0.muscache.com/pictures/827c5623-d182-474a-823c-db3894490896.jpg',
+        },
+        {
+            key: 'Minsus',
+            url: 'https://a0.muscache.com/pictures/48b55f09-f51c-4ff5-b2c6-7f6bd4d1e049.jpg',
         },
         {
             key: 'Play',
@@ -150,6 +158,10 @@ function btnsAryy() {
             url: 'https://a0.muscache.com/pictures/c8e2ed05-c666-47b6-99fc-4cb6edcde6b4.jpg',
         },
         {
+            key: 'Off-the-grid',
+            url: 'https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg',
+        },
+        {
             key: 'Luxe',
             url: 'https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg',
         },
@@ -160,18 +172,6 @@ function btnsAryy() {
         {
             key: 'Boats',
             url: 'https://a0.muscache.com/pictures/687a8682-68b3-4f21-8d71-3c3aef6c1110.jpg',
-        },
-        {
-            key: 'Campers',
-            url: 'https://a0.muscache.com/pictures/31c1d523-cc46-45b3-957a-da76c30c85f9.jpg',
-        },
-        {
-            key: 'Ryokans',
-            url: 'https://a0.muscache.com/pictures/827c5623-d182-474a-823c-db3894490896.jpg',
-        },
-        {
-            key: 'Minsus',
-            url: 'https://a0.muscache.com/pictures/48b55f09-f51c-4ff5-b2c6-7f6bd4d1e049.jpg',
         },
         {
             key: 'Casas particulares',
