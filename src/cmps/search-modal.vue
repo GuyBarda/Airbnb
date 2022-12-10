@@ -41,8 +41,8 @@
             </div>
         </section>
     </section>
-    <section class="search-modal-mobile">
-    </section>
+    <!-- <section class="search-modal-mobile">
+    </section> -->
 </template>
   
 <script>
