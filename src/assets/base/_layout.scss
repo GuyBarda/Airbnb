@@ -53,6 +53,18 @@
         }
     }
 
+    @media (max-width: 1320px) {
+        grid-template-columns: 80px 1fr 80px;
+    }
+
+    @media (max-width: 1130px) {
+        grid-template-columns: 40px 1fr 40px;
+    }
+
+    @media (max-width: 740px) {
+        grid-template-columns: 24px 1fr 24px;
+    }
+
     // @include for-narrow-layout {
     //     grid-template-columns:
     //         minmax(20px, 1fr)

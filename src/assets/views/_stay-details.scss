@@ -22,12 +22,17 @@
     }
 
     .subtitle {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 70px;
+        grid-template-rows: 1fr;
         padding-block: 24px;
         position: relative;
 
+        &.header {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
         h2 {
             padding: 0;
             margin-bottom: 7px;
@@ -89,14 +94,17 @@
         }
 
         .host-image {
+            justify-self: end;
             height: 56px;
             width: 56px;
             border-radius: 50%;
             object-fit: cover;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 0;
+            grid-column: 2;
+            grid-row: 1;
+            // position: absolute;
+            // top: 50%;
+            // transform: translateY(-50%);
+            // right: 0;
         }
         //?----------
         // .share-save-actions {
@@ -153,7 +161,7 @@
 
     .imgs-container {
         display: grid;
-        grid-template: repeat(2, minmax(150px, 225px)) / 2fr 1fr 1fr;
+        grid-template: repeat(2, 275px) / 2fr 1fr 1fr;
 
         // grid-template:  275px 275px / 2fr 1fr 1fr;
         border-radius: 20px;
@@ -166,12 +174,15 @@
             border-bottom-left-radius: 15px;
             border-top-left-radius: 15px;
         }
+
         :nth-child(3) {
             border-top-right-radius: 15px;
         }
+
         :nth-child(5) {
             border-bottom-right-radius: 15px;
         }
+
         img {
             width: 100%;
             height: 100%;
@@ -185,10 +196,25 @@
                 opacity: 1;
             }
         }
+
         &.false {
             .details-header {
                 position: relative;
                 opacity: 0;
+            }
+        }
+
+        @media (max-height: 1100px) {
+            grid-template: repeat(2, minmax(150px, 25vh)) / 2fr 1fr 1fr;
+        }
+
+        @media (max-width: 1320px) {
+            grid-template: repeat(2, 50%) / 2fr 1fr 1fr;
+            img {
+                width: 100%;
+                aspect-ratio: 1/1;
+                color: #222222;
+                object-fit: cover;
             }
         }
     }
@@ -202,6 +228,17 @@
                 padding-block: 32px;
                 border-bottom: 1px solid #dddddd;
             }
+        }
+        @media (max-width: 750px) {
+            display: flex;
+            flex-direction: column;
+            .content {
+                width: 100%;
+            }
+            // .reserve-modal {
+            //     position: fixed;
+            //     bottom: 0;
+            // }
         }
         .reserve-modal {
             form {
