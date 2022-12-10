@@ -91,20 +91,28 @@ function getEmptyStay() {
 function btnsAryy() {
     return [
         {
-            key: 'new',
-            url: 'https://a0.muscache.com/pictures/c0fa9598-4e37-40f3-b734-4bd0e2377add.jpg',
-        },
-        {
-            key: 'top',
-            url: 'https://a0.muscache.com/pictures/248f85bf-e35e-4dc3-a9a1-e1dbff9a3db4.jpg',
-        },
-        {
             key: 'Trending',
             url: 'https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg',
         },
         {
             key: 'Adapted',
             url: 'https://a0.muscache.com/pictures/e22b0816-f0f3-42a0-a5db-e0f1fa93292b.jpg',
+        },
+        {
+            key: 'Tropical',
+            url: 'https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg',
+        },
+        {
+            key: 'Iconic cities',
+            url: 'https://a0.muscache.com/pictures/ed8b9e47-609b-44c2-9768-33e6a22eccb2.jpg',
+        },
+        {
+            key: 'Beachfront',
+            url: 'https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg',
+        },
+        {
+            key: 'Off-the-grid',
+            url: 'https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg',
         },
         {
             key: 'Play',
@@ -135,22 +143,6 @@ function btnsAryy() {
             url: 'https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg',
         },
         {
-            key: 'Tropical',
-            url: 'https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg',
-        },
-        {
-            key: 'Iconic cities',
-            url: 'https://a0.muscache.com/pictures/ed8b9e47-609b-44c2-9768-33e6a22eccb2.jpg',
-        },
-        {
-            key: 'Beachfront',
-            url: 'https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg',
-        },
-        {
-            key: 'Off-the-grid',
-            url: 'https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg',
-        },
-        {
             key: 'Caves',
             url: 'https://a0.muscache.com/pictures/4221e293-4770-4ea8-a4fa-9972158d4004.jpg',
         },
@@ -173,6 +165,14 @@ function btnsAryy() {
         {
             key: 'Casas particulares',
             url: 'https://a0.muscache.com/pictures/251c0635-cc91-4ef7-bb13-1084d5229446.jpg',
+        },
+        {
+            key: 'new',
+            url: 'https://a0.muscache.com/pictures/c0fa9598-4e37-40f3-b734-4bd0e2377add.jpg',
+        },
+        {
+            key: 'top',
+            url: 'https://a0.muscache.com/pictures/248f85bf-e35e-4dc3-a9a1-e1dbff9a3db4.jpg',
         },
         {
             key: 'Golfing',

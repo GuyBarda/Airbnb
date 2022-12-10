@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { stayService } from "../services/stay-service-local.js";
+import { stayService } from "../services/stay-service.js";
 
 import filterBtns from "./filter-btns.vue";
 import filterModal from "./filter-modal.vue";
