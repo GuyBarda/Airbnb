@@ -68,15 +68,13 @@ export default {
             type: "trips",
         };
     },
+    created(){
+        const {type} = this.$route.params
+        this.type = type
+    },
     methods: {
         changeType(str) {
             this.type = str;
-        },
-        hoverEffect(ev) {
-            const button = ev.target;
-            const { x, y } = button.getBoundingClientRect();
-            button.style.setProperty("--x", ev.clientX - x + "px");
-            button.style.setProperty("--y", ev.clientY - y + "px");
         },
     },
     computed: {
@@ -86,6 +84,9 @@ export default {
         getLoggedinUser() {
             return this.$store.getters.loggedinUser;
         },
+        currPath(){
+            return this.$router.params
+        }
     },
     components: {
         orders,
@@ -93,5 +94,10 @@ export default {
         wishlist,
         myStays,
     },
+    watch:{
+        type(type) {
+            this.$router.push('/dashboard/'+ type)
+        },
+    }
 };
 </script>

@@ -41,6 +41,9 @@
                 font-size: em(20px, 16px);
             }
         }
+        img{
+            align-self: end;
+        }
 
         .subtitle-text {
             :not(span) {

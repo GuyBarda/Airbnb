@@ -225,12 +225,3 @@
     }
 }
 
-.search-modal-mobile {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: #f7f7f7;
-    @media (max-width: 400px) {
-        display: block;
-    }
-}
