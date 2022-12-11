@@ -223,6 +223,9 @@
             :rateMap="rate"
         />
     </div>
+    <div v-else>
+        <skeletonDetails></skeletonDetails>
+    </div>
 </template>
 
 <script>
@@ -239,6 +242,7 @@ import reviewAverage from "../cmps/review-average.vue";
 import reserveModal from "../cmps/reserve-modal.vue";
 import detailsHeader from "../cmps/details-header.vue";
 import detailsMap from "../cmps/details-map.vue";
+import skeletonDetails from "../cmps/skeleton-details.vue";
 
 export default {
     data() {
@@ -256,9 +260,9 @@ export default {
     },
     async created() {
         const { id } = this.$route.params;
-        this.stay = await stayService.getById(id);
+        // this.stay = await stayService.getById(id);
         this.order = orderService.getEmptyOrder();
-        const user = userService.getLoggedinUser()
+        const user = userService.getLoggedinUser();
         this.$store.commit({
             type: "setLoggedinUser",
             user,
@@ -397,6 +401,7 @@ export default {
         detailsHeader,
         detailsMap,
         heartIcon,
+        skeletonDetails,
     },
 };
 </script>
