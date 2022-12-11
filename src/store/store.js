@@ -25,7 +25,6 @@ const storeOptions = {
             state.isFilterOpen = bool;
         },
         toggleSearch(state, { bool }) {
-            console.log('closing');
             state.isOpen = bool;
         },
         toggleSuccessModal(state, { bool }) {
