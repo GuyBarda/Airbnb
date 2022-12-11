@@ -27,7 +27,7 @@
 import { RouterLink, RouterView } from "vue-router";
 import appHeader from "./cmps/app-header.vue";
 import userMsg from "./cmps/user-msg.vue";
-import { eventBus,showSuccessMsg } from "./services/event-bus-service.js";
+import { eventBus, showSuccessMsg } from "./services/event-bus-service.js";
 import appFooter from "./cmps/app-footer.vue";
 import loginSignupModal from "./cmps/login-signup-modal.vue";
 import { socketService } from "./services/socket-service.js";
@@ -36,6 +36,7 @@ export default {
     created() {
         this.$store.dispatch({ type: "loadUser" });
         socketService.on("order-updated", (order) => {
+            console.log('hii');
             showSuccessMsg("Order updated, check your trips");
         });
     },

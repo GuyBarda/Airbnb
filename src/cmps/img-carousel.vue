@@ -1,7 +1,7 @@
 <template>
     <carousel :items-to-show="1">
         <slide v-for="slide in imgs" :key="slide">
-            <img :src="slide" />
+            <img @click="navigate" :src="slide" />
         </slide>
 
         <template #addons>
@@ -21,6 +21,12 @@ export default {
         imgs: {
             type: Array,
         },
+        stayId: String
+    },
+    methods:{
+        navigate(){
+            this.$router.push('/stay/' + this.stayId)
+        }
     },
     components: {
         Carousel,

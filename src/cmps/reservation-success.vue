@@ -21,7 +21,7 @@
                 <div class="stay-details-info-container">
                     <img :src="stay.imgUrls[0]" alt="">
                     <p>{{ stay.name }}</p>
-                    <p>Host {{ order.houstId }}</p>
+                    <p>Host:  {{ stay.host.fullname }}</p>
                     <review-average :reviews="stay.reviews.length" :rateMap="rateMap" />
                     <!-- <p>{{ formattedPerNightPrice }}</p> -->
                 </div>
@@ -55,7 +55,8 @@ export default {
     created() {
         // this.order.startDate = '2022-12-16';
         // this.order.endDate = '2022-12-18';
-        console.log(this.order)
+        // console.log(this.order)
+        console.log(this.stay)
     },
     methods: {
         closeSuccessModal() {
@@ -92,8 +93,7 @@ export default {
             return this.format(this.stay.price)
         },
         formattedTotalPrice() {
-            let diffDays = this.totalDays()
-            return this.format(diffDays * this.stay.price)
+            return this.format(this.order.totalPrice)
         },
         getTotalDays() {
             return this.totalDays()

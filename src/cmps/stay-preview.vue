@@ -2,11 +2,11 @@
     <router-link :to="'stay/' + stay._id" target="_blank">
         <article class="stay-preview">
             <heart-icon
-                @click..stop.prevent="setWishlist"
+                @click.stop.prevent="setWishlist"
                 :class="{ mark: isMark }"
                 class="heart-btn"
             />
-            <img-carousel @click.prevent :imgs="stay.imgUrls" />
+            <img-carousel @click.prevent :stayId="stay._id" :imgs="stay.imgUrls" />
             <section>
                 <p class="location">
                     {{ location
