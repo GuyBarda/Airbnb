@@ -17,6 +17,7 @@
             :zone="zone"
             :class="{ open: isOpen }"
         />
+        <search-modal-mobile />
         <div class="user">
             <a class="become-host" href="/stay/edit">Become a host</a>
             <div class="user-menu-btn" @click="toggleUserMenu()">
@@ -45,6 +46,7 @@ import { eventBus } from "../services/event-bus-service";
 import staySearch from "./stay-search.vue";
 import searchModal from "./search-modal.vue";
 import userMenu from "./user-menu.vue";
+import searchModalMobile from './search-modal-mobile.vue'
 
 export default {
     props: {
@@ -118,6 +120,7 @@ export default {
         staySearch,
         searchModal,
         userMenu,
+        searchModalMobile
     },
     watch:{
         currPath(path){

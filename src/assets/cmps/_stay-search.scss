@@ -13,8 +13,8 @@
     cursor: grab;
 
     @media (max-width: 400px) {
+        padding: 0 15px;
         .secondary-container .main-search-container {
-            padding: 0 15px;
             display: none;
         }
     }
