@@ -59,7 +59,7 @@ function save(stay) {
     // return stay._id ? storageService.put(KEY, stay)  : storageService.post(KEY, stay);
     if (stay._id) {
         storageService.put(KEY, stay);
-        showSuccessMsg(`"${stay.name}" just got updated`);
+        showSuccessMsg(`"${stay.name}" updated successfully`);
     } else {
         storageService.post(KEY, stay);
         showSuccessMsg(`"${stay.name}" added successfully`);

@@ -158,12 +158,10 @@ export default {
             this.stayToEdit.bedrooms = 1
             this.stayToEdit.bathrooms = 1
             this.stayToEdit.beds = 1
-            console.log("this.stayToEdit",this.stayToEdit);
             let stay = await this.$store.dispatch({
                 type: "updateStay",
                 stay: this.stayToEdit,
             });
-            console.log("this.stayToEdit",stay);
             const miniStay = {
                 _id: stay._id,
                 name: stay.name,
