@@ -35,8 +35,6 @@ export default {
             console.log("cant load stays");
         }
     },
-    methods: {
-    },
     computed: {
         stays() {
             return this.$store.getters.stays;
