@@ -1,14 +1,16 @@
 <template>
     <section class="trip-preview">
-        <h4>{{ trip.stay.name }}</h4>
+        <div class="">
+            <h4>{{ trip.stay.name }}</h4>
+            
+            <p>
+                <span>{{ formattedStartDate }}</span>
+                <span>{{ formattedEndedDate }}</span>
+            </p>
+        </div>
         <span class="trip-status" :class="tripStatus"><i class="fa fa-check"></i>  {{ trip.status }}</span> 
-
         <!-- <i class="fa fa-regular fa-comments"></i> -->
-        
-        <p>
-            <span>{{ formattedStartDate }}</span>
-            <span>{{ formattedEndedDate }}</span>
-        </p>
+
     </section>
 </template>
 
@@ -51,7 +53,7 @@ export default {
             if (date === "Invalid Date") return "";
             return date;
         },
-        tripStatus(){
+        tripStatus() {
             return this.trip.status
         }
     },

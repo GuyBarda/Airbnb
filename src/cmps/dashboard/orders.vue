@@ -8,7 +8,7 @@
 <script>
 import { orderService } from '../../services/order-service';
 import { userService } from '../../services/user-service.js'
-
+import {socketService} from '../../services/socket-service.js'
 import orderList from './order-list.vue';
 
 export default {
@@ -22,6 +22,10 @@ export default {
     },
     async created() {
         this.orders = await userService.getOrdersByUserId(this.user._id);
+        socketService.on('order-about-you', order => {
+            this.orders.unshift(order)
+        })
+        this.orders = this.orders.reverse()
     },
     methods: {
         async updateStatus(val, id) {
