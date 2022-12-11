@@ -1,7 +1,8 @@
 <template>
     <section class="trip-preview">
         <h4>{{ trip.stay.name }}</h4>
-        <span class="trip-status" :class="tripStatus">{{ trip.status }}</span> 
+        <span class="trip-status" :class="tripStatus"><i class="fa fa-check"></i>  {{ trip.status }}</span> 
+
         <!-- <i class="fa fa-regular fa-comments"></i> -->
         
         <p>

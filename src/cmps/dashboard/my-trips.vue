@@ -7,6 +7,7 @@
                 <img v-for="img in currTrip?.stay.imgUrls" :src="img" alt="" />
             </section>
             <section class="trip-info">
+                
                 <h3>{{ currTrip?.stay?.loc?.address }}</h3>
                 <p>
                     <span class="info-parameter">Dates:</span> {{ formattedStartDate }} - {{ formattedEndDate }}
