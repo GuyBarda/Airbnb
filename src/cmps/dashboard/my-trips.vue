@@ -12,8 +12,9 @@
                     <span class="info-parameter">Dates:</span> {{ formattedStartDate }} - {{ formattedEndDate }}
                 </p>
                 <p><span class="info-parameter">Guests:</span> {{ currTrip?.guests?.adults }}</p>
-                <p><span class="info-parameter">Total price:</span> {{ currTrip?.totalPrice }}</p>
-                <p class="last"><span class="info-parameter">Order Status:</span> {{ currTrip.status }}</p>
+                <p><span class="info-parameter">Total price:</span> ${{ currTrip?.totalPrice }}</p>
+                <p class="last" :class="tripStatus"><span class="info-parameter" >Order Confirmation:</span > {{ currTrip._id }}</p>
+                <p class="last" :class="tripStatus"><span class="info-parameter" >Order Status:</span > {{ currTrip.status }}</p>
             </section>
         </section>
     </div>
@@ -84,6 +85,9 @@ export default {
             if (date === "Invalid Date") return "";
             return date;
         },
+        tripStatus(){
+            return this.currTrip.status
+        }
     },
 };
 </script>

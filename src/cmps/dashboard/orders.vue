@@ -25,6 +25,7 @@ export default {
         socketService.on('order-about-you', order => {
             this.orders.unshift(order)
         })
+        this.orders = this.orders.reverse()
     },
     methods: {
         async updateStatus(val, id) {

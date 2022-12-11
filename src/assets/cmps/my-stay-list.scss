@@ -11,6 +11,7 @@
         justify-content: space-between;
 
         .my-stay-preview {
+            height: max-content;
             a {
                 text-decoration: none;
             }
@@ -46,9 +47,11 @@
                 gap: 10px;
 
                 > * {
+                    font-size: 1em;
                     border-radius: 5px;
                     padding: 5px;
                     border: 0;
+                    height: 35px;
                 }
 
                 .update-btn {
@@ -57,15 +60,15 @@
 
                 .elipsis-btn {
                     background-color: lightgray;
-                    position: relative;
-                    .delete-btn {
-                        position: absolute;
-                        background-color: rgb(249, 119, 119);
-                        top: -50%;
-                        left: 100%;
-                        border-radius: 5px;
-                        padding: 5px 40px;
-                    }
+                }
+                .delete-btn {
+                    // position: absolute;
+                    background-color: rgb(249, 119, 119);
+                    // top: -50%;
+                    // left: 100%;
+                    // border-radius: 5px;
+                    // padding: 5px 40px;
+                    text-align: center;
                 }
             }
         }
