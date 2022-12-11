@@ -37,13 +37,13 @@
                             </label>
                             <label for="stay-type">Stay type:
                                 <select name="stay-type" v-model="stayToEdit.roomType">
-                                    <option value="Entire place">
+                                    <option value="entire place">
                                         Entire place
                                     </option>
-                                    <option value="Private room">
+                                    <option value="private room">
                                         Private room
                                     </option>
-                                    <option value="Shared room">
+                                    <option value="shared room">
                                         Shared room
                                     </option>
                                 </select>
