@@ -1,6 +1,6 @@
 .stay-app {
     display: grid;
-    grid-template-rows: 90px 1fr;
+    grid-template-rows: auto auto 1fr;
     position: relative;
 
     .explore-sub-header {

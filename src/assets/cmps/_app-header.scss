@@ -20,7 +20,7 @@
         display: flex;
         justify-content: start;
         // align-items: center;
-        color: #FF385C;
+        color: #ff385c;
         font-size: 1.6em;
         letter-spacing: -1px;
         font-family: CerealBd;
@@ -37,7 +37,7 @@
             margin: 0 0 -3px 0px;
         }
         @media (max-width: 650px) {
-            display: none;
+            // display: none;
         }
     }
     .user {
@@ -47,7 +47,7 @@
         align-items: center;
         font-family: CerealReg, Arial, sans-serif;
         @media (max-width: 570px) {
-            display: none;
+            // display: none;
         }
         .become-host {
             text-decoration: none;
@@ -55,7 +55,7 @@
             background-color: transparent;
             height: fit-content;
             font-weight: bold;
-            font-size: em(14px,16px);
+            font-size: em(14px, 16px);
             margin-right: 25px;
             @media (max-width: 900px) {
                 display: none;
@@ -225,7 +225,7 @@
                 :first-child {
                     // margin-top: 5px;
                     background-color: red;
-                    border-bottom: 1px solid #DDDDDD;
+                    border-bottom: 1px solid #dddddd;
                 }
                 a {
                     padding: 15px 20px;
