@@ -38,8 +38,7 @@
                 </div>
             </div>
         </div>
-        <button @click="goToDashboard" @mousemove="hoverEffect" class="btn-reserve">Look for more places to
-            stay</button>
+        <button @click="goToDashboard" @mousemove="hoverEffect" class="btn-reserve">Check your trips</button>
     </div>
 </template>
 

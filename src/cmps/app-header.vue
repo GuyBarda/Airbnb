@@ -17,7 +17,7 @@
             :zone="zone"
             :class="{ open: isOpen }"
         />
-        <search-modal-mobile />
+        <!-- <search-modal-mobile /> -->
         <div class="user">
             <a class="become-host" href="/stay/edit">Become a host</a>
             <div class="user-menu-btn" @click="toggleUserMenu()">

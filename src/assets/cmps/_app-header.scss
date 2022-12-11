@@ -134,6 +134,9 @@
         background-color: #fff;
         border-radius: 12px;
         box-shadow: #0000002e 0 0 3px;
+        :nth-child(2),:nth-child(4){
+            border-bottom: 1px solid #dddddd;
+        }
         a:first-child {
             margin-top: 5px;
         }

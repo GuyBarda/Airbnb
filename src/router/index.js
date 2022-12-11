@@ -34,7 +34,7 @@ const router = createRouter({
             component: stayEdit,
         },
         {
-            path: '/dashboard',
+            path: '/dashboard/:type?',
             name: 'dashnoard',
             component: userDashboard,
         },
