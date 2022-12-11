@@ -13,14 +13,17 @@
                 <i class="fa fa-check"></i>
                 Approve
             </button>
+            
             <button class="decline" @click="$emit('changeStatus', 'decline', order._id)">
                 <i class="fa fa-times-circle"></i>
                 Decline
             </button>
         </div>
+        
         <div v-else-if="order.status === 'decline'" class="actions">
             <button class="pending" @click="$emit('changeStatus', 'pending', order._id)">
-                <i class="fa fa-times-circle"></i>
+                <i class="fa-light fa-timer"></i>
+                
                 Pending
             </button>
             <button class="approve" @click="$emit('changeStatus', 'approve', order._id)">
@@ -29,8 +32,9 @@
             </button>
         </div>
         <div v-else class="actions">
+
             <button class="pending" @click="$emit('changeStatus', 'pending', order._id)">
-                <i class="fa fa-check"></i>
+                <i class="fa fa-times-circle"></i>
                 Pending
             </button>
             <button class="decline" @click="$emit('changeStatus', 'decline', order._id)">
