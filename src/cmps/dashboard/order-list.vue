@@ -1,6 +1,7 @@
 <template>
     <div>
         <section class="order-preview">
+            
             <p>Buyer</p>
             <p>Stay Name</p>
             <p>Date</p>

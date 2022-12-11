@@ -1,24 +1,20 @@
 <template>
-    <section class="order-preview">
-        <img :src="order.buyer.imgUrl" alt="" />
-        <p>{{ order.buyer.fullname }}</p>
+    <section class="order-preview list-preview-all">
+        
+        <p class="img-buyer"><img :src="order.buyer.imgUrl" alt="" />{{ order.buyer.fullname }}</p>
         <p>{{ order.stay.name }}</p>
         <p>{{ formattedStartDate }}</p>
-        <p>{{ formattedEndDate }}</p>
+        <!-- <p>{{ formattedEndDate }}</p> -->
         <!-- <p>{{ order.endDate }}</p> -->
         <p>{{ order.totalPrice }}$</p>
-        <p>{{ order.status }}</p>
+        <p :class="orderStatus">{{ order.status }}</p>
         <div class="actions">
-            <button
-                class="approve"
-                @click="$emit('changeStatus', 'approve', order._id)"
-            >
+            <button class="approve" @click="$emit('changeStatus', 'approve', order._id)" >
+                <i class="fa fa-check"></i>
                 Approve
             </button>
-            <button
-                class="decline"
-                @click="$emit('changeStatus', 'decline', order._id)"
-            >
+            <button class="decline" @click="$emit('changeStatus', 'decline', order._id)">
+                <i class="fa fa-times-circle"></i>
                 Decline
             </button>
         </div>
@@ -40,6 +36,9 @@ export default {
         },
         formattedEndDate() {
             return this.formatDate(this.order.endDate);
+        },
+        orderStatus() {
+            return this.order.status;
         },
     },
     methods: {
