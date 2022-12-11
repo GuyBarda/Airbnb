@@ -11,10 +11,12 @@
     transition: box-shadow 0.2s ease;
     transition: transform 0.4s, opacity 0.3s ease;
     cursor: grab;
-    // z-index: 20;
 
     @media (max-width: 400px) {
-        padding: 0 15px;
+        .secondary-container .main-search-container {
+            padding: 0 15px;
+            display: none;
+        }
     }
 
     &.close {
