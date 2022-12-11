@@ -1,8 +1,10 @@
-
 <template>
     <section class="stay-app main-container">
         <stay-filter :stays="stays" />
-        <section class="explore-sub-header" v-if="this.$route.path === '/explore'">
+        <section
+            class="explore-sub-header"
+            v-if="this.$route.path === '/explore'"
+        >
             Found {{ stays.length }} homes
         </section>
         <stay-list v-if="!isLoading" :stays="stays" />
@@ -12,7 +14,7 @@
         </div>
     </section>
 </template>
-  
+
 <script>
 import { stayService } from "../services/stay-service.js";
 import stayFilter from "../cmps/stay-filter.vue";
@@ -28,12 +30,14 @@ export default {
 
     async created() {
         try {
-            this.isLoading = true
+            this.isLoading = true;
             await this.$store.dispatch({ type: "loadStays" });
-            this.isLoading = false
+            this.isLoading = false;
         } catch {
             console.log("cant load stays");
         }
+    },
+    methods: {
     },
     computed: {
         stays() {
@@ -46,27 +50,31 @@ export default {
     components: {
         stayFilter,
         stayList,
-        skeleton
+        skeleton,
     },
     watch: {
         async changePath(query) {
-            this.isLoading = true
+            this.isLoading = true;
             if (this.$route.path === "/explore") {
                 const filterBy = query;
-                filterBy.minPrice = +filterBy.minPrice
-                filterBy.beds = +filterBy.beds
-                filterBy.bedrooms = +filterBy.bedrooms
-                filterBy.bathrooms = +filterBy.bathrooms
-                filterBy.maxPrice = +filterBy.maxPrice
-                this.$store.commit({ type: "setFilter", filterBy: { ...filterBy } });
+                filterBy.minPrice = +filterBy.minPrice;
+                filterBy.beds = +filterBy.beds;
+                filterBy.bedrooms = +filterBy.bedrooms;
+                filterBy.bathrooms = +filterBy.bathrooms;
+                filterBy.maxPrice = +filterBy.maxPrice;
+                this.$store.commit({
+                    type: "setFilter",
+                    filterBy: { ...filterBy },
+                });
                 this.$store.commit({ type: "toggleSearch", bool: false });
             } else {
                 this.$store.commit({
-                    type: "setFilter", filterBy: stayService.getEmptyFilter(),
+                    type: "setFilter",
+                    filterBy: stayService.getEmptyFilter(),
                 });
             }
             await this.$store.dispatch({ type: "loadStays" });
-            this.isLoading = false
+            this.isLoading = false;
         },
     },
 };
