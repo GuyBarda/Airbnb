@@ -104,7 +104,7 @@ function getEmptyFilter() {
     return {
         minPrice: 25,
         maxPrice: 800,
-        type: [],
+        roomTypes: [],
         bedrooms: 1,
         beds: 1,
         bathrooms: 1,
