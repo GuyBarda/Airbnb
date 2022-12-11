@@ -2,10 +2,7 @@
 <template>
     <section class="stay-app main-container">
         <stay-filter :stays="stays" />
-        <section
-            class="exolore-sub-header"
-            v-if="this.$route.path === '/explore'"
-        >
+        <section class="exolore-sub-header" v-if="this.$route.path === '/explore'">
             Found {{ stays.length }} homes
         </section>
         <stay-list v-if="!isLoading" :stays="stays" />
@@ -58,6 +55,12 @@ export default {
             this.isLoading = true
             if (this.$route.path === "/explore") {
                 const filterBy = query;
+                filterBy.minPrice = +filterBy.minPrice
+                filterBy.beds = +filterBy.beds
+                filterBy.bedrooms = +filterBy.bedrooms
+                filterBy.bathrooms = +filterBy.bathrooms
+                filterBy.maxPrice = +filterBy.maxPrice
+                console.log(filterBy)
                 this.$store.commit({ type: "setFilter", filterBy: { ...filterBy } });
                 this.$store.commit({ type: "toggleSearch", bool: false });
             } else {
