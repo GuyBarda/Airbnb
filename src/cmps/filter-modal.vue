@@ -72,7 +72,7 @@
                         <input
                             type="checkbox"
                             name="entire"
-                            v-model="filterBy.type"
+                            v-model="filterBy.roomType"
                             value="entire place"
                         />
                         <div class="label-p">
@@ -84,7 +84,7 @@
                         <input
                             type="checkbox"
                             name="private"
-                            v-model="filterBy.type"
+                            v-model="filterBy.roomType"
                             value="private room"
                         />
                         <div class="label-p">
@@ -99,7 +99,7 @@
                         <input
                             type="checkbox"
                             name="shared"
-                            v-model="filterBy.type"
+                            v-model="filterBy.roomType"
                             value="shared room"
                         />
                         <div class="label-p">
@@ -283,7 +283,7 @@ export default {
             filterBy: {
                 minPrice: 25,
                 maxPrice: 800,
-                type: [],
+                roomType: [],
                 bedrooms: 1,
                 beds: 1,
                 bathrooms: 1,
@@ -305,7 +305,7 @@ export default {
             this.filterBy = {
                 minPrice: 25,
                 maxPrice: 800,
-                type: [],
+                roomType: [],
                 bedrooms: 1,
                 beds: 1,
                 bathrooms: 1,
