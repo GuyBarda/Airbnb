@@ -1,4 +1,5 @@
 import io from 'socket.io-client';
+import { showSuccessMsg } from './event-bus-service';
 import { userService } from './user-service';
 
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg';
@@ -56,6 +57,7 @@ function createSocketService() {
     };
     return socketService;
 }
+
 
 // eslint-disable-next-line
 function createDummySocketService() {

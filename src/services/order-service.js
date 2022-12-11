@@ -14,7 +14,14 @@ export const orderService = {
 };
 
 window.cs = orderService;
-
+// ;(()=>{
+//     setTimeout(()=>{
+//         socketService.on("order-updated", (order) => {
+//             console.log("hiiii socket");
+//             showSuccessMsg("Order updated, check your trips");
+//         });
+//     },0)
+// })()
 async function query(filterBy = { buyerId: '', hostId: '' }) {
     return httpService.get(STORAGE_KEY, filterBy);
 }
