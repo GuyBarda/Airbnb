@@ -1,43 +1,51 @@
 .user-dashboard {
     font-family: CerealReg;
     margin-block: 10px;
+    color: #222222;
 
     .dashboard-container {
         grid-template-rows: 50px 1fr;
         gap: 20px;
         display: grid;
-        background-color: #eff3f5;
+        background-color: #f3f3f3;
         border-radius: 10px;
         padding: 10px;
         margin-bottom: 10px;
-        // height: 100%;
     }
 
     .dashboard-nav {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 10px;
-        // height: 40px;
-
-        // @include reserve-btn();
         font-size: em(17px, 16px);
 
         input {
             display: none;
+        }
+        input:checked + .btn-nav {
+            color: #ff385c;
+            border: 1px solid #ff385c;
         }
 
         .btn-nav {
             padding: 10px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 1px 20px 3px rgb(0 0 0 / 8%),
-                0px 0px 0px rgb(0 0 0 / 5%);
-            display: grid;
+            // box-shadow: 0 1px 20px 3px rgb(0 0 0 / 8%),
+            //     0px 0px 0px rgb(0 0 0 / 5%);
+            border: 1px solid rgb(202, 202, 202);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            font-family: inherit;
-            text-transform: uppercase;
-            font-size: em(14px, 16px);
+            text-transform: capitalize;
+            font-family: CerealMd;
+            transition: 0.2s;
             cursor: pointer;
+
+            &:hover {
+                color: #ff385c;
+                border: 1px solid #ff385c;
+            }
         }
     }
 }
