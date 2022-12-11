@@ -118,7 +118,7 @@
                             style="display: flex; gap: 13px"
                         >
                             <img
-                                :src="`/src/assets/svg/amenities/${a
+                                :src="`../assets/svg/amenities/${a
                                     .split(' ')[0]
                                     .toLowerCase()}.svg`"
                                 alt="np"
