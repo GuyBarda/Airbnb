@@ -1,5 +1,5 @@
 <template>
-    <div class="order-list">
+    <div>
         <section class="order-preview">
             <p>Buyer</p>
             <p>Stay Name</p>
@@ -8,7 +8,9 @@
             <p>Status</p>
             <p>Actions</p>
         </section>
-        <order-preview @changeStatus="updateStatus" v-for="order in orders" :order="order" />
+        <div class="order-list ">
+            <order-preview @changeStatus="updateStatus" v-for="order in orders" :order="order" />
+        </div>
     </div>
 </template>
   

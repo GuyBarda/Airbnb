@@ -18,7 +18,7 @@
             :class="{ open: isOpen }"
         />
         <div class="user">
-            <a class="become-host" href="/#/login">Become a host</a>
+            <a class="become-host" href="/stay/edit">Become a host</a>
             <div class="user-menu-btn" @click="toggleUserMenu()">
                 <button>
                     <img class="menu-btn" src="../assets/svg/menu.svg" />
@@ -110,11 +110,22 @@ export default {
                 ? "secondary-container"
                 : "main-container";
         },
+        currPath(){
+            return this.$route.path
+        }
     },
     components: {
         staySearch,
         searchModal,
         userMenu,
     },
+    watch:{
+        currPath(path){
+            if(path === '/'){
+                this.setDate('')
+                this.setDest('')
+            }
+        }
+    }
 };
 </script>

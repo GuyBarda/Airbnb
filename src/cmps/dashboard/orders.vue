@@ -26,7 +26,6 @@ export default {
     methods: {
         async updateStatus(val, id) {
             let order = await orderService.getById(id)
-            console.log(order)
             order.status = val
             let updatedOrder = await this.$store.dispatch({ type: 'addOrder', order })
             this.orders = await userService.getOrdersByUserId(this.user._id);

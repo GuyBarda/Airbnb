@@ -33,6 +33,7 @@ function getEmptyOrder() {
         buyer: {
             _id: '',
             fullname: '',
+            imgUrl: '',
         },
         totalPrice: 0,
         startDate: Date.now() + 1000 * 60 * 60 * 24,

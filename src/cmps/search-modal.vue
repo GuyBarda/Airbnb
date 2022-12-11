@@ -145,6 +145,9 @@ export default {
             if (date === "Invalid Date") return "";
             return date;
         },
+        currPath(){
+            return this.$route.path
+        }
     },
     components: {
         reactiveBtn,
@@ -152,6 +155,9 @@ export default {
         datePicker,
         guestsModal,
     },
+    watch:{
+        
+    }
 };
 </script>
   
