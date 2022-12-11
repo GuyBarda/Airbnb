@@ -60,7 +60,6 @@ export default {
                 filterBy.bedrooms = +filterBy.bedrooms
                 filterBy.bathrooms = +filterBy.bathrooms
                 filterBy.maxPrice = +filterBy.maxPrice
-                console.log(filterBy)
                 this.$store.commit({ type: "setFilter", filterBy: { ...filterBy } });
                 this.$store.commit({ type: "toggleSearch", bool: false });
             } else {
