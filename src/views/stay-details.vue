@@ -10,7 +10,7 @@
                         <img src="../assets/svg/share.svg" alt="" />
                         <span>Share</span>
                     </span>
-                    <span @click="addToWishlist" class="save-stay">
+                    <span class="save-stay">
                         <!-- <img src="../assets/svg/love.svg" alt="" /> -->
                         <heart-icon @click.prevent="setWishlist" :class="{ mark: isMark }" class="heart-btn" />
                         <span style="outline: 0px">Save</span>
@@ -253,11 +253,10 @@ export default {
             });
             return formatter.format(num);
         },
-        async addToWishlist() {
+        async setWishlist() {
             this.isMark = !this.isMark
             await this.$store.dispatch({ type: 'setWishlist', stayId: this.stay._id })
             wishlistMsg(`${this.stay.name} saved to wishlist`);
-
         },
     },
     computed: {

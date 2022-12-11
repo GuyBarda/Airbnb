@@ -2,7 +2,7 @@
     <router-link :to="'stay/' + stay._id" target="_blank">
         <article class="stay-preview">
             <heart-icon
-                @click.prevent="setWishlist"
+                @click..stop.prevent="setWishlist"
                 :class="{ mark: isMark }"
                 class="heart-btn"
             />
@@ -65,7 +65,8 @@ export default {
                 type: "setWishlist",
                 stayId: this.stay._id,
             });
-            wishlistMsg(`${this.stay.name} saved to wishlist`);
+            const msg = `${this.stay.name} ${this.isMark ? `saved to wishlist` : `removed from wishlist`}`
+            wishlistMsg(msg);
         },
     },
     computed: {

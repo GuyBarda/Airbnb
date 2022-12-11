@@ -129,6 +129,7 @@ export default {
             ? await stayService.getById(id)
             : stayService.getEmptyStay();
         this.stayToEdit.host = this.user;
+        console.log("stayYoEdit",this.stayToEdit);
     },
     methods: {
         close() {

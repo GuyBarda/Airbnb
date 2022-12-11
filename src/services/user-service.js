@@ -11,7 +11,6 @@ import {
 import { showSuccessMsg, showErrorMsg, wishlistMsg } from './event-bus-service';
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
-let gUsers;
 
 export const userService = {
     login,
@@ -82,7 +81,7 @@ async function update(user) {
 async function login(userCred) {
     const user = await httpService.post('auth/login', userCred);
     if (user) {
-        showSuccessMsg(`User ${user.fullname} just login`);
+        showSuccessMsg(`Welcome ${user.fullname}`);
         socketService.login(user._id);
         return saveLocalUser(user);
     }
@@ -105,7 +104,7 @@ async function logout() {
     localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
     socketService.logout();
-    showErrorMsg(` user just logout`);
+    showErrorMsg(`You are logged out`);
     return await httpService.post('auth/logout');
 }
 

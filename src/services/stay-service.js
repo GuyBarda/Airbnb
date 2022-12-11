@@ -24,6 +24,7 @@ export const stayService = {
     remove,
     getEmptyStay,
     addStayMsg,
+    getEmptyFilter,
     btnsAryy,
 };
 window.cs = stayService;
@@ -96,6 +97,25 @@ function getEmptyStay() {
         reviews: [],
         likedByUsers: [],
         propertyType: '',
+    };
+}
+
+function getEmptyFilter() {
+    return {
+        minPrice: 25,
+        maxPrice: 800,
+        type: [],
+        bedrooms: 1,
+        beds: 1,
+        bathrooms: 1,
+        propertyType: [],
+        amenities: [],
+        destination: '',
+        dates: {
+            start: '',
+            end: '',
+        },
+        guests: 0,
     };
 }
 

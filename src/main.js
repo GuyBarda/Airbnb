@@ -12,7 +12,7 @@ import './assets/setup/_typography.scss';
 
 const app = createApp(App);
 
-app.directive(clickOutsideDirective)
+app.directive('outside',clickOutsideDirective)
 
 app.use(ElementPlus);
 app.use(router);
