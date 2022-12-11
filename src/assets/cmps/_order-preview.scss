@@ -8,10 +8,10 @@
         );
     gap: 5px;
     align-items: center;
-    padding-left: 9px;
+    padding-inline: 15px;
 
     border-bottom: 1px solid rgb(255 255 255);
-    
+
     section {
         font-weight: 600;
     }
@@ -75,7 +75,7 @@
     }
 }
 
-.list-preview-all{
+.list-preview-all {
     background-color: #eff3f5;
     padding-block: 5px;
 }
