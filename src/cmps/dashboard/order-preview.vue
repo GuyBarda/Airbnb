@@ -8,38 +8,18 @@
         <!-- <p>{{ order.endDate }}</p> -->
         <p>{{ order.totalPrice }}$</p>
         <p :class="orderStatus">{{ order.status }}</p>
-        <div v-if="order.status === 'pending'" class="actions">
-            <button class="approve" @click="$emit('changeStatus', 'approve', order._id)">
+        <div class="actions">
+            <button v-if="order.status !== 'approve'" class="approve"
+                @click="$emit('changeStatus', 'approve', order._id)">
                 <i class="fa fa-check"></i>
                 Approve
             </button>
-            <button class="decline" @click="$emit('changeStatus', 'decline', order._id)">
+            <button v-if="order.status !== 'decline'" class="decline"
+                @click="$emit('changeStatus', 'decline', order._id)">
                 <i class="fa fa-times-circle"></i>
                 Decline
             </button>
         </div>
-        <div v-else-if="order.status === 'decline'" class="actions">
-            <button class="pending" @click="$emit('changeStatus', 'pending', order._id)">
-                <i class="fa fa-times-circle"></i>
-                Pending
-            </button>
-            <button class="approve" @click="$emit('changeStatus', 'approve', order._id)">
-                <i class="fa fa-check"></i>
-                Approve
-            </button>
-        </div>
-        <div v-else class="actions">
-            <button class="pending" @click="$emit('changeStatus', 'pending', order._id)">
-                <i class="fa fa-check"></i>
-                Pending
-            </button>
-            <button class="decline" @click="$emit('changeStatus', 'decline', order._id)">
-                <i class="fa fa-times-circle"></i>
-                Decline
-            </button>
-        </div>
-
-        <!-- <pre>{{ order }}</pre> -->
     </section>
 </template>
 

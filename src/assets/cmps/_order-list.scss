@@ -1,4 +1,8 @@
 .order-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
     > * {
         border-radius: 10px;
         // box-shadow: 0 1px 20px 13px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
@@ -7,8 +11,20 @@
         // padding: 10px;
     }
 
-    h2 {
+    .order-header {
+        display: flex;
+        justify-content: space-between;
         padding: 15px;
+        align-items: center;
+        h2 {
+            margin: 0;
+        }
+        h3 {
+            margin: 0;
+            font-size: em(18px, 16px);
+            color: #727272;
+            font-weight: normal;
+        }
     }
 
     .order-list {
@@ -16,7 +32,6 @@
         overflow: auto;
         display: flex;
         flex-direction: column;
-        // gap: 10px;
 
         p {
             margin: 0;
