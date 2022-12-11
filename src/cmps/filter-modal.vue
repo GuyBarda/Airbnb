@@ -42,14 +42,22 @@
                 <h2>Type of place</h2>
                 <section class="place-types">
                     <article class="place-type">
-                        <input type="checkbox" name="entire" v-model="filterBy.roomTypes" value="entire place" />
+                        <<<<<<< HEAD <input type="checkbox" name="entire" v-model="filterBy.roomTypes"
+                            value="entire place" />
+                        =======
+                        <input type="checkbox" name="entire" v-model="filterBy.roomType" value="entire place" />
+                        >>>>>>> 712d445191a3e9bbcd1162e816481eca9bfab21d
                         <div class="label-p">
                             <label for="entire">Entire place</label>
                             <p>A place all to yourself</p>
                         </div>
                     </article>
                     <article class="place-type">
-                        <input type="checkbox" name="private" v-model="filterBy.roomTypes" value="private room" />
+                        <<<<<<< HEAD <input type="checkbox" name="private" v-model="filterBy.roomTypes"
+                            value="private room" />
+                        =======
+                        <input type="checkbox" name="private" v-model="filterBy.roomType" value="private room" />
+                        >>>>>>> 712d445191a3e9bbcd1162e816481eca9bfab21d
                         <div class="label-p">
                             <label for="private">Private room</label>
                             <p>
@@ -59,7 +67,11 @@
                         </div>
                     </article>
                     <article class="place-type">
-                        <input type="checkbox" name="shared" v-model="filterBy.roomTypes" value="shared room" />
+                        <<<<<<< HEAD <input type="checkbox" name="shared" v-model="filterBy.roomTypes"
+                            value="shared room" />
+                        =======
+                        <input type="checkbox" name="shared" v-model="filterBy.roomType" value="shared room" />
+                        >>>>>>> 712d445191a3e9bbcd1162e816481eca9bfab21d
                         <div class="label-p">
                             <label for="shared">Shared room</label>
                             <p>

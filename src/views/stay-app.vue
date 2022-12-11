@@ -2,14 +2,17 @@
 <template>
     <section class="stay-app main-container">
         <stay-filter :stays="stays" />
-        <section class="explore-sub-header" v-if="this.$route.path === '/explore'">Found {{ stays.length }} homes
+        <section
+            class="exolore-sub-header"
+            v-if="this.$route.path === '/explore'"
+        >
+            Found {{ stays.length }} homes
         </section>
         <stay-list v-if="!isLoading" :stays="stays" />
 
         <div class="stay-list" v-else>
             <skeleton v-for="num in 12" :key="num" />
         </div>
-
     </section>
 </template>
   
@@ -68,4 +71,3 @@ export default {
     },
 };
 </script>
-  
