@@ -114,16 +114,12 @@
                     <h2>What this place offers</h2>
                     <div class="stay-amenities">
                         <div
-                            v-for="a in stay.amenities"
+                            v-for="(a,idx) in stay.amenities"
                             style="display: flex; gap: 13px"
                         >
-                            <img
-                                :src="`../assets/svg/amenities/${a
-                                    .split(' ')[0]
-                                    .toLowerCase()}.svg`"
-                                alt="np"
-                                style="width: 1.2em"
-                            />
+                            <img :src="amenitiesUrls[idx]" style="width: 1.2em"
+ />
+                            <!-- <img :src="getImgUrlSec(a)" /> -->
                             <p>{{ a }}</p>
                         </div>
                     </div>
@@ -252,13 +248,16 @@ export default {
             sticky: false,
             isReserveInHeader: false,
             isMark: false,
+            amenitiesUrls: null,
         };
     },
     async created() {
+        
         const { id } = this.$route.params;
         this.stay = await stayService.getById(id);
+        this.getImageUrl()
         this.order = orderService.getEmptyOrder();
-        const user = userService.getLoggedinUser()
+        const user = userService.getLoggedinUser();
         this.$store.commit({
             type: "setLoggedinUser",
             user,
@@ -336,6 +335,16 @@ export default {
                 stayId: this.stay._id,
             });
             wishlistMsg(`${this.stay.name} saved to wishlist`);
+        },
+        getImageUrl() {
+            this.amenitiesUrls = this.stay.amenities.map(a => {
+                return new URL(
+                `/src/assets/svg/amenities/${a
+                    .split(" ")[0]
+                    .toLowerCase()}.svg`,
+                import.meta.url
+            ).href;
+            })
         },
     },
     computed: {
