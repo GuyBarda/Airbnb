@@ -2,8 +2,10 @@
     <section class="trip-preview">
         <h4>{{ trip.stay.name }}</h4>
         <p>
-            <span>{{ formattedStartDate }}</span> {{ trip.status }}
+            <span>{{ formattedStartDate }}</span>
+            <span>{{ formattedEndedDate }}</span>
         </p>
+        <span>{{ trip.status }}</span> 
     </section>
 </template>
 
@@ -32,6 +34,14 @@ export default {
         },
         formattedStartDate() {
             let date = new Date(this.trip.startDate).toLocaleDateString(
+                "en-us",
+                { month: "short", day: "numeric" }
+            );
+            if (date === "Invalid Date") return "";
+            return date;
+        },
+        formattedEndedDate() {
+            let date = new Date(this.trip.endDate).toLocaleDateString(
                 "en-us",
                 { month: "short", day: "numeric" }
             );
