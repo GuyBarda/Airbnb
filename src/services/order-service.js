@@ -36,11 +36,13 @@ async function remove(orderId) {
 }
 
 async function save(order) {
+    console.log('order',order )
     var savedOrder;
     if (order._id) {
         savedOrder = await httpService.put(`order/${order._id}`, order);
     } else {
-        savedOrder = await httpService.post('order', order);
+        console.log('no in')
+        savedOrder = await httpService.post('order/', order);
     }
     return savedOrder;
 }
@@ -56,6 +58,7 @@ function getEmptyOrder() {
         buyer: {
             _id: '',
             fullname: '',
+            imgUrl: '',
         },
         totalPrice: 0,
         startDate: Date.now() + 1000 * 60 * 60 * 24,

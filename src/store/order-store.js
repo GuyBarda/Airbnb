@@ -26,6 +26,7 @@ export const orderStore = {
     actions: {
         async addOrder({ commit }, { order }) {
             try {
+                console.log('order',order )
                 order = await orderService.save(order);
                 commit({ type: 'addOrder', order });
                 return order;

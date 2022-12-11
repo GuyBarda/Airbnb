@@ -94,7 +94,7 @@ async function signup(userCred) {
     // Shon shon1 (?)
     if (!userCred.imgUrl)
         userCred.imgUrl =
-            'https://res.cloudinary.com/dirvusyaz/image/upload/v1670419729/77_eaxuqe.png';
+        'https://res.cloudinary.com/dirvusyaz/image/upload/v1670419729/77_eaxuqe.png';
     const user = await httpService.post('auth/signup', userCred);
     socketService.login(user._id);
     showSuccessMsg(`Welcome ${user.fullname}!`);
