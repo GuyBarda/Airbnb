@@ -45,7 +45,10 @@
                 <div class="subtitle">
                     <div class="">
                         <h2>
-                            {{ stay.roomType }} hosted by
+                            <span style="text-transform: capitalize">{{
+                                stay.roomType
+                            }}</span>
+                            hosted by
                             {{ stay.host.fullname }}
                         </h2>
                         <div style="margin-top: 3px; grid-column: 1">
@@ -114,11 +117,13 @@
                     <h2>What this place offers</h2>
                     <div class="stay-amenities">
                         <div
-                            v-for="(a,idx) in stay.amenities"
+                            v-for="(a, idx) in stay.amenities"
                             style="display: flex; gap: 13px"
                         >
-                            <img :src="amenitiesUrls[idx]" style="width: 1.2em"
- />
+                            <img
+                                :src="amenitiesUrls[idx]"
+                                style="width: 1.2em"
+                            />
                             <!-- <img :src="getImgUrlSec(a)" /> -->
                             <p>{{ a }}</p>
                         </div>
@@ -188,12 +193,12 @@
             >
                 {{
                     `Show
-                            ${
-                                !showMore
-                                    ? `all
-                            ${stay.reviews.length} reviews`
-                                    : "less"
-                            }`
+                                ${
+                                    !showMore
+                                        ? `all
+                                ${stay.reviews.length} reviews`
+                                        : "less"
+                                }`
                 }}
             </button>
         </section>
@@ -252,10 +257,9 @@ export default {
         };
     },
     async created() {
-        
         const { id } = this.$route.params;
         this.stay = await stayService.getById(id);
-        this.getImageUrl()
+        this.getImageUrl();
         this.order = orderService.getEmptyOrder();
         const user = userService.getLoggedinUser();
         this.$store.commit({
@@ -337,14 +341,14 @@ export default {
             wishlistMsg(`${this.stay.name} saved to wishlist`);
         },
         getImageUrl() {
-            this.amenitiesUrls = this.stay.amenities.map(a => {
+            this.amenitiesUrls = this.stay.amenities.map((a) => {
                 return new URL(
-                `/src/assets/svg/amenities/${a
-                    .split(" ")[0]
-                    .toLowerCase()}.svg`,
-                import.meta.url
-            ).href;
-            })
+                    `/src/assets/svg/amenities/${a
+                        .split(" ")[0]
+                        .toLowerCase()}.svg`,
+                    import.meta.url
+                ).href;
+            });
         },
     },
     computed: {

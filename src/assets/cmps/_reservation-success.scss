@@ -47,26 +47,26 @@
     }
 
     .content .your-stay-details-container .stay-details-info-container {
-        height: 100px;
+        min-width: 300px;
         display: grid;
         grid-template-columns: 150px 2fr;
         grid-template-rows: 1fr 1fr;
         gap: em(10px, 16px) em(30px, 16px);
 
-        // @media (min-width: 550px) {
-        //     grid-template-columns: 1fr;
-        //     grid-template-rows: 1fr 1fr 1fr 1fr;
-        // }
+        @media (max-width: 760px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
 
         img {
             width: 100%;
-            aspect-ratio: 1/1;
             object-fit: cover;
-            height: 100%;
             grid-row: 1/4;
-            // @media (min-width: 550px) {
-            //     grid-row: 1;
-            // }
+            border-radius: 4px;
+
+            @media (max-width: 760px) {
+                aspect-ratio: 2/1;
+            }
         }
 
         a {
@@ -81,11 +81,16 @@
             display: flex;
             align-items: center;
             grid-column: 2;
+
+            @media (max-width: 760px) {
+                grid-column: 1;
+            }
         }
     }
 
     .content > * {
         padding: 24px 0px;
+
         &:not(:last-child) {
             border-bottom: 1px solid rgb(222, 222, 222);
         }

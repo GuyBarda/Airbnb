@@ -23,7 +23,7 @@
                 </div>
                 <div @click="showGuestPicker = !showGuestPicker" class="guests picker">
                     <label for="guests">GUESTS</label>
-                    <input type="text" :value="guestsCount" style="color: black;background-color: white" disabled/>
+                    <input type="text" :value="guestsCount" style="color: black;background-color: white" disabled />
                     <guests-modal @setGuests="setGuests" :class="{ open: showGuestPicker }"></guests-modal>
                 </div>
             </div>
@@ -53,7 +53,6 @@
 </template>
   
 <script>
-// import { orderService } from '../services/order-service-local.js';
 import { orderService } from '../services/order-service.js';
 
 import reviewAverage from '../cmps/review-average.vue';

@@ -41,7 +41,7 @@
                 font-size: em(20px, 16px);
             }
         }
-        img{
+        img {
             align-self: end;
         }
 
@@ -252,6 +252,10 @@
                 padding-block: 32px;
                 border-bottom: 1px solid #dddddd;
             }
+            :last-child {
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
         }
         @media (max-width: 750px) {
             display: flex;
@@ -436,26 +440,39 @@
                         position: relative;
                         grid-column: span 2;
                         border-top: 1px solid rgba(0, 0, 0, 0.32);
+
                         p {
                             font-size: em(14px, 16px);
                         }
+
                         .guests-modal {
                             position: absolute;
                             right: -1%;
                             top: 104%;
                             width: 320px;
                             box-shadow: 0 0 2px 1px #dddddd;
+                            border-radius: 5px;
+                            padding: 16px;
+
                             li {
-                                padding-top: 10px;
-                                padding-bottom: 10px;
+                                padding-block: 15px;
+                                border: 0;
 
                                 .guest-info {
                                     width: 100%;
+                                    p:first-child {
+                                        font-weight: 500;
+                                        font-size: 1em;
+                                    }
+                                    p {
+                                        color: #222222;
+                                    }
                                 }
                                 .guest-adjust {
                                     display: flex;
                                     align-items: center;
                                     gap: 0;
+
                                     button {
                                         border-radius: 5em;
                                         display: grid;
@@ -466,6 +483,7 @@
                                         border: 1px solid rgb(176, 176, 176);
                                         color: rgb(113, 113, 113) !important;
                                         position: relative;
+
                                         &:disabled {
                                             opacity: 20%;
                                             background-color: rgba(
@@ -527,6 +545,8 @@
         }
     }
     #reviews {
+        margin-top: 32px;
+        border-top: 1px solid #dddddd;
         padding-block: 48px;
         border-bottom: 1px solid #dddddd;
 
