@@ -15,7 +15,9 @@ export const orderStore = {
             state.orders = orders;
         },
         addOrder(state, { order }) {
-            state.orders.push(order);
+            console.log('state.orders',state.orders )
+            state.orders.unshift(order);
+            console.log('state.orders',state.orders )
         },
         removeOrder(state, { orderId }) {
             state.orders = state.orders.filter(
@@ -26,6 +28,7 @@ export const orderStore = {
     actions: {
         async addOrder({ commit }, { order }) {
             try {
+                console.log('order',order )
                 order = await orderService.save(order);
                 commit({ type: 'addOrder', order });
                 return order;
