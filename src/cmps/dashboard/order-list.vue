@@ -6,7 +6,6 @@
             <p>Date</p>
             <p>Price</p>
             <p>Status</p>
-            <p>Actions</p>
         </section>
         <div class="order-list ">
             <order-preview @changeStatus="updateStatus" v-for="order in orders" :order="order" />
@@ -26,7 +25,7 @@ export default {
     methods: {
         updateStatus(val, id) {
             this.$emit('changeStatus', val, id)
-        }
+        },
     },
     components: {
         orderPreview,

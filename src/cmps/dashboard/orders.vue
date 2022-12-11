@@ -1,6 +1,13 @@
 <template>
     <div v-if="orders" class="order-container">
-        <h2>Hi {{ userFullname }}, you have {{ orders.length }} pending orders</h2>
+        <div class="order-header">
+            <h2>Hi {{ userFullname }}, you have {{ orders.length }} orders </h2>
+            <h3>{{ pendingLength }}
+                pending <i class="fa fa-solid fa-circle"></i>{{ approveLength }}
+                approved <i class="fa fa-solid fa-circle"></i>{{ declineLength }} declined
+                <i class="fa fa-solid fa-circle"></i>
+            </h3>
+        </div>
         <order-list @changeStatus="updateStatus" :orders="orders" />
     </div>
 </template>
@@ -33,11 +40,23 @@ export default {
             order.status = val
             let updatedOrder = await this.$store.dispatch({ type: 'addOrder', order })
             this.orders = await userService.getOrdersByUserId(this.user._id);
+        },
+        calcLength(status) {
+            return this.orders.filter(order => order.status === status).length
         }
     },
     computed: {
         userFullname() {
             return `${this.user.fullname[0].toUpperCase()}${this.user.fullname.slice(1, this.user.fullname.length)}`
+        },
+        pendingLength() {
+            return this.calcLength('pending')
+        },
+        approveLength() {
+            return this.calcLength('approve')
+        },
+        declineLength() {
+            return this.calcLength('decline')
         }
     },
     components: {
