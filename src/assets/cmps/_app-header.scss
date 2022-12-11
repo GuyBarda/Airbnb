@@ -6,6 +6,12 @@
     background-color: #fff;
     border-bottom: 1px solid #a9a6a65c;
     font-family: CerealReg;
+    @media (max-width: 650px) {
+        &.main-container .logo-container,
+        &.main-container .user {
+            display: none;
+        }
+    }
     &.main-container {
         position: sticky;
     }
@@ -37,7 +43,9 @@
             margin: 0 0 -3px 0px;
         }
         @media (max-width: 650px) {
-            // display: none;
+            .main-container .logo-container {
+                display: none;
+            }
         }
     }
     .user {
@@ -46,9 +54,7 @@
         justify-content: center;
         align-items: center;
         font-family: CerealReg, Arial, sans-serif;
-        @media (max-width: 570px) {
-            // display: none;
-        }
+
         .become-host {
             text-decoration: none;
             cursor: pointer;
@@ -143,9 +149,11 @@
                     // width: 40px;
                     // height: 40px;
                 }
-                @media (max-width: 650px) {
-                    display: none;
-                }
+                // @media (max-width: 650px) {
+                //     .main-container .logo {
+                //         display: none;
+                //     }
+                // }
             }
             .user {
                 display: flex;
