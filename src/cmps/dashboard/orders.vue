@@ -22,6 +22,7 @@ export default {
     },
     async created() {
         this.orders = await userService.getOrdersByUserId(this.user._id);
+        this.orders = this.orders.reverse()
     },
     methods: {
         async updateStatus(val, id) {
