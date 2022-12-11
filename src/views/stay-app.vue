@@ -1,3 +1,4 @@
+
 <template>
     <section class="stay-app main-container">
         <stay-filter :stays="stays" />
@@ -14,31 +15,31 @@
         </div>
     </section>
 </template>
-
+  
 <script>
+import { stayService } from "../services/stay-service.js";
 import stayFilter from "../cmps/stay-filter.vue";
 import stayList from "../cmps/stay-list.vue";
 import skeleton from "../cmps/skeleton.vue";
+
 export default {
     data() {
         return {
             isLoading: false,
-            currPath: "/",
         };
     },
 
     async created() {
         try {
-            this.isLoading = true;
-            console.log(" this.isLoading", this.isLoading);
+            this.isLoading = true
             await this.$store.dispatch({ type: "loadStays" });
-            this.isLoading = false;
-            console.log(" this.isLoading", this.isLoading);
+            this.isLoading = false
         } catch {
             console.log("cant load stays");
         }
     },
-    methods: {},
+    methods: {
+    },
     computed: {
         stays() {
             return this.$store.getters.stays;
@@ -50,42 +51,22 @@ export default {
     components: {
         stayFilter,
         stayList,
-        skeleton,
+        skeleton
     },
     watch: {
         async changePath(query) {
-            this.isLoading = true;
+            this.isLoading = true
             if (this.$route.path === "/explore") {
                 const filterBy = query;
-                this.$store.commit({
-                    type: "setFilter",
-                    filterBy: { ...filterBy },
-                });
-                await this.$store.dispatch({ type: "loadStays" });
+                this.$store.commit({ type: "setFilter", filterBy: { ...filterBy } });
                 this.$store.commit({ type: "toggleSearch", bool: false });
             } else {
                 this.$store.commit({
-                    type: "setFilter",
-                    filterBy: {
-                        minPrice: 25,
-                        maxPrice: 800,
-                        type: [],
-                        bedrooms: 1,
-                        beds: 1,
-                        bathrooms: 1,
-                        PropertyType: [],
-                        amenities: [],
-                        destination: "",
-                        dates: {
-                            start: "",
-                            end: "",
-                        },
-                        guests: 0,
-                    },
+                    type: "setFilter", filterBy: stayService.getEmptyFilter(),
                 });
-                await this.$store.dispatch({ type: "loadStays" });
             }
-            this.isLoading = false;
+            await this.$store.dispatch({ type: "loadStays" });
+            this.isLoading = false
         },
     },
 };

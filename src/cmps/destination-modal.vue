@@ -3,7 +3,7 @@
         <section class="common-search">
             <p>Common search</p>
             <ul>
-                <li @click="setDestination('Brazil')">
+                <li @click="setDestination('Qatar')">
                     <div class="spot-holder"><spot-icon /></div> Qatar, QA
                 </li>
                 <li @click="setDestination('Canada')">
