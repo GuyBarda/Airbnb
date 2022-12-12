@@ -12,13 +12,6 @@
     transition: transform 0.4s, opacity 0.3s ease;
     cursor: pointer;
 
-    @media (max-width: 400px) {
-        padding: 0 15px;
-        .secondary-container .main-search-container {
-            display: none;
-        }
-    }
-
     &.close {
         transform: scaleX(1.56) translateY(80px);
         opacity: 0;
