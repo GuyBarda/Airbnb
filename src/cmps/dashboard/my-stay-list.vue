@@ -1,12 +1,12 @@
 <template>
     <section class="my-stay-list">
         <section class="my-stay-list-header">
-            <h4>stay name</h4>
-            <h4>location</h4>
-            <h4>price</h4>
-            <h4>capacity</h4>
-            <h4>propertyType</h4>
-            <h4>Actions</h4>
+            <h4>Stay name</h4>
+            <h4>Location</h4>
+            <h4>Price</h4>
+            <h4>Capacity</h4>
+            <h4>Property type</h4>
+            <!-- <h4>Actions</h4> -->
         </section>
         <my-stay-preview
             @deleteStay="deleteStay"

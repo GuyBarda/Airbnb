@@ -52,12 +52,6 @@ export default {
         rateMap: Object,
         stay: Object
     },
-    created() {
-        // this.order.startDate = '2022-12-16';
-        // this.order.endDate = '2022-12-18';
-        // console.log(this.order)
-        console.log(this.stay)
-    },
     methods: {
         closeSuccessModal() {
             this.$store.commit({ type: "toggleSuccessModal", bool: false });

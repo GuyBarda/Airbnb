@@ -26,7 +26,6 @@ import guestsModal from "./guests-modal.vue";
         },
         methods:{
             setZone(value){
-                console.log('hi',value);
                 this.currZone = value
             }
         },

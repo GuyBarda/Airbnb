@@ -200,9 +200,6 @@ export default {
             this.filterBy.maxPrice = $event.to;
         },
     },
-    updated() {
-        console.log(this.filterBy)
-    },
     components: {
         HistogramSlider,
     },

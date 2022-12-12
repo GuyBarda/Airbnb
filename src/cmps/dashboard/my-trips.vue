@@ -7,15 +7,28 @@
                 <img v-for="img in currTrip?.stay.imgUrls" :src="img" alt="" />
             </section>
             <section class="trip-info">
-                
                 <h3>{{ currTrip?.stay?.loc?.address }}</h3>
                 <p>
-                    <span class="info-parameter">Dates:</span> {{ formattedStartDate }} - {{ formattedEndDate }}
+                    <span class="info-parameter">Dates:</span>
+                    {{ formattedStartDate }} - {{ formattedEndDate }}
                 </p>
-                <p><span class="info-parameter">Guests:</span> {{ currTrip?.guests?.adults }}</p>
-                <p><span class="info-parameter">Total price:</span> ${{ currTrip?.totalPrice }}</p>
-                <p class="last" :class="tripStatus"><span class="info-parameter" >Order Confirmation:</span > {{ currTrip._id }}</p>
-                <p class="last" :class="tripStatus"><span class="info-parameter" >Order Status:</span > {{ currTrip.status }}</p>
+                <p>
+                    <span class="info-parameter">Guests:</span>
+                    {{ currTrip?.guests?.adults }}
+                </p>
+                <p>
+                    <span class="info-parameter">Total price:</span> ${{
+                        currTrip?.totalPrice
+                    }}
+                </p>
+                <p class="last" :class="tripStatus">
+                    <span class="info-parameter">Order Confirmation:</span>
+                    {{ currTrip._id }}
+                </p>
+                <p class="last" :class="tripStatus">
+                    <span class="info-parameter">Order Status:</span>
+                    {{ currTrip.status }}
+                </p>
             </section>
         </section>
     </div>
@@ -35,10 +48,8 @@ import { userService } from "../../services/user-service.js";
 import tripList from "./trip-list.vue";
 
 export default {
-    props: {
-        user: Object,
-    },
     async created() {
+        this.user = this.$store.getters.loggedinUser
         this.trips = await userService.getTripsByUserId(this.user._id);
         if (!this.trips) return;
         this.currTrip = this.trips[0];
@@ -47,6 +58,7 @@ export default {
         return {
             currTrip: "",
             trips: null,
+            user: null,
         };
     },
     components: {
@@ -67,6 +79,9 @@ export default {
         },
     },
     computed: {
+        getLoggedinUser() {
+            return this.$store.getters.loggedinUser;
+        },
         formattedStartDate() {
             let date = new Date(this.currTrip.startDate).toLocaleDateString(
                 "en-us",
@@ -86,9 +101,9 @@ export default {
             if (date === "Invalid Date") return "";
             return date;
         },
-        tripStatus(){
-            return this.currTrip.status
-        }
+        tripStatus() {
+            return this.currTrip.status;
+        },
     },
 };
 </script>
