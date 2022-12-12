@@ -2,15 +2,15 @@
     <section class="trip-preview">
         <div class="">
             <h4>{{ trip.stay.name }}</h4>
-            
             <p>
-                <span>{{ formattedStartDate }}</span>
-                <span>{{ formattedEndedDate }}</span>
+                <span class="address">{{ trip.stay.loc.address }}</span>
+                <span>{{ formattedStartDate }} - {{ formattedEndedDate }}</span>
             </p>
         </div>
-        <span class="trip-status" :class="tripStatus"><i class="fa fa-check"></i>  {{ trip.status }}</span> 
-        <!-- <i class="fa fa-regular fa-comments"></i> -->
-
+        <span class="trip-status" :class="tripStatus">
+            <i v-if="trip.status === 'approve'" class="fa fa-check"></i>
+            {{ trip.status }}
+        </span>
     </section>
 </template>
 
@@ -20,10 +20,7 @@ export default {
         trip: Object,
     },
     created() {
-    },
-    data() {
-        return {
-        };
+        console.log(this.trip)
     },
     computed: {
         status() {
