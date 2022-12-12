@@ -1,7 +1,8 @@
 <template>
-    <carousel class="carousel" :settings="settings" :breakpoints="breakpoints">
+    <carousel  @click="setSelected" class="carousel" :settings="settings" :breakpoints="breakpoints">
         <slide v-for="slide in btns" :key="slide">
-            <div class="slide-wrapper" @click="setSort(slide.key)">
+
+            <div :class="{selected: isSelected }" class="slide-wrapper" @click="setSort(slide.key)">
                 <div class="img-wrapper">
                     <img class="img-btn" :src="slide.url" alt="" width="24" height="24" />
                     <div class="imgKey">
@@ -9,6 +10,7 @@
                     </div>
                 </div>
             </div>
+
         </slide>
 
         <template #addons>
@@ -37,6 +39,7 @@ export default {
     },
     data() {
         return {
+            isSelected: false,
             filterBy: {
                 type: '',
             },
@@ -73,6 +76,10 @@ export default {
             this.filterBy.type = type
             this.$emit("filtered", this.filterBy);
         },
+        setSelected(){
+            console.log('im in')
+            this.isSelected = true
+        }
     },
 };
 </script>
