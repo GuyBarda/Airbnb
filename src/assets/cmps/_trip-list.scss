@@ -70,7 +70,7 @@
 
             .trip-status {
                 align-self: center;
-
+                font-weight: 600;
                 &.approve {
                     // font-weight: 600;
                     color: rgb(90, 184, 82);
@@ -172,4 +172,15 @@
         @include reserve-btn();
         width: 300px;
     }
+}
+
+.fontawesomeicon::before {
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.Clock-Rotate-Left::before {
+    font: var(--fa-font-solid);
+    content: " \f1da";
 }
