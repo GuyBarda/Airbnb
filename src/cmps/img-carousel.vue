@@ -1,7 +1,7 @@
 <template>
     <carousel :items-to-show="1">
         <slide v-for="slide in imgs" :key="slide">
-            <img @click="navigate" :src="slide" />
+            <img @click="navigate" :src="slide" loading="lazy" />
         </slide>
 
         <template #addons>
@@ -23,8 +23,8 @@ export default {
         },
         stayId: String
     },
-    methods:{
-        navigate(){
+    methods: {
+        navigate() {
             this.$router.push('/stay/' + this.stayId)
         }
     },
