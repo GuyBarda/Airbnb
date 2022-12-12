@@ -79,7 +79,8 @@ export default {
             utilService.hoverEffect(ev)
         },
         goToDashboard() {
-            this.$router.push("/dashboard");
+            this.closeSuccessModal()
+            this.$router.push("/dashboard/buyer/trips");
         },
     },
     computed: {

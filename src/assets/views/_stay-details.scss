@@ -451,10 +451,22 @@
                     .guests {
                         position: relative;
                         grid-column: span 2;
+                        display: grid;
                         border-top: 1px solid rgba(0, 0, 0, 0.32);
+                        grid-template-columns: 1fr .2fr;
+                        grid-template-rows: 1fr 1fr;
 
                         p {
                             font-size: em(14px, 16px);
+                        }
+                        .arrow-img{
+                            justify-self: center;
+                            align-self: center;
+                            width: 22px;
+                            height: 22px;
+                            grid-row: 1 /-1;
+                            grid-column: 2;
+                            
                         }
 
                         .guests-modal {
