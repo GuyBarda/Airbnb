@@ -6,7 +6,7 @@
                     <a href="#photos">Photos</a>
                     <a href="#amenities">Amenities</a>
                     <a href="#reviews">Reviews</a>
-                    <a href="#">Location</a>
+                    <a href="#map">Location</a>
                 </nav>
                 <div v-if="showReserve" class="reserve-container">
                     <div class="reserve-info-container">
