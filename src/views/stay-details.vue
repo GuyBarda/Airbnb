@@ -262,7 +262,7 @@ export default {
     },
     async created() {
         const { id } = this.$route.params;
-        // this.stay = await stayService.getById(id);
+        this.stay = await stayService.getById(id);
         this.getImageUrl();
         this.order = orderService.getEmptyOrder();
         const user = userService.getLoggedinUser();

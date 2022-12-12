@@ -1,19 +1,24 @@
 <template>
-    <article class="stay-preview" style="display: flex; flex-direction: column; gap: 10px;">
-
-        <div class="img-skeleton skeleton"></div>
-        <!-- <img class="skeleton" src="######" alt="" /> -->
-        <div style="display: flex; flex-direction: column; gap: 2px;">
-            <div style="display: flex; justify-content: space-between;">
-                <div class="skeleton skeleton-txt skeleton-name"></div>
-                <div class="skeleton skeleton-txt skeleton-rate"></div>
+    <article class="stay-details secondary-container">
+        <div class="subtitle header">
+            <h2 class="skeleton skeleton-txt skeleton-desc"></h2>
+            <div
+                class="subtitle-text skeleton skeleton-txt skeleton-desc"
+            ></div>
+            <div class="subtitle-text">
+                <!-- <div class="skeleton skeleton-txt review-totals"></div> -->
+                
             </div>
-            <div class="skeleton skeleton-txt skeleton-desc"></div>
-            <div class="skeleton skeleton-txt skeleton-date"></div>
         </div>
-        <div class="skeleton skeleton-txt skeleton-price"></div>
-    </article>
 
+        <div class="img-skeleton-container imgs-container">
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+        </div>
+    </article>
 </template>
 
 <script>
