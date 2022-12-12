@@ -1,7 +1,7 @@
 <template>
     <div class="review-preview">
         <div class="mini-user-details">
-            <img :src="review.by.imgUrl" alt="" />
+            <img loading="lazy" :src="review.by.imgUrl" alt="" />
             <p>{{ review.by.fullname }}</p>
             <span>{{ formattedDate }}</span>
         </div>

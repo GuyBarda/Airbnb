@@ -3,9 +3,9 @@
         <div class="order-header">
             <h2>Hi {{ userFullname }}, you have {{ orders.length }} orders </h2>
             <h3><span><i class="fa fa-solid fa-circle"></i>{{ pendingLength }}
-                pending </span><span><i class="fa fa-solid fa-circle"></i>{{ approveLength }}
-                approved </span><span><i class="fa fa-solid fa-circle"></i>{{ declineLength }} declined</span>
-                
+                    pending </span><span><i class="fa fa-solid fa-circle"></i>{{ approveLength }}
+                    approved </span><span><i class="fa fa-solid fa-circle"></i>{{ declineLength }} declined</span>
+
             </h3>
         </div>
         <order-list @changeStatus="updateStatus" :orders="orders" />
@@ -24,10 +24,10 @@
 import { orderService } from '../../services/order-service';
 import { userService } from '../../services/user-service.js'
 import { socketService } from '../../services/socket-service.js'
+
 import orderList from './order-list.vue';
 
 export default {
-
     data() {
         return {
             orders: null,
@@ -46,8 +46,9 @@ export default {
         async updateStatus(val, id) {
             let order = await orderService.getById(id)
             order.status = val
-            let updatedOrder = await this.$store.dispatch({ type: 'addOrder', order })
-            this.orders = await userService.getOrdersByUserId(this.user._id);
+            await this.$store.dispatch({ type: 'addOrder', order })
+            this.orders = await userService.getOrdersByUserId(this.user._id)
+            this.orders = this.orders.reverse()
         },
         calcLength(status) {
             return this.orders.filter(order => order.status === status).length

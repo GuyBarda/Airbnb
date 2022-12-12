@@ -47,7 +47,7 @@ async function save(order) {
     if (order._id) {
         savedOrder = await httpService.put(`order/${order._id}`, order);
     } else {
-        console.log('no in')
+        console.log('no in');
         savedOrder = await httpService.post('order/', order);
     }
     return savedOrder;

@@ -23,7 +23,7 @@
             size="large">
             <el-option label="Approve" value="approve" />
             <el-option label="Decline" value="decline" />
-            <el-option label="Pending" value="pending" />
+            <!-- <el-option label="Pending" value="pending" /> -->
         </el-select>
     </section>
 </template>
