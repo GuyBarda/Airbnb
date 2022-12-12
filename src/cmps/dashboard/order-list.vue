@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="order-preview">
+        <section class="order-preview order-preview-header">
             <p>Buyer</p>
             <p>Stay Name</p>
             <p>Date</p>
@@ -24,6 +24,7 @@ export default {
     },
     methods: {
         updateStatus(val, id) {
+            console.log(val, id)
             this.$emit('changeStatus', val, id)
         },
     },

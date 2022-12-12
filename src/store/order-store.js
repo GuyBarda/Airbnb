@@ -15,9 +15,9 @@ export const orderStore = {
             state.orders = orders;
         },
         addOrder(state, { order }) {
-            console.log('state.orders',state.orders )
+            // console.log('state.orders',state.orders )
             state.orders.unshift(order);
-            console.log('state.orders',state.orders )
+            // console.log('state.orders',state.orders )
         },
         removeOrder(state, { orderId }) {
             state.orders = state.orders.filter(
@@ -28,10 +28,11 @@ export const orderStore = {
     actions: {
         async addOrder({ commit }, { order }) {
             try {
-                console.log('order',order )
-                order = await orderService.save(order);
-                commit({ type: 'addOrder', order });
-                return order;
+                console.log('order', order);
+                const savedOrder = await orderService.save(order);
+                // commit({ type: 'addOrder', order });
+                console.log('saved', savedOrder);
+                return savedOrder;
             } catch (err) {
                 console.log('orderStore: Error in addOrder', err);
                 throw err;
