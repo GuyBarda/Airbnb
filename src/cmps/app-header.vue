@@ -7,12 +7,14 @@
         <stay-search
             :date="currDate"
             :dest="currDest"
+            :guests="currGuests"
             @toggleSearch="openZone"
             :class="{ close: isOpen }"
         />
         <search-modal
             @setDate="setDate"
             @setDest="setDest"
+            @setGuests="setGuests"
             @updateZone="openZone"
             :zone="zone"
             :class="{ open: isOpen }"
@@ -62,6 +64,7 @@ export default {
             currZone: "",
             currDest: "",
             currDate: "",
+            currGuests: '',
             isSearch: false,
         };
     },
@@ -77,6 +80,9 @@ export default {
         },
         setDest(val) {
             this.currDest = val;
+        },
+        setGuests(val) {
+            this.currGuests = val;
         },
         openZone(ev, key) {
             this.currZone = key;
@@ -96,9 +102,6 @@ export default {
     computed: {
         user() {
             return this.$store.getters.loggedinUser;
-        },
-        getDest() {
-            return this.currDest;
         },
         zone() {
             return this.currZone;

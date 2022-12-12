@@ -5,7 +5,7 @@
             <span></span>
             <button @click="openZone($event, 'In')" class="search-btn">{{ setDate }}</button>
             <span></span>
-            <button @click="openZone($event, 'Who')" class="search-btn last">Add guests</button>
+            <button @click="openZone($event, 'Who')" class="search-btn last">{{setGuests}}</button>
             <section @click="openZone($event, 'Where')" class="search-in-mobile">
                 <search-icon class="img" />
                 <div>
@@ -28,7 +28,11 @@ import searchIcon from '../assets/svg/search.vue'
 export default {
     props: {
         dest: String,
-        date: String
+        date: String,
+        guests: {
+            type: Number,
+            default: 0,
+        }
     },
     methods: {
         openZone(ev, key) {
@@ -41,9 +45,12 @@ export default {
             return 'Any week'
         },
         setDestination() {
-            const destination = this.dest
-            if (destination) return destination
+            if (this.dest) return this.dest
             return 'Anywhere'
+        },
+        setGuests() {
+            if (this.guests) return `${this.guests} ${this.guests > 1 ? 'guests':'guest'}`
+            return 'Add guests'
         },
         whichSearch() {
             const where = this.$route.path.split('/')[1]

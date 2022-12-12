@@ -21,7 +21,7 @@
                 <div class="stay-details-info-container">
                     <img :src="stay.imgUrls[0]" alt="">
                     <p>{{ stay.name }}</p>
-                    <p>Host:  {{ stay.host.fullname }}</p>
+                    <p>Hosted by:  {{ stay.host.fullname }}</p>
                     <review-average :reviews="stay.reviews.length" :rateMap="rateMap" />
                     <!-- <p>{{ formattedPerNightPrice }}</p> -->
                 </div>

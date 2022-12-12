@@ -39,9 +39,9 @@
                         <div style="margin-top: 3px; grid-column: 1">
                             <span>{{ stay.capacity }} guests </span>
                             <span class="gray"> • </span>
-                            <span>{{ stay.bathrooms }} {{stay.bathrooms > 1 ? 'bathroom':'bathrooms'}} </span>
+                            <span>{{ stay.bathrooms }} {{stay.bathrooms > 1 ? 'bathrooms':'bathroom'}} </span>
                             <span class="gray"> • </span>
-                            <span>{{ stay.bedrooms }} {{stay.bedrooms > 1 ? 'bedroom':'bedrooms'}} </span>
+                            <span>{{ stay.bedrooms }} {{stay.bedrooms > 1 ? 'bedrooms':'bedroom'}} </span>
                         </div>
                     </div>
                     <img class="host-image" :src="`${stay.host.thumbnailUrl || stay.host.imgUrl}`" alt="" />

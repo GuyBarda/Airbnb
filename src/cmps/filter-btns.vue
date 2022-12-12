@@ -44,8 +44,8 @@ export default {
                 type: '',
             },
             settings: {
-                itemsToShow: 3,
-                itemsToScroll: 3,
+                itemsToShow: 4,
+                itemsToScroll: 4,
                 snapAlign: "center",
             },
             breakpoints: {
