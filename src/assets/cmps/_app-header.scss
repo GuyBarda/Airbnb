@@ -24,24 +24,18 @@
     }
     .logo-container {
         display: flex;
-        justify-content: start;
-        // align-items: center;
+        flex-direction: row;
+        align-items: center;
         color: #ff385c;
-        font-size: 1.6em;
+        font-size: 1.5em;
         letter-spacing: -1px;
         font-family: CerealBd;
-        font-weight: bolder;
-        height: 32px;
+        gap: 5px;
+
         img {
             height: 32px;
-            padding-right: 4.4px;
-            padding-top: 0.9px;
-            margin-left: -2px;
-            // margin-right: 4px;
         }
-        p {
-            margin: 0 0 -3px 0px;
-        }
+
         @media (max-width: 650px) {
             .main-container .logo-container {
                 display: none;
@@ -134,7 +128,8 @@
         background-color: #fff;
         border-radius: 12px;
         box-shadow: #0000002e 0 0 3px;
-        :nth-child(2),:nth-child(4){
+        :nth-child(2),
+        :nth-child(4) {
             border-bottom: 1px solid #dddddd;
         }
         a:first-child {

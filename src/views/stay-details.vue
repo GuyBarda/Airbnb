@@ -154,7 +154,7 @@
             <!-- <h4>No reviews yet...</h4> -->
             <h4>This stay have 0 reviews</h4>
         </section>
-        <section class="map">
+        <section class="map" id="map">
             <h2>Where you'll be</h2>
             <h1>{{ stay.loc.city }}, {{ stay.loc.country }}</h1>
             <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />

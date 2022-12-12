@@ -41,6 +41,7 @@
                 font-size: em(20px, 16px);
             }
         }
+
         img {
             align-self: end;
         }
@@ -52,9 +53,15 @@
                 color: rgb(34, 34, 34);
                 text-decoration: underline;
             }
+
+            .review-totals {
+                text-decoration: none;
+            }
+
             .share-save-actions {
                 display: flex;
                 align-items: center;
+                gap: 5px;
                 transition: 0.25s;
                 margin-left: auto;
 
@@ -171,6 +178,7 @@
     }
 
     .imgs-container {
+        scroll-margin-top: 114px;
         display: grid;
         grid-template: repeat(2, 275px) / 2fr 1fr 1fr;
 
@@ -268,10 +276,6 @@
             .content {
                 width: 100%;
             }
-
-            .reserve-modal {
-                // display: none;
-            }
         }
         .reserve-modal {
             form {
@@ -306,6 +310,10 @@
                     }
                     .review-totals {
                         font-size: 14px;
+                        font-weight: 600;
+                        a {
+                            color: #717171;
+                        }
                     }
                 }
 
@@ -533,18 +541,22 @@
             }
         }
 
-        .amenities-container .stay-amenities {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .amenities-container {
+            scroll-margin-top: 88px;
 
-            p {
-                margin: 0;
-            }
-            div {
-                padding-bottom: 16px;
-            }
-            @media (max-width: 550px) {
-                grid-template-columns: 1fr;
+            .stay-amenities {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+
+                p {
+                    margin: 0;
+                }
+                div {
+                    padding-bottom: 16px;
+                }
+                @media (max-width: 550px) {
+                    grid-template-columns: 1fr;
+                }
             }
         }
     }
@@ -553,6 +565,7 @@
         border-top: 1px solid #dddddd;
         padding-block: 48px;
         border-bottom: 1px solid #dddddd;
+        scroll-margin-top: 88px;
 
         header {
             font-size: em(22px, 16px);
@@ -624,7 +637,7 @@
         border-bottom: 1px solid #dddddd;
     }
     .map {
-        // padding-bottom: 40px;
+        scroll-margin-top: 88px;
         padding-block: 48px;
     }
 }
