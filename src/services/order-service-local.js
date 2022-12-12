@@ -1,9 +1,7 @@
 import { utilService } from './utils-service.js';
 import { storageService } from './async-storage-service.js';
-// import gOrders from '../../data/order.json' assert { type: 'json' };
 
 const KEY = 'ordersDB';
-// _createOrders()
 
 export const orderService = {
     query,

@@ -151,7 +151,6 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 1;
-  // border: 1px solid rgba(128, 128, 128, 0.753);
 }
 
 .content {

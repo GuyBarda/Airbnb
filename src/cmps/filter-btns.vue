@@ -67,11 +67,6 @@ export default {
     computed: {
     },
     methods: {
-        // resizeCarousel(event) {
-        //     const elCarousel = document.querySelector(".carousel");
-        //     const elCarouselWidth = elCarousel.clientWidth;
-        //     this.itemsToShow = Math.floor(elCarouselWidth / 80);
-        // },
         setSort(type) {
             this.filterBy.type = type
             this.$emit("filtered", this.filterBy);

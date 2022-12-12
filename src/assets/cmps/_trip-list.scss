@@ -31,7 +31,6 @@
         gap: 10px;
 
         .trip-preview {
-            // background-color: #eff3f5;
             border-radius: 8px;
             padding: 10px;
             padding-left: 10px;
@@ -47,7 +46,6 @@
             }
 
             &.isSelected {
-                // background-color: #eff3f5;
                 box-shadow: 0 0 1px 1px #222222;
             }
 
@@ -72,7 +70,6 @@
                 align-self: center;
                 font-weight: 600;
                 &.approve {
-                    // font-weight: 600;
                     color: rgb(90, 184, 82);
                 }
 
@@ -82,7 +79,6 @@
                 }
 
                 &.pending {
-                    // font-weight: 600;
                     color: rgb(235, 211, 1);
                 }
             }

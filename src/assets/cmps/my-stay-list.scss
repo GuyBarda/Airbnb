@@ -10,9 +10,9 @@
         margin-top: 20px;
         border: 1px solid rgb(202, 202, 202);
         border-radius: 10px;
-        .my-stay-list-header{
+        .my-stay-list-header {
             display: grid;
-            grid-template-columns: 1.6fr .7fr .5fr .5fr .7fr .7fr;
+            grid-template-columns: 1.6fr 0.7fr 0.5fr 0.5fr 0.7fr 0.7fr;
             background-color: white;
             align-items: center;
             padding-inline: 10px;
@@ -25,30 +25,30 @@
             a {
                 text-decoration: none;
                 display: grid;
-                grid-template-columns: 1.6fr .7fr .5fr .5fr .7fr .7fr;
+                grid-template-columns: 1.6fr 0.7fr 0.5fr 0.5fr 0.7fr 0.7fr;
                 align-items: center;
                 background-color: white;
                 padding-inline: 10px;
                 padding-block: 5px;
                 border-bottom: 1px solid #dddddd;
 
-                .stay-actions{
+                .stay-actions {
                     display: flex;
                     gap: 5px;
-                    .update-btn{
+                    .update-btn {
                         flex-grow: 1;
                         background-color: lightblue;
-                        :first-child{
+                        :first-child {
                             padding-right: 5px;
                         }
                     }
-                    >*{
+                    > * {
                         border-radius: 5px;
                         border: 0;
                     }
-                    .elipsis-btn{
+                    .elipsis-btn {
                         position: relative;
-                        .delete-btn{
+                        .delete-btn {
                             position: absolute;
                             top: 100%;
                             border-radius: 5px;
@@ -57,8 +57,7 @@
                             background-color: red;
                             display: flex;
                             align-items: center;
-                            .fa-trash{
-                                // transform: scale(1.1);
+                            .fa-trash {
                                 padding-right: 5px;
                                 padding-top: 2px;
                             }

@@ -24,7 +24,6 @@ export default {
     },
     created() {
         setTimeout(this.moreThanThreeLines, 1)
-        // this.moreThanThreeLines()
     },
     methods: {
         showMore(ev) {
@@ -51,9 +50,6 @@ export default {
             });
             return date === "Invalid Date" ? "" : date;
         },
-        // elP() {
-        //     return this.$refs.reviewText
-        // }
 
     },
 };

@@ -35,7 +35,6 @@ export default {
       return `alert-${this.msg.type}`
     },
     iconClass() {
-      // if (!this.msg === 'success') return
       return this.msg?.icon
     },
   },

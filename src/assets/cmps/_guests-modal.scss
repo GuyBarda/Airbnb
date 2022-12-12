@@ -8,13 +8,6 @@
     display: none;
     font-family: CerealMd;
 
-    @media (max-width: 400px) {
-        // display: block;
-        // position: relative;
-        // top: 40px;
-        // grid-template-columns: 1fr;
-    }
-
     &.open {
         display: block;
     }
@@ -71,16 +64,13 @@
                     border-radius: 5em;
                     display: grid;
                     place-content: center;
-                    // padding: 18px;
                     width: 32px;
                     height: 32px;
                     border: 1px solid rgb(176, 176, 176);
                     background-color: white;
-                    // color: rgb(113, 113, 113) !important;
 
                     &:disabled {
                         opacity: 20%;
-                        // background-color: rgba(179, 179, 179, 0.79);
                         cursor: not-allowed;
                     }
                 }
@@ -88,7 +78,7 @@
                 .guests-value {
                     padding: 10px;
                     width: 2em;
-                    font-family: 'Quicksand';
+                    font-family: "Quicksand";
                 }
             }
         }
