@@ -77,7 +77,6 @@ export default {
             this.$emit("filtered", this.filterBy);
         },
         setSelected(){
-            console.log('im in')
             this.isSelected = true
         }
     },
