@@ -3,12 +3,12 @@
 
     <section class="my-stay-preview">
         <router-link :to="('/stay/' + stay._id)">
-            <section class="my-stay-imgs">
-                <img v-for="img in stay.imgUrls" :src="img" alt="">
-            </section>
-            <section class="my-stay-info">
-                <h4>{{ stay.name }}</h4>
-                <section class="my-stay-options">
+                <p>{{ stay.name }}</p>
+                <p>{{stay.loc.city}}, {{stay.loc.country}}</p>
+                <p>{{stay.price}}</p>
+                <p>{{stay.capacity}}</p>
+                <p>{{stay.propertyType}}</p>
+                <section class="stay-actions">
                     <button class="update-btn" @click.prevent="navigateToUpdate()">Update</button>
                     <button v-if="!subMenu" class="elipsis-btn" @click.prevent="openSubMenu">
                         <elipsisIcon />
@@ -17,7 +17,6 @@
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </section>
-            </section>
         </router-link>
     </section>
 </template>

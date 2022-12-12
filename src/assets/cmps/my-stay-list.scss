@@ -4,71 +4,40 @@
     gap: 20px;
 
     .my-stay-list {
-        display: grid;
+        display: flex;
+        flex-direction: column;
         margin-top: 20px;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        justify-content: space-between;
+        .my-stay-list-header{
+            display: grid;
+            grid-template-columns: 1.6fr .7fr .5fr .5fr .7fr 1fr;
+            background-color: white;
+            align-items: center;
+            padding-inline: 10px;
+            border-start-start-radius: 10px;
+            border-start-end-radius: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
 
         .my-stay-preview {
-            height: max-content;
             a {
                 text-decoration: none;
-            }
-            .my-stay-imgs {
                 display: grid;
-                grid-template: repeat(2, 107px) / 2fr 1fr;
-                border-radius: 20px;
-                gap: 5px;
-                margin-bottom: 15px;
+                grid-template-columns: 1.6fr .7fr .5fr .5fr .7fr 1fr;
+                align-items: center;
+                background-color: white;
+                padding-inline: 10px;
 
-                :first-child {
-                    grid-column: 1;
-                    grid-row: 1/-1;
-                    border-bottom-left-radius: 15px;
-                    border-top-left-radius: 15px;
-                }
-                :nth-child(2) {
-                    border-top-right-radius: 15px;
-                }
-                :nth-child(3) {
-                    border-bottom-right-radius: 15px;
-                }
-                img {
-                    width: 100%;
-                    height: 100%;
-                    color: #222222;
-                    object-fit: cover;
-                }
-            }
-            .my-stay-options {
-                display: grid;
-                grid-template-columns: 5fr 1fr;
-                gap: 10px;
-
-                > * {
-                    font-size: 1em;
-                    border-radius: 5px;
-                    padding: 5px;
-                    border: 0;
-                    height: 35px;
-                }
-
-                .update-btn {
-                    background-color: lightblue;
-                }
-
-                .elipsis-btn {
-                    background-color: lightgray;
-                }
-                .delete-btn {
-                    // position: absolute;
-                    background-color: rgb(249, 119, 119);
-                    // top: -50%;
-                    // left: 100%;
-                    // border-radius: 5px;
-                    // padding: 5px 40px;
-                    text-align: center;
+                .stay-actions{
+                    display: flex;
+                    gap: 5px;
+                    .update-btn{
+                        flex-grow: 1;
+                        background-color: lightblue;
+                    }
+                    >*{
+                        border-radius: 5px;
+                        border: 0;
+                    }
                 }
             }
         }

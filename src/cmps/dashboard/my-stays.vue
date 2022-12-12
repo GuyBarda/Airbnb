@@ -22,6 +22,7 @@ export default {
     },
     async created() {
         this.stays = await userService.getStaysByUserId(this.user._id);
+        console.log(this.stays);
         if (!this.stays) return;
     },
     data() {

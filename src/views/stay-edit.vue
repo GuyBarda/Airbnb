@@ -162,12 +162,14 @@ export default {
                 type: "updateStay",
                 stay: this.stayToEdit,
             });
+            console.log('STAY',stay);
             const miniStay = {
                 _id: stay._id,
                 name: stay.name,
-                type: stay.type,
+                propertyType: stay.propertyType,
                 loc: stay.loc,
-                imgUrls: stay.imgUrls.slice(0, 3),
+                capacity: stay.capacity,
+                price: stay.price
             };
             if (!this.stayToEdit._id) {
                 await this.$store.dispatch({

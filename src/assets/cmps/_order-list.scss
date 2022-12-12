@@ -20,10 +20,33 @@
             margin: 0;
         }
         h3 {
+            display: flex;
+            gap: 10px;
+            align-items: center;
             margin: 0;
             font-size: em(18px, 16px);
             color: #727272;
             font-weight: normal;
+
+            .fa-circle {
+                transform: scale(0.6);
+            }
+
+            :nth-child(1) {
+                :first-child {
+                    color: rgb(255 186 30);
+                }
+            }
+            :nth-child(2) {
+                :first-child {
+                    color: rgb(78, 185, 68);
+                }
+            }
+            :nth-child(3) {
+                :first-child {
+                    color: rgb(228, 56, 56);
+                }
+            }
         }
     }
 
