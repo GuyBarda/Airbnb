@@ -17,17 +17,16 @@ import { userService } from "../../services/user-service.js";
 import myStaysList from "./my-stay-list.vue";
 
 export default {
-    props: {
-        user: Object,
-    },
+
     async created() {
+        this.user = this.$store.getters.loggedinUser
         this.stays = await userService.getStaysByUserId(this.user._id);
-        console.log(this.stays);
         if (!this.stays) return;
     },
     data() {
         return {
             stays: null,
+            user: null
         };
     },
     methods: {

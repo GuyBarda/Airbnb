@@ -29,7 +29,6 @@ export default {
         order: Object,
     },
     created() {
-        console.log("this.orders ", this.order);
     },
     computed: {
         formattedStartDate() {

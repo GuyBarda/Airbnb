@@ -7,7 +7,7 @@
                 class="heart-btn"
             />
             <img-carousel @click.prevent :stayId="stay._id" :imgs="stay.imgUrls" />
-            <section>
+            <section class="preview-info">
                 <p class="location">
                     {{ location
                     }}<span class="rate"

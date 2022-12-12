@@ -11,7 +11,7 @@
         object-fit: cover;
     }
 
-    section {
+    .preview-info {
         position: relative;
         padding-top: 10px;
 
@@ -62,7 +62,7 @@
 
     .heart-btn {
         position: absolute;
-        top: 23px;
+        top: 15px;
         right: 15px;
         z-index: 1;
 

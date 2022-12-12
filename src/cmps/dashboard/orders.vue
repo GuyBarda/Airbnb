@@ -2,9 +2,9 @@
     <div v-if="orders" class="order-container">
         <div class="order-header">
             <h2>Hi {{ userFullname }}, you have {{ orders.length }} orders </h2>
-            <h3><span><i class="fa fa-solid fa-circle"></i>{{ pendingLength }}</span>
-                <span>pending <i class="fa fa-solid fa-circle"></i>{{ approveLength }}</span>
-                <span>approved <i class="fa fa-solid fa-circle"></i>{{ declineLength }} declined</span>
+            <h3><span><i class="fa fa-solid fa-circle"></i>{{ pendingLength }}
+                pending </span><span><i class="fa fa-solid fa-circle"></i>{{ approveLength }}
+                approved </span><span><i class="fa fa-solid fa-circle"></i>{{ declineLength }} declined</span>
                 
             </h3>
         </div>
@@ -19,15 +19,15 @@ import { socketService } from '../../services/socket-service.js'
 import orderList from './order-list.vue';
 
 export default {
-    props: {
-        user: Object
-    },
+
     data() {
         return {
             orders: null,
+            user: null,
         }
     },
     async created() {
+        this.user = this.$store.getters.loggedinUser
         this.orders = await userService.getOrdersByUserId(this.user._id);
         socketService.on('order-about-you', order => {
             this.orders.unshift(order)

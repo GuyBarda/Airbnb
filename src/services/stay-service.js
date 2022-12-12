@@ -56,13 +56,13 @@ async function save(stay) {
     if (stay._id) {
         // savedStay = await storageService.put(STORAGE_KEY, stay)
         savedStay = await httpService.put(`stay/${stay._id}`, stay);
-        showSuccessMsg(`"${stay.name}" just got updated`);
+        showSuccessMsg(`"${stay.name}" updated successfully`);
     } else {
         // Later, owner is set by the backend
         // stay.owner = userService.getLoggedinUser();
         // savedStay = await storageService.post(STORAGE_KEY, stay)
         savedStay = await httpService.post('stay', stay);
-        showSuccessMsg(`"${stay.name}" just got added `);
+        showSuccessMsg(`"${stay.name}" added successfully`);
     }
     return savedStay;
 }

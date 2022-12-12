@@ -19,9 +19,6 @@ export default {
     props: {
         trip: Object,
     },
-    created() {
-        console.log(this.trip)
-    },
     computed: {
         status() {
             return this.status;

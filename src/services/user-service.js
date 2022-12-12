@@ -47,7 +47,9 @@ async function getTripsByUserId(buyerId) {
 }
 
 async function getStaysByUserId(userId) {
+    console.log("AAA",userId);
     const user = await userService.getById(userId);
+    console.log("VBBB",user);
     return user.stays;
 }
 
