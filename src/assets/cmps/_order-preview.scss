@@ -54,7 +54,7 @@
     .actions {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: end;
         gap: 10px;
 
         button {
@@ -71,6 +71,7 @@
             &.decline {
                 color: rgb(246, 247, 246);
                 background-color: rgb(228, 56, 56);
+                justify-self: end;
             }
 
             &.pending {

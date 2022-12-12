@@ -2,14 +2,8 @@
     <div v-if="stay" class="stay-details secondary-container">
         <div class="subtitle header">
             <h2>{{ stay.name }}</h2>
-            <div
-                class="subtitle-text"
-                style="display: flex; align-items: center; gap: 4px"
-            >
-                <review-average
-                    :reviews="stay.reviews.length"
-                    :rateMap="rate"
-                /><span>·</span>
+            <div class="subtitle-text" style="display: flex; align-items: center; gap: 4px">
+                <review-average :reviews="stay.reviews.length" :rateMap="rate" /><span>·</span>
                 <p>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
                 <div class="share-save-actions">
                     <span class="share-stay">
@@ -18,11 +12,7 @@
                     </span>
                     <span class="save-stay">
                         <!-- <img src="../assets/svg/love.svg" alt="" /> -->
-                        <heart-icon
-                            @click.prevent="setWishlist"
-                            :class="{ mark: isMark }"
-                            class="heart-btn"
-                        />
+                        <heart-icon @click.prevent="setWishlist" :class="{ mark: isMark }" class="heart-btn" />
                         <span style="outline: 0px">Save</span>
                     </span>
                 </div>
@@ -32,13 +22,8 @@
             <img v-for="img in stay.imgUrls.slice(0, 5)" :src="img" />
         </div>
 
-        <details-header
-            :showReserve="getIsReserve"
-            :sticky="getSticky"
-            :stay="stay"
-            :reviews="stay.reviews.length"
-            :rateMap="rate"
-        />
+        <details-header :showReserve="getIsReserve" :sticky="getSticky" :stay="stay" :reviews="stay.reviews.length"
+            :rateMap="rate" />
 
         <div class="stay-info">
             <section class="content">
@@ -46,7 +31,7 @@
                     <div class="">
                         <h2>
                             <span style="text-transform: capitalize">{{
-                                stay.roomType
+                                    stay.roomType
                             }}</span>
                             hosted by
                             {{ stay.host.fullname }}
@@ -59,18 +44,10 @@
                             <span>{{ stay.bedrooms }} bedrooms </span>
                         </div>
                     </div>
-                    <img
-                        class="host-image"
-                        :src="`${stay.host.thumbnailUrl || stay.host.imgUrl}`"
-                        alt=""
-                    />
+                    <img class="host-image" :src="`${stay.host.thumbnailUrl || stay.host.imgUrl}`" alt="" />
                 </div>
                 <div class="user-stay-info">
-                    <img
-                        v-if="stay.host.isSuperhost"
-                        src="../assets/svg/folder1/superhost.svg"
-                        alt=""
-                    />
+                    <img v-if="stay.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="" />
                     <div v-if="stay.host.isSuperhost">
                         <p style="font-weight: bold">Renata is a Superhost</p>
                         <p class="subtext">
@@ -116,89 +93,60 @@
                 <div class="amenities-container" id="amenities">
                     <h2>What this place offers</h2>
                     <div class="stay-amenities">
-                        <div
-                            v-for="(a, idx) in stay.amenities"
-                            style="display: flex; gap: 13px"
-                        >
-                            <img
-                                :src="amenitiesUrls[idx]"
-                                style="width: 1.2em"
-                            />
+                        <div v-for="(a, idx) in stay.amenities" style="display: flex; gap: 13px">
+                            <img :src="amenitiesUrls[idx]" style="width: 1.2em" />
                             <!-- <img :src="getImgUrlSec(a)" /> -->
                             <p>{{ a }}</p>
                         </div>
                     </div>
                 </div>
             </section>
-            <reserve-modal
-                @addOrder="addOrder"
-                :stay="stay"
-                :reviews="stay.reviews.length"
-                :rateMap="rate"
-            />
+            <reserve-modal @addOrder="addOrder" :stay="stay" :reviews="stay.reviews.length" :rateMap="rate" />
         </div>
 
         <section v-if="stay.reviews.length" id="reviews">
             <header>
-                <review-average
-                    :reviews="stay.reviews.length"
-                    :rateMap="rate"
-                />
+                <review-average :reviews="stay.reviews.length" :rateMap="rate" />
             </header>
             <div class="rating">
                 <p>Cleanliness</p>
-                <span class="progress-container"
-                    ><progress :value="rate.Cleanliness" max="5"></progress
-                    >{{ rate.Cleanliness.toFixed(1) }}</span
-                >
+                <span class="progress-container"><progress :value="rate.Cleanliness" max="5"></progress>{{
+                        rate.Cleanliness.toFixed(1)
+                }}</span>
                 <p>Communication</p>
-                <span class="progress-container"
-                    ><progress :value="rate.Communication" max="5"></progress
-                    >{{ rate.Communication.toFixed(1) }}</span
-                >
+                <span class="progress-container"><progress :value="rate.Communication" max="5"></progress>{{
+                        rate.Communication.toFixed(1)
+                }}</span>
                 <p>Check-in</p>
-                <span class="progress-container"
-                    ><progress :value="rate['Check-in']" max="5"></progress
-                    >{{ rate["Check-in"].toFixed(1) }}</span
-                >
+                <span class="progress-container"><progress :value="rate['Check-in']" max="5"></progress>{{
+                        rate["Check-in"].toFixed(1)
+                }}</span>
                 <p>Accuracy</p>
-                <span class="progress-container"
-                    ><progress :value="rate.Accuracy" max="5"></progress
-                    >{{ rate.Accuracy.toFixed(1) }}</span
-                >
+                <span class="progress-container"><progress :value="rate.Accuracy" max="5"></progress>{{
+                        rate.Accuracy.toFixed(1)
+                }}</span>
                 <p>Location</p>
-                <span class="progress-container"
-                    ><progress :value="rate.Location" max="5"></progress
-                    >{{ rate.Location.toFixed(1) }}</span
-                >
+                <span class="progress-container"><progress :value="rate.Location" max="5"></progress>{{
+                        rate.Location.toFixed(1)
+                }}</span>
                 <p>Value</p>
-                <span class="progress-container"
-                    ><progress :value="rate.Value" max="5"></progress
-                    >{{ rate.Value.toFixed(1) }}</span
-                >
+                <span class="progress-container"><progress :value="rate.Value" max="5"></progress>{{
+                        rate.Value.toFixed(1)
+                }}</span>
             </div>
             <main class="review-container">
-                <review-preview
-                    v-for="(review, idx) in !showMore
-                        ? stay.reviews.slice(0, 6)
-                        : stay.reviews"
-                    :review="review"
-                    :idx="idx"
-                />
+                <review-preview v-for="(review, idx) in !showMore
+                ? stay.reviews.slice(0, 6)
+                : stay.reviews" :review="review" :idx="idx" />
             </main>
-            <button
-                v-if="stay.reviews.length >= 6"
-                @click="showMore = !showMore"
-                class="show-more"
-            >
+            <button v-if="stay.reviews.length >= 6" @click="showMore = !showMore" class="show-more">
                 {{
-                    `Show
-                                ${
-                                    !showMore
-                                        ? `all
+                        `Show
+                                ${!showMore
+                            ? `all
                                 ${stay.reviews.length} reviews`
-                                        : "less"
-                                }`
+                            : "less"
+                        }`
                 }}
             </button>
         </section>
@@ -209,20 +157,13 @@
         <section class="map">
             <h2>Where you'll be</h2>
             <h1>{{ stay.loc.city }}, {{ stay.loc.country }}</h1>
-            <details-map
-                class="map-for-details"
-                :lat="stay.loc.lat"
-                :lng="stay.loc.lan"
-                :title="stay.loc.address"
-            />
+            <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
         </section>
-        <reservation-success
-            @close="isOrderComplete = false"
-            v-if="isOrderComplete"
-            :order="order"
-            :stay="stay"
-            :rateMap="rate"
-        />
+        <reservation-success @close="isOrderComplete = false" v-if="isOrderComplete" :order="order" :stay="stay"
+            :rateMap="rate" />
+    </div>
+    <div v-else>
+        <skeletonDetails></skeletonDetails>
     </div>
 </template>
 
@@ -240,6 +181,7 @@ import reviewAverage from "../cmps/review-average.vue";
 import reserveModal from "../cmps/reserve-modal.vue";
 import detailsHeader from "../cmps/details-header.vue";
 import detailsMap from "../cmps/details-map.vue";
+import skeletonDetails from "../cmps/skeleton-details.vue";
 
 export default {
     data() {
@@ -391,8 +333,8 @@ export default {
         formattedTotal() {
             return this.format(
                 this.serviceFee +
-                    this.cleaningFee +
-                    this.totalDays() * this.stay.price
+                this.cleaningFee +
+                this.totalDays() * this.stay.price
             );
         },
         getSticky() {
@@ -410,6 +352,7 @@ export default {
         detailsHeader,
         detailsMap,
         heartIcon,
+        skeletonDetails,
     },
 };
 </script>
