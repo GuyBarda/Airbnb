@@ -2,10 +2,10 @@
     <div v-if="orders" class="order-container">
         <div class="order-header">
             <h2>Hi {{ userFullname }}, you have {{ orders.length }} orders </h2>
-            <h3>{{ pendingLength }}
-                pending <i class="fa fa-solid fa-circle"></i>{{ approveLength }}
-                approved <i class="fa fa-solid fa-circle"></i>{{ declineLength }} declined
-                <i class="fa fa-solid fa-circle"></i>
+            <h3><span><i class="fa fa-solid fa-circle"></i>{{ pendingLength }}</span>
+                <span>pending <i class="fa fa-solid fa-circle"></i>{{ approveLength }}</span>
+                <span>approved <i class="fa fa-solid fa-circle"></i>{{ declineLength }} declined</span>
+                
             </h3>
         </div>
         <order-list @changeStatus="updateStatus" :orders="orders" />
