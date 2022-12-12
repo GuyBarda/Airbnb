@@ -2,31 +2,35 @@
     animation: skeleton-loading 1s linear infinite alternate;
     border-radius: 10px;
 }
-.img-skeleton {
-    width: 100%;
-    aspect-ratio: 1/1;
+.skeleton-details-container {
+    .skeleton-txt {
+        // height: 20px;
+        // border-radius: 3px;
+
+        // &.skeleton-name {
+        //     width: 55%;
+        // }
+        // &.skeleton-rate {
+        //     width: 16%;
+        // }
+        &.skeleton-desc {
+            width: 35%;
+        }
+
+        // &.skeleton-date {
+        //     width: 25%;
+        // }
+        // &.skeleton-price {
+        //     width: 23%;
+        // }
+        
+        &.skeleton-title {
+            margin-top: 21px;
+            margin-bottom: 21px;
+        }
+    }
 }
 
-.skeleton-txt {
-    height: 20px;
-    border-radius: 3px;
-
-    &.skeleton-name {
-        width: 55%;
-    }
-    &.skeleton-rate {
-        width: 16%;
-    }
-    &.skeleton-desc {
-        width: 35%;
-    }
-    &.skeleton-date {
-        width: 25%;
-    }
-    &.skeleton-price {
-        width: 23%;
-    }
-}
 @keyframes skeleton-loading {
     0% {
         background-color: hsl(0, 0%, 72%);

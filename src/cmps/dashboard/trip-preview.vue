@@ -9,6 +9,8 @@
         </div>
         <span class="trip-status" :class="tripStatus">
             <i v-if="trip.status === 'approve'" class="fa fa-check"></i>
+            <i v-if="trip.status === 'decline'" class="fa fa-times-circle"></i>
+            <span v-if="trip.status === 'pending'" class='fa Clock-Rotate-Left fontawesomeicon'></span>
             {{ trip.status }}
         </span>
     </section>
