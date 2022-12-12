@@ -1,5 +1,5 @@
 <template>
-    <div v-if="orders" class="order-container">
+    <div v-if="orders && orders.length" class="order-container">
         <div class="order-header">
             <h2>Hi {{ userFullname }}, you have {{ orders.length }} orders </h2>
             <h3><span><i class="fa fa-solid fa-circle"></i>{{ pendingLength }}
@@ -10,6 +10,14 @@
         </div>
         <order-list @changeStatus="updateStatus" :orders="orders" />
     </div>
+    <section v-else class="my-stay-else">
+        <main class="stay-wrapper">
+            <h3>No orders yet...</h3>
+            <!-- <button @click="navigate" @mousemove="hoverEffect">
+                Become a host now
+            </button> -->
+        </main>
+    </section>
 </template>
 
 <script>

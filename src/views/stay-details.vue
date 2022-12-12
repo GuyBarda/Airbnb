@@ -39,9 +39,9 @@
                         <div style="margin-top: 3px; grid-column: 1">
                             <span>{{ stay.capacity }} guests </span>
                             <span class="gray"> • </span>
-                            <span>{{ stay.bathrooms }} bathrooms </span>
+                            <span>{{ stay.bathrooms }} {{stay.bathrooms > 1 ? 'bathroom':'bathrooms'}} </span>
                             <span class="gray"> • </span>
-                            <span>{{ stay.bedrooms }} bedrooms </span>
+                            <span>{{ stay.bedrooms }} {{stay.bedrooms > 1 ? 'bedroom':'bedrooms'}} </span>
                         </div>
                     </div>
                     <img class="host-image" :src="`${stay.host.thumbnailUrl || stay.host.imgUrl}`" alt="" />
@@ -204,11 +204,11 @@ export default {
         this.getImageUrl();
         this.order = orderService.getEmptyOrder();
         const user = userService.getLoggedinUser();
-        this.$store.commit({
-            type: "setLoggedinUser",
-            user,
-        });
-        const wishlist = user.wishlist;
+        // this.$store.commit({
+        //     type: "setLoggedinUser",
+        //     user,
+        // });
+        const wishlist = user?.wishlist;
         if (!wishlist) return;
         const idx = wishlist.findIndex((stay) => stay._id === this.stay._id);
         this.isMark = idx > -1 ? true : false;
@@ -283,6 +283,7 @@ export default {
             wishlistMsg(`${this.stay.name} saved to wishlist`);
         },
         getImageUrl() {
+            console.log(this.stay);
             this.amenitiesUrls = this.stay.amenities.map((a) => {
                 return new URL(
                     `/src/assets/svg/amenities/${a
