@@ -90,8 +90,8 @@
                     overflow: visible;
                     height: 16px;
                     width: 16px;
-                    margin-right: 7px;
-                    margin-top: 1px;
+                    margin-right: 4px;
+                    // margin-top: 1px;
                 }
 
                 .heart-btn {
@@ -452,20 +452,19 @@
                         grid-column: span 2;
                         display: grid;
                         border-top: 1px solid rgba(0, 0, 0, 0.32);
-                        grid-template-columns: 1fr .2fr;
+                        grid-template-columns: 1fr 0.2fr;
                         grid-template-rows: 1fr 1fr;
 
                         p {
                             font-size: em(14px, 16px);
                         }
-                        .arrow-img{
+                        .arrow-img {
                             justify-self: center;
                             align-self: center;
                             width: 22px;
                             height: 22px;
                             grid-row: 1 /-1;
                             grid-column: 2;
-                            
                         }
 
                         .guests-modal {
