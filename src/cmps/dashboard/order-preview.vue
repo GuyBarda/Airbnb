@@ -4,8 +4,6 @@
         <p class="img-buyer"><img :src="order.buyer.imgUrl" alt="" />{{ order.buyer.fullname }}</p>
         <p>{{ order.stay.name }}</p>
         <p>{{ formattedStartDate }}</p>
-        <!-- <p>{{ formattedEndDate }}</p> -->
-        <!-- <p>{{ order.endDate }}</p> -->
         <p>{{ order.totalPrice }}$</p>
         <p :class="orderStatus">{{ order.status }}</p>
         <div class="actions">
