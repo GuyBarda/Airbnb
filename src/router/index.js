@@ -8,6 +8,7 @@ import myOrders from '../cmps/dashboard/orders.vue'
 import myStays from '../cmps/dashboard/my-stays.vue'
 import myTrips from '../cmps/dashboard/my-trips.vue'
 import wishlist from '../cmps/dashboard/wishlist.vue'
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
