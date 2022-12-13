@@ -22,8 +22,8 @@ export default {
         }
     },
     created() {
-        this.center.lat = this.lat
-        this.center.lng = this.lng
+        this.center.lat = +this.lat
+        this.center.lng = +this.lng
         const marker = {
             title: this.title,
             position: this.center
