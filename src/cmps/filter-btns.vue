@@ -1,9 +1,9 @@
 <template>
-    <carousel  @click="setSelected" class="carousel" :settings="settings" :breakpoints="breakpoints">
+    <carousel class="carousel" :settings="settings" :breakpoints="breakpoints">
         <slide v-for="slide in btns" :key="slide">
 
-            <div :class="{selected: isSelected }" class="slide-wrapper" @click="setSort(slide.key)">
-                <div class="img-wrapper">
+            <div class="slide-wrapper" @click="setSort(slide.key)">
+                <div class="img-wrapper" :class="{selected: isSelected === slide.key}">
                     <img class="img-btn" :src="slide.url" alt="" width="24" height="24" />
                     <div class="imgKey">
                         <span>{{ slide.key }}</span>
@@ -69,11 +69,9 @@ export default {
     methods: {
         setSort(type) {
             this.filterBy.type = type
+            this.isSelected = type
             this.$emit("filtered", this.filterBy);
         },
-        setSelected(){
-            this.isSelected = true
-        }
     },
 };
 </script>
