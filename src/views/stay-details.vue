@@ -216,7 +216,7 @@ export default {
     mounted() {
         setTimeout(() => {
             // const imgsContainer = this.$refs.imgsContainer;
-            const imgsContainer = document.querySelector('.imgs-container')
+            const imgsContainer = document.querySelector('#photos')
             
             const elReserveBtn = document.querySelector(
                 ".reserve-modal .btn-reserve"
