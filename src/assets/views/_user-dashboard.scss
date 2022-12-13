@@ -11,40 +11,35 @@
         border-radius: 10px;
         padding: 10px;
         margin-bottom: 10px;
-    }
 
-    .dashboard-nav {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 10px;
-        font-size: em(17px, 16px);
+        .dashboard-nav {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            font-size: em(17px, 16px);
 
-        input {
-            display: none;
-        }
-        input:checked + .btn-nav {
-            color: #ff385c;
-            border: 1px solid #ff385c;
-        }
+            .btn-nav {
+                padding: 10px;
+                background-color: white;
+                border-radius: 10px;
+                border: 1px solid rgb(202, 202, 202);
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                text-transform: capitalize;
+                font-family: CerealMd;
+                transition: 0.2s;
+                cursor: pointer;
 
-        .btn-nav {
-            padding: 10px;
-            background-color: white;
-            border-radius: 10px;
-            // box-shadow: 0 1px 20px 3px rgb(0 0 0 / 8%),
-            //     0px 0px 0px rgb(0 0 0 / 5%);
-            border: 1px solid rgb(202, 202, 202);
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            text-transform: capitalize;
-            font-family: CerealMd;
-            transition: 0.2s;
-            cursor: pointer;
+                &:hover {
+                    color: #ff385c;
+                    border: 1px solid #ff385c;
+                }
 
-            &:hover {
-                color: #ff385c;
-                border: 1px solid #ff385c;
+                &.router-link-exact-active {
+                    color: #ff385c;
+                    border: 1px solid #ff385c;
+                }
             }
         }
     }
