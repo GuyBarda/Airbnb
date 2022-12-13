@@ -94,11 +94,12 @@
         background-color: #fff;
 
         .trip-display {
+            font-size: em(14px,16px);
             // margin-left: 20.4%;
             padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 15px;
             background-color: white;
             grid-template-rows: repeat(2, 1fr);
             height: max-content;
@@ -137,7 +138,7 @@
 
             .trip-info {
                 display: grid;
-                gap: 20px;
+                gap: 10px;
                 align-items: center;
 
                 h3,
