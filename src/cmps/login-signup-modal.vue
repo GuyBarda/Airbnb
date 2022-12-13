@@ -84,7 +84,6 @@ export default {
             this.$store.commit({ type: "toggleLogInModal", bool: false });
         },
         close() {
-            // this.$emit("closeModal");
             this.$store.commit({ type: "toggleLogInModal", bool: false });
             eventBus.emit('closeLoginModal')
         },

@@ -36,7 +36,10 @@ export default {
     created() {
         this.$store.dispatch({ type: "loadUser" });
         socketService.on("order-updated", (order) => {
-            showSuccessMsg("Order updated, check your trips");
+            showSuccessMsg("Trip updated, check your trips");
+        });
+        socketService.on("new-order", (order) => {
+            showSuccessMsg("You have new Order, check your orders");
         });
     },
     methods: {

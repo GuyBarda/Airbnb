@@ -1,9 +1,9 @@
 <template>
-    <carousel  @click="setSelected" class="carousel" :settings="settings" :breakpoints="breakpoints">
+    <carousel class="carousel" :settings="settings" :breakpoints="breakpoints">
         <slide v-for="slide in btns" :key="slide">
 
-            <div :class="{selected: isSelected }" class="slide-wrapper" @click="setSort(slide.key)">
-                <div class="img-wrapper">
+            <div class="slide-wrapper" @click="setSort(slide.key)">
+                <div class="img-wrapper" :class="{selected: isSelected === slide.key}">
                     <img class="img-btn" :src="slide.url" alt="" width="24" height="24" />
                     <div class="imgKey">
                         <span>{{ slide.key }}</span>
@@ -67,19 +67,11 @@ export default {
     computed: {
     },
     methods: {
-        // resizeCarousel(event) {
-        //     const elCarousel = document.querySelector(".carousel");
-        //     const elCarouselWidth = elCarousel.clientWidth;
-        //     this.itemsToShow = Math.floor(elCarouselWidth / 80);
-        // },
         setSort(type) {
             this.filterBy.type = type
+            this.isSelected = type
             this.$emit("filtered", this.filterBy);
         },
-        setSelected(){
-            console.log('im in')
-            this.isSelected = true
-        }
     },
 };
 </script>

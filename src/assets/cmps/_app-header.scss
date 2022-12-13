@@ -144,15 +144,6 @@
             }
             .logo {
                 justify-self: start;
-                img {
-                    // width: 40px;
-                    // height: 40px;
-                }
-                // @media (max-width: 650px) {
-                //     .main-container .logo {
-                //         display: none;
-                //     }
-                // }
             }
             .user {
                 display: flex;
@@ -217,7 +208,6 @@
                 flex-direction: column;
                 position: absolute;
                 top: 70px;
-                // right: 0px;
                 background-color: #fff;
                 border-radius: 12px;
                 width: 240px;
@@ -230,7 +220,6 @@
                 border-radius: 12px;
                 box-shadow: #0000002e 0 0 3px;
                 :first-child {
-                    // margin-top: 5px;
                     background-color: red;
                     border-bottom: 1px solid #dddddd;
                 }

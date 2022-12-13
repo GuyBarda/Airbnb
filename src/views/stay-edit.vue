@@ -129,7 +129,6 @@ export default {
             ? await stayService.getById(id)
             : stayService.getEmptyStay();
         this.stayToEdit.host = this.user;
-        console.log("stayYoEdit",this.stayToEdit);
     },
     methods: {
         close() {
@@ -162,7 +161,6 @@ export default {
                 type: "updateStay",
                 stay: this.stayToEdit,
             });
-            console.log('STAY',stay);
             const miniStay = {
                 _id: stay._id,
                 name: stay.name,

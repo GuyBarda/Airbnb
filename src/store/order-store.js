@@ -1,5 +1,5 @@
 // import { orderService } from '../services/order-service-local.js';
-import { orderService } from '../services/order-service.js';
+import { orderService } from "../services/order-service.js";
 
 export const orderStore = {
     state: {
@@ -15,9 +15,7 @@ export const orderStore = {
             state.orders = orders;
         },
         addOrder(state, { order }) {
-            // console.log('state.orders',state.orders )
             state.orders.unshift(order);
-            // console.log('state.orders',state.orders )
         },
         removeOrder(state, { orderId }) {
             state.orders = state.orders.filter(
@@ -28,31 +26,28 @@ export const orderStore = {
     actions: {
         async addOrder({ commit }, { order }) {
             try {
-                console.log('order', order);
                 const savedOrder = await orderService.save(order);
-                // commit({ type: 'addOrder', order });
-                console.log('saved', savedOrder);
                 return savedOrder;
             } catch (err) {
-                console.log('orderStore: Error in addOrder', err);
+                console.log("orderStore: Error in addOrder", err);
                 throw err;
             }
         },
         async loadOrders({ commit }) {
             try {
                 const orders = await orderService.query();
-                commit({ type: 'setOrders', orders });
+                commit({ type: "setOrders", orders });
             } catch (err) {
-                console.log('orderStore: Error in loadOrders', err);
+                console.log("orderStore: Error in loadOrders", err);
                 throw err;
             }
         },
         async removeOrder({ commit }, { orderId }) {
             try {
                 await orderService.remove(orderId);
-                commit({ type: 'removeOrder', orderId });
+                commit({ type: "removeOrder", orderId });
             } catch (err) {
-                console.log('orderStore: Error in removeOrder', err);
+                console.log("orderStore: Error in removeOrder", err);
                 throw err;
             }
         },

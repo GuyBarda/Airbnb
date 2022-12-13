@@ -6,22 +6,6 @@ import { store } from '../store/store'
 import { socketService, SOCKET_EVENT_REVIEW_ADDED, SOCKET_EVENT_REVIEW_ABOUT_YOU } from './socket-service'
 
 
-// ;(() => {
-
-//   setTimeout(()=>{
-//     // socketService.on(SOCKET_EVENT_REVIEW_ADDED, (review) => {
-//     //   console.log('GOT from socket', review)
-//     //   store.commit({type: 'addReview', review})
-//     // })
-//     // socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
-//     //   showSuccessMsg(`New review about me ${review.txt}`)
-//     // })
-//   }, 0)
-
-// })()
-
-
-
 export const reviewService = {
   add,
   query,

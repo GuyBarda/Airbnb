@@ -5,17 +5,17 @@ import { socketService } from './socket-service.js';
 
 const STORAGE_KEY = 'stay';
 
-(() => {
-    setTimeout(() => {
-        socketService.on('stay-added', (stay) => {
-            console.log('GOT from socket', stay);
-            this.$store.commit({ type: 'addStay', stay });
-        });
-        // socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (stay) => {
-        //     showSuccessMsg(`New stay about me ${stay.txt}`);
-        // });
-    }, 0);
-})();
+// (() => {
+//     setTimeout(() => {
+//         socketService.on('stay-added', (stay) => {
+//             console.log('GOT from socket', stay);
+//             this.$store.commit({ type: 'addStay', stay });
+//         });
+//         // socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (stay) => {
+//         //     showSuccessMsg(`New stay about me ${stay.txt}`);
+//         // });
+//     }, 0);
+// })();
 
 export const stayService = {
     query,

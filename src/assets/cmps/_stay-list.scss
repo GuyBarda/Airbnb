@@ -1,6 +1,5 @@
 .stay-list {
     display: grid;
-    // padding-top: 10px;
     grid-template-columns: 1fr;
     width: 100%;
     box-sizing: border-box;
@@ -15,7 +14,6 @@
         grid-template-columns: repeat(2, 1fr);
     }
     @media (min-width: 950px) {
-        // justify-content: space-between;
         grid-template-columns: repeat(3, 1fr);
     }
     @media (min-width: 1127px) {

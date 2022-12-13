@@ -1,24 +1,7 @@
 .stay-preview {
     .carousel {
-        // width: 100% !important;
-        // @media (max-width: 400px){
-        //     .carousel__viewport{
-        //         max-width: 320px !important;
-        //     }
-        // }
-
         .carousel__slide {
             width: 100% !important;
-
-            // @media (min-width: 400px){
-            //     max-width: 100% !important;
-            // }
-            // @media (min-width: 600px){
-            //     max-width: 550px !important;
-            // }
-            // @media (min-width: 800px){
-            //     max-width: 750px !important;
-            // }
         }
 
         .carousel__pagination-button::after {
@@ -53,16 +36,16 @@
         .carousel__next {
             opacity: 0;
             transition: opacity 0.4s;
-            margin:  0px 15px;
+            margin: 0px 15px;
 
-            &:hover{
+            &:hover {
                 opacity: 1;
                 width: 31px;
                 height: 31px;
                 color: black;
             }
 
-            .carousel__icon{
+            .carousel__icon {
                 width: 20px;
                 height: 20px;
             }

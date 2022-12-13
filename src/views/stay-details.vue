@@ -283,7 +283,6 @@ export default {
             wishlistMsg(`${this.stay.name} saved to wishlist`);
         },
         getImageUrl() {
-            console.log(this.stay);
             this.amenitiesUrls = this.stay.amenities.map((a) => {
                 return new URL(
                     `/src/assets/svg/amenities/${a

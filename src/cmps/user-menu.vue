@@ -18,7 +18,6 @@ export default {
             this.$store.commit({ type: "toggleLogInModal", bool: true });
         },
         closeMenu() {
-            // if(type) this.$router.push({path: '/dashboard', query: type})
             this.$emit("closeMenu");
         },
         logout() {

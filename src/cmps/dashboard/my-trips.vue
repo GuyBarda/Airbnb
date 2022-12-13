@@ -52,10 +52,14 @@ import tripList from "./trip-list.vue";
 
 export default {
     async created() {
-        this.user = this.$store.getters.loggedinUser
+        this.user = this.$store.getters.loggedinUser;
         this.trips = await userService.getTripsByUserId(this.user._id);
         if (!this.trips) return;
         this.currTrip = this.trips[0];
+        socketService.on("trip-about-you", (updatedTrip) => {
+            const idx = this.trips.findIndex(trip => trip._id === updatedTrip._id)
+            this.trips.splice(idx,1,updatedTrip)
+        });
     },
     data() {
         return {

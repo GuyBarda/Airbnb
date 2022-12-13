@@ -32,7 +32,6 @@
 
 <script>
 import { wishlistMsg } from '../services/event-bus-service.js';
-// import skeleton from './skeleton.vue';
 
 import arrowLeft from "../assets/svg/arrow-left.vue";
 import arrowRight from "../assets/svg/arrow-right.vue";
@@ -40,7 +39,6 @@ import starIcon from "../assets/svg/star.vue";
 import heartIcon from "../assets/svg/heart.vue";
 import imgCarousel from "../cmps/img-carousel.vue";
 
-//temporary
 import { utilService } from "../services/utils-service.js";
 
 export default {
