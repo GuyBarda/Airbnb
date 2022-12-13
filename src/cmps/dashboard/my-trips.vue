@@ -2,35 +2,38 @@
     <div v-if="user && trips && currTrip" class="trips-container">
         <!-- <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2> -->
         <trip-list @openToDisplay="setTripDisplay" :trips="trips" />
-        <section class="trip-display">
-            <section class="trip-img">
-                <img v-for="img in currTrip?.stay.imgUrls" :src="img" alt="" />
+        <div class="trip-display-container">
+            <section class="trip-display">
+                <section class="trip-img">
+                    <img v-for="img in currTrip?.stay.imgUrls" :src="img" alt="" />
+                </section>
+                <section class="trip-info">
+                    <h2>{{ currTrip.stay.name }}</h2>
+                    <h3>{{ currTrip?.stay?.loc?.address }}</h3>
+                    <p>
+                        <span class="info-parameter">Dates:</span>
+                        {{ formattedStartDate }} - {{ formattedEndDate }}
+                    </p>
+                    <p>
+                        <span class="info-parameter">Guests:</span>
+                        {{ currTrip?.guests?.adults }}
+                    </p>
+                    <p>
+                        <span class="info-parameter">Total price:</span> ${{
+                                currTrip?.totalPrice
+                        }}
+                    </p>
+                    <p class="last" :class="tripStatus">
+                        <span class="info-parameter">Order Confirmation:</span>
+                        {{ currTrip._id }}
+                    </p>
+                    <p class="last" :class="tripStatus">
+                        <span class="info-parameter">Order Status:</span>
+                        {{ currTrip.status }}
+                    </p>
+                </section>
             </section>
-            <section class="trip-info">
-                <h3>{{ currTrip?.stay?.loc?.address }}</h3>
-                <p>
-                    <span class="info-parameter">Dates:</span>
-                    {{ formattedStartDate }} - {{ formattedEndDate }}
-                </p>
-                <p>
-                    <span class="info-parameter">Guests:</span>
-                    {{ currTrip?.guests?.adults }}
-                </p>
-                <p>
-                    <span class="info-parameter">Total price:</span> ${{
-                        currTrip?.totalPrice
-                    }}
-                </p>
-                <p class="last" :class="tripStatus">
-                    <span class="info-parameter">Order Confirmation:</span>
-                    {{ currTrip._id }}
-                </p>
-                <p class="last" :class="tripStatus">
-                    <span class="info-parameter">Order Status:</span>
-                    {{ currTrip.status }}
-                </p>
-            </section>
-        </section>
+        </div>
     </div>
     <section v-else class="trips-else">
         <main class="trips-wrapper">
@@ -51,11 +54,12 @@ export default {
     async created() {
         this.user = this.$store.getters.loggedinUser;
         this.trips = await userService.getTripsByUserId(this.user._id);
+        this.trips = this.trips.reverse()
         if (!this.trips) return;
         this.currTrip = this.trips[0];
         socketService.on("trip-about-you", (updatedTrip) => {
             const idx = this.trips.findIndex(trip => trip._id === updatedTrip._id)
-            this.trips.splice(idx,1,updatedTrip)
+            this.trips.splice(idx, 1, updatedTrip)
         });
     },
     data() {

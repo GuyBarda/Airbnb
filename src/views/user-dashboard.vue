@@ -39,7 +39,7 @@ export default {
     watch: {
         currPath(path) {
             this.path = path
-        }
+        },
     },
 };
 </script>
