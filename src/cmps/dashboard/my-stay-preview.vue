@@ -3,11 +3,11 @@
 
     <section class="my-stay-preview">
         <router-link :to="'/stay/' + stay._id">
-            <p>{{ stay.name }}</p>
-            <p>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
-            <p>{{ stay.price }}</p>
-            <p>{{ stay.capacity }}</p>
-            <p>{{ stay.propertyType }}</p>
+            <p><span class="prop">Name:&nbsp;</span>{{ stay.name }}</p>
+            <p><span class="prop">Location:&nbsp;</span>{{ stay.loc.city }}, {{ stay.loc.country }}</p>
+            <p><span class="prop">Price:&nbsp;</span>{{ stay.price }}</p>
+            <p><span class="prop">Capacity:&nbsp;</span>{{ stay.capacity }}</p>
+            <p><span class="prop">Property Type:&nbsp;</span>{{ stay.propertyType }}</p>
             <section class="stay-actions">
                 <button class="update-btn" @click.prevent="navigateToUpdate()">
                     <i class="fa fa-solid fa-pencil"></i>Update

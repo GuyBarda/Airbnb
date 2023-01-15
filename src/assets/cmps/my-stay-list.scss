@@ -19,18 +19,43 @@
             border-start-start-radius: 10px;
             border-start-end-radius: 10px;
             border-bottom: 1px solid #dddddd;
+            @media (max-width: 1050px) {
+                display: none;
+            }
         }
 
         .my-stay-preview {
             a {
                 text-decoration: none;
                 display: grid;
-                grid-template-columns: 1.6fr 0.7fr 0.5fr 0.5fr 0.7fr 0.7fr;
+                grid-template-columns: repeat(3,1fr);
+                // grid-template-columns: 1.6fr 0.7fr 0.5fr 0.5fr 0.7fr 0.7fr;
+
                 align-items: center;
                 background-color: white;
                 padding-inline: 10px;
                 padding-block: 5px;
                 border-bottom: 1px solid #dddddd;
+                
+                .prop{
+                    display: none;
+                    font-weight: 700;
+                    @media (max-width: 1050px) {
+                        display: inline;
+                    }
+                }
+                @media(max-width: 1050px){
+                    :first-child{
+                        grid-column: span 2;
+                    }
+                    border-start-start-radius: 10px;
+                    border-start-end-radius: 10px;
+                    grid-template-rows: repeat(3,1fr);
+                }
+                @media(min-width: 1050px){
+                    grid-template-columns: 1.6fr 0.7fr 0.5fr 0.5fr 0.7fr 0.7fr;
+
+                }
 
                 .stay-actions {
                     display: flex;
