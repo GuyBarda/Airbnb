@@ -31,6 +31,7 @@ export function getActionAddStayMsg(stayId) {
 export const stayStore = {
     state: {
         stays: [],
+        actualStaysLength: 0,
         filterBy: {},
         amenities: [
             'Garden view',
@@ -52,6 +53,9 @@ export const stayStore = {
         ],
     },
     getters: {
+        actualStaysLength({ actualStaysLength }) {
+            return actualStaysLength;
+        },
         stays({ stays }) {
             return Object.values(stays);
         },
@@ -60,8 +64,14 @@ export const stayStore = {
         },
     },
     mutations: {
+        setActualStaysLength(state, { length }) {
+            state.actualStaysLength = length;
+        },
         setStays(state, { stays }) {
             state.stays = stays;
+        },
+        pushStays(state, { stays }) {
+            state.stays.push(...stays);
         },
         addStay(state, { stay }) {
             state.stays.push(stay);
@@ -86,9 +96,9 @@ export const stayStore = {
         },
     },
     actions: {
-        setFilter({ commit, dispatch }, { filterBy }) {
+        setFilter({ commit, dispatch }, { filterBy, isPush }) {
             commit({ type: 'setFilter', filterBy });
-            dispatch({ type: 'loadStays' });
+            dispatch({ type: 'loadStays', isPush });
             // state.filterBy = {...filterBy,...state.filterBy}
         },
         async addStay(context, { stay }) {
@@ -111,10 +121,13 @@ export const stayStore = {
                 throw err;
             }
         },
-        async loadStays({ commit, state }) {
+        async loadStays({ commit, state }, { isPush = false } = {}) {
             try {
-                let stays = await stayService.query(state.filterBy);
-                commit({ type: 'setStays', stays });
+                const { stays, length } = await stayService.query(
+                    state.filterBy
+                );
+                commit({ type: 'setActualStaysLength', length });
+                commit({ type: `${isPush ? 'pushStays' : 'setStays'}`, stays });
                 return stays;
             } catch (err) {
                 console.log('stayStore: Error in loadStays', err);

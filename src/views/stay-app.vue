@@ -2,7 +2,7 @@
     <section class="stay-app main-container">
         <stay-filter :stays="stays" />
         <section class="explore-sub-header" v-if="this.$route.path === '/explore'">
-            Found {{ stays.length }} homes
+            Found {{ this.$store.getters.actualStaysLength }} homes
         </section>
         <stay-list v-if="!isLoading" :stays="stays" />
 
@@ -22,24 +22,33 @@ export default {
     data() {
         return {
             isLoading: false,
+            filterBy: {
+                page: 0
+            }
         };
     },
-
     async created() {
+        window.addEventListener('scroll', this.increasePage)
         try {
             this.isLoading = true;
             await this.$store.dispatch({ type: "loadStays" });
+            console.log(this.$store.actualStaysLength)
             this.isLoading = false;
         } catch {
             console.log("cant load stays");
         }
     },
+    unmounted() {
+        window.removeEventListener('scroll', this.increasePage)
+    },
     methods: {
-        // filterBy.minPrice = +filterBy.minPrice;
-        // filterBy.beds = +filterBy.beds;
-        // filterBy.bedrooms = +filterBy.bedrooms;
-        // filterBy.bathrooms = +filterBy.bathrooms;
-        // filterBy.maxPrice = +filterBy.maxPrice;
+        increasePage() {
+            const { scrollTop, offsetHeight } = document.documentElement
+            let bottomOfWindow = scrollTop + window.innerHeight === offsetHeight;
+            if (!bottomOfWindow) return
+            this.filterBy.page++
+            this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy, isPush: true });
+        }
     },
     computed: {
         stays() {
