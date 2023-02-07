@@ -1,7 +1,9 @@
 <template>
     <section class="search-modal-mobile">
         <section class="search-modal-header">
-            <button class="back-btn"><close-btn /></button>
+            <button @click.stop.prevent="toggleSearch" class="back-btn">
+                <close-btn />
+            </button>
         </section>
         <main class="modals">
             <section class="destination-wrapper">
@@ -19,12 +21,20 @@
                 </div>
                 <destination-modal :class="{ open: currZone === 'Where' }" />
             </section>
+
             <section class="date-wrapper">
-                <div class="date-info" @click="currZone = 'Date'">
+                <div
+                    class="date-info"
+                    v-if="currZone !== 'Date'"
+                    @click="currZone = 'Date'"
+                >
                     <button>When</button>
                     <span>Choose Date</span>
                 </div>
-                <!-- Place Modal Here -->
+                <div class="date-info second" v-else>
+                    <span class="heading">When's your trip?</span>
+                </div>
+                <mobile-date-picker :class="{ open: currZone === 'Date' }" />
             </section>
             <section class="guests-wrapper">
                 <div
@@ -39,7 +49,6 @@
                     <span class="heading">Who's coming?</span>
                 </div>
                 <guests-modal :class="{ open: currZone === 'Guests' }" />
-                <!-- Place Modal Here -->
             </section>
         </main>
         <section class="search">
@@ -53,7 +62,7 @@
 import { utilService } from "../services/utils-service.js"
 
 import destinationModal from "./destination-modal.vue"
-import datePicker from "./date-picker.vue"
+import mobileDatePicker from "./date-picker-mobile.vue"
 import guestsModal from "./guests-modal.vue"
 
 import closeBtn from "../assets/svg/x-button.vue"
@@ -67,6 +76,9 @@ export default {
         setZone(value) {
             this.currZone = value
         },
+        toggleSearch() {
+            this.$store.commit({ type: "toggleSearch", bool: false })
+        },
         hoverEffect(ev) {
             const button = ev.target
             const { x, y } = button.getBoundingClientRect()
@@ -76,7 +88,7 @@ export default {
     },
     components: {
         destinationModal,
-        datePicker,
+        mobileDatePicker,
         guestsModal,
         closeBtn,
     },

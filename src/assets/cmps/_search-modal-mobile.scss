@@ -31,6 +31,7 @@
         }
     }
     .modals {
+        // overflow: auto;
         padding: 10px 10px 0px 10px;
         display: flex;
         flex-direction: column;
@@ -70,6 +71,7 @@
                         font-size: 22px;
                         line-height: 26px;
                         font-weight: 800;
+                        padding-bottom: 10px;
                     }
                 }
                 button {
@@ -137,21 +139,35 @@
                 }
             }
             .guests-modal {
-                margin-top: 10px;
+                // margin-top: 10px;
                 position: relative;
                 top: 0;
                 padding: 10px 0px;
+                padding-block: 10px 0;
                 ul {
                     li {
                         gap: 0;
+                        padding: 20px 4px 20px 0px;
                     }
+                }
+            }
+            .date-picker-mobile{
+                height: 0;
+                overflow: hidden;
+                &.open{
+                    height: 320px;
+                    overflow: auto;
                 }
             }
         }
     }
     .search {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
         background-color: #fff;
         display: flex;
+        padding-block: 10px;
         padding-inline: 10px;
         align-items: center;
         justify-content: space-between;
@@ -159,7 +175,7 @@
         button {
             @include reserve-btn();
             width: max-content;
-            padding-inline: 20px;
+            padding-inline: 40px;
         }
     }
 }

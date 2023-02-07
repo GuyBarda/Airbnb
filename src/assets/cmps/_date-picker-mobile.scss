@@ -1,0 +1,75 @@
+.date-picker-mobile{
+    height: 500px;
+    overflow: auto;
+    position: relative;
+    
+    display: grid;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    .day-names{
+        position: sticky;
+        top: 0;
+        display: grid;
+        padding-top: 10px;
+        background-color: #fff;
+        grid-template-columns: repeat(7,1fr);
+        span{
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #ddd;
+            font-weight: 600;
+            font-size: 14px;
+        }
+    }
+    .month{
+        padding-top: 10px;
+        display: grid;
+        .day-names{
+            display: grid;
+            grid-template-columns: repeat(7,1fr);
+            span{
+                display: flex;
+                justify-content: center;
+                border-bottom: 2px solid #ddd;
+                font-weight: 600;
+                font-size: 14px;
+            }
+        }
+        .month-info{
+            margin: 0;
+            padding-top: 10px;
+            font-weight: 600;
+        }
+        .days{
+            display: grid;
+            grid-template-columns: repeat(7,1fr);
+            justify-items: center;
+            row-gap: 2px;
+            .day{
+                display: flex;
+                width: 38px;
+                height: 38px;
+                padding: 10px;
+                justify-content: center;
+                font-weight: 600;
+                font-size: 14px;
+                border-radius: 50%;
+
+                &:hover{
+                    outline: 1px solid #ddd;
+                    cursor: pointer;
+                }
+                &.disabled {
+                    pointer-events: none;
+                    color: #ddd;
+                }
+                &.selected{
+                    color: #fff;
+                    background-color: #000;
+                    outline: 1px solid #000;
+                }
+            }
+        }
+    }
+}
