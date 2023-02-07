@@ -21,7 +21,7 @@ import skeleton from "../cmps/skeleton.vue";
 export default {
     data() {
         return {
-            isLoading: false,
+            // isLoading: false,
             filterBy: {
                 page: 0
             }
@@ -30,10 +30,7 @@ export default {
     async created() {
         window.addEventListener('scroll', this.increasePage)
         try {
-            this.isLoading = true;
             await this.$store.dispatch({ type: "loadStays" });
-            console.log(this.$store.actualStaysLength)
-            this.isLoading = false;
         } catch {
             console.log("cant load stays");
         }
@@ -51,6 +48,9 @@ export default {
         }
     },
     computed: {
+        isLoading() {
+            return this.$store.getters.isLoading
+        },
         stays() {
             return this.$store.getters.stays;
         },

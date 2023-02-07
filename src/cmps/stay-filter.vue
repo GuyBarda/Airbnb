@@ -3,7 +3,7 @@
         <section class="main-container" style="display: flex; align-items: center">
             <filter-btns :btns="btnsAryy()" @filtered="setFilterBy" />
 
-            <button @click="toggleFilterModal(true)" class="btn-filters">
+            <button ref="filterBtn" @click="toggleFilterModal(true)" class="btn-filters" :disabled="isLoading">
                 <div>
                     <img src="../assets/svg/filter-btn.svg" alt="" />
                     <p>Filters</p>
@@ -32,6 +32,9 @@ export default {
     created() {
         window.addEventListener("scroll", this.func);
     },
+    mounted() {
+        console.log(this.$refs.filterBtn)
+    },
     computed: {
         isFilterOpen() {
             return this.$store.getters.isFilterOpen;
@@ -40,6 +43,9 @@ export default {
             const prices = this.stays.map((stay) => stay.price + "");
             return prices;
         },
+        isLoading() {
+            return this.$store.getters.isLoading
+        }
     },
     methods: {
         func() {

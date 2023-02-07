@@ -30,6 +30,7 @@ export function getActionAddStayMsg(stayId) {
 
 export const stayStore = {
     state: {
+        isLoading: false,
         stays: [],
         actualStaysLength: 0,
         filterBy: {},
@@ -62,8 +63,14 @@ export const stayStore = {
         amenities({ amenities }) {
             return amenities;
         },
+        isLoading({ isLoading }) {
+            return isLoading;
+        },
     },
     mutations: {
+        setIsLoading(state, { bool }) {
+            state.isLoading = bool;
+        },
         setActualStaysLength(state, { length }) {
             state.actualStaysLength = length;
         },
@@ -123,11 +130,13 @@ export const stayStore = {
         },
         async loadStays({ commit, state }, { isPush = false } = {}) {
             try {
+                commit({ type: 'setIsLoading', bool: true });
                 const { stays, length } = await stayService.query(
                     state.filterBy
                 );
                 commit({ type: 'setActualStaysLength', length });
                 commit({ type: `${isPush ? 'pushStays' : 'setStays'}`, stays });
+                commit({ type: 'setIsLoading', bool: false });
                 return stays;
             } catch (err) {
                 console.log('stayStore: Error in loadStays', err);

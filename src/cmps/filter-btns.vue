@@ -3,7 +3,7 @@
         <slide v-for="slide in btns" :key="slide">
 
             <div class="slide-wrapper" @click="setSort(slide.key)">
-                <div class="img-wrapper" :class="{selected: isSelected === slide.key}">
+                <div class="img-wrapper" :class="{ selected: isSelected === slide.key }">
                     <img class="img-btn" :src="slide.url" alt="" width="24" height="24" />
                     <div class="imgKey">
                         <span>{{ slide.key }}</span>
@@ -32,11 +32,6 @@ export default {
             type: Array,
         },
     },
-    components: {
-        Carousel,
-        Slide,
-        Navigation,
-    },
     data() {
         return {
             isSelected: false,
@@ -64,14 +59,18 @@ export default {
             },
         }
     },
-    computed: {
-    },
     methods: {
         setSort(type) {
+            if (this.$store.getters.isLoading) return
             this.filterBy.type = type
             this.isSelected = type
             this.$emit("filtered", this.filterBy);
         },
+    },
+    components: {
+        Carousel,
+        Slide,
+        Navigation,
     },
 };
 </script>
