@@ -48,7 +48,6 @@ const storeOptions = {
             return isOpen;
         },
     },
-    actions: {},
     modules: {
         stayStore,
         reviewStore,
