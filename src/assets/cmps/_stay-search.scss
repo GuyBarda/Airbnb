@@ -11,7 +11,10 @@
     transition: box-shadow 0.2s ease;
     transition: transform 0.4s, opacity 0.3s ease;
     cursor: pointer;
-
+    @media(max-width:400px){
+        padding: 10px;
+        justify-self: auto !important;
+    }
     &.close {
         transform: scaleX(1.56) translateY(80px);
         opacity: 0;
@@ -26,6 +29,10 @@
         flex-grow: 1;
         display: flex;
         justify-content: space-around;
+
+        @media(max-width:400px){
+            flex-grow: 0;
+        }
 
         > * {
             cursor: pointer;
@@ -42,12 +49,13 @@
         }
         .search-in-mobile {
             display: none;
-
+            // padding-right: 60px;
             .img {
-                height: 20px;
+                height: 16px;
                 display: block;
                 color: #4e4e4e !important;
-                width: 20px;
+                width: 16px;
+                margin-left: 15px;
                 stroke: currentColor;
                 stroke-width: 3px;
             }
@@ -73,7 +81,7 @@
             @media (max-width: 400px) {
                 display: grid;
                 align-items: center;
-                padding-block: 10px;
+                // padding-block: 10px;
                 grid-template-columns: 36px 1fr;
                 gap: 8px;
             }

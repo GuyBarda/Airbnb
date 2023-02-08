@@ -4,12 +4,13 @@
     width: 100%;
     box-sizing: border-box;
     gap: 30px 24px;
-    justify-content: space-between;
+    padding-bottom: 63px;
+    // justify-content: space-between;
 
     a {
         all: unset;
     }
-    @media(max-width: 400px){
+    @media (max-width: 400px) {
         padding-top: 10px;
     }
     @media (min-width: 550px) {

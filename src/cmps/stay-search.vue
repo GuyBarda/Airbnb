@@ -9,8 +9,8 @@
             <section @click="openZone($event, 'Where')" class="search-in-mobile">
                 <search-icon class="img" />
                 <div>
-                    <label>Where to?</label>
-                    <p>Anywhere &bull; Any week &bull; Add guests</p>
+                    <label>Anywhere</label>
+                    <p>Any week &bull; Add guests</p>
                 </div>
             </section>
         </div>

@@ -31,7 +31,7 @@
                     <div class="">
                         <h2>
                             <span style="text-transform: capitalize">{{
-                                    stay.roomType
+                                stay.roomType
                             }}</span>
                             hosted by
                             {{ stay.host.fullname }}
@@ -111,27 +111,27 @@
             <div class="rating">
                 <p>Cleanliness</p>
                 <span class="progress-container"><progress :value="rate.Cleanliness" max="5"></progress>{{
-                        rate.Cleanliness.toFixed(1)
+                    rate.Cleanliness.toFixed(1)
                 }}</span>
                 <p>Communication</p>
                 <span class="progress-container"><progress :value="rate.Communication" max="5"></progress>{{
-                        rate.Communication.toFixed(1)
+                    rate.Communication.toFixed(1)
                 }}</span>
                 <p>Check-in</p>
                 <span class="progress-container"><progress :value="rate['Check-in']" max="5"></progress>{{
-                        rate["Check-in"].toFixed(1)
+                    rate["Check-in"].toFixed(1)
                 }}</span>
                 <p>Accuracy</p>
                 <span class="progress-container"><progress :value="rate.Accuracy" max="5"></progress>{{
-                        rate.Accuracy.toFixed(1)
+                    rate.Accuracy.toFixed(1)
                 }}</span>
                 <p>Location</p>
                 <span class="progress-container"><progress :value="rate.Location" max="5"></progress>{{
-                        rate.Location.toFixed(1)
+                    rate.Location.toFixed(1)
                 }}</span>
                 <p>Value</p>
                 <span class="progress-container"><progress :value="rate.Value" max="5"></progress>{{
-                        rate.Value.toFixed(1)
+                    rate.Value.toFixed(1)
                 }}</span>
             </div>
             <main class="review-container">
@@ -141,12 +141,12 @@
             </main>
             <button v-if="stay.reviews.length >= 6" @click="showMore = !showMore" class="show-more">
                 {{
-                        `Show
-                                ${!showMore
-                            ? `all
-                                ${stay.reviews.length} reviews`
-                            : "less"
-                        }`
+                `Show
+                ${!showMore
+        ? `all
+                ${stay.reviews.length} reviews`
+        : "less"
+    }`
                 }}
             </button>
         </section>
@@ -157,7 +157,7 @@
         <section class="map" id="map">
             <h2>Where you'll be</h2>
             <h1>{{ stay.loc.city }}, {{ stay.loc.country }}</h1>
-            <details-map class="map-for-details" :lat="stay.loc.lat" :lng="stay.loc.lan" :title="stay.loc.address" />
+            <details-map class="map-for-details" :lat="stay.loc.lan" :lng="stay.loc.lat" :title="stay.loc.address" />
         </section>
         <reservation-success @close="isOrderComplete = false" v-if="isOrderComplete" :order="order" :stay="stay"
             :rateMap="rate" />
@@ -217,7 +217,7 @@ export default {
         setTimeout(() => {
             // const imgsContainer = this.$refs.imgsContainer;
             const imgsContainer = document.querySelector('#photos')
-            
+
             const elReserveBtn = document.querySelector(
                 ".reserve-modal .btn-reserve"
             );
