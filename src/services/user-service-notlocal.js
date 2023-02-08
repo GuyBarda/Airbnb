@@ -45,6 +45,7 @@ async function getById(userId) {
 
     return user;
 }
+
 function remove(userId) {
     // return storageService.remove('user', userId)
     return httpService.delete(`user/${userId}`);
@@ -67,6 +68,7 @@ async function login(userCred) {
         return saveLocalUser(user);
     }
 }
+
 async function signup(userCred) {
     // userCred.score = 10000
     if (!userCred.imgUrl)
