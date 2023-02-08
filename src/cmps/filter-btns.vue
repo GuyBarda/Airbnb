@@ -3,7 +3,7 @@
         <slide v-for="slide in btns" :key="slide">
 
             <div class="slide-wrapper" @click="setSort(slide.key)">
-                <div class="img-wrapper" :class="{selected: isSelected === slide.key}">
+                <div class="img-wrapper" :class="{ selected: isSelected === slide.key }">
                     <img class="img-btn" :src="slide.url" alt="" width="24" height="24" />
                     <div class="imgKey">
                         <span>{{ slide.key }}</span>
@@ -22,24 +22,16 @@
 </template>
 
 <script>
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Navigation } from "vue3-carousel";
 
 export default {
     props: {
-        btns: {
-            type: Array,
-        },
-    },
-    components: {
-        Carousel,
-        Slide,
-        Navigation,
+        btns: Array,
     },
     data() {
         return {
-            isSelected: false,
+            isSelected: null,
             filterBy: {
                 type: '',
             },
@@ -64,14 +56,18 @@ export default {
             },
         }
     },
-    computed: {
-    },
     methods: {
         setSort(type) {
-            this.filterBy.type = type
-            this.isSelected = type
+            if (this.$store.getters.isLoading) return;
+            this.filterBy.type = type;
+            this.isSelected = type;
             this.$emit("filtered", this.filterBy);
         },
+    },
+    components: {
+        Carousel,
+        Slide,
+        Navigation,
     },
 };
 </script>

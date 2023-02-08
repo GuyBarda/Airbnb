@@ -3,11 +3,9 @@
         <section class="main-container" style="display: flex; align-items: center">
             <filter-btns :btns="btnsAryy()" @filtered="setFilterBy" />
 
-            <button @click="toggleFilterModal(true)" class="btn-filters">
-                <div>
-                    <img src="../assets/svg/filter-btn.svg" alt="" />
-                    <p>Filters</p>
-                </div>
+            <button @click="toggleFilterModal(true)" class="btn-filters" :disabled="isLoading">
+                <filterBtn />
+                <p>Filters</p>
             </button>
         </section>
     </section>
@@ -16,6 +14,8 @@
 
 <script>
 import { stayService } from "../services/stay-service.js";
+
+import filterBtn from '../assets/svg/filter-btn.vue'
 
 import filterBtns from "./filter-btns.vue";
 import filterModal from "./filter-modal.vue";
@@ -30,24 +30,11 @@ export default {
         }
     },
     created() {
-        window.addEventListener("scroll", this.func);
-    },
-    computed: {
-        isFilterOpen() {
-            return this.$store.getters.isFilterOpen;
-        },
-        prices() {
-            const prices = this.stays.map((stay) => stay.price + "");
-            return prices;
-        },
+        window.addEventListener("scroll", this.setIsScrolled);
     },
     methods: {
-        func() {
-            if (window.scrollY > 0) {
-                this.isScrolled = true
-            } else {
-                this.isScrolled = false
-            }
+        setIsScrolled() {
+            this.isScrolled = window.scrollY > 0
         },
         toggleFilterModal(isShown) {
             this.$store.commit({ type: "toggleFilterModal", bool: isShown });
@@ -59,7 +46,20 @@ export default {
             return stayService.btnsAryy();
         },
     },
+    computed: {
+        isFilterOpen() {
+            return this.$store.getters.isFilterOpen;
+        },
+        prices() {
+            const prices = this.stays.map((stay) => stay.price + "");
+            return prices;
+        },
+        isLoading() {
+            return this.$store.getters.isLoading
+        }
+    },
     components: {
+        filterBtn,
         filterBtns,
         filterModal,
     },

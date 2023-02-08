@@ -4,39 +4,21 @@
             <img src="../assets/img/favicon.png" alt="" />
             <p>airbxb</p>
         </div>
-        <stay-search
-            :date="currDate"
-            :dest="currDest"
-            :guests="currGuests"
-            @toggleSearch="openZone"
-            :class="{ close: isOpen }"
-        />
-        <search-modal
-            @setDate="setDate"
-            @setDest="setDest"
-            @setGuests="setGuests"
-            @updateZone="openZone"
-            :zone="zone"
-            :class="{ open: isOpen }"
-        />
+        <stay-search :date="currDate" :dest="currDest" :guests="currGuests" @toggleSearch="openZone"
+            :class="{ close: isOpen }" />
+        <search-modal @setDate="setDate" @setDest="setDest" @setGuests="setGuests" @updateZone="openZone" :zone="zone"
+            :class="{ open: isOpen }" />
         <search-modal-mobile :class="{ open: isOpen }" />
         <div class="user">
-            <a class="become-host" href="/stay/edit">Become a host</a>
+            <a class="become-host" :disabled="isLoading" href="/stay/edit">Become a host</a>
             <div class="user-menu-btn" @click="toggleUserMenu()">
                 <button>
                     <img class="menu-btn" src="../assets/svg/menu.svg" />
-                    <img
-                        v-if="!user"
-                        class="host-image"
-                        src="https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png"
-                    />
+                    <img v-if="!user" class="host-image"
+                        src="https://res.cloudinary.com/nisan/image/upload/v1658872030/air2b/unprofile_ji7zus.png" />
                     <img v-else class="host-image" :src="user.imgUrl" />
                 </button>
-                <userMenu
-                    v-outside="closeMenu"
-                    v-if="isMenu"
-                    @closeMenu="closeMenu"
-                />
+                <userMenu v-outside="closeMenu" v-if="isMenu" @closeMenu="closeMenu" />
             </div>
         </div>
     </header>
@@ -90,6 +72,7 @@ export default {
             this.$store.commit({ type: "toggleSearch", bool: true });
         },
         toggleUserMenu() {
+            if (this.$store.getters.isLoading) return
             this.isMenu = !this.isMenu;
         },
         closeMenu() {
@@ -109,13 +92,16 @@ export default {
         isOpen() {
             return this.$store.getters.open;
         },
+        isLoading() {
+            return this.$store.getters.isLoading
+        },
         whichLayout() {
             const layout = this.$route.path.split("/")[1];
             return layout === "stay" || layout === "dashboard"
                 ? "secondary-container"
                 : "main-container";
         },
-        currPath(){
+        currPath() {
             return this.$route.path
         }
     },
@@ -125,9 +111,9 @@ export default {
         userMenu,
         searchModalMobile
     },
-    watch:{
-        currPath(path){
-            if(path === '/'){
+    watch: {
+        currPath(path) {
+            if (path === '/') {
                 this.setDate('')
                 this.setDest('')
             }
