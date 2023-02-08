@@ -70,6 +70,19 @@ export default {
     data() {
         return {
             currZone: "",
+            filterBy: {
+                destination: "",
+                dates: {
+                    start: "",
+                    end: "",
+                },
+                guests: {
+                    adults: 0,
+                    children: 0,
+                    infants: 0,
+                    pets: 0,
+                },
+            },
         }
     },
     methods: {
