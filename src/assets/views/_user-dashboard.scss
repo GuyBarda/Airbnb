@@ -40,6 +40,31 @@
                     color: #ff385c;
                     border: 1px solid #ff385c;
                 }
+
+                i {
+                    padding-right: 6px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 440px) {
+        .dashboard-nav {
+            display: grid;
+            grid-template-columns: repeat(3, 50px) !important;
+            gap: 82px !important;
+
+            .btn-nav {
+                border-radius: 35px !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                span {
+                    display: none;
+                }
+                i {
+                    padding-right: 0px !important;
+                }
             }
         }
     }
