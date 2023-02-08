@@ -136,9 +136,9 @@
             }
         }
         .svg-for-mobile {
-            display: none;
+            display: none !important;
             @media (max-width: 400px) {
-                display: block;
+                display: block !important;
             }
         }
         img {

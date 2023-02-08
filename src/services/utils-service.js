@@ -129,7 +129,6 @@ function format(num) {
 }
 
 function getMonthsMap() {
-    const date = new Date()
     const months = {
         January: {
             firstDay: 1,
