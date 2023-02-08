@@ -1,6 +1,5 @@
 import Vuex from 'vuex';
 import { stayStore } from './stay-store.js';
-import { reviewStore } from './review-store.js';
 import { userStore } from './user-store.js';
 import { orderStore } from './order-store.js';
 
@@ -50,7 +49,6 @@ const storeOptions = {
     },
     modules: {
         stayStore,
-        reviewStore,
         userStore,
         orderStore,
     },

@@ -49,6 +49,11 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                span {
+                    &.set {
+                        font-weight: bold;
+                    }
+                }
                 &:not(.second) {
                     cursor: pointer;
                 }
@@ -168,10 +173,19 @@
         background-color: #fff;
         display: flex;
         padding-block: 10px;
-        padding-inline: 10px;
+        padding-inline: 20px;
         align-items: center;
         justify-content: space-between;
-
+        .info{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-color: red;
+        }
+        p {
+            cursor: pointer;
+            border-bottom: 1px solid black;
+        }
         button {
             @include reserve-btn();
             width: max-content;

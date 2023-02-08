@@ -7,6 +7,7 @@
     &::-webkit-scrollbar{
         display: none;
     }
+
     .day-names{
         position: sticky;
         top: 0;
@@ -16,6 +17,7 @@
         grid-template-columns: repeat(7,1fr);
         span{
             display: flex;
+            color: #949494;
             justify-content: center;
             border-bottom: 2px solid #ddd;
             font-weight: 600;
@@ -25,17 +27,6 @@
     .month{
         padding-top: 10px;
         display: grid;
-        .day-names{
-            display: grid;
-            grid-template-columns: repeat(7,1fr);
-            span{
-                display: flex;
-                justify-content: center;
-                border-bottom: 2px solid #ddd;
-                font-weight: 600;
-                font-size: 14px;
-            }
-        }
         .month-info{
             margin: 0;
             padding-top: 10px;
@@ -64,10 +55,16 @@
                     pointer-events: none;
                     color: #ddd;
                 }
+                &.today {
+                    color: #ff385c;
+                }
                 &.selected{
                     color: #fff;
                     background-color: #000;
                     outline: 1px solid #000;
+                }
+                &.between {
+                    background-color: #f7f7f7;
                 }
             }
         }

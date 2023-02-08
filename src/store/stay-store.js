@@ -1,4 +1,3 @@
-// import { stayService } from '../services/stay-service-local.js'
 import { stayService } from '../services/stay-service.js';
 
 export function getActionRemoveStay(stayId) {

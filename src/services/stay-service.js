@@ -1,21 +1,8 @@
 import { httpService } from './http-service.js';
-import { userService } from './user-service.js';
 import { showSuccessMsg, showErrorMsg, wishlistMsg } from './event-bus-service';
-import { socketService } from './socket-service.js';
+// import staysJson from '../../data/stay.json' assert { type: 'json' };
 
 const STORAGE_KEY = 'stay';
-
-// (() => {
-//     setTimeout(() => {
-//         socketService.on('stay-added', (stay) => {
-//             console.log('GOT from socket', stay);
-//             this.$store.commit({ type: 'addStay', stay });
-//         });
-//         // socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (stay) => {
-//         //     showSuccessMsg(`New stay about me ${stay.txt}`);
-//         // });
-//     }, 0);
-// })();
 
 export const stayService = {
     query,
@@ -26,41 +13,30 @@ export const stayService = {
     addStayMsg,
     getEmptyFilter,
     btnsAryy,
+    
 };
 window.cs = stayService;
-
+// DO NOT REMOVE AND DO NOT USE EVER!!!!!!!!!
+// (async function apply(){
+//     console.log(staysJson)
+//     staysJson.forEach(async(stay) => await save(stay))
+// })()
 async function query(filterBy = { txt: '', price: 0 }) {
     return httpService.get(STORAGE_KEY, filterBy);
-
-    // var stays = await storageService.query(STORAGE_KEY)
-    // if (filterBy.txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     stays = stays.filter(stay => regex.test(stay.vendor) || regex.test(stay.description))
-    // }
-    // if (filterBy.price) {
-    //     stays = stays.filter(stay => stay.price <= filterBy.price)
-    // }
-    // return stays
 }
 function getById(stayId) {
-    // return storageService.get(STORAGE_KEY, stayId)
     return httpService.get(`stay/${stayId}`);
 }
 
 async function remove(stayId) {
-    // await storageService.remove(STORAGE_KEY, stayId)
     return httpService.delete(`stay/${stayId}`);
 }
 async function save(stay) {
     var savedStay;
     if (stay._id) {
-        // savedStay = await storageService.put(STORAGE_KEY, stay)
         savedStay = await httpService.put(`stay/${stay._id}`, stay);
         showSuccessMsg(`"${stay.name}" updated successfully`);
     } else {
-        // Later, owner is set by the backend
-        // stay.owner = userService.getLoggedinUser();
-        // savedStay = await storageService.post(STORAGE_KEY, stay)
         savedStay = await httpService.post('stay', stay);
         showSuccessMsg(`"${stay.name}" added successfully`);
     }

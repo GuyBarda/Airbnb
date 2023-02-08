@@ -96,10 +96,10 @@
 </template>
 
 <script>
-import reactiveBtn from "./reactive-btn.vue";
-import destinationModal from "./destination-modal.vue";
-import datePicker from "./date-picker.vue";
-import guestsModal from "./guests-modal.vue";
+import reactiveBtn from "./reactive-btn.vue"
+import destinationModal from "./destination-modal.vue"
+import datePicker from "./date-picker.vue"
+import guestsModal from "./guests-modal.vue"
 
 export default {
     props: {
@@ -124,87 +124,84 @@ export default {
                     pets: 0,
                 },
             },
-        };
+        }
     },
     updated() {
-        this.isSelect = this.zone;
+        this.isSelect = this.zone
         if (this.zone === "In")
-            setTimeout(() => this.$refs.datePicker.focus(), 300);
+            setTimeout(() => this.$refs.datePicker.focus(), 300)
     },
     methods: {
         setSearch() {
             this.filterBy.guests = Object.values(this.filterBy.guests).reduce(
                 (v, c) => v + c,
                 0
-            );
+            )
             this.$router.push({
                 path: "/explore",
                 query: {
                     destination: this.filterBy.destination,
                     guests: this.filterBy.guests,
                 },
-            });
+            })
         },
         openZone(ev, val) {
-            this.isSelect = val;
-            this.$emit("updateZone", ev, val);
+            this.isSelect = val
+            this.$emit("updateZone", ev, val)
         },
         setDestination(dest) {
-            this.filterBy.destination = dest;
-            this.$emit("setDest", dest);
+            this.filterBy.destination = dest
+            this.$emit("setDest", dest)
         },
         setGuests(guests) {
-            this.filterBy.guests = { ...guests };
+            this.filterBy.guests = { ...guests }
             let formattedGuests = Object.values(this.filterBy.guests).reduce(
                 (v, c) => v + c,
                 0
-            );
-            this.$emit("setGuests", formattedGuests);
+            )
+            this.$emit("setGuests", formattedGuests)
         },
         setDates(dates) {
-            this.filterBy.dates.start = this.dates["0"];
-            this.filterBy.dates.end = this.dates["1"];
+            this.filterBy.dates.start = this.dates["0"]
+            this.filterBy.dates.end = this.dates["1"]
 
-            let str = this.formattedStartDate + " - " + this.formattedEndDate;
-            this.$emit("setDate", str);
+            let str = this.formattedStartDate + " - " + this.formattedEndDate
+            this.$emit("setDate", str)
         },
     },
     computed: {
         guestsCount() {
-            const { adults, children, infants, pets } = this.filterBy.guests;
+            const { adults, children, infants, pets } = this.filterBy.guests
             let str =
                 adults || children
                     ? `${adults + children} ${
                           adults + children !== 1 ? "guests" : "guest"
                       }`
-                    : "";
+                    : ""
             str += infants
                 ? `, ${infants} ${infants !== 1 ? "infants" : "infant"}`
-                : "";
-            str += pets ? `, ${pets} ${pets !== 1 ? "pets" : "pet"}` : "";
-            return str;
+                : ""
+            str += pets ? `, ${pets} ${pets !== 1 ? "pets" : "pet"}` : ""
+            return str
         },
         formattedStartDate() {
             let date = new Date(this.filterBy.dates.start).toLocaleDateString(
                 "en-us",
                 { month: "short", day: "numeric" }
-            );
-            if (date === "Invalid Date") return "";
-            return date;
+            )
+            if (date === "Invalid Date") return ""
+            return date
         },
         formattedEndDate() {
             let date = new Date(this.filterBy.dates.end).toLocaleDateString(
                 "en-us",
-                {
-                    month: "short",
-                    day: "numeric",
-                }
-            );
-            if (date === "Invalid Date") return "";
-            return date;
+                { month: "short", day: "numeric" }
+            )
+            if (date === "Invalid Date") return ""
+            return date
         },
         currPath() {
-            return this.$route.path;
+            return this.$route.path
         },
     },
     components: {
@@ -214,5 +211,5 @@ export default {
         guestsModal,
     },
     watch: {},
-};
+}
 </script>
