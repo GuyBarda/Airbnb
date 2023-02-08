@@ -1,4 +1,5 @@
-.app-footer {
+.app-mobile-footer {
+    display: none;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -6,7 +7,7 @@
     border-top: 1px solid #dddddd;
     justify-content: space-between;
     align-items: center;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
     font-family: CerealReg;
     padding-block: 10px;
     font-size: em(18px, 16px);
@@ -14,24 +15,27 @@
     .wrapper {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 25px;
 
-        .coffeerights {
+        .icon-container {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #222222;
-            font-size: em(14px, 16px);
-
-            p {
-                margin: 0;
+            flex-direction: column;
+            text-decoration: none;
+            img {
+                height: 24px;
+            }
+            h1 {
+                font-size: 10px;
+                color: #717171;
             }
         }
     }
 }
 
 @media (max-width: 400px) {
-    .app-footer{
-        display: none !important;
+    .app-mobile-footer {
+        display: block;
     }
 }

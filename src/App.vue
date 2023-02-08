@@ -21,6 +21,7 @@
     <loginSignupModal v-if="isLogInOpen" @closeModal="close" />
     <user-msg />
     <app-footer />
+    <app-mobile-footer />
 </template>
 
 <script>
@@ -29,6 +30,7 @@ import appHeader from "./cmps/app-header.vue";
 import userMsg from "./cmps/user-msg.vue";
 import { eventBus, showSuccessMsg } from "./services/event-bus-service.js";
 import appFooter from "./cmps/app-footer.vue";
+import appMobileFooter from "./cmps/app-mobile-footer.vue";
 import loginSignupModal from "./cmps/login-signup-modal.vue";
 import { socketService } from "./services/socket-service.js";
 
@@ -77,6 +79,7 @@ export default {
         appHeader,
         userMsg,
         appFooter,
+        appMobileFooter,
         loginSignupModal,
     },
 };
