@@ -76,6 +76,7 @@
                 <div id="row1">
                     <input type="radio" id="bedroom0" name="bedroom" :value="0" v-model="filterBy.bedrooms" />
                     <label for="bedroom0" class="btn-btn">All</label>
+                    
                     <div class="btns-group" v-for="num in 8">
                         <input type="radio" :id="`bedroom${num}`" name="bedroom" :value="num"
                             v-model="filterBy.bedrooms" />

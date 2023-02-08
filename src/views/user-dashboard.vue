@@ -2,12 +2,28 @@
     <div class="user-dashboard secondary-container">
         <section class="dashboard-container">
             <nav :style="checkPath" class="dashboard-nav">
-                <router-link class="btn-nav" v-if="path === 'host'" to="/dashboard/host/orders">Orders</router-link>
+
+                <router-link class="btn-nav" v-if="path === 'host'" to="/dashboard/host/orders">
+                    <i class="fa fa-solid fa-list"></i>
+                    <span>Orders</span>
+                </router-link>
+
                 <router-link class="btn-nav" v-if="path === 'buyer'" to="/dashboard/buyer/trips">My Trips</router-link>
-                <router-link class="btn-nav" v-if="path === 'host'" to="/dashboard/host/stays">My Stays</router-link>
+
+                <router-link class="btn-nav" v-if="path === 'host'" to="/dashboard/host/stays">
+                    <i class="fa-solid fa-house"></i>
+                    <span> My Stays</span>
+                </router-link>
+
                 <router-link class="btn-nav" v-if="path === 'buyer'"
-                    to="/dashboard/buyer/wishlist">wishlist</router-link>
-                <router-link class="btn-nav" v-if="path === 'host'" to="/stay/edit/">add a stay</router-link>
+                    to="/dashboard/buyer/wishlist">wishlist
+                </router-link>
+
+                <router-link class="btn-nav" v-if="path === 'host'" to="/stay/edit/">
+                    <i class="fa fa-regular fa-circle-plus"></i>
+                    <span> add a stay</span>
+                </router-link>
+
             </nav>
             <RouterView />
         </section>

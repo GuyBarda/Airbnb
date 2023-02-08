@@ -17,13 +17,14 @@
         <div v-else class="start-search">Start your search</div>
         <div class="little-search-icon">
             <img src="../assets/svg/search.svg" class="svg-for-desktop" />
-            <img src="../assets/svg/filter-btn.svg" class="svg-for-mobile" />
+            <filter-btn class="svg-for-mobile"/>
         </div>
     </section>
 </template>
 
 <script>
 import searchIcon from '../assets/svg/search.vue'
+import filterBtn from '../assets/svg/filter-btn.vue'
 
 export default {
     props: {
@@ -59,7 +60,8 @@ export default {
         }
     },
     components: {
-        searchIcon
+        searchIcon,
+        filterBtn
     }
 }
 </script>

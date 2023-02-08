@@ -16,7 +16,12 @@
                     :class="{
                         disabled: i < date.getDate() && idx === 0,
                         today: i === date.getDate() && idx === 0,
-                        selected: selectedDates.start === formatDate(i,currMonth+1,currYear) || selectedDates.end === formatDate(i,currMonth+1,currYear)
+                        selected:
+                            selectedDates.start ===
+                                formatDate(i, currMonth + 1, currYear) ||
+                            selectedDates.end ===
+                                formatDate(i, currMonth + 1, currYear),
+                        between: checkDays(i, currMonth + 1, currYear),
                     }"
                     v-for="i in monthsMap[months[currMonth]].days"
                 >
@@ -105,14 +110,43 @@ export default {
     methods: {
         setDate(day, month, year) {
             const dateToSave = this.formatDate(day, month, year)
-            if (this.selectedDates.start === "")
-                return (this.selectedDates.start = dateToSave)
+            if (this.selectedDates.start === "") {
+                this.selectedDates.start = dateToSave
+                this.$emit("setDates", this.selectedDates)
+                return
+            }
             const startDate = new Date(this.selectedDates.start).getTime()
             const selectedDate = new Date(dateToSave).getTime()
-            if (startDate > selectedDate)
-                return (this.selectedDates.start = dateToSave)
-            if(this.selectedDates.end !== '' && startDate < selectedDate) return (this.selectedDates.start = dateToSave)
-            return (this.selectedDates.end = dateToSave)
+            if (startDate > selectedDate) {
+                this.selectedDates.start = dateToSave
+                this.$emit("setDates", this.selectedDates)
+                return
+            } else if (this.selectedDates.end === "") {
+                this.selectedDates.end = dateToSave
+                this.$emit("setDates", this.selectedDates)
+                return
+            }
+            const endDate = new Date(this.selectedDates.end).getTime()
+            if (endDate < selectedDate) {
+                this.selectedDates.end = ""
+                this.selectedDates.start = dateToSave
+                this.$emit("setDates", this.selectedDates)
+                return
+            }
+            this.selectedDates.start = dateToSave
+            this.$emit("setDates", this.selectedDates)
+            return
+
+        },
+        checkDays(day, month, year) {
+            if (!this.selectedDates.start || !this.selectedDates.end)
+                return false
+            const dayToValidate = this.formatDate(day, month, year)
+            if (
+                dayToValidate > this.selectedDates.start &&
+                dayToValidate < this.selectedDates.end
+            )
+                return true
         },
         formatDate(day, month, year) {
             if (day < 10) day = "0" + day
