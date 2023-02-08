@@ -3,11 +3,9 @@
         <section class="main-container" style="display: flex; align-items: center">
             <filter-btns :btns="btnsAryy()" @filtered="setFilterBy" />
 
-            <button ref="filterBtn" @click="toggleFilterModal(true)" class="btn-filters" :disabled="isLoading">
-                <div>
-                    <img src="../assets/svg/filter-btn.svg" alt="" />
-                    <p>Filters</p>
-                </div>
+            <button @click="toggleFilterModal(true)" class="btn-filters" :disabled="isLoading">
+                <filterBtn />
+                <p>Filters</p>
             </button>
         </section>
     </section>
@@ -16,6 +14,8 @@
 
 <script>
 import { stayService } from "../services/stay-service.js";
+
+import filterBtn from '../assets/svg/filter-btn.vue'
 
 import filterBtns from "./filter-btns.vue";
 import filterModal from "./filter-modal.vue";
@@ -30,10 +30,21 @@ export default {
         }
     },
     created() {
-        window.addEventListener("scroll", this.func);
+        window.addEventListener("scroll", this.setIsScrolled);
     },
-    mounted() {
-        console.log(this.$refs.filterBtn)
+    methods: {
+        setIsScrolled() {
+            this.isScrolled = window.scrollY > 0
+        },
+        toggleFilterModal(isShown) {
+            this.$store.commit({ type: "toggleFilterModal", bool: isShown });
+        },
+        setFilterBy(filterBy) {
+            this.$store.dispatch({ type: "setFilter", filterBy });
+        },
+        btnsAryy() {
+            return stayService.btnsAryy();
+        },
     },
     computed: {
         isFilterOpen() {
@@ -47,25 +58,8 @@ export default {
             return this.$store.getters.isLoading
         }
     },
-    methods: {
-        func() {
-            if (window.scrollY > 0) {
-                this.isScrolled = true
-            } else {
-                this.isScrolled = false
-            }
-        },
-        toggleFilterModal(isShown) {
-            this.$store.commit({ type: "toggleFilterModal", bool: isShown });
-        },
-        setFilterBy(filterBy) {
-            this.$store.dispatch({ type: "setFilter", filterBy });
-        },
-        btnsAryy() {
-            return stayService.btnsAryy();
-        },
-    },
     components: {
+        filterBtn,
         filterBtns,
         filterModal,
     },

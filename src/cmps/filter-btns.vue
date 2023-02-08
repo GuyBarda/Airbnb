@@ -22,19 +22,16 @@
 </template>
 
 <script>
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Navigation } from "vue3-carousel";
 
 export default {
     props: {
-        btns: {
-            type: Array,
-        },
+        btns: Array,
     },
     data() {
         return {
-            isSelected: false,
+            isSelected: null,
             filterBy: {
                 type: '',
             },
@@ -61,9 +58,9 @@ export default {
     },
     methods: {
         setSort(type) {
-            if (this.$store.getters.isLoading) return
-            this.filterBy.type = type
-            this.isSelected = type
+            if (this.$store.getters.isLoading) return;
+            this.filterBy.type = type;
+            this.isSelected = type;
             this.$emit("filtered", this.filterBy);
         },
     },

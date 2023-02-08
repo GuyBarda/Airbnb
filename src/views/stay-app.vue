@@ -4,7 +4,7 @@
         <section class="explore-sub-header" v-if="this.$route.path === '/explore'">
             Found {{ this.$store.getters.actualStaysLength }} homes
         </section>
-        <stay-list v-if="!isLoading" :stays="stays" />
+        <stay-list v-if="stays.length" :stays="stays" />
 
         <div class="stay-list" v-else>
             <skeleton v-for="num in 12" :key="num" />
@@ -21,7 +21,6 @@ import skeleton from "../cmps/skeleton.vue";
 export default {
     data() {
         return {
-            // isLoading: false,
             filterBy: {
                 page: 0
             }
@@ -30,7 +29,8 @@ export default {
     async created() {
         window.addEventListener('scroll', this.increasePage)
         try {
-            await this.$store.dispatch({ type: "loadStays" });
+            // await this.$store.dispatch({ type: "loadStays" });
+            await this.$store.dispatch({ type: "setFilter", filterBy: { ...this.changePath } });
         } catch {
             console.log("cant load stays");
         }
@@ -40,16 +40,19 @@ export default {
     },
     methods: {
         increasePage() {
-            const { scrollTop, offsetHeight } = document.documentElement
-            let bottomOfWindow = scrollTop + window.innerHeight === offsetHeight;
+            if (this.stays.length === this.actualStaysLength) return
+
+            const { scrollTop, offsetHeight } = document.documentElement;
+            const bottomOfWindow = scrollTop + window.innerHeight === offsetHeight;
+
             if (!bottomOfWindow) return
             this.filterBy.page++
             this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy, isPush: true });
         }
     },
     computed: {
-        isLoading() {
-            return this.$store.getters.isLoading
+        actualStaysLength() {
+            return this.$store.getters.actualStaysLength
         },
         stays() {
             return this.$store.getters.stays;
@@ -64,23 +67,15 @@ export default {
         skeleton,
     },
     watch: {
-        async changePath(query) {
-            this.isLoading = true;
-            if (this.$route.path === "/explore") {
-                const filterBy = query;
-                this.$store.commit({
-                    type: "setFilter",
-                    filterBy: { ...filterBy },
-                });
-                this.$store.commit({ type: "toggleSearch", bool: false });
-            } else {
-                this.$store.commit({
-                    type: "setFilter",
-                    filterBy: stayService.getEmptyFilter(),
-                });
-            }
-            await this.$store.dispatch({ type: "loadStays" });
-            this.isLoading = false;
+        changePath(query) {
+            window.scrollTo(0, 0)
+            const isExplore = this.$route.path === "/explore"
+            const { commit, dispatch } = this.$store
+            commit({ type: "toggleSearch", bool: false });
+            dispatch({
+                type: "setFilter",
+                filterBy: isExplore ? { ...query } : stayService.getEmptyFilter(),
+            })
         },
     },
 };
