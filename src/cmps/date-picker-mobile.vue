@@ -75,11 +75,14 @@
 
 <script>
 import { utilService } from "../services/utils-service.js"
+import { eventBus } from "../services/event-bus-service.js"
+
 export default {
     created() {
         this.date = new Date()
         this.currMonth = this.date.getMonth() + 1
         this.monthsMap = utilService.getMonthsMap()
+        eventBus.on("clearDates", this.clearDates)
     },
     data() {
         return {
@@ -136,7 +139,12 @@ export default {
             this.selectedDates.start = dateToSave
             this.$emit("setDates", this.selectedDates)
             return
-
+        },
+        clearDates() {
+            this.selectedDates = {
+                start: "",
+                end: "",
+            }
         },
         checkDays(day, month, year) {
             if (!this.selectedDates.start || !this.selectedDates.end)

@@ -71,14 +71,17 @@
             </section>
         </main>
         <section class="search">
-            <p>Clear All</p>
-            <button @click.stop.prevent="setSearch" @mousemove="hoverEffect">Search</button>
+            <p @click="clearSearch">Clear All</p>
+            <button @click.stop.prevent="setSearch" @mousemove="hoverEffect">
+                Search
+            </button>
         </section>
     </section>
 </template>
 
 <script>
 import { utilService } from "../services/utils-service.js"
+import { eventBus } from "../services/event-bus-service.js"
 
 import destinationModal from "./destination-modal.vue"
 import mobileDatePicker from "./date-picker-mobile.vue"
@@ -118,6 +121,24 @@ export default {
                     guests: this.filterBy.guests,
                 },
             })
+        },
+        clearSearch(){
+            this.filterBy = {
+                destination: "",
+                dates: {
+                    start: "",
+                    end: "",
+                },
+                guests: {
+                    adults: 0,
+                    children: 0,
+                    infants: 0,
+                    pets: 0,
+                },
+            }
+            eventBus.emit('clearGuests')
+            eventBus.emit('clearDates')
+            this.dateToDisplay =''
         },
         setZone(value) {
             this.currZone = value
