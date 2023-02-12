@@ -1,8 +1,8 @@
 .stay-filter {
     align-items: center;
     $clr-secondary: #b0b0b0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    // padding-top: 10px;
+    // padding-bottom: 10px;
     position: sticky;
     top: 80px;
     z-index: 2;
@@ -24,7 +24,144 @@
     .secondary {
         color: $clr-secondary;
     }
-
+    .filter-wrapper {
+        padding-block-start: 10px;
+        margin-block-end: 10px;
+        flex: 1;
+        overflow: auto;
+        display: flex;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        .scroll {
+            padding: 5px 10px;
+            border: 0.8px solid rgba($color: #000000, $alpha: 0.3);
+            background-color: #fff;
+            border-radius: 50%;
+            // position: absolute;
+            // top: 50%;
+            align-self: center;
+            height: 28px;
+            width: 28px;
+            margin-inline: 5px;
+            display: grid;
+            place-content: center;
+            // transform: translateY(-50%);
+            &:hover {
+                scale: 1.04;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            }
+            &.hidden{
+                opacity: 0;
+                pointer-events: none;
+            }
+            @media(max-width: 400px){
+                display: none;
+            }
+            // &:not(.right) {
+            //     left: 10px;
+            // }
+            // &.right {
+            //     right: 10px;
+            // }
+        }
+        // &::-webkit-scrollbar{
+        //     display: none;
+        // }
+        position: relative;
+        .filter-btns {
+            // flex: 1;
+            overflow: auto;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            display: flex;
+            
+            article {
+                // height: 100%;
+                min-width: 70px;
+                text-align: center;
+                width: max-content;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+                cursor: pointer;
+                // padding-bottom: 10px;
+                margin-right: 20px;
+                // &:not(:first-child) {
+                //     margin-inline: 25px;
+                // }
+                // &:first-child {
+                //     margin-inline-end: 25px;
+                // }
+                img {
+                    align-self: center;
+                    height: 24px;
+                    aspect-ratio: 1/1;
+                    filter: opacity(0.7);
+                }
+                p {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #717171;
+                }
+                &.selected {
+                    box-shadow: inset 0px -2px 0px 0px black !important;
+                    img {
+                        filter: opacity(1);
+                    }
+                    p {
+                        color: black;
+                    }
+                }
+                &:hover {
+                    box-shadow: inset 0px -2px 0px 0px #dddddd;
+                    img {
+                        filter: opacity(1);
+                    }
+                    p {
+                        color: black;
+                    }
+                }
+            }
+        }
+        .scrollers {
+            position: absolute;
+            // inset: 0 0 0 0;
+            width: 100%;
+            top: 50%;
+            // height: 100%;
+            // transform: translateY(-50%);
+            
+            .scroll {
+                padding: 5px 10px;
+                border: 0.8px solid rgba($color: #000000, $alpha: 0.3);
+                background-color: #fff;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                height: 28px;
+                width: 28px;
+                display: grid;
+                place-content: center;
+                transform: translateY(-50%);
+                &:hover {
+                    scale: 1.04;
+                    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+                }
+                &:not(.right) {
+                    left: 10px;
+                }
+                &.right {
+                    right: 10px;
+                }
+            }
+        }
+    }
     .btn-filters {
         display: flex;
         align-items: center;
@@ -40,7 +177,7 @@
         p {
             padding-left: 5px;
             margin: 0;
-            font-family: 'CerealMd';
+            font-family: "CerealMd";
             font-size: 12px;
         }
 
