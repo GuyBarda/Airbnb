@@ -241,26 +241,31 @@ export default {
         }, 1000);
     },
     methods: {
-        addOrder(order) {
-            this.order = order;
-            this.order.buyer = {
-                _id: this.$store.getters.loggedinUser._id,
-                fullname: this.$store.getters.loggedinUser.fullname,
-                imgUrl: this.$store.getters.loggedinUser.imgUrl,
-            };
-            this.order.stay = {
-                _id: this.stay._id,
-                name: this.stay.name,
-                price: this.stay.price,
-                imgUrls: this.stay.imgUrls.slice(0, 3),
-                loc: {
-                    address: this.stay.loc.address,
-                },
-            };
-            this.order.hostId = this.stay.host._id;
-
-            this.$store.commit({ type: "toggleSuccessModal", bool: true });
-            this.$store.dispatch({ type: "addOrder", order: this.order });
+        async addOrder(order) {
+            try {
+                this.order = order;
+                this.order.buyer = {
+                    _id: this.$store.getters.loggedinUser._id,
+                    fullname: this.$store.getters.loggedinUser.fullname,
+                    imgUrl: this.$store.getters.loggedinUser.imgUrl,
+                };
+                this.order.stay = {
+                    _id: this.stay._id,
+                    name: this.stay.name,
+                    price: this.stay.price,
+                    imgUrls: this.stay.imgUrls.slice(0, 3),
+                    loc: {
+                        address: this.stay.loc.address,
+                    },
+                };
+                this.order.hostId = this.stay.host._id;
+                // this.$store.commit({ type: "toggleSuccessModal", bool: true });
+                const savedOrder = await this.$store.dispatch({ type: "addOrder", order: this.order });
+                const orderId = savedOrder._id
+                this.$router.push({path: '/book' ,  query: {orderId}})
+            }catch(err){
+                console.log(err,"failed to save order");
+            }
         },
         totalDays() {
             const date1 = new Date(this.order.startDate);

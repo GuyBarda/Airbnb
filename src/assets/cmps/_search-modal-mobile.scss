@@ -95,28 +95,44 @@
                 border-radius: 0;
                 transition: all 0.3s;
                 top: 0;
+                .scrollers {
+                    position: absolute;
+                    inset: 0 0 0 0;
+                    .scroll {
+                        padding: 5px 10px;
+                        border: 1px solid red;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        &.right {
+                            right: 0;
+                        }
+                    }
+                }
                 .common-search {
                     display: none;
-                    border: 0;
-                    grid-template-rows: 1fr;
-                    height: 0;
-                    overflow: hidden;
-                    p {
-                        display: none;
-                    }
-                    ul {
-                        width: 100%;
-                        margin: 0;
-                        height: 100%;
-                    }
+                    // border: 0;
+                    // grid-template-rows: 1fr;
+                    // height: 0;
+                    // overflow: hidden;
+                    // p {
+                    //     display: none;
+                    // }
+                    // ul {
+                    //     width: 100%;
+                    //     margin: 0;
+                    //     height: 100%;
+                    // }
                 }
-                &.open {
-                    .common-search {
-                        height: 100%;
-                        overflow: auto;
-                    }
-                }
+                // &.open {
+                //     .common-search {
+                //         height: 100%;
+                //         overflow: auto;
+                //     }
+                // }
                 .regions {
+                    position: relative;
                     display: flex;
                     overflow: auto;
                     padding-left: 0;

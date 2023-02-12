@@ -87,6 +87,9 @@
 
 <script>
 export default {
-
+    created(){
+        const {orderId} = this.$route.query
+        console.log(orderId);
+    }
 }
 </script>
