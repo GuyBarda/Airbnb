@@ -1,34 +1,35 @@
 .stay-book {
+    p,
+    h3 {
+        margin: 0;
+    }
+
     .stay-book-header {
         display: flex;
         gap: 15px;
         padding-block: 64px 50px;
         height: max-content;
 
-        button {
-            background-color: transparent;
-            border: none;
-            border-radius: 50%;
-            transition: transform 0.25s ease;
-
-            &:hover {
-                background-color: #f7f7f7;
-            }
-        }
-
         h1 {
             font-size: 2em;
             margin: 0;
         }
     }
+
     .info-container {
         display: flex;
         justify-content: space-between;
-        .info {
-            height: 200vh;
+        padding-bottom: 80px;
 
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .info {
             > * {
-                border-bottom: 1px solid rgb(221, 221, 221);
+                &:not(:last-child) {
+                    border-bottom: 1px solid rgb(221, 221, 221);
+                }
                 padding-block: 32px;
             }
 
@@ -38,7 +39,10 @@
 
             h3 {
                 margin: 0;
-                padding-bottom: 24px;
+
+                &:has(+ p) {
+                    padding-bottom: 24px;
+                }
             }
 
             ul {
@@ -48,24 +52,17 @@
                     margin-bottom: 8px;
                 }
             }
+            .btn-reserve {
+                @include reserve-btn();
+                max-width: 200px;
+            }
 
-            // .your-trip {
-            //     h3 {
-            //         margin: 0;
-            //         margin-bottom: 24px;
-            //         font-size: em(22px, 16px);
-            //     }
-            //     p {
-            //         margin: 0;
-            //         margin-bottom: 8px;
-            //         font-weight: 700;
-            //     }
-            //     .trip-container {
-            //         display: flex;
-            //         justify-content: space-between;
-            //         margin-bottom: 24px;
-            //     }
-            // }
+            .wont-confirm {
+                p {
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+            }
         }
 
         .sticky {
@@ -81,11 +78,93 @@
             position: sticky;
             top: $m-top-reserve;
             box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-            max-width: 400px;
+            width: 50%;
             height: max-content;
 
-            .btn-reserve {
-                @include reserve-btn();
+            @media (max-width: 768px) {
+                display: none;
+            }
+
+            .content > * {
+                &:not(:first-child) {
+                    padding-top: 24px;
+                }
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid rgb(222, 222, 222);
+                    padding-bottom: 24px;
+                }
+            }
+
+            .content .your-stay-details-container .stay-details-info-container {
+                min-width: 300px;
+                display: grid;
+                grid-template-columns: 150px 2fr;
+                grid-template-rows: 1fr 1fr;
+                gap: em(10px, 16px) em(30px, 16px);
+
+                @media (max-width: 760px) {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr;
+                }
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                    grid-row: 1/4;
+                    border-radius: 4px;
+
+                    @media (max-width: 760px) {
+                        aspect-ratio: 2/1;
+                    }
+                }
+
+                a {
+                    pointer-events: none;
+                }
+
+                p {
+                    margin: 0;
+                }
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    grid-column: 2;
+
+                    @media (max-width: 760px) {
+                        grid-column: 1;
+                    }
+                }
+            }
+            .price-details-container {
+                h3 {
+                    font-size: em(22px, 16px);
+                    margin-bottom: 24px;
+                }
+                .prices {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    padding-bottom: 15px;
+                    gap: 10px;
+                    > *:nth-child(even) {
+                        justify-self: end;
+                    }
+                }
+            }
+
+            .protected span {
+                font-weight: bold;
+
+                &:first-child {
+                    color: #ff385c;
+                }
+            }
+
+            .total {
+                display: flex;
+                justify-content: space-between;
+                font-weight: 700;
             }
         }
     }

@@ -29,7 +29,6 @@ export default {
     async created() {
         window.addEventListener('scroll', this.increasePage)
         try {
-            // await this.$store.dispatch({ type: "loadStays" });
             await this.$store.dispatch({ type: "setFilter", filterBy: { ...this.changePath } });
         } catch {
             console.log("cant load stays");

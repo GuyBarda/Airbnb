@@ -43,6 +43,7 @@
 }
 .secondary-container {
     display: grid;
+    grid-template-rows: auto 1fr;
     grid-template-columns: auto $details-max-width auto;
 
     > * {

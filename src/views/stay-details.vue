@@ -49,7 +49,7 @@
                 <div class="user-stay-info">
                     <img v-if="stay.host.isSuperhost" src="../assets/svg/folder1/superhost.svg" alt="" />
                     <div v-if="stay.host.isSuperhost">
-                        <p style="font-weight: bold">Renata is a Superhost</p>
+                        <p style="font-weight: bold">This host is a Superhost</p>
                         <p class="subtext">
                             Superhosts are experienced, highly rated hosts who
                             are committed to providing great stays for guests.
@@ -262,9 +262,9 @@ export default {
                 // this.$store.commit({ type: "toggleSuccessModal", bool: true });
                 const savedOrder = await this.$store.dispatch({ type: "addOrder", order: this.order });
                 const orderId = savedOrder._id
-                this.$router.push({path: '/book' ,  query: {orderId}})
-            }catch(err){
-                console.log(err,"failed to save order");
+                this.$router.push({ path: '/book', query: { orderId } })
+            } catch (err) {
+                console.log(err, "failed to save order");
             }
         },
         totalDays() {

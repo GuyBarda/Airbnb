@@ -6,7 +6,7 @@
     background-color: #fff;
     border-bottom: 1px solid #a9a6a65c;
     font-family: CerealReg;
-    @media(max-width : 400px){
+    @media (max-width: 400px) {
         overflow: hidden;
     }
     @media (max-width: 650px) {
@@ -27,6 +27,7 @@
         border: 0;
     }
     .logo-container {
+        justify-self: start;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -35,6 +36,7 @@
         letter-spacing: -1px;
         font-family: CerealBd;
         gap: 5px;
+
         cursor: pointer;
 
         img {
@@ -110,6 +112,9 @@
     }
     .main-search-container {
         justify-self: center;
+        // position: absolute;
+        // left: 50%;
+        // transform: translateX(-50%);
     }
     > * {
         grid-row: 1;

@@ -1,62 +1,21 @@
 <template>
-    <section class="stay-book main-container full">
+    <section v-if="order" class="stay-book secondary-container full">
         <header class="stay-book-header">
-            <button>←</button>
-            <h1>Your order has been confirmed</h1>
+            <h1>Your order has been sent to host</h1>
         </header>
         <div class="info-container">
-
             <div class="info">
-                <!-- <div class="your-trip">
-                    <h3>Your trip</h3>
-                    <div class="trip-container">
-                        <div>
-                            <p>Dates</p>
-                            <span>{{ 'may 9' }}</span>
-                        </div>
-                        <button>Edit</button>
-                    </div>
-                    <div class="trip-container">
-                        <div>
-                            <p>Geusts</p>
-                            <span>{{ '1 guest' }}</span>
-                        </div>
-                        <button>Edit</button>
-                    </div>
-                </div> -->
-                <!-- <div class="choose-payment">
-                    <div class="group">
-                        <label>
-                            <div>
-                                <p>Pay in full</p>
-                                <input type="radio">
-                            </div>
-                            <span>Pay the total now and you're all set.</span>
-                        </label>
-                        <label>
-                            <div>
-                                <p>Pay part now, part later</p>
-                                <input type="radio">
-                            </div>
-                            <span>Pay $2,395.66 now, and the rest ($2,328.96) will be automatically charged to the same
-                                payment method on Apr 24, 2023. No extra fees.</span>
-                            </label>
-                        </div>
-                    </div> -->
-                <!-- <div class="pay-with">
-                        <input type="text">
-                        <div class="pay-with-group">
-                            <input type="text">
-                            <input type="text">
-                            <input type="text">
-                        </div>
-                        <input type="text">
-                        <select name="" id=""></select>
-                        <button>Enter a coupon</button>
-                    </div> -->
+                <div class="wont-confirm">
+                    <h3>Attention!</h3>
+                    <p>Your reservation won't be confirmed until the host accepts your request (within 24 hours).
+                    </p>
+                    <span>You won't be charged until then.</span>
+                </div>
                 <div class="cancellation">
                     <h3>Cancellation policy</h3>
-                    <p>Free cancellation before Apr 9. Cancel before May 2 for a partial refund.</p>
+                    <p>Free cancellation before {{ twoDaysNotice }}. Cancel before {{ weekNotice }} for a partial
+                        refund.
+                    </p>
                 </div>
                 <div class="ground-rules">
                     <h3>Ground rules</h3>
@@ -67,52 +26,109 @@
                     </ul>
                 </div>
                 <div class="">
-
-                    <button>Confirm and pay</button>
+                    <button @click="goToOrders" class="btn-reserve" @mousemove="hoverEffect">Check your orders</button>
                 </div>
             </div>
             <div class="sticky">
-
                 <div class="content">
                     <div class="your-stay-details-container">
-                        <h3>Stay details</h3>
                         <div class="stay-details-info-container">
-                            <img :src="stay?.imgUrls[0]" alt="">
-                            <!-- <p>{{ stay.name }}</p> -->
-                            <!-- <p>Hosted by: {{ stay.host.fullname }}</p> -->
-                            <!-- <review-average :reviews="stay.reviews.length" :rateMap="rateMap" /> -->
-                            <!-- <p>{{ formattedPerNightPrice }}</p> -->
+                            <img :src="order.stay?.imgUrls[0]" alt="">
+                            <p>{{ order.stay.name }}</p>
+                            <review-average :reviews="reviews?.length" :rateMap="rate" />
                         </div>
                     </div>
-                    <div class="your-trip-container">
-                        <h3>Your trip</h3>
-                        <div class="info-container">
-                            <p>Check-In</p>
-                            <!-- <p>{{ formatedStartDate }}</p> -->
-                            <p>Check-Out</p>
-                            <!-- <p>{{ formatedEndDate }}</p> -->
-                        </div>
+                    <div class="protected">
+                        Your booking is protected by <span>Air</span><span>Cover</span>
                     </div>
                     <div class="price-details-container">
                         <h3>Price details</h3>
-                        <div class="info-container">
-                            <p>Adults</p>
-                            <!-- <p>{{ order.guests.adults }}</p> -->
-                            <p>Total price</p>
-                            <!-- <p>{{ formattedTotalPrice }}</p> -->
-                            <p>Total nights</p>
-                            <!-- <p>{{ getTotalDays }}</p> -->
+                        <div class="prices">
+                            <p>${{ order.stay.price }} x {{ totalDays }} nights</p>
+                            <p>{{ totalPrice }}</p>
+                            <p>total guests</p>
+                            <p>{{ Object.values(order.guests).reduce((cur, acc) => acc + cur) }}</p>
                         </div>
                     </div>
+                    <div class="total">
+                        <p>Total after fees</p>
+                        <p>{{ formattedTotalPriceAfterFees }}</p>
+                    </div>
                 </div>
-                <button @click="goToDashboard" @mousemove="hoverEffect" class="btn-reserve">Check your trips</button>
             </div>
         </div>
+        <h1>Continue your search</h1>
+        <stay-list :stays="stays.slice(10, 15)" />
     </section>
 </template>
 
 <script>
-export default {
+import { orderService } from '../services/order-service.js'
+import { utilService } from '../services/utils-service'
+import { stayService } from '../services/stay-service'
 
+import reviewAverage from "../cmps/review-average.vue";
+
+import stayList from '../cmps/stay-list.vue'
+
+export default {
+    async created() {
+        const { orderId } = this.$route.query
+        this.order = await orderService.getById(orderId)
+        this.reviews = await stayService.getById(this.order.stay._id).then(stay => stay.reviews)
+        await this.$store.dispatch({ type: 'loadStays' })
+    },
+    data() {
+        return {
+            order: null,
+            reviews: null
+        }
+    },
+    methods: {
+        hoverEffect(ev) {
+            utilService.hoverEffect(ev)
+        },
+        goToOrders() {
+            this.$router.push('dashboard/host/orders')
+        }
+    },
+    computed: {
+        stays() {
+            return this.$store.getters.stays
+        },
+        twoDaysNotice() {
+            return utilService.formatDate(Date.now() + 2 * 24 * 60 * 60 * 1000)
+        },
+        weekNotice() {
+            return utilService.formatDate(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        },
+        totalDays() {
+            const date1 = new Date(this.order.startDate);
+            const date2 = new Date(this.order.endDate);
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        },
+        totalPrice() {
+            return utilService.format(this.order.stay.price * this.totalDays)
+        },
+        formattedTotalPriceAfterFees() {
+            return utilService.format(this.order.totalPrice)
+        },
+        rate() {
+            if (!this.reviews.length) return "new";
+            const rateKeys = Object.keys(this.reviews[0].rate);
+            const rateMap = {};
+            rateKeys.forEach((key) => {
+                let sum = this.reviews.reduce((acc, { rate }) => (acc += rate[key]), 0);
+                rateMap[key] = sum / this.reviews.length;
+            });
+            return rateMap;
+        },
+    },
+    components: {
+        stayList,
+        reviewAverage
+    }
 }
 </script>
