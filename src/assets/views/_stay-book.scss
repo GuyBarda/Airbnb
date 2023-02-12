@@ -1,0 +1,28 @@
+.stay-book {
+    header {
+        display: flex;
+        gap: 15px;
+        padding-block: 64px 50px;
+
+        button {
+            background-color: transparent;
+            border: none;
+            border-radius: 50%;
+            transition: transform 0.25s ease;
+
+            &:hover {
+                background-color: #f7f7f7;
+            }
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+    }
+
+    .your-trip {
+        display: grid;
+        grid-template: 3fr 1fr / 48px 48px 48px;
+    }
+}
