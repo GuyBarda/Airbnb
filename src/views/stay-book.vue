@@ -2,6 +2,7 @@
     <section class="stay-book secondary-container full">
         <header>
             <!-- <router-link></router-link> -->
+            <button>←</button>
             <h1>Confirm and pay</h1>
         </header>
         <div class="info">
