@@ -8,12 +8,20 @@
         <div class="info">
             <div class="your-trip">
                 <h3>Your trip</h3>
-                <p>Dates</p>
-                <span>{{ 'may 9' }}</span>
-                <button>Edit</button>
-                <p>Geusts</p>
-                <span>{{ '1 guest' }}</span>
-                <button>Edit</button>
+                <div class="trip-container">
+                    <div>
+                        <p>Dates</p>
+                        <span>{{ 'may 9' }}</span>
+                    </div>
+                    <button>Edit</button>
+                </div>
+                <div class="trip-container">
+                    <div>
+                        <p>Geusts</p>
+                        <span>{{ '1 guest' }}</span>
+                    </div>
+                    <button>Edit</button>
+                </div>
             </div>
             <div class="choose-payment">
                 <div class="group">

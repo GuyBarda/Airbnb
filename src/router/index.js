@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import stayEdit from '../views/stay-edit.vue';
 import stayDetails from '../views/stay-details.vue';
 import stayApp from '../views/stay-app.vue';
-import stayBook from '../views/stay-book.vue';
+import stayOrderConfirm from '../views/stay-order-confirm.vue';
 import userDashboard from '../views/user-dashboard.vue';
 import stayUpdate from '../views/stay-update.vue';
 import myOrders from '../cmps/dashboard/orders.vue';
@@ -21,7 +21,7 @@ const router = createRouter({
         {
             path: '/book',
             name: 'book',
-            component: stayBook,
+            component: stayOrderConfirm,
         },
         {
             path: '/explore',
