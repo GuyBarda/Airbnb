@@ -25,7 +25,7 @@
         color: $clr-secondary;
     }
     .filter-wrapper {
-        padding-block-start: 10px;
+        margin-block-start: 10px;
         margin-block-end: 10px;
         flex: 1;
         overflow: auto;
@@ -33,23 +33,33 @@
         &::-webkit-scrollbar{
             display: none;
         }
+        .scroll-wrapper{
+            position: absolute;
+            height: 100%;
+            // top: 0;
+            // bottom: 0;
+            // width:100px;
+            z-index: 10;
+        }
         .scroll {
             padding: 5px 10px;
-            border: 0.8px solid rgba($color: #000000, $alpha: 0.3);
             background-color: #fff;
+            border: 0.8px solid rgba($color: #000000, $alpha: 0.3);
             border-radius: 50%;
-            // position: absolute;
-            // top: 50%;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
             align-self: center;
             height: 28px;
             width: 28px;
-            margin-inline: 5px;
+            // margin-inline: 5px;
             display: grid;
             place-content: center;
-            // transform: translateY(-50%);
+            transform: translateY(-50%);
+            box-shadow: 17px 1px 14px 30px #ffffff;
             &:hover {
                 scale: 1.04;
-                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+                box-shadow: 17px 1px 14px 30px #ffffff, 0 6px 16px rgba(0, 0, 0, 0.12);
             }
             &.hidden{
                 opacity: 0;
@@ -58,12 +68,12 @@
             @media(max-width: 400px){
                 display: none;
             }
-            // &:not(.right) {
-            //     left: 10px;
-            // }
-            // &.right {
-            //     right: 10px;
-            // }
+            &:not(.right) {
+                left: 0;
+            }
+            &.right {
+                right: 10px;
+            }
         }
         // &::-webkit-scrollbar{
         //     display: none;

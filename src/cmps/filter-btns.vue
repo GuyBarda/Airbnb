@@ -1,5 +1,6 @@
 <template>
     <section class="filter-wrapper">
+        <!-- <div class="scroll-wrapper"> -->
         <button
             :class="{ hidden: hidden === 'left' }"
             @click="scroll('left')"
@@ -7,6 +8,7 @@
         >
             <arrow-left />
         </button>
+        <!-- </div> -->
         <section ref="btns" class="filter-btns">
             <article
                 @click="setSort(btn.key)"
