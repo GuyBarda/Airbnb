@@ -78,10 +78,17 @@
 </template>
 
 <script>
+import {orderService} from '../services/order-service.js'
+
 export default {
-    created(){
+    async created(){
         const {orderId} = this.$route.query
-        console.log(orderId);
+        this.order = await orderService.getById(orderId)
+    },
+    data(){
+        return {
+            order: null
+        }
     }
 }
 </script>
