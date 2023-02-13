@@ -93,6 +93,10 @@
                 </form>
             </section>
         </section>
+        <section class="redirect" v-else>
+            <h2>Your screen is too small switch to desktop</h2>
+            <h3>Redirecting to home page in 3 seconds...</h3>
+        </section>
     </section>
     <section v-if="!user">
         <loginSignupModal @closeModal="close" />
@@ -118,6 +122,8 @@ export default {
         };
     },
     async created() {
+        const width = window.innerWidth
+        console.log('width',width)
         const user = userService.getLoggedinUser();
         const { id } = this.$route.params;
 
@@ -125,6 +131,12 @@ export default {
             ? (this.user = user)
             : this.$store.commit({ type: "toggleMustLogin", bool: true });
 
+        if(width < 500) {
+            setTimeout(() => {
+                this.$router.push('/')
+            }, 3000);
+            return
+        }
         this.stayToEdit = id
             ? await stayService.getById(id)
             : stayService.getEmptyStay();
