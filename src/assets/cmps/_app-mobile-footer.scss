@@ -9,7 +9,7 @@
     align-items: center;
     background-color: #ffffff;
     font-family: CerealReg;
-    padding-block: 10px;
+    padding-top: 10px;
     font-size: em(18px, 16px);
 
     .wrapper {
@@ -23,13 +23,25 @@
             align-items: center;
             flex-direction: column;
             text-decoration: none;
+            cursor: pointer;
             img {
                 height: 24px;
+                &.user-img{
+                    aspect-ratio: 1/1;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
             }
             h1 {
                 font-size: 10px;
                 color: #717171;
             }
+        }
+        .info{
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: red;
         }
     }
 }

@@ -30,7 +30,9 @@
                 display: grid;
                 grid-template-columns: repeat(3,1fr);
                 // grid-template-columns: 1.6fr 0.7fr 0.5fr 0.5fr 0.7fr 0.7fr;
-
+                @media (max-width: 400px) {
+                    grid-template-columns: 1fr;
+                }
                 align-items: center;
                 background-color: white;
                 padding-inline: 10px;
@@ -60,9 +62,13 @@
                 .stay-actions {
                     display: flex;
                     gap: 5px;
+                    @media (max-width: 400px) {
+                        grid-column: span 2;
+                    }
                     .update-btn {
                         flex-grow: 1;
-                        background-color: lightblue;
+                        background-color: rgb(255, 255, 255);
+                        border: 1px solid #ddd;
                         :first-child {
                             padding-right: 5px;
                         }
@@ -75,11 +81,13 @@
                         position: relative;
                         .delete-btn {
                             position: absolute;
-                            top: 100%;
+                            top: 110%;
+                            right: 0;
                             border-radius: 5px;
+                            color: red;
                             border: 1px solid #dddddd;
                             padding: 5px 20px 5px 20px;
-                            background-color: red;
+                            background-color: #FFF;
                             display: flex;
                             align-items: center;
                             .fa-trash {

@@ -51,8 +51,8 @@
     @media (max-width: 440px) {
         .dashboard-nav {
             display: grid;
-            grid-template-columns: repeat(3, 50px) !important;
-            gap: 82px !important;
+            // grid-template-columns: repeat(3, 50px) !important;
+            // gap: 82px !important;
 
             .btn-nav {
                 border-radius: 35px !important;
