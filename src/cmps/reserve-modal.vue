@@ -5,74 +5,35 @@
                 <h4>
                     <span>{{ formattedPerNightPrice }}</span> night
                 </h4>
-                <review-average
-                    :reviews="stay.reviews.length"
-                    :rateMap="rateMap"
-                />
+                <review-average :reviews="stay.reviews.length" :rateMap="rateMap" />
             </header>
             <div class="picker-container">
                 <div @click="showDatePicker = true" class="check-in picker">
                     <label for="check-in">CHECK-IN</label>
-                    <input
-                        type="text"
-                        placeholder="MM/DD/YYYY"
-                        :value="formatedStartDate"
-                    />
+                    <input type="text" placeholder="MM/DD/YYYY" :value="formatedStartDate" />
                 </div>
                 <section class="date-picker-container">
-                    <el-date-picker
-                        :teleported="false"
-                        @change="setDates"
-                        v-model="dates"
-                        popper-class="date-picker-reserve"
-                        type="daterange"
-                        start-placeholder="Start date"
-                        end-placeholder="End date"
-                    />
+                    <el-date-picker :teleported="false" @change="setDates" v-model="dates"
+                        popper-class="date-picker-reserve" type="daterange" start-placeholder="Start date"
+                        end-placeholder="End date" />
                 </section>
                 <div @click="showDatePicker = true" class="check-out picker">
                     <label for="check-out">CHECK-OUT</label>
-                    <input
-                        type="text"
-                        placeholder="MM/DD/YYYY"
-                        :value="formatedEndDate"
-                    />
+                    <input type="text" placeholder="MM/DD/YYYY" :value="formatedEndDate" />
                 </div>
-                <div
-                    @click="this.showGuestPicker = !this.showGuestPicker"
-                    class="guests picker"
-                >
+                <div @click="this.showGuestPicker = !this.showGuestPicker" class="guests picker">
                     <label for="guests">GUESTS</label>
-                    <input
-                        type="text"
-                        :value="guestsCount"
-                        style="color: black; background-color: white"
-                        disabled
-                    />
-                    <img
-                        v-if="!showGuestPicker"
-                        src="../assets/svg/arrow-down.svg"
-                        class="arrow-img"
-                    />
-                    <img
-                        v-else
-                        src="../assets/svg/arrow-up.svg"
-                        class="arrow-img"
-                    />
-                    <guests-modal
-                        @setGuests="setGuests"
-                        :class="{ open: showGuestPicker }"
-                    ></guests-modal>
+                    <input type="text" :value="guestsCount" style="color: black; background-color: white" disabled />
+                    <img v-if="!showGuestPicker" src="../assets/svg/arrow-down.svg" class="arrow-img" />
+                    <img v-else src="../assets/svg/arrow-up.svg" class="arrow-img" />
+                    <guests-modal @setGuests="setGuests" :class="{ open: showGuestPicker }"></guests-modal>
                 </div>
             </div>
             <button @mousemove="hoverEffect" class="btn-reserve">
                 Reserve
             </button>
 
-            <div
-                style="display: flex; gap: 25px; flex-direction: column"
-                v-if="order.startDate && order.endDate"
-            >
+            <div style="display: flex; gap: 25px; flex-direction: column" v-if="order.startDate && order.endDate">
                 <p style="text-align: center">You won't be charged yet</p>
                 <div class="prices">
                     <p>
@@ -131,6 +92,10 @@ export default {
             this.order.guests = { ...guests };
         },
         addOrder() {
+            if (!this.$store.getters.loggedinUser) {
+                this.$store.commit({ type: "toggleLogInModal", bool: true });
+                return
+            }
             (this.order.stay.loc.address = this.stay.loc.address),
                 (this.order.totalPrice =
                     this.serviceFee +
@@ -158,9 +123,8 @@ export default {
         },
         formatDate(date) {
             const DATE = new Date(date);
-            return `${
-                DATE.getMonth() + 1
-            }/${DATE.getDate()}/${DATE.getFullYear()}`;
+            return `${DATE.getMonth() + 1
+                }/${DATE.getDate()}/${DATE.getFullYear()}`;
         },
         hoverEffect(ev) {
             const button = ev.target;
@@ -174,9 +138,8 @@ export default {
             const { adults, children, infants, pets } = this.order.guests;
             let str =
                 adults || children
-                    ? `${adults + children} ${
-                          adults + children !== 1 ? "guests" : "guest"
-                      }`
+                    ? `${adults + children} ${adults + children !== 1 ? "guests" : "guest"
+                    }`
                     : "";
             str += infants
                 ? `, ${infants} ${infants !== 1 ? "infants" : "infant"}`
@@ -217,8 +180,8 @@ export default {
         formattedTotal() {
             return this.format(
                 this.serviceFee +
-                    this.cleaningFee +
-                    this.totalDays() * this.stay.price
+                this.cleaningFee +
+                this.totalDays() * this.stay.price
             );
         },
     },

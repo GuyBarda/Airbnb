@@ -282,6 +282,10 @@ export default {
             return formatter.format(num);
         },
         async setWishlist() {
+            if (!this.$store.getters.loggedinUser) {
+                this.$store.commit({ type: "toggleLogInModal", bool: true });
+                return
+            }
             this.isMark = !this.isMark;
             await this.$store.dispatch({
                 type: "setWishlist",

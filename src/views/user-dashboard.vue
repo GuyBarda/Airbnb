@@ -15,8 +15,7 @@
                     <span> My Stays</span>
                 </router-link>
 
-                <router-link class="btn-nav" v-if="path === 'buyer'"
-                    to="/dashboard/buyer/wishlist">wishlist
+                <router-link class="btn-nav" v-if="path === 'buyer'" to="/dashboard/buyer/wishlist">wishlist
                 </router-link>
 
                 <router-link class="btn-nav" v-if="path === 'host'" to="/stay/edit/">

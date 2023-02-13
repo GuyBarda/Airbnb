@@ -1,31 +1,26 @@
 <template>
     <router-link :to="'stay/' + stay._id" target="_blank">
         <article class="stay-preview">
-            <heart-icon
-                @click.stop.prevent="setWishlist"
-                :class="{ mark: isMark }"
-                class="heart-btn"
-            />
+            <heart-icon @click.stop.prevent="setWishlist" :class="{ mark: isMark }" class="heart-btn" />
             <img-carousel @click.prevent :stayId="stay._id" :imgs="stay.imgUrls" />
             <section class="preview-info">
                 <p class="location">
-                    {{ location
-                    }}<span class="rate"
-                        ><star-icon />&nbsp; {{ rate }} ({{
-                            this.stay.reviews.length
-                        }})</span
-                    >
+                    {{
+                        location
+                    }}<span class="rate"><star-icon />&nbsp; {{ rate }} ({{
+    this.stay.reviews.length
+}})</span>
                 </p>
                 <main>
                     <p class="stay-name">{{ stay.name }}</p>
                     <p class="date">{{ date }}</p>
                 </main>
                 <p class="price"><span class="price-label">{{ formattedPrice }}</span> night</p>
-               
+
             </section>
         </article>
     </router-link>
-   
+
 
 
 </template>
@@ -58,6 +53,10 @@ export default {
     },
     methods: {
         async setWishlist() {
+            if (!this.loggedinUser) {
+                this.$store.commit({ type: "toggleLogInModal", bool: true });
+                return
+            }
             this.isMark = !this.isMark;
             await this.$store.dispatch({
                 type: "setWishlist",
