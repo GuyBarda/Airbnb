@@ -45,8 +45,8 @@
             gap: 10px;
             transition: 0.2s;
             cursor: pointer;
-            
-            @media(min-width: 400px){
+
+            @media (min-width: 400px) {
                 display: grid;
                 grid-template-columns: 1fr auto;
             }
@@ -99,7 +99,7 @@
         background-color: #fff;
 
         .trip-display {
-            font-size: em(14px,16px);
+            font-size: em(14px, 16px);
             // margin-left: 20.4%;
             padding: 24px;
             display: flex;
@@ -206,5 +206,11 @@
 
 .Clock-Rotate-Left::before {
     font: var(--fa-font-solid);
-    content: ' \f1da';
+    content: " \f1da";
+}
+
+@media (max-width: 500px) {
+    .trips-container{
+        flex-direction: column;
+    }
 }

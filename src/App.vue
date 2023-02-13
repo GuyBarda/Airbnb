@@ -16,8 +16,8 @@
         :class="{
             open: isOrderComplete || isFilterOpen || isMustLogin || isLogInOpen,
             must: isMustLogin,
-        }"
-    ></section>
+        }">
+        </section>
     <loginSignupModal v-if="isLogInOpen" @closeModal="close" />
     <user-msg />
     <app-footer />
