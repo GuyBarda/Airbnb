@@ -98,12 +98,16 @@
             }
         }
     }
+    .openModal{
+        // display:block !important;
+    }
 
     .trip-display-container {
         background-color: #fff;
         @media (max-width:400px) {
             // display: none;
         }
+        
         .trip-display {
             font-size: em(14px, 16px);
             // margin-left: 20.4%;
@@ -125,6 +129,7 @@
                 top: 0px;
                 left: 0;
             }
+            
             .trip-img {
                 display: grid;
                 grid-template-columns: 2fr 1fr;
@@ -218,6 +223,10 @@
 .Clock-Rotate-Left::before {
     font: var(--fa-font-solid);
     content: " \f1da";
+}
+
+.divModal{
+
 }
 
 @media (max-width: 500px) {

@@ -1,8 +1,9 @@
 <template>
+    <!-- <div class="divModal">open >>></div> -->
     <div v-if="user && trips && currTrip" class="trips-container">
         <!-- <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2> -->
         <trip-list @openToDisplay="setTripDisplay" :trips="trips" />
-        <div class="trip-display-container">
+        <div class="trip-display-container" :class="{openModal: openModal }">
             <section class="trip-display">
                 <section class="trip-img">
                     <img v-for="img in currTrip?.stay.imgUrls" :src="img" alt="" />
@@ -67,6 +68,7 @@ export default {
             currTrip: "",
             trips: null,
             user: null,
+            openModal: true,
         };
     },
     components: {
