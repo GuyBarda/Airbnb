@@ -48,9 +48,9 @@
         }
     }
 
-    @media (max-width: 440px) {
+    @media (max-width: 400px) {
         .dashboard-nav {
-            // display: grid;
+            display: grid;
             // grid-template-columns: repeat(3, 50px) !important;
             // gap: 82px !important;
 

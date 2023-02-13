@@ -19,7 +19,11 @@
     }
 
     @media (min-width: 400px) {
-        grid-template-columns: repeat(2, 1fr);
+        // grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width:400px) {
+        flex-direction: column;
+        position: relative;
     }
 
     > * {
@@ -97,7 +101,9 @@
 
     .trip-display-container {
         background-color: #fff;
-
+        @media (max-width:400px) {
+            // display: none;
+        }
         .trip-display {
             font-size: em(14px, 16px);
             // margin-left: 20.4%;
@@ -114,6 +120,11 @@
             border-radius: 8px;
             box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
+            @media(max-width: 400px){
+                position: absolute;
+                top: 0px;
+                left: 0;
+            }
             .trip-img {
                 display: grid;
                 grid-template-columns: 2fr 1fr;
