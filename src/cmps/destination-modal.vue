@@ -103,11 +103,9 @@ export default {
                 })
             }
         },
-        components: {
-            spotIcon,
-        },
+    },
+    components: {
+        spotIcon,
     },
 }
 </script>
-
-<style lang="scss" scoped></style>
