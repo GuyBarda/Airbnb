@@ -1,5 +1,5 @@
 <template>
-    <div class="app-mobile-footer" :class="whichContainer" :style="whichLayout">
+    <div class="app-mobile-footer">
         <section class="wrapper">
             <router-link class="icon-container" to="/" @click="handelClick()">
                 <img v-if="isMenu" src="../../src/assets/svg/search1.svg" alt="" />
@@ -35,7 +35,10 @@ export default {
     },
     methods: {
         openLogIn() {
-            if(this.loggedIn) return
+            if(this.loggedIn) {
+                this.$router.push('/dashboard/host/orders')
+                return
+            }
             this.$store.commit({ type: "toggleLogInModal", bool: true });
         },
         handelClick(){
