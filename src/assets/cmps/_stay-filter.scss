@@ -56,10 +56,19 @@
             display: grid;
             place-content: center;
             transform: translateY(-50%);
-            box-shadow: 17px 1px 14px 30px #ffffff;
-            &:hover {
-                scale: 1.04;
-                box-shadow: 17px 1px 14px 30px #ffffff, 0 6px 16px rgba(0, 0, 0, 0.12);
+            &.left {
+                box-shadow: -20px 0px 14px 30px #ffffff;
+                &:hover {
+                    scale: 1.04;
+                    box-shadow: -20px 0px 14px 30px #ffffff, 0 6px 16px rgba(0, 0, 0, 0.12);
+                }
+            }
+            &.right{
+                box-shadow: 17px 1px 14px 30px #ffffff;
+                &:hover {
+                    scale: 1.04;
+                    box-shadow: 17px 1px 14px 30px #ffffff, 0 6px 16px rgba(0, 0, 0, 0.12);
+                }
             }
             &.hidden{
                 opacity: 0;

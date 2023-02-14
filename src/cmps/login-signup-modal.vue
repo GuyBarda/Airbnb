@@ -59,8 +59,8 @@ export default {
         return {
             isLogin: true,
             cred: {
-                username: "",
-                password: "",
+                username: "Samir",
+                password: "1",
             },
             signupCred: {
                 fullname: "",

@@ -17,6 +17,7 @@ export default {
     },
     created(){
         this.user = this.$store.getters.loggedinUser
+        if(!this.user) return this.$router.push('/')
         this.wishlist = this.user.wishlist
     },
     components: {
