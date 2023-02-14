@@ -4,7 +4,7 @@ import stayDetails from '../views/stay-details.vue';
 import stayApp from '../views/stay-app.vue';
 import stayOrderConfirm from '../views/stay-order-confirm.vue';
 import userDashboard from '../views/user-dashboard.vue';
-import stayUpdate from '../views/stay-update.vue';
+// import stayUpdate from '../views/stay-update.vue';
 import myOrders from '../cmps/dashboard/orders.vue';
 import myStays from '../cmps/dashboard/my-stays.vue';
 import myTrips from '../cmps/dashboard/my-trips.vue';
@@ -33,11 +33,11 @@ const router = createRouter({
             name: 'details',
             component: stayDetails,
         },
-        {
-            path: '/stay/update/:id?',
-            name: 'update',
-            component: stayUpdate,
-        },
+        // {
+        //     path: '/stay/update/:id?',
+        //     name: 'update',
+        //     component: stayUpdate,
+        // },
         {
             path: '/stay/edit/:id?',
             name: 'edit',

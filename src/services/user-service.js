@@ -31,27 +31,16 @@ function getUsers() {
 }
 async function getOrdersByUserId(hostId) {
     return await orderService.query({ hostId });
-    // return orders.filter((order) => order.buyer._id === userId);
 }
 async function getTripsByUserId(buyerId) {
     return await orderService.query({ buyerId });
-    // return orders.filter((order) => order.buyer._id === userId);
 }
 async function getStaysByUserId(userId) {
     const user = await userService.getById(userId);
     return user.stays;
 }
-function onUserUpdate(user) {
-    showSuccessMsg(
-        `This user ${user.fullname} just got updated from socket, new score: ${user.score}`
-    );
-    store.dispatch({ type: 'setWatchedUser', user });
-}
 async function getById(userId) {
     const user = await httpService.get(`user/${userId}`);
-    // socketService.emit(SOCKET_EMIT_USER_WATCH, userId);
-    // socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate);
-    // socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate);
     return user;
 }
 function remove(userId) {
@@ -59,7 +48,6 @@ function remove(userId) {
 }
 async function update(user) {
     user = await httpService.put(`user/${user._id}`, user);
-    // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) saveLocalUser(user);
     return user;
 }
@@ -72,10 +60,6 @@ async function login(userCred) {
     }
 }
 async function signup(userCred) {
-    // guest 1
-    // gg gg1
-    // Nadir 123
-    // Shon shon1 (?)
     if (!userCred.imgUrl)
         userCred.imgUrl =
             'https://res.cloudinary.com/dirvusyaz/image/upload/v1670419729/77_eaxuqe.png';

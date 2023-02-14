@@ -96,9 +96,7 @@
 </template>
 
 <script>
-import reactiveBtn from "./reactive-btn.vue"
 import destinationModal from "./destination-modal.vue"
-import datePicker from "./date-picker.vue"
 import guestsModal from "./guests-modal.vue"
 
 export default {
@@ -205,9 +203,7 @@ export default {
         },
     },
     components: {
-        reactiveBtn,
         destinationModal,
-        datePicker,
         guestsModal,
     },
     watch: {},

@@ -13,7 +13,6 @@
     padding-top: 10px;
     font-size: em(18px, 16px);
 
-    
     .wrapper {
         display: flex;
         align-items: center;
@@ -26,9 +25,15 @@
             flex-direction: column;
             text-decoration: none;
             cursor: pointer;
+            &.router-link-active {
+                h1,svg{
+
+                    color: #ff5555 !important;
+                }
+            }
             img {
                 height: 24px;
-                &.user-img{
+                &.user-img {
                     aspect-ratio: 1/1;
                     object-fit: cover;
                     border-radius: 50%;
@@ -38,11 +43,8 @@
                 font-size: 10px;
                 color: #717171;
             }
-            .selected{
-                color: #ff5555 !important;
-            }
         }
-        .info{
+        .info {
             position: fixed;
             top: 0;
             right: 0;

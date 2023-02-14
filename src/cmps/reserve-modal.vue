@@ -58,7 +58,6 @@
 import { orderService } from "../services/order-service.js";
 
 import reviewAverage from "../cmps/review-average.vue";
-import reactiveBtn from "./reactive-btn.vue";
 import guestsModal from "./guests-modal.vue";
 import { eventBus } from "../services/event-bus-service";
 
@@ -187,7 +186,6 @@ export default {
     },
     components: {
         reviewAverage,
-        reactiveBtn,
         guestsModal,
     },
 };
