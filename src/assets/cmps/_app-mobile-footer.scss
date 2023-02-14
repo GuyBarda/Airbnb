@@ -13,6 +13,9 @@
     padding-top: 10px;
     font-size: em(18px, 16px);
 
+    &.hidden {
+        display: none;
+    }
     .wrapper {
         display: flex;
         align-items: center;
