@@ -13,14 +13,14 @@ export const stayService = {
     addStayMsg,
     getEmptyFilter,
     btnsAryy,
-    
 };
-window.cs = stayService;
+
 // DO NOT REMOVE AND DO NOT USE EVER!!!!!!!!!
 // (async function apply(){
 //     console.log(staysJson)
 //     staysJson.forEach(async(stay) => await save(stay))
 // })()
+
 async function query(filterBy = { txt: '', price: 0 }) {
     return httpService.get(STORAGE_KEY, filterBy);
 }
@@ -33,13 +33,13 @@ async function remove(stayId) {
 }
 async function save(stay) {
     var savedStay;
-    if (stay._id) {
-        savedStay = await httpService.put(`stay/${stay._id}`, stay);
-        showSuccessMsg(`"${stay.name}" updated successfully`);
-    } else {
-        savedStay = await httpService.post('stay', stay);
-        showSuccessMsg(`"${stay.name}" added successfully`);
-    }
+    stay._id
+        ? (savedStay = await httpService.put(`stay/${stay._id}`, stay))
+        : (savedStay = await httpService.post('stay', stay));
+
+    showSuccessMsg(
+        `"${stay.name}" ${stay._id ? 'updated' : 'added'} successfully`
+    );
     return savedStay;
 }
 
