@@ -1,12 +1,16 @@
 <template>
-    <!-- <div class="divModal">open >>></div> -->
+    <!-- <div class="divModal" >open >>></div> -->
     <div v-if="user && trips && currTrip" class="trips-container">
         <!-- <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2> -->
-        <trip-list @openToDisplay="setTripDisplay" :trips="trips" />
-        <div class="trip-display-container" :class="{openModal: openModal }">
+        <trip-list @openToDisplay="setTripDisplay" :trips="trips" @click="setOpenModal" v-if="!openModal"/>
+        <div class="trip-display-container" :class="{ openModal: openModal }" @click="setOpenModal">
             <section class="trip-display">
                 <section class="trip-img">
-                    <img v-for="img in currTrip?.stay.imgUrls" :src="img" alt="" />
+                    <img
+                        v-for="img in currTrip?.stay.imgUrls"
+                        :src="img"
+                        alt=""
+                    />
                 </section>
                 <section class="trip-info">
                     <h2>{{ currTrip.stay.name }}</h2>
@@ -21,7 +25,7 @@
                     </p>
                     <p>
                         <span class="info-parameter">Total price:</span> ${{
-                                currTrip?.totalPrice
+                            currTrip?.totalPrice
                         }}
                     </p>
                     <p class="last" :class="tripStatus">
@@ -55,12 +59,14 @@ export default {
     async created() {
         this.user = this.$store.getters.loggedinUser;
         this.trips = await userService.getTripsByUserId(this.user._id);
-        this.trips = this.trips.reverse()
+        this.trips = this.trips.reverse();
         if (!this.trips) return;
         this.currTrip = this.trips[0];
         socketService.on("trip-about-you", (updatedTrip) => {
-            const idx = this.trips.findIndex(trip => trip._id === updatedTrip._id)
-            this.trips.splice(idx, 1, updatedTrip)
+            const idx = this.trips.findIndex(
+                (trip) => trip._id === updatedTrip._id
+            );
+            this.trips.splice(idx, 1, updatedTrip);
         });
     },
     data() {
@@ -68,7 +74,7 @@ export default {
             currTrip: "",
             trips: null,
             user: null,
-            openModal: true,
+            openModal: false,
         };
     },
     components: {
@@ -86,6 +92,10 @@ export default {
         },
         navigate() {
             this.$router.push("/");
+        },
+        setOpenModal() {
+            this.openModal = !this.openModal;
+            console.log('this.openModal',this.openModal )
         },
     },
     computed: {
@@ -114,6 +124,7 @@ export default {
         tripStatus() {
             return this.currTrip.status;
         },
+        
     },
 };
 </script>

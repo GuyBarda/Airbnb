@@ -98,14 +98,18 @@
             }
         }
     }
-    .openModal{
-        // display:block !important;
-    }
+    
 
     .trip-display-container {
+        display:none;
         background-color: #fff;
         @media (max-width:400px) {
-            // display: none;
+            position: absolute;
+                top: 0px;
+                left: 0;
+        }
+        &.openModal{
+            display:block !important;
         }
         
         .trip-display {
@@ -125,9 +129,7 @@
             box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
             @media(max-width: 400px){
-                position: absolute;
-                top: 0px;
-                left: 0;
+                
             }
             
             .trip-img {
