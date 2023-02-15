@@ -6,6 +6,7 @@
 
 <script>
 import wishStayList from './wish-stay-list.vue';
+import { showErrorMsg } from '../../services/event-bus-service.js'
 
 export default {
 
@@ -17,7 +18,10 @@ export default {
     },
     created(){
         this.user = this.$store.getters.loggedinUser
-        if(!this.user) return this.$router.push('/')
+        if(!this.user) {
+            showErrorMsg('Log in first')
+            return this.$router.push('/')
+        }
         this.wishlist = this.user.wishlist
     },
     components: {

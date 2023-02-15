@@ -28,38 +28,42 @@
             a {
                 text-decoration: none;
                 display: grid;
-                grid-template-columns: repeat(3,1fr);
+                grid-template-columns: repeat(3, 1fr);
                 // grid-template-columns: 1.6fr 0.7fr 0.5fr 0.5fr 0.7fr 0.7fr;
                 @media (max-width: 400px) {
+                    // gap: 10px;
                     grid-template-columns: 1fr;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
                 }
                 align-items: center;
                 background-color: white;
                 padding-inline: 10px;
                 padding-block: 5px;
                 border-bottom: 1px solid #dddddd;
-                
-                .prop{
+
+                .prop {
                     display: none;
                     font-weight: 700;
                     @media (max-width: 1050px) {
                         display: inline;
                     }
                 }
-                @media(max-width: 1050px){
-                    :first-child{
+                @media (max-width: 1050px) {
+                    :first-child {
                         grid-column: span 2;
                     }
                     border-start-start-radius: 10px;
                     border-start-end-radius: 10px;
-                    grid-template-rows: repeat(3,1fr);
+                    grid-template-rows: repeat(3, 1fr);
                 }
-                @media(min-width: 1050px){
+                @media (min-width: 1050px) {
                     grid-template-columns: 1.6fr 0.7fr 0.5fr 0.5fr 0.7fr 0.7fr;
-
                 }
 
                 .stay-actions {
+                    align-self: stretch;
                     display: flex;
                     gap: 5px;
                     @media (max-width: 400px) {
@@ -87,7 +91,7 @@
                             color: red;
                             border: 1px solid #dddddd;
                             padding: 5px 20px 5px 20px;
-                            background-color: #FFF;
+                            background-color: #fff;
                             display: flex;
                             align-items: center;
                             .fa-trash {
@@ -117,6 +121,6 @@
 
     button {
         @include reserve-btn();
-        width: 300px;
+        width: 250px;
     }
 }

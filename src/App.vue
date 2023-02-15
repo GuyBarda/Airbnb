@@ -18,7 +18,8 @@
             must: isMustLogin,
         }">
         </section>
-    <loginSignupModal v-if="isLogInOpen" @closeModal="close" />
+    <loginSignupModal v-if="isLogInOpen" />
+    <!-- @closeModal="close" -->
     <user-msg />
     <app-footer />
     <app-mobile-footer :class="{hidden: isOpen}"/>

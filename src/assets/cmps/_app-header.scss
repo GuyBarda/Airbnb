@@ -11,6 +11,7 @@
     }
     @media (max-width: 650px) {
         &.main-container .logo-container,
+        &.secondary-container .user,
         &.main-container .user,
         &.secondary-container .main-search-container {
             display: none;
