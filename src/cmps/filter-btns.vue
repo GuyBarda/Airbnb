@@ -1,42 +1,31 @@
 <template>
     <section class="filter-wrapper">
         <!-- <div class="scroll-wrapper"> -->
-        <button
-            :class="{ hidden: hidden === 'left' }"
-            @click="scroll('left')"
-            class="scroll left"
-        >
+        <button :class="{ hidden: hidden === 'left' }" @click="scroll('left')" class="scroll left">
             <arrow-left />
         </button>
         <!-- </div> -->
         <section ref="btns" class="filter-btns">
-            <article
-                @click="setSort(btn.key)"
-                :class="{ selected: isSelected === btn.key }"
-                v-for="btn in btns"
-                :key="btn"
-            >
-                <img :src="btn.url" alt="" />
-                <p>{{ btn.key }}</p>
+            <article @click="setSort(btn.key)" v-for="btn in btns" :key="btn">
+                <div class="article-box" :class="{ selected: isSelected === btn.key }">
+                    <img :src="btn.url" alt="" />
+                    <p>{{ btn.key }}</p>
+                </div>
             </article>
         </section>
-        <button
-            :class="{ hidden: hidden === 'right' }"
-            @click="scroll('right')"
-            class="scroll right"
-        >
+        <button :class="{ hidden: hidden === 'right' }" @click="scroll('right')" class="scroll right">
             <arrow-right />
         </button>
         <!-- <section class="scrollers">
-            <button  @click="scroll('left')" class="scroll left">
-                <arrow-left />
-            </button>
-            <button @click="scroll('right')" class="scroll right">
-                <arrow-right />
-            </button>
-        </section> -->
-    </section>
-    <!-- <carousel class="carousel" :settings="settings" :breakpoints="breakpoints">
+                            <button  @click="scroll('left')" class="scroll left">
+                                <arrow-left />
+                            </button>
+                            <button @click="scroll('right')" class="scroll right">
+                                <arrow-right />
+                            </button>
+                        </section> -->
+</section>
+<!-- <carousel class="carousel" :settings="settings" :breakpoints="breakpoints">
         <slide v-for="slide in btns" :key="slide">
 
             <div class="slide-wrapper" @click="setSort(slide.key)">
@@ -55,8 +44,7 @@
                 <navigation :slideWidth="100" />
             </div>
         </template>
-    </carousel> -->
-</template>
+    </carousel> --></template>
 
 <script>
 import "vue3-carousel/dist/carousel.css"
