@@ -21,7 +21,7 @@
     @media (min-width: 400px) {
         // grid-template-columns: repeat(2, 1fr);
     }
-    @media (max-width:400px) {
+    @media (max-width: 400px) {
         flex-direction: column;
         position: relative;
     }
@@ -98,20 +98,19 @@
             }
         }
     }
-    
 
     .trip-display-container {
-        display:none;
+        display: none;
         background-color: #fff;
-        @media (max-width:400px) {
+        @media (max-width: 400px) {
             position: absolute;
-                top: 0px;
-                left: 0;
+            top: 0px;
+            left: 0;
         }
-        &.openModal{
-            display:block !important;
+        &.openModal {
+            display: block !important;
         }
-        
+
         .trip-display {
             font-size: em(14px, 16px);
             // margin-left: 20.4%;
@@ -128,10 +127,23 @@
             border-radius: 8px;
             box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
-            @media(max-width: 400px){
-                
+            .closeBtn {
+                display: none;
+                width: 2.25rem;
+                height: 2.25rem;
+                align-items: center;
+                justify-content: center;
+                border-radius: 9999px;
+                border-width: 1px;
+                z-index: -20;
             }
-            
+
+            @media (max-width: 400px) {
+                .closeBtn {
+                    display: block;
+                }
+            }
+
             .trip-img {
                 display: grid;
                 grid-template-columns: 2fr 1fr;
@@ -227,12 +239,11 @@
     content: " \f1da";
 }
 
-.divModal{
-
+.divModal {
 }
 
 @media (max-width: 500px) {
-    .trips-container{
+    .trips-container {
         flex-direction: column;
     }
 }

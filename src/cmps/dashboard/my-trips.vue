@@ -2,9 +2,10 @@
     <!-- <div class="divModal" >open >>></div> -->
     <div v-if="user && trips && currTrip" class="trips-container">
         <!-- <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2> -->
-        <trip-list @openToDisplay="setTripDisplay" :trips="trips" @click="setOpenModal" v-if="!openModal"/>
+        <trip-list @openToDisplay="setTripDisplay" :trips="trips" @click="setOpenModal"/>
         <div class="trip-display-container" :class="{ openModal: openModal }" @click="setOpenModal">
             <section class="trip-display">
+                <button class="closeBtn">X</button>
                 <section class="trip-img">
                     <img
                         v-for="img in currTrip?.stay.imgUrls"
@@ -97,6 +98,7 @@ export default {
             this.openModal = !this.openModal;
             console.log('this.openModal',this.openModal )
         },
+
     },
     computed: {
         getLoggedinUser() {
