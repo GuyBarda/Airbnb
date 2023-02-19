@@ -3,9 +3,9 @@
     <div v-if="user && trips && currTrip" class="trips-container">
         <!-- <h2>Hi {{ user.fullname }}, you have {{ 2 }} pending trips</h2> -->
         <trip-list @openToDisplay="setTripDisplay" :trips="trips" @click="setOpenModal"/>
-        <div class="trip-display-container" :class="{ openModal: openModal }" @click="setOpenModal">
+        <div class="trip-display-container" :class="{ openModal: openModal }">
             <section class="trip-display">
-                <button class="closeBtn">X</button>
+                <button class="closeBtn" @click="setOpenModal" >X</button>
                 <section class="trip-img">
                     <img
                         v-for="img in currTrip?.stay.imgUrls"

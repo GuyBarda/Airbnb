@@ -100,9 +100,9 @@
     }
 
     .trip-display-container {
-        display: none;
         background-color: #fff;
         @media (max-width: 400px) {
+            display: none;
             position: absolute;
             top: 0px;
             left: 0;
