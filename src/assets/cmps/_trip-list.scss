@@ -131,11 +131,12 @@
                 display: none;
                 width: 2.25rem;
                 height: 2.25rem;
-                align-items: center;
-                justify-content: center;
-                border-radius: 9999px;
-                border-width: 1px;
-                z-index: -20;
+                border-radius: 20px;
+                border: 1px solid rgba(0, 0, 0, 0.445);
+                background-color: #fff;
+                position: absolute;
+                right: 5px;
+                top: 5px;
             }
 
             @media (max-width: 400px) {
