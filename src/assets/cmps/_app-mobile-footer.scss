@@ -28,9 +28,16 @@
             flex-direction: column;
             text-decoration: none;
             cursor: pointer;
+            .logout {
+                height: 24px;
+                width: 24px;
+                fill: #717171;
+                stroke-width: 2;
+                stroke: currentcolor;
+            }
             &.router-link-active {
-                h1,svg{
-
+                h1,
+                svg {
                     color: #ff5555 !important;
                 }
             }

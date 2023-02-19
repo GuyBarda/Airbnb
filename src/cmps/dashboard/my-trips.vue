@@ -53,6 +53,7 @@
 
 <script>
 import { userService } from "../../services/user-service.js";
+import { socketService } from '../../services/socket-service.js'
 
 import tripList from "./trip-list.vue";
 
@@ -96,7 +97,6 @@ export default {
         },
         setOpenModal() {
             this.openModal = !this.openModal;
-            console.log('this.openModal',this.openModal )
         },
 
     },

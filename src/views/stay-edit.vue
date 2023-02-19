@@ -123,7 +123,6 @@ export default {
     },
     async created() {
         const width = window.innerWidth
-        console.log('width',width)
         const user = userService.getLoggedinUser();
         const { id } = this.$route.params;
 

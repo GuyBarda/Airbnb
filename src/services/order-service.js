@@ -1,5 +1,4 @@
 import { httpService } from './http-service.js';
-import { userService } from './user-service.js';
 
 const STORAGE_KEY = 'order';
 export const orderService = {
@@ -13,7 +12,6 @@ export const orderService = {
     getMyOrders,
 };
 
-window.cs = orderService;
 async function query(filterBy = { buyerId: '', hostId: '' }) {
     return httpService.get(STORAGE_KEY, filterBy);
 }
@@ -35,18 +33,13 @@ async function remove(orderId) {
 }
 
 async function save(order) {
-    var savedOrder;
-    if (order._id) {
-        savedOrder = await httpService.put(`order/${order._id}`, order);
-    } else {
-        savedOrder = await httpService.post('order/', order);
-    }
-    return savedOrder;
+    return order._id
+        ? await httpService.put(`order/${order._id}`, order)
+        : await httpService.post('order/', order);
 }
 
 async function addOrderMsg(orderId, txt) {
-    const savedMsg = await httpService.post(`order/${orderId}/msg`, { txt });
-    return savedMsg;
+    return await httpService.post(`order/${orderId}/msg`, { txt });
 }
 
 function getEmptyOrder() {

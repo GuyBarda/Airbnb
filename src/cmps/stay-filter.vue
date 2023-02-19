@@ -37,6 +37,7 @@ export default {
             this.isScrolled = window.scrollY > 0
         },
         toggleFilterModal(isShown) {
+            if (this.$store.getters.isLoading) return
             this.$store.commit({ type: "toggleFilterModal", bool: isShown });
         },
         setFilterBy(filterBy) {
