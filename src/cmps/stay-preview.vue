@@ -112,5 +112,13 @@ export default {
         heartIcon,
         imgCarousel,
     },
+    watch: {
+        stay(){
+        const wishlist = this.loggedinUser?.wishlist;
+        if (!wishlist) return;
+        const idx = wishlist.findIndex((stay) => stay._id === this.stay._id);
+        this.isMark = idx > -1 ? true : false;
+        }
+    }
 };
 </script>

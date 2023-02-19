@@ -24,7 +24,6 @@ export default {
     },
     methods: {
         updateStatus(val, id) {
-            console.log(val, id)
             this.$emit('changeStatus', val, id)
         },
     },
